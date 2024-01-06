@@ -6,12 +6,20 @@ import frechetlib.discrete_frechet as df
 DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 
 
+def test_frechet_equal() -> None:
+    n = 1000
+    P = np.random.rand(n, 2)
+    Q = np.random.rand(n, 2)
+
+    assert np.isclose(df.linear_frechet(P, Q), df.linear_frechet_2(P, Q))
+
+
 @pytest.mark.parametrize(
     "frechet_dist_func",
     DISCRETE_FRECHET_FUNCS,
 )
 def test_frechet_benchmark(benchmark, frechet_dist_func) -> None:
-    n = 1000
+    n = 500
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
 
