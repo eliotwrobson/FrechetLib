@@ -1,15 +1,21 @@
 import numpy as np
 import pytest
 
-from frechetlib.discrete_frechet import linear_frechet
+import frechetlib.discrete_frechet as df
+
+DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 
 
-def test_frechet_benchmark(benchmark) -> None:
+@pytest.mark.parametrize(
+    "frechet_dist_func",
+    DISCRETE_FRECHET_FUNCS,
+)
+def test_frechet_benchmark(benchmark, frechet_dist_func) -> None:
     n = 1000
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
 
-    benchmark(linear_frechet, P, Q)
+    benchmark(frechet_dist_func, P, Q)
 
 
 TEST_CASES = [
@@ -38,18 +44,26 @@ TEST_CASES = [
 ]
 
 
-def test_discrete_frechet() -> None:
+@pytest.mark.parametrize(
+    "frechet_dist_func",
+    DISCRETE_FRECHET_FUNCS,
+)
+def test_discrete_frechet(frechet_dist_func) -> None:
     for test_case in TEST_CASES:
         P = np.array(test_case["P"], np.float64)
         Q = np.array(test_case["Q"], np.float64)
         eo = test_case["expected"]
 
-        assert linear_frechet(P, Q) == eo
+        assert frechet_dist_func(P, Q) == eo
 
 
-def test_errors() -> None:
+@pytest.mark.parametrize(
+    "frechet_dist_func",
+    DISCRETE_FRECHET_FUNCS,
+)
+def test_errors(frechet_dist_func) -> None:
     P = []
     Q = [[2, 2], [0, 1], [2, 4]]
 
     with pytest.raises(ValueError):
-        assert linear_frechet(P, Q) == 2.0
+        assert frechet_dist_func(P, Q) == 2.0
