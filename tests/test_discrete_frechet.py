@@ -23,7 +23,7 @@ TEST_CASES = [
 ]
 
 
-def test_discrete_frechet(self) -> None:
+def test_discrete_frechet() -> None:
     for test_case in TEST_CASES:
         P = test_case["P"]
         Q = test_case["Q"]
