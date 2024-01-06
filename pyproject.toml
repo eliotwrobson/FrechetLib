@@ -22,6 +22,8 @@ python = "^3.10"
 
 # Define dev dependencies and make optional
 numpy = "^1.26.3"
+numba = "^0.58.1"
+scipy = "^1.11.4"
 [tool.poetry.group.dev]
 optional = true
 

@@ -10,5 +10,6 @@
   },
   "isort.args": [
     "--profile", "black"
-  ]
+  ],
+  "julia.environmentPath": "/home/eliotwr/Documents/Projects/FrechetLib"
 }
