@@ -18,13 +18,10 @@ changelog = "https://github.com/eliotwrobson/CodeforcesRunnerEliot/releases"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
-
-# Define dev dependencies and make optional
 numpy = "^1.26.3"
 numba = "^0.58.1"
 scipy = "^1.11.4"
-pytest-benchmark = "^4.0.0"
+
 [tool.poetry.group.dev]
 optional = true
 
@@ -37,6 +34,7 @@ flake8-isort = "^6.1.1"
 flake8-pyproject = "^1.2.3"
 isort = "^5.12.0"
 pytest = "^7.4.3"
+pytest-benchmark = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
