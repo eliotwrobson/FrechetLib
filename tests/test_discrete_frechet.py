@@ -3,6 +3,15 @@ import pytest
 
 from frechetlib.discrete_frechet import linear_frechet
 
+
+def test_frechet_benchmark(benchmark) -> None:
+    n = 1000
+    P = np.random.rand(n, 2)
+    Q = np.random.rand(n, 2)
+
+    benchmark(linear_frechet, P, Q)
+
+
 TEST_CASES = [
     {"P": [[1, 1], [2, 1], [2, 2]], "Q": [[2, 2], [0, 1], [2, 4]], "expected": 2.0},
     {
