@@ -1,0 +1,5 @@
+*.pyc
+/contest_files
+/executables
+/source_files
+__pycache__/

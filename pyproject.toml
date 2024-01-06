@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "frechetlib"
+version = "0.1.0"
+description = "A package to compute distances between curves."
+authors = ["Eliot Robson <eliot.robson24@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    {include = "frechetlib", from = "src"}
+]
+
+
+[tool.poetry.urls]
+homepage = "https://github.com/eliotwrobson/CodeforcesRunnerEliot"
+documentation = "https://github.com/eliotwrobson/CodeforcesRunnerEliot#readme"
+repository = "https://github.com/eliotwrobson/CodeforcesRunnerEliot"
+changelog = "https://github.com/eliotwrobson/CodeforcesRunnerEliot/releases"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+# Define dev dependencies and make optional
+numpy = "^1.26.3"
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.7.0"
+black = "^23.11.0"
+flake8 = "^6.1.0"
+flake8-black = "^0.3.6"
+flake8-isort = "^6.1.1"
+flake8-pyproject = "^1.2.3"
+isort = "^5.12.0"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+disallow_untyped_defs = true
+
+[tool.flake8]
+# Black compatibility
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+
+# Per <https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#profile>
+[tool.isort]
+profile = "black"
