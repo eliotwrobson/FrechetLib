@@ -18,10 +18,22 @@ def test_frechet_equal() -> None:
     "frechet_dist_func",
     DISCRETE_FRECHET_FUNCS,
 )
-def test_frechet_benchmark(benchmark, frechet_dist_func) -> None:
+def test_frechet_benchmark_random(benchmark, frechet_dist_func) -> None:
     n = 500
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
+
+    benchmark(frechet_dist_func, P, Q)
+
+
+@pytest.mark.parametrize(
+    "frechet_dist_func",
+    DISCRETE_FRECHET_FUNCS,
+)
+def test_frechet_benchmark_close(benchmark, frechet_dist_func) -> None:
+    n = 500
+    P = np.random.rand(n, 2)
+    Q = P + np.random.uniform(low=0.1, high=10.0, size=(n, 2))
 
     benchmark(frechet_dist_func, P, Q)
 
