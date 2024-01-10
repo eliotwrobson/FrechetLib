@@ -4,23 +4,29 @@
 import heapq
 
 import numpy as np
+import scipy
 from numba import jit
 from numba.typed import Dict, List
 
 
-@jit(nopython=True)
 def linear_frechet(p: np.ndarray, q: np.ndarray) -> float:
+    n_p = p.shape[0]
+    n_q = q.shape[0]
+    norms = scipy.spatial.distance.cdist(p, q)
+    return _linear_frechet(n_p, n_q, norms)
+
+
+# @jit(nopython=True)
+def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> float:
     """
     From:
     https://github.com/joaofig/discrete-frechet/blob/master/recursive-vs-linear.ipynb
     """
-    n_p = p.shape[0]
-    n_q = q.shape[0]
     ca = np.zeros((n_p, n_q), dtype=np.float64)
 
     for i in range(n_p):
         for j in range(n_q):
-            d = np.linalg.norm(p[i] - q[j])
+            d = norms[i, j]
 
             if i > 0 and j > 0:
                 ca[i, j] = max(min(ca[i - 1, j], ca[i - 1, j - 1], ca[i, j - 1]), d)
