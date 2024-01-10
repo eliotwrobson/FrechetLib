@@ -5,19 +5,19 @@ import heapq
 
 import numpy as np
 import scipy
-from numba import jit
-from numba.typed import Dict, List
+from numba import njit
+from numba.typed import List
 
 
-def linear_frechet(p: np.ndarray, q: np.ndarray) -> float:
+def linear_frechet(p: np.ndarray, q: np.ndarray) -> np.float64:
     n_p = p.shape[0]
     n_q = q.shape[0]
-    norms = scipy.spatial.distance.cdist(p, q)
+    norms = scipy.spatial.distance.cdist(p, q)  # type: ignore
     return _linear_frechet(n_p, n_q, norms)
 
 
-@jit(nopython=True)
-def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> float:
+@njit
+def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> np.float64:
     """
     From:
     https://github.com/joaofig/discrete-frechet/blob/master/recursive-vs-linear.ipynb
@@ -39,7 +39,7 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> float:
     return ca[n_p - 1, n_q - 1]
 
 
-@jit(nopython=True)
+@njit
 def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
     """
     Combines above reference implementation with ideas from:
