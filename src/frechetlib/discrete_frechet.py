@@ -16,7 +16,7 @@ def linear_frechet(p: np.ndarray, q: np.ndarray) -> float:
     return _linear_frechet(n_p, n_q, norms)
 
 
-# @jit(nopython=True)
+@jit(nopython=True)
 def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> float:
     """
     From:

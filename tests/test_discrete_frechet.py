@@ -82,8 +82,8 @@ def test_discrete_frechet(frechet_dist_func) -> None:
     DISCRETE_FRECHET_FUNCS,
 )
 def test_errors(frechet_dist_func) -> None:
-    P = []
-    Q = [[2, 2], [0, 1], [2, 4]]
+    P = np.array([])
+    Q = np.array([[2, 2], [0, 1], [2, 4]])
 
     with pytest.raises(ValueError):
         assert frechet_dist_func(P, Q) == 2.0
