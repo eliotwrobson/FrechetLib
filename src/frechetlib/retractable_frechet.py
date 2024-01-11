@@ -121,6 +121,7 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
     start_node = EID(0, True, 0, True, P, Q)
     work_queue = [EID(0, False, 0, True, P, Q), EID(0, True, 0, False, P, Q)]
 
+    seen = {(0, False, 0, True), (0, True, 0, False)}
     hq.heapify(work_queue)
 
     n_p = P.shape[0]
@@ -132,13 +133,25 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
         curr_event = hq.heappop(work_queue)
         res = max(res, curr_event.dist)
         print(curr_event.i, " ", curr_event.j, " ", res)
+
+        if curr_event.i == n_p - 1 and curr_event.j == n_q - 1:
+            break
+
         for di, i_vert, dj, j_vert in diffs:
             i = curr_event.i + di
             j = curr_event.j + dj
+            ev_tuple = (i, i_vert, j, j_vert)
 
-            if i >= n_p or j >= n_p:
+            if (
+                i >= n_p
+                or j >= n_q
+                or (i == n_p and not i_vert)
+                or (j == n_q and not j_vert)
+                or ev_tuple in seen
+            ):
                 continue
 
+            seen.add(ev_tuple)
             next_node = EID(i, i_vert, j, j_vert, P, Q)
             hq.heappush(work_queue, next_node)
 

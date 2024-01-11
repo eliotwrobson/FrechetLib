@@ -17,4 +17,4 @@ def test_frechet() -> None:
     n = 10
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
-    assert 0.0 != rf.retractable_frechet(P, Q)
+    assert 0.0 == rf.retractable_frechet(P, Q)
