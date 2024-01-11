@@ -11,3 +11,10 @@ def test_classes() -> None:
         0.0,
         np.ndarray(2),
     )
+
+
+def test_frechet() -> None:
+    n = 10
+    P = np.random.rand(n, 2)
+    Q = np.random.rand(n, 2)
+    rf.retractable_frechet(P, Q)
