@@ -36,6 +36,7 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> np.float64:
                 ca[i, j] = max(ca[0, j - 1], d)
             else:
                 ca[i, j] = d
+
     return ca[n_p - 1, n_q - 1]
 
 

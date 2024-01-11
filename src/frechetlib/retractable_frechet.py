@@ -36,3 +36,27 @@ class EventPoint:
         self.event_type = event_type_
         self.t = t_
         self.other_point = other_point_
+
+
+@jitclass
+class EID:
+    i: int
+    i_is_vert: bool
+    j: int
+    j_is_vert: bool
+
+    def __init__(
+        self,
+        i_: int,
+        i_is_vert_: bool,
+        j_: int,
+        j_is_vert_: bool,
+    ) -> None:
+        self.i = i_
+        self.i_is_vert = i_is_vert_
+        self.j = j_
+        self.j_is_vert = j_is_vert_
+
+
+def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
+    return 0.0
