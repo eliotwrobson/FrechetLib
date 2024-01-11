@@ -132,7 +132,7 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
     while work_queue:
         curr_event = hq.heappop(work_queue)
         res = max(res, curr_event.dist)
-        print(curr_event.i, " ", curr_event.j, " ", res)
+        # print(curr_event.i, " ", curr_event.j, " ", res)
 
         if curr_event.i == n_p - 1 and curr_event.j == n_q - 1:
             break

@@ -51,7 +51,7 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
     n_q = q.shape[0]
 
     d = np.linalg.norm(p[0] - q[0])
-    priority_queue = List([(d, (0, 0))])
+    priority_queue = [(d, 0, 0)]
     # heapq.heappush(priority_queue, (d, (0, 0)))
 
     longest_dist = d
@@ -61,7 +61,7 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
     dxys = [(0, 1), (1, 0), (1, 1)]
 
     while priority_queue:
-        curr_dist, (curr_x, curr_y) = heapq.heappop(priority_queue)
+        curr_dist, curr_x, curr_y = heapq.heappop(priority_queue)
 
         longest_dist = max(curr_dist, longest_dist)
 
@@ -78,6 +78,6 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
 
             d = np.linalg.norm(p[x_new] - q[y_new])
             seen.add(pair)
-            heapq.heappush(priority_queue, (d, pair))
+            heapq.heappush(priority_queue, (d, x_new, y_new))
 
     raise ValueError

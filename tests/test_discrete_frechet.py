@@ -5,7 +5,7 @@ import pytest
 
 import frechetlib.discrete_frechet as df
 
-DISCRETE_FRECHET_FUNCS = (df.linear_frechet,)  # df.linear_frechet_2)
+DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], np.float64]
 
 
@@ -24,9 +24,9 @@ def test_frechet_equal() -> None:
 def test_frechet_benchmark_random(
     benchmark: t.Any, frechet_dist_func: FrechetDistFuncT
 ) -> None:
-    n = 500
-    P = np.random.rand(n, 2)
-    Q = np.random.rand(n, 2)
+    n = 5000
+    P = np.random.rand(n, 2) * 100
+    Q = np.random.rand(n, 2) * 100
 
     benchmark(frechet_dist_func, P, Q)
 
@@ -38,9 +38,9 @@ def test_frechet_benchmark_random(
 def test_frechet_benchmark_close(
     benchmark: t.Any, frechet_dist_func: FrechetDistFuncT
 ) -> None:
-    n = 500
+    n = 5000
     P = np.random.rand(n, 2)
-    Q = P + np.random.uniform(low=0.1, high=10.0, size=(n, 2))
+    Q = P + np.random.uniform(low=0.1, high=1.0, size=(n, 2))
 
     benchmark(frechet_dist_func, P, Q)
 

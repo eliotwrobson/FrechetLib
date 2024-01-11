@@ -13,8 +13,17 @@ def test_classes() -> None:
     )
 
 
+import time
+
+
 def test_frechet() -> None:
-    n = 10
+    n = 100
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
-    assert 0.0 == rf.retractable_frechet(P, Q)
+    rf.retractable_frechet(P, Q)
+
+    start = time.perf_counter()
+    assert 0.0 != rf.retractable_frechet(P, Q)
+    end = time.perf_counter()
+    print(end - start)
+    assert False
