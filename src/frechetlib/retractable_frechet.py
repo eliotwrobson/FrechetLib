@@ -8,6 +8,7 @@ from typing import Self
 import numpy as np
 from numba import float64, int32, njit
 from numba.experimental import jitclass
+from numba.typed import List
 
 
 class EventType(IntEnum):
@@ -118,18 +119,18 @@ def compute_event_value(P: np.ndarray, Q: np.ndarray, event: EID) -> float:
 @njit
 def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
     start_node = EID(0, True, 0, True, P, Q)
-    work_queue = [start_node]
+    work_queue = [EID(0, False, 0, True, P, Q), EID(0, True, 0, False, P, Q)]
 
-    hq.heappush(work_queue, EID(1, False, 1, True, P, Q))
-    hq.heappush(work_queue, EID(1, True, 1, False, P, Q))
+    hq.heapify(work_queue)
 
     n_p = P.shape[0]
     n_q = Q.shape[0]
     diffs = ((1, True, 0, False), (0, False, 1, True))
+    res = start_node.dist
 
     while work_queue:
         curr_event = hq.heappop(work_queue)
-
+        res = max(res, curr_event.dist)
         for di, i_vert, dj, j_vert in diffs:
             i = curr_event.i + di
             j = curr_event.j + dj
