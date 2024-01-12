@@ -9,6 +9,14 @@ DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], np.float64]
 
 
+def test_frechet_big(benchmark) -> None:
+    n = 10_000
+    P = np.random.rand(n, 2) * 100
+    Q = np.random.rand(n, 2) * 100
+
+    assert benchmark(df.linear_frechet, P, Q)
+
+
 def test_frechet_equal() -> None:
     n = 1000
     P = np.random.rand(n, 2)
