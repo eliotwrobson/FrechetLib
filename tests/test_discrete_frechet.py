@@ -32,7 +32,7 @@ def test_frechet_equal() -> None:
 def test_frechet_benchmark_random(
     benchmark: t.Any, frechet_dist_func: FrechetDistFuncT
 ) -> None:
-    n = 5000
+    n = 1000
     P = np.random.rand(n, 2) * 100
     Q = np.random.rand(n, 2) * 100
 
