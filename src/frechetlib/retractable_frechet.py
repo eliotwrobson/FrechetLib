@@ -5,10 +5,10 @@ import heapq as hq
 from enum import IntEnum
 from typing import Self
 
+import numba as nb
 import numpy as np
 from numba import float64, int32, njit
 from numba.experimental import jitclass
-from numba.typed import List
 
 
 class EventType(IntEnum):
@@ -130,9 +130,11 @@ def compute_event_value(P: np.ndarray, Q: np.ndarray, event: EID) -> float:
 @njit
 def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
     start_node = EID(0, True, 0, True, P, Q)
-    work_queue = [EID(0, False, 0, True, P, Q), EID(0, True, 0, False, P, Q)]
+    start_node_1 = EID(0, False, 0, True, P, Q)
+    start_node_2 = EID(0, True, 0, False, P, Q)
+    work_queue = [start_node_1, start_node_2]
 
-    seen = {(0, False, 0, True), (0, True, 0, False)}
+    seen = {start_node_1: start_node, start_node_2: start_node}
     hq.heapify(work_queue)
 
     n_p = P.shape[0]
@@ -151,20 +153,20 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
         for di, i_vert, dj, j_vert in diffs:
             i = curr_event.i + di
             j = curr_event.j + dj
-            ev_tuple = (i, i_vert, j, j_vert)
+            next_node = EID(i, i_vert, j, j_vert, P, Q)
+            # ev_tuple = (i, i_vert, j, j_vert)
 
             if (
                 i >= n_p
                 or j >= n_q
                 or (i == n_p and not i_vert)
                 or (j == n_q and not j_vert)
-                or ev_tuple in seen
+                or next_node in seen
             ):
                 continue
 
-            seen.add(ev_tuple)
-            print(ev_tuple)
-            next_node = EID(i, i_vert, j, j_vert, P, Q)
+            seen[next_node] = curr_event
+            print(next_node)
             hq.heappush(work_queue, next_node)
 
     return res
