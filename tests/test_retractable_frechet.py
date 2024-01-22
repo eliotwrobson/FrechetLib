@@ -1,3 +1,5 @@
+import time
+
 import numpy as np
 
 import frechetlib.retractable_frechet as rf
@@ -11,9 +13,6 @@ def test_classes() -> None:
         0.0,
         np.ndarray(2),
     )
-
-
-import time
 
 
 def test_frechet() -> None:

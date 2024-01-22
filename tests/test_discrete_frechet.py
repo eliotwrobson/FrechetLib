@@ -10,7 +10,7 @@ FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], np.float64]
 
 
 def test_frechet_big(benchmark) -> None:
-    n = 10_000
+    n = 100
     P = np.random.rand(n, 2) * 100
     Q = np.random.rand(n, 2) * 100
 
@@ -46,9 +46,9 @@ def test_frechet_benchmark_random(
 def test_frechet_benchmark_close(
     benchmark: t.Any, frechet_dist_func: FrechetDistFuncT
 ) -> None:
-    n = 5000
-    P = np.random.rand(n, 2)
-    Q = P + np.random.uniform(low=0.1, high=1.0, size=(n, 2))
+    n = 10_000
+    P = np.random.uniform(low=1.0, high=100, size=(n, 2))
+    Q = P + np.random.uniform(low=0.0, high=0.5, size=(n, 2))
 
     benchmark(frechet_dist_func, P, Q)
 

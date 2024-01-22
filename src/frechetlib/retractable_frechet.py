@@ -77,6 +77,17 @@ class EID:
     def __lt__(self, other: Self) -> bool:
         return self.dist < other.dist
 
+    def __hash__(self) -> int:
+        return hash((self.i, self.i_is_vert, self.j, self.j_is_vert))
+
+    def __eq__(self, other: Self) -> bool:
+        return (
+            (self.i == other.i)
+            and (self.j == other.j)
+            and (self.i_is_vert == other.i_is_vert)
+            and (self.j_is_vert == other.j_is_vert)
+        )
+
 
 @njit
 def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> float:
@@ -152,6 +163,7 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
                 continue
 
             seen.add(ev_tuple)
+            print(ev_tuple)
             next_node = EID(i, i_vert, j, j_vert, P, Q)
             hq.heappush(work_queue, next_node)
 
