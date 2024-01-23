@@ -83,7 +83,7 @@ class EID:
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, EID):
-            return NotImplemented
+            return False
 
         return (
             (self.i == other.i)
