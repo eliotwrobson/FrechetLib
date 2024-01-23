@@ -3,7 +3,7 @@
 
 import heapq as hq
 from enum import IntEnum
-from typing import Self
+from typing_extensions import Self
 
 import numba as nb
 import numpy as np
