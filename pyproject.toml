@@ -41,7 +41,16 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]
+python_version = "3.10"
+plugins = "numpy.typing.mypy_plugin"
 disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+  "numba.*",
+  "scipy.*"
+]
+ignore_missing_imports = true
 
 [tool.flake8]
 # Black compatibility

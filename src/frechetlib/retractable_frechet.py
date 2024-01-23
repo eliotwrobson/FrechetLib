@@ -6,7 +6,6 @@ from enum import IntEnum
 
 import numba as nb
 import numpy as np
-from numba import float64, int32, njit
 from numba.experimental import jitclass
 from typing_extensions import Self
 
@@ -16,7 +15,9 @@ class EventType(IntEnum):
     POINT_ON_EDGE = 2
 
 
-@jitclass([("p", float64[:]), ("other_point", float64[:]), ("event_type", int32)])
+@jitclass(
+    [("p", nb.float64[:]), ("other_point", nb.float64[:]), ("event_type", nb.int32)]
+)
 class EventPoint:
     p: np.ndarray
     i: int
@@ -64,7 +65,7 @@ class EID:
         # Compute the distance
         if self.i_is_vert:
             if self.j_is_vert:
-                self.dist = np.linalg.norm(P[self.i] - Q[self.j])
+                self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
 
             else:
                 self.dist = line_point_distance(Q[self.j], Q[self.j + 1], P[self.i])
@@ -92,15 +93,15 @@ class EID:
         )
 
 
-@njit
-def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> np.float64:
+@nb.njit
+def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> float:
     """
     Based on: https://stackoverflow.com/a/1501725/2923069
     """
     # Return minimum distance between line segment p1-p2 and point q
     l2 = np.linalg.norm(p1 - p2)  # i.e. |p2-p1|^2 -  avoid a sqrt
     if np.isclose(l2, 0.0):  # p1 == p2 case
-        return np.linalg.norm(q - p1)
+        return float(np.linalg.norm(q - p1))
     # Consider the line extending the segment, parameterized as v + t (p2 - p1).
     # We find projection of point q onto the line.
     # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
@@ -108,14 +109,14 @@ def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> np.flo
     t = np.dot(q - p1, p2 - p1) / l2
 
     if t <= 0.0:
-        return np.linalg.norm(p1 - q)
+        return float(np.linalg.norm(p1 - q))
     elif t >= 1.0:
-        return np.linalg.norm(p2 - q)
+        return float(np.linalg.norm(p2 - q))
 
-    return np.float64(np.linalg.norm(q - (p1 + t * (p2 - p1))))
+    return float(np.linalg.norm(q - (p1 + t * (p2 - p1))))
 
 
-@njit
+@nb.njit
 def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
     start_node = EID(0, True, 0, True, P, Q)
     start_node_1 = EID(0, False, 0, True, P, Q)

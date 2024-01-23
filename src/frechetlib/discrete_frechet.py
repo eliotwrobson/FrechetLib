@@ -6,13 +6,12 @@ import heapq
 import numpy as np
 import scipy
 from numba import njit
-from numba.typed import List
 
 
 def linear_frechet(p: np.ndarray, q: np.ndarray) -> np.float64:
     n_p = p.shape[0]
     n_q = q.shape[0]
-    norms = scipy.spatial.distance.cdist(p, q)  # type: ignore
+    norms = scipy.spatial.distance.cdist(p, q)
     return _linear_frechet(n_p, n_q, norms)
 
 

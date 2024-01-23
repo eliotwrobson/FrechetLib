@@ -11,7 +11,6 @@ CurveGeneratorFunctionT = t.Callable[[int, float], tuple[np.ndarray, np.ndarray]
 
 
 DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
-
 # Generator helper functions
 
 
