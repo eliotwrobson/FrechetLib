@@ -3,12 +3,12 @@
 
 import heapq as hq
 from enum import IntEnum
-from typing_extensions import Self
 
 import numba as nb
 import numpy as np
 from numba import float64, int32, njit
 from numba.experimental import jitclass
+from typing_extensions import Self
 
 
 class EventType(IntEnum):
@@ -80,7 +80,10 @@ class EID:
     def __hash__(self) -> int:
         return hash((self.i, self.i_is_vert, self.j, self.j_is_vert))
 
-    def __eq__(self, other: Self) -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, EID):
+            return NotImplemented
+
         return (
             (self.i == other.i)
             and (self.j == other.j)
@@ -90,13 +93,13 @@ class EID:
 
 
 @njit
-def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> float:
+def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> np.float64:
     """
     Based on: https://stackoverflow.com/a/1501725/2923069
     """
     # Return minimum distance between line segment p1-p2 and point q
     l2 = np.linalg.norm(p1 - p2)  # i.e. |p2-p1|^2 -  avoid a sqrt
-    if l2 == 0.0:  # p1 == p2 case
+    if np.isclose(l2, 0.0):  # p1 == p2 case
         return np.linalg.norm(q - p1)
     # Consider the line extending the segment, parameterized as v + t (p2 - p1).
     # We find projection of point q onto the line.
@@ -109,22 +112,7 @@ def line_point_distance(p1: np.ndarray, p2: np.ndarray, q: np.ndarray) -> float:
     elif t >= 1.0:
         return np.linalg.norm(p2 - q)
 
-    return np.linalg.norm(q - (p1 + t * (p2 - p1)))
-
-
-@njit
-def compute_event_value(P: np.ndarray, Q: np.ndarray, event: EID) -> float:
-    if event.i_is_vert:
-        if event.j_is_vert:
-            return np.linalg.norm(P[event.i] - Q[event.j])
-
-        else:
-            return line_point_distance(Q[event.j], Q[event.j + 1], P[event.i])
-
-    elif event.j_is_vert:
-        return line_point_distance(P[event.i], P[event.i + 1], Q[event.j])
-
-    raise Exception
+    return np.float64(np.linalg.norm(q - (p1 + t * (p2 - p1))))
 
 
 @njit
@@ -166,7 +154,6 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> float:
                 continue
 
             seen[next_node] = curr_event
-            print(next_node)
             hq.heappush(work_queue, next_node)
 
     return res
