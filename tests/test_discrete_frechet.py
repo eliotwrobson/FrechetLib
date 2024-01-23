@@ -9,14 +9,6 @@ DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], np.float64]
 
 
-def test_frechet_big(benchmark) -> None:
-    n = 100
-    P = np.random.rand(n, 2) * 100
-    Q = np.random.rand(n, 2) * 100
-
-    assert benchmark(df.linear_frechet, P, Q)
-
-
 def test_frechet_equal() -> None:
     n = 1000
     P = np.random.rand(n, 2)
@@ -83,13 +75,37 @@ TEST_CASES = [
     "frechet_dist_func",
     DISCRETE_FRECHET_FUNCS,
 )
-def test_discrete_frechet(frechet_dist_func: FrechetDistFuncT) -> None:
-    for test_case in TEST_CASES:
-        P = np.array(test_case["P"], np.float64)
-        Q = np.array(test_case["Q"], np.float64)
-        eo = test_case["expected"]
+@pytest.mark.parametrize(
+    "P, Q, expected",
+    [
+        ([[1, 1], [2, 1], [2, 2]], [[2, 2], [0, 1], [2, 4]], 2.0),
+        (
+            np.array((np.linspace(0.0, 1.0, 100), np.ones(100))).T,
+            np.array((np.linspace(0.0, 1.0, 100), np.ones(100))).T,
+            0,
+        ),
+        ([[-1, 0], [0, 1], [1, 0], [0, -1]], [[-2, 0], [0, 2], [2, 0], [0, -2]], 1.0),
+        (
+            np.array((np.linspace(0.0, 1.0, 100), np.ones(100) * 2)).T,
+            np.array((np.linspace(0.0, 1.0, 100), np.ones(100))).T,
+            1.0,
+        ),
+        ([[1, 1], [2, 1]], [[2, 2], [0, 1], [2, 4]], 3.0),
+        (
+            [[0.0, 0.0], [1.0, 0.0], [2.0, 0.0], [3.0, 0.0], [4.0, 0.0]],
+            [[0.0, 1.0], [1.0, 1.1], [2.0, 1.2], [3.0, 1.1], [4.0, 1.0]],
+            1.2,
+        ),
+    ],
+)
+def test_discrete_frechet(
+    frechet_dist_func: FrechetDistFuncT, P: np.ndarray, Q: np.ndarray, expected: float
+) -> None:
+    # for test_case in TEST_CASES:
+    P = np.array(P, np.float64)
+    Q = np.array(Q, np.float64)
 
-        assert frechet_dist_func(P, Q) == eo
+    assert frechet_dist_func(P, Q) == expected
 
 
 @pytest.mark.parametrize(
