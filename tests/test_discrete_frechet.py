@@ -39,7 +39,9 @@ def generate_curves_close(
 def test_frechet_equal(generate_curves: CurveGeneratorFunctionT) -> None:
     n = 1000
     P, Q = generate_curves(n, 100.0)
-    assert np.isclose(df.linear_frechet(P, Q), df.linear_frechet_2(P, Q))
+    res, morphing = df.linear_frechet(P, Q)
+    res1, morphing1 = df.linear_frechet_2(P, Q)
+    assert np.isclose(res, res1)
 
 
 @pytest.mark.parametrize(
@@ -96,7 +98,7 @@ def test_discrete_frechet(
     P = np.array(P, np.float64)
     Q = np.array(Q, np.float64)
 
-    assert frechet_dist_func(P, Q) == expected
+    assert frechet_dist_func(P, Q)[0] == expected
 
 
 @pytest.mark.parametrize(

@@ -16,7 +16,9 @@ def linear_frechet(p: np.ndarray, q: np.ndarray) -> np.float64:
 
 
 @njit
-def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> np.float64:
+def _linear_frechet(
+    n_p: int, n_q: int, norms: np.ndarray
+) -> tuple[np.float64, list[int, int]]:
     """
     From:
     https://github.com/joaofig/discrete-frechet/blob/master/recursive-vs-linear.ipynb
@@ -57,11 +59,21 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> np.float64:
             else:
                 ca[i, j] = d
 
-    return ca[n_p - 1, n_q - 1]
+    # Reconstructing the solution
+    morphing = []
+    curr_x = n_p - 1
+    curr_y = n_q - 1
+    while curr_x != 0 and curr_y != 0:
+        morphing.append((curr_x, curr_y))
+        curr_x, curr_y = prev_p[curr_x, curr_y], prev_q[curr_x, curr_y]
+
+    morphing.reverse()
+
+    return ca[n_p - 1, n_q - 1], morphing
 
 
 @njit
-def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
+def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> tuple[np.float64, list[int, int]]:
     """
     Combines above reference implementation with ideas from:
     https://numba.discourse.group/t/dijkstra-on-grid/1483
@@ -86,7 +98,7 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> np.float64:
         longest_dist = max(curr_dist, longest_dist)
 
         if curr_x == n_p - 1 and curr_y == n_q - 1:
-            return longest_dist
+            return longest_dist, [(-1, -1)]
 
         for dx, dy in dxys:
             x_new = curr_x + dx
