@@ -7,8 +7,10 @@ import numpy as np
 import scipy
 from numba import njit
 
+_DiscreteReturnT = tuple[np.float64, list[tuple[int, int]]]
 
-def linear_frechet(p: np.ndarray, q: np.ndarray) -> np.float64:
+
+def linear_frechet(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     n_p = p.shape[0]
     n_q = q.shape[0]
     norms = scipy.spatial.distance.cdist(p, q)
@@ -16,9 +18,7 @@ def linear_frechet(p: np.ndarray, q: np.ndarray) -> np.float64:
 
 
 @njit
-def _linear_frechet(
-    n_p: int, n_q: int, norms: np.ndarray
-) -> tuple[np.float64, list[int, int]]:
+def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
     """
     From:
     https://github.com/joaofig/discrete-frechet/blob/master/recursive-vs-linear.ipynb
@@ -73,7 +73,7 @@ def _linear_frechet(
 
 
 @njit
-def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> tuple[np.float64, list[int, int]]:
+def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     """
     Combines above reference implementation with ideas from:
     https://numba.discourse.group/t/dijkstra-on-grid/1483

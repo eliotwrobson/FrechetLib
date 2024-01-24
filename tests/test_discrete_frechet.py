@@ -6,7 +6,7 @@ import pytest
 
 import frechetlib.discrete_frechet as df
 
-FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], np.float64]
+FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], df._DiscreteReturnT]
 CurveGeneratorFunctionT = t.Callable[[int, float], tuple[np.ndarray, np.ndarray]]
 
 
