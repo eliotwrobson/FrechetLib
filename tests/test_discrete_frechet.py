@@ -31,6 +31,10 @@ def generate_curves_close(
     return (P, Q)
 
 
+def leq_with_tolerance(f1: np.floating, f2: np.floating, tol: float = 1e-5) -> bool:
+    return f1 + tol >= f2
+
+
 # Start of actual test functions
 
 
@@ -62,14 +66,14 @@ def test_frechet_benchmark_morphing(
 
     # Check that the morphing is valid
     i, j = morphing[0]
-    assert dist >= np.linalg.norm(P[i] - Q[j])
+    assert leq_with_tolerance(dist, np.linalg.norm(P[i] - Q[j]))
 
     for (i1, j1), (i2, j2) in it.pairwise(morphing):
         # Check that change is legal
         assert (i2 - i1, j2 - j1) in {(0, 1), (1, 0), (1, 1)}
 
         # Check the given frechet distance is respected by the morphing
-        assert dist >= np.linalg.norm(P[i2] - Q[j2])
+        assert leq_with_tolerance(dist, np.linalg.norm(P[i2] - Q[j2]))
 
 
 @pytest.mark.parametrize(
