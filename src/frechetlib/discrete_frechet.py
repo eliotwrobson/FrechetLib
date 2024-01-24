@@ -60,12 +60,12 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
                 ca[i, j] = d
 
     # Reconstructing the solution
-    morphing = []
     curr_x = n_p - 1
     curr_y = n_q - 1
+    morphing = [(curr_x, curr_y)]
     while curr_x != 0 and curr_y != 0:
-        morphing.append((curr_x, curr_y))
         curr_x, curr_y = prev_p[curr_x, curr_y], prev_q[curr_x, curr_y]
+        morphing.append((curr_x, curr_y))
 
     morphing.reverse()
 
@@ -82,12 +82,15 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     n_p = p.shape[0]
     n_q = q.shape[0]
 
+    if n_p == 0 or n_q == 0:
+        raise ValueError
+
     d = np.linalg.norm(p[0] - q[0])
     priority_queue = [(d, 0, 0)]
     # heapq.heappush(priority_queue, (d, (0, 0)))
 
     longest_dist = d
-    seen = {(0, 0)}
+    prev = {(0, 0): (-1, -1)}
     # ca = np.zeros((n_p, n_q), dtype=np.float64)
 
     dxys = [(0, 1), (1, 0), (1, 1)]
@@ -98,18 +101,27 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
         longest_dist = max(curr_dist, longest_dist)
 
         if curr_x == n_p - 1 and curr_y == n_q - 1:
-            return longest_dist, [(-1, -1)]
+            break
 
         for dx, dy in dxys:
             x_new = curr_x + dx
             y_new = curr_y + dy
             pair = (x_new, y_new)
 
-            if not ((0 <= x_new < n_p) and (0 <= y_new < n_q)) or pair in seen:
+            if not ((0 <= x_new < n_p) and (0 <= y_new < n_q)) or pair in prev:
                 continue
 
             d = np.linalg.norm(p[x_new] - q[y_new])
-            seen.add(pair)
+            prev[pair] = (curr_x, curr_y)
             heapq.heappush(priority_queue, (d, x_new, y_new))
 
-    raise ValueError
+    # Reconstructing the solution
+    curr = (n_p - 1, n_q - 1)
+    morphing = [curr]
+    while curr != (0, 0):
+        curr = prev[curr]
+        morphing.append(curr)
+
+    morphing.reverse()
+
+    return longest_dist, morphing
