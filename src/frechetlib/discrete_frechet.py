@@ -23,16 +23,37 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> np.float64:
     """
     ca = np.zeros((n_p, n_q), dtype=np.float64)
 
+    prev_p = np.zeros((n_p, n_q), dtype=np.int32)
+    prev_q = np.zeros((n_p, n_q), dtype=np.int32)
+
     for i in range(n_p):
         for j in range(n_q):
             d = norms[i, j]
 
             if i > 0 and j > 0:
-                ca[i, j] = max(min(ca[i - 1, j], ca[i - 1, j - 1], ca[i, j - 1]), d)
+                min_elem = np.inf
+                min_x = -1
+                min_y = -1
+
+                for prev_i, prev_j in ((i - 1, j), (i, j - 1), (i - 1, j - 1)):
+                    prev_val = ca[prev_i, prev_j]
+                    if prev_val < min_elem:
+                        min_elem = prev_val
+                        min_x = prev_i
+                        min_y = prev_j
+
+                prev_p[i, j] = min_x
+                prev_q[i, j] = min_y
+
+                ca[i, j] = max(min_elem, d)
             elif i > 0 and j == 0:
                 ca[i, j] = max(ca[i - 1, 0], d)
+                prev_p[i, j] = i - 1
+                prev_q[i, j] = 0
             elif i == 0 and j > 0:
                 ca[i, j] = max(ca[0, j - 1], d)
+                prev_p[i, j] = 0
+                prev_q[i, j] = j - 1
             else:
                 ca[i, j] = d
 
