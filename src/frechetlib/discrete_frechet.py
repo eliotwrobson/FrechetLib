@@ -33,28 +33,23 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
 
             if i > 0 and j > 0:
                 min_elem = np.inf
-                min_x = -1
-                min_y = -1
+                min_idx = (-1, -1)
 
-                for prev_i, prev_j in ((i - 1, j), (i, j - 1), (i - 1, j - 1)):
-                    prev_val = ca[prev_i, prev_j]
+                for prev_idx in ((i - 1, j), (i, j - 1), (i - 1, j - 1)):
+                    prev_val = ca[prev_idx]
                     if prev_val < min_elem:
                         min_elem = prev_val
-                        min_x = prev_i
-                        min_y = prev_j
+                        min_idx = prev_idx
 
-                prev[i, j, 0] = min_x
-                prev[i, j, 1] = min_y
+                prev[i, j] = min_idx
 
                 ca[i, j] = max(min_elem, d)
             elif i > 0 and j == 0:
                 ca[i, j] = max(ca[i - 1, 0], d)
-                prev[i, j, 0] = i - 1
-                prev[i, j, 1] = 0
+                prev[i, j] = i - 1, 0
             elif i == 0 and j > 0:
                 ca[i, j] = max(ca[0, j - 1], d)
-                prev[i, j, 0] = 0
-                prev[i, j, 1] = j - 1
+                prev[i, j] = 0, j - 1
             else:
                 ca[i, j] = d
 
@@ -63,7 +58,7 @@ def _linear_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
     curr_y = n_q - 1
     morphing = [(curr_x, curr_y)]
     while curr_x != 0 and curr_y != 0:
-        curr_x, curr_y = prev[curr_x, curr_y, 0], prev[curr_x, curr_y, 1]
+        curr_x, curr_y = prev[curr_x, curr_y]
         morphing.append((curr_x, curr_y))
 
     morphing.reverse()
