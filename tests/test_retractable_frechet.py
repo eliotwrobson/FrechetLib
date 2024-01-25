@@ -1,28 +1,21 @@
-import time
-
 import numpy as np
+from utils import leq_with_tolerance
 
 import frechetlib.retractable_frechet as rf
-
-
-def test_classes() -> None:
-    rf.EventPoint(
-        np.ndarray(2),
-        0,
-        rf.EventType.POINT_VERTEX,
-        0.0,
-        np.ndarray(2),
-    )
 
 
 def test_frechet() -> None:
     n = 100
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
-    # rf.retractable_frechet(P, Q)
 
-    start = time.perf_counter()
-    assert 0.0 != rf.retractable_frechet(P, Q)
-    end = time.perf_counter()
-    print(end - start)
-    # assert False
+    frechet_dist, morphing = rf.retractable_frechet(P, Q)
+
+    for event in morphing:
+        assert leq_with_tolerance(frechet_dist, event.dist)
+
+    assert morphing[0].i == 0
+    assert morphing[0].i_is_vert
+    assert morphing[0].j == 0
+    assert morphing[0].j_is_vert
+    assert morphing[0].t is None
