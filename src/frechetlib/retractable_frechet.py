@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import heapq as hq
-from enum import IntEnum
 from typing import Optional
 
 import numba as nb
