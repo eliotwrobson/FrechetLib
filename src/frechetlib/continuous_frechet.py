@@ -30,3 +30,27 @@ def frechet_width_approx(
             leash = max(leash, dist)
 
     return leash
+
+
+@nb.njit
+def frechet_dist_upper_bound(
+    P: np.ndarray,
+    Q: np.ndarray,
+) -> float:
+    """
+    Returns a rough upper bound on the Frechet distance between the two
+    curves. This upper bound is on the continuous distance. No guarentee
+    on how bad the approximation is. This is used as a starting point for
+    real approximation of the Frechet distance, and should not be used
+    otherwise.
+    """
+
+    w_a = frechet_width_approx(P)
+    w_b = frechet_width_approx(Q)
+
+    if P.shape[0] < 2 or Q.shape[0] < 2:
+        return w_a + w_b
+
+    w = max(np.linalg.norm(P[0] - Q[0]), np.linalg.norm(P[-1] - Q[-1]))
+
+    return w_a + w_b + w
