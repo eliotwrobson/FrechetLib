@@ -81,11 +81,9 @@ def linear_frechet_2(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
 
     d = np.linalg.norm(p[0] - q[0])
     priority_queue = [(d, 0, 0)]
-    # heapq.heappush(priority_queue, (d, (0, 0)))
 
     longest_dist = d
     prev = {(0, 0): (-1, -1)}
-    # ca = np.zeros((n_p, n_q), dtype=np.float64)
 
     dxys = [(0, 1), (1, 0), (1, 1)]
 

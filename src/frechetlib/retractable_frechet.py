@@ -4,6 +4,7 @@
 import heapq as hq
 from typing import Optional
 
+import frechet_utils as fu
 import numba as nb
 import numpy as np
 from numba.experimental import jitclass
@@ -40,12 +41,14 @@ class EID:
                 self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
 
             else:
-                self.dist, self.t = line_point_distance(
+                self.dist, self.t = fu.line_point_distance(
                     Q[self.j], Q[self.j + 1], P[self.i]
                 )
 
         elif self.j_is_vert:
-            self.dist, self.t = line_point_distance(P[self.i], P[self.i + 1], Q[self.j])
+            self.dist, self.t = fu.line_point_distance(
+                P[self.i], P[self.i + 1], Q[self.j]
+            )
         else:
             raise Exception
 
@@ -65,31 +68,6 @@ class EID:
             and (self.i_is_vert == other.i_is_vert)
             and (self.j_is_vert == other.j_is_vert)
         )
-
-
-@nb.njit
-def line_point_distance(
-    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
-) -> tuple[float, float]:
-    """
-    Based on: https://stackoverflow.com/a/1501725/2923069
-    """
-    # Return minimum distance between line segment p1-p2 and point q
-    l2 = np.linalg.norm(p1 - p2)  # i.e. |p2-p1|^2 -  avoid a sqrt
-    if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q - p1)), 0.0
-    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
-    # We find projection of point q onto the line.
-    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
-    # We clamp t from [0,1] to handle points outside the segment vw.
-    t = np.dot(q - p1, p2 - p1) / l2
-
-    if t <= 0.0:
-        return float(np.linalg.norm(p1 - q)), t
-    elif t >= 1.0:
-        return float(np.linalg.norm(p2 - q)), t
-
-    return float(np.linalg.norm(q - (p1 + t * (p2 - p1)))), t
 
 
 @nb.njit
