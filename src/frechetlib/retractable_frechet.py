@@ -4,11 +4,12 @@
 import heapq as hq
 from typing import Optional
 
-import frechet_utils as fu
 import numba as nb
 import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
+
+import frechetlib.frechet_utils as fu
 
 
 @jitclass

@@ -1,6 +1,7 @@
-import frechet_utils as fu
 import numba as nb
 import numpy as np
+
+import frechetlib.frechet_utils as fu
 
 
 @nb.njit
