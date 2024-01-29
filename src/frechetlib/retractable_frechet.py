@@ -93,7 +93,7 @@ def line_point_distance(
 
 
 @nb.njit
-def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[EID]]:
+def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[EID]]:
     start_node = EID(0, True, 0, True, P, Q)
     start_node_1 = EID(0, False, 0, True, P, Q)
     start_node_2 = EID(0, True, 0, False, P, Q)
@@ -138,6 +138,7 @@ def retractable_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[EID]]
         last_event = seen[last_event]
         morphing.append(last_event)
 
+    # TODO maybe add final event??
     morphing.reverse()
 
     return res, morphing

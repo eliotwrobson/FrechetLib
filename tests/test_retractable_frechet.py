@@ -9,7 +9,7 @@ def test_frechet() -> None:
     P = np.random.rand(n, 2)
     Q = np.random.rand(n, 2)
 
-    frechet_dist, morphing = rf.retractable_frechet(P, Q)
+    frechet_dist, morphing = rf.retractable_ve_frechet(P, Q)
 
     for event in morphing:
         assert leq_with_tolerance(frechet_dist, event.dist)
