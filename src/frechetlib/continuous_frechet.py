@@ -160,6 +160,10 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
 
     while fr_r_mono <= approx * fr_retract:
         retractable_width, _ = rf.retractable_ve_frechet(P, Q)
+        # TODO the original code splits the refinement and monotonicity
+        # computations, but these can be condensed (simply compute the
+        # new refined monotone curve along with the distance, instead of
+        # monotonizing, then computing the distance, then getting the new curve)
         monotone_morphing_width = get_monotone_morphing_width(
             P,
         )
