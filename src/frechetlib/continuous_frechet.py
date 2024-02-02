@@ -2,6 +2,7 @@ import numba as nb
 import numpy as np
 
 import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
 
 @nb.njit
@@ -54,3 +55,54 @@ def frechet_dist_upper_bound(
     w = max(np.linalg.norm(P[0] - Q[0]), np.linalg.norm(P[-1] - Q[-1]))
 
     return w_a + w_b + w
+
+
+def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
+    """
+    Computes the "true" monotone Frechet distance between P and Q,
+    using the ve_r algorithm. It does refinement, to add vertices if
+    needed to get monotonicity. Note, that there is an eps parameter -
+    for real inputs you can set it quite small. In any case, in the
+    worst case it only approximates the Frechet (monotone)
+    distance. It returns a morphing, and a boolean that is true if the
+    result is the true Frechet distance.
+
+    Observe, that this function might be too slow if the two curves
+    are huge, since it does not simplify them before computing the
+    distance.
+    """
+
+    # Set these so the loop runs at least once
+    fr_r_mono = 1.0
+    fr_retract = 0.0
+
+    while fr_r_mono <= approx * fr_retract:
+        retractable_width, _ = rf.retractable_ve_frechet(P, Q)
+        monotone_morphing_width = get_monotone_morphing_width(
+            P,
+        )
+
+
+def get_monotone_morphing_width(morphing) -> float:
+    return
+
+
+def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
+    # TODO write an actual implementation
+    return list(range(len(P)))
+
+
+def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float):
+    # Modeled after:
+    # https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L1686
+    frechet_distance = frechet_dist_upper_bound(P, Q)
+
+    # radius of simplification allowed
+    r = frechet_distance / (approx_ratio + 4.0)
+
+    while r >= (frechet_distance / (approx_ratio + 4.0)):
+        r /= 2.0
+        p_indices = simplify_polygon_radius(P, r)
+        q_indices = simplify_polygon_radius(Q, r)
+
+        frechet_distance = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
