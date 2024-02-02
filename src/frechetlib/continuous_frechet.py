@@ -1,8 +1,90 @@
+from typing import Optional, Type
+
 import numba as nb
 import numpy as np
+from numba.experimental import jitclass
+from typing_extensions import Self
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
+
+
+@jitclass
+class EventPoint:
+    """
+    # A vertex edge event descriptor.
+    #
+    # p: Location of the point being matched. Not necessarily a vetex of
+    #    the polygon.
+    # i: Vertex number in polygon/or edge number where p lies.
+    # type: 1 is for point-vertex, 2 is for point-edge
+    # t: Convex combination coefficient if p is on the edge. t=0 means its
+    #    the ith vertex, t=1 means it is on the i+1 vertex.
+    """
+
+    p: np.ndarray
+    i: int
+    type: int  # TODO replace this with an enum
+    t: Optional[float]
+
+    def __init__(
+        self, p_: np.ndarray, i_: int, type_: int, t_: Optional[float]
+    ) -> None:
+        self.p = p_
+        self.i = i_
+        self.type = type_
+        self.t = t_
+
+    @classmethod
+    def make_point_vertex_event(cls: Type[Self], R: np.ndarray, i: int) -> Self:
+        return cls(R[i], i, 1, None)
+
+    @classmethod
+    def make_point_edge_event(cls: Type[Self], p: np.ndarray, i: int, t: float) -> Self:
+        return cls(p, i, 2, t)
+
+
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p * (1.0 - t) + q * t
+
+
+def events_sequence_make_monotone(
+    P: np.ndarray, event_list: list[EventPoint]
+) -> list[EventPoint]:
+    res = []
+    # event_iter = iter(event_list)
+    # while (event := next(event_iter, None)) is not None:
+    # TODO to make this more efficient, I think some events can be removed? Not totally clear
+    # IDEA: I think that the EventPoint struct can be removed and the monotonicity can be
+    # enforced by doing two passes on the sequence of EID structs.
+    i = 0
+    while i < len(event_list):
+        if event_list[i].type == 1:  # pt-vertex event
+            res.append(event_list[i])
+            i += 1
+            continue
+
+        j = i
+        loc = event_list[i].i
+        t = event_list[i].t
+        while (
+            j < len(event_list)
+            and event_list[j + 1].type == 2
+            and event_list[j + 1].i == loc
+        ):
+            t = max(t, event_list[j].t)
+            if t > event_list[j].t:
+                idx = event_list[j].i
+                new_point = convex_comb(P[idx], P[idx + 1], t)
+                res.append(EventPoint.make_point_edge_event(new_point, idx, t))
+            else:
+                res.append(event_list[j])
+
+            j += 1
+
+        i = j
+
+    return res
 
 
 @nb.njit
@@ -93,6 +175,17 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
 
 
 def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float):
+    """
+    Approximates the continuous Frechet distance between the two input
+    curves. Returns a monotone morphing realizing it.
+
+    # Arguments
+
+    - `approx` : The output morhing has Frechet distance <= (1+approx)*optimal.
+
+    Importantly, approx can be larger than 1, if you want a really
+    rough approximation.
+    """
     # Modeled after:
     # https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L1686
     frechet_distance = frechet_dist_upper_bound(P, Q)
@@ -106,3 +199,6 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float):
         q_indices = simplify_polygon_radius(Q, r)
 
         frechet_distance = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+
+    # TODO add the stuff about morphing combinations here once I finish the crap above
+    return -1
