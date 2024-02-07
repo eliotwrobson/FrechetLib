@@ -169,8 +169,32 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
         )
 
 
-def get_monotone_morphing_width(morphing) -> float:
-    return
+# Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155
+def get_monotone_morphing_width(morphing: list[rf.EID]) -> float:
+    prev_event: rf.EID = morphing[0]
+    res = []
+    for k in range(1, len(morphing)):
+        event = morphing[k]
+
+        # Only happens in vertex-vertex events
+        if event.t is None:
+            res.append(prev_event)
+            prev_event = event
+
+            continue
+
+        # Monotonicity case for when i or j stays vertex and the other varies, but the
+        # coefficient goes down.
+        if (prev_event.i_is_vert == event.i_is_vert and prev_event.i == event.i) or (
+            prev_event.j_is_vert == event.j_is_vert and prev_event.j == event.j
+        ):
+            if prev_event.t > event.t:
+                prev_event = event
+        else:
+            res.append(prev_event)
+            prev_event = event
+
+    res.append(prev_event)
 
 
 def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
