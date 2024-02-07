@@ -1,0 +1,24 @@
+import numba.typed as nbt
+import numpy as np
+
+import frechetlib.continuous_frechet as cf
+import frechetlib.retractable_frechet as rf
+
+
+def test_get_monotone_morphing_width() -> None:
+    # TODO check with Sariel about this test case
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    morphing = nbt.List(
+        [
+            rf.EID(0, True, 0, True, P, Q),
+            rf.EID(0, False, 0, True, P, Q),
+            rf.EID(0, False, 1, True, P, Q),
+            rf.EID(0, False, 2, True, P, Q),
+            rf.EID(0, False, 3, True, P, Q),
+            rf.EID(0, False, 4, True, P, Q),
+            rf.EID(1, True, 4, True, P, Q),
+        ]
+    )
+    res = cf.get_monotone_morphing_width(morphing)
+    assert len(res) == 3
