@@ -1,4 +1,4 @@
-from typing import Optional, Type
+from typing import Any, Optional, Type
 
 import numba as nb
 import numba.typed as nbt
@@ -9,82 +9,9 @@ from typing_extensions import Self
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
-# @jitclass
-# class EventPoint:
-#     """
-#     # A vertex edge event descriptor.
-#     #
-#     # p: Location of the point being matched. Not necessarily a vetex of
-#     #    the polygon.
-#     # i: Vertex number in polygon/or edge number where p lies.
-#     # type: 1 is for point-vertex, 2 is for point-edge
-#     # t: Convex combination coefficient if p is on the edge. t=0 means its
-#     #    the ith vertex, t=1 means it is on the i+1 vertex.
-#     """
-
-#     p: np.ndarray
-#     i: int
-#     type: int  # TODO replace this with an enum
-#     t: Optional[float]
-
-#     def __init__(
-#         self, p_: np.ndarray, i_: int, type_: int, t_: Optional[float]
-#     ) -> None:
-#         self.p = p_
-#         self.i = i_
-#         self.type = type_
-#         self.t = t_
-
-#     @classmethod
-#     def make_point_vertex_event(cls: Type[Self], R: np.ndarray, i: int) -> Self:
-#         return cls(R[i], i, 1, None)
-
-#     @classmethod
-#     def make_point_edge_event(cls: Type[Self], p: np.ndarray, i: int, t: float) -> Self:
-#         return cls(p, i, 2, t)
-
 
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p * (1.0 - t) + q * t
-
-
-# def events_sequence_make_monotone(
-#     P: np.ndarray, event_list: list[EventPoint]
-# ) -> list[EventPoint]:
-#     res = []
-#     # event_iter = iter(event_list)
-#     # while (event := next(event_iter, None)) is not None:
-#     # TODO to make this more efficient, I think some events can be removed? Not totally clear
-#     # IDEA: I think that the EventPoint struct can be removed and the monotonicity can be
-#     # enforced by doing two passes on the sequence of EID structs.
-#     i = 0
-#     while i < len(event_list):
-#         if event_list[i].type == 1:  # pt-vertex event
-#             res.append(event_list[i])
-#             i += 1
-#             continue
-
-#         j = i
-#         loc = event_list[i].i
-#         t = event_list[i].t
-#         while (
-#             j < len(event_list)
-#             and event_list[j + 1].type == 2
-#             and event_list[j + 1].i == loc
-#         ):
-#             t = max(t, event_list[j].t)
-#             if t > event_list[j].t:
-#                 idx = event_list[j].i
-#                 new_point = convex_comb(P[idx], P[idx + 1], t)
-#                 res.append(EventPoint.make_point_edge_event(new_point, idx, t))
-#             else:
-#                 res.append(event_list[j])
-
-#             j += 1
-
-#         i = j
-
-#     return res
 
 
 @nb.njit
@@ -139,7 +66,7 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
-def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
+def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float) -> Any:
     """
     Computes the "true" monotone Frechet distance between P and Q,
     using the ve_r algorithm. It does refinement, to add vertices if
@@ -159,22 +86,26 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
     fr_retract = 0.0
 
     while fr_r_mono <= approx * fr_retract:
-        retractable_width, _ = rf.retractable_ve_frechet(P, Q)
-        # TODO the original code splits the refinement and monotonicity
-        # computations, but these can be condensed (simply compute the
-        # new refined monotone curve along with the distance, instead of
-        # monotonizing, then computing the distance, then getting the new curve)
-        monotone_morphing_width = get_monotone_morphing_width(
-            P,
-        )
+        ve_dist, ve_morphing = rf.retractable_ve_frechet(P, Q)
+
+        monotone_dist, monotone_morphing = get_monotone_morphing_width(ve_morphing)
+
+        if np.isclose(ve_dist, monotone_dist):
+            pass
+        elif monotone_dist <= approx * ve_dist:
+            pass
 
 
 # Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
-def get_monotone_morphing_width(morphing: nbt.List[rf.EID]) -> list[rf.EID]:
+def get_monotone_morphing_width(
+    morphing: nbt.List[rf.EID],
+) -> tuple[float, list[rf.EID]]:
     prev_event: rf.EID = morphing[0]
     res = []
+    longest_dist = prev_event.dist
+
     for k in range(1, len(morphing)):
         event = morphing[k]
 
@@ -198,7 +129,7 @@ def get_monotone_morphing_width(morphing: nbt.List[rf.EID]) -> list[rf.EID]:
 
     res.append(prev_event)
 
-    return res
+    return longest_dist, res
 
 
 def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
@@ -206,7 +137,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
     return list(range(len(P)))
 
 
-def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float):
+def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     """
     Approximates the continuous Frechet distance between the two input
     curves. Returns a monotone morphing realizing it.

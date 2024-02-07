@@ -20,5 +20,8 @@ def test_get_monotone_morphing_width() -> None:
             rf.EID(1, True, 4, True, P, Q),
         ]
     )
-    res = cf.get_monotone_morphing_width(morphing)
+    _, res = cf.get_monotone_morphing_width(morphing)
     assert len(res) == 3
+
+
+# def test_frechet_mono() -> None:
