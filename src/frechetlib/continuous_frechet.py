@@ -1,6 +1,7 @@
 from typing import Optional, Type
 
 import numba as nb
+import numba.typed as nbt
 import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
@@ -8,83 +9,82 @@ from typing_extensions import Self
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
+# @jitclass
+# class EventPoint:
+#     """
+#     # A vertex edge event descriptor.
+#     #
+#     # p: Location of the point being matched. Not necessarily a vetex of
+#     #    the polygon.
+#     # i: Vertex number in polygon/or edge number where p lies.
+#     # type: 1 is for point-vertex, 2 is for point-edge
+#     # t: Convex combination coefficient if p is on the edge. t=0 means its
+#     #    the ith vertex, t=1 means it is on the i+1 vertex.
+#     """
 
-@jitclass
-class EventPoint:
-    """
-    # A vertex edge event descriptor.
-    #
-    # p: Location of the point being matched. Not necessarily a vetex of
-    #    the polygon.
-    # i: Vertex number in polygon/or edge number where p lies.
-    # type: 1 is for point-vertex, 2 is for point-edge
-    # t: Convex combination coefficient if p is on the edge. t=0 means its
-    #    the ith vertex, t=1 means it is on the i+1 vertex.
-    """
+#     p: np.ndarray
+#     i: int
+#     type: int  # TODO replace this with an enum
+#     t: Optional[float]
 
-    p: np.ndarray
-    i: int
-    type: int  # TODO replace this with an enum
-    t: Optional[float]
+#     def __init__(
+#         self, p_: np.ndarray, i_: int, type_: int, t_: Optional[float]
+#     ) -> None:
+#         self.p = p_
+#         self.i = i_
+#         self.type = type_
+#         self.t = t_
 
-    def __init__(
-        self, p_: np.ndarray, i_: int, type_: int, t_: Optional[float]
-    ) -> None:
-        self.p = p_
-        self.i = i_
-        self.type = type_
-        self.t = t_
+#     @classmethod
+#     def make_point_vertex_event(cls: Type[Self], R: np.ndarray, i: int) -> Self:
+#         return cls(R[i], i, 1, None)
 
-    @classmethod
-    def make_point_vertex_event(cls: Type[Self], R: np.ndarray, i: int) -> Self:
-        return cls(R[i], i, 1, None)
-
-    @classmethod
-    def make_point_edge_event(cls: Type[Self], p: np.ndarray, i: int, t: float) -> Self:
-        return cls(p, i, 2, t)
+#     @classmethod
+#     def make_point_edge_event(cls: Type[Self], p: np.ndarray, i: int, t: float) -> Self:
+#         return cls(p, i, 2, t)
 
 
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p * (1.0 - t) + q * t
 
 
-def events_sequence_make_monotone(
-    P: np.ndarray, event_list: list[EventPoint]
-) -> list[EventPoint]:
-    res = []
-    # event_iter = iter(event_list)
-    # while (event := next(event_iter, None)) is not None:
-    # TODO to make this more efficient, I think some events can be removed? Not totally clear
-    # IDEA: I think that the EventPoint struct can be removed and the monotonicity can be
-    # enforced by doing two passes on the sequence of EID structs.
-    i = 0
-    while i < len(event_list):
-        if event_list[i].type == 1:  # pt-vertex event
-            res.append(event_list[i])
-            i += 1
-            continue
+# def events_sequence_make_monotone(
+#     P: np.ndarray, event_list: list[EventPoint]
+# ) -> list[EventPoint]:
+#     res = []
+#     # event_iter = iter(event_list)
+#     # while (event := next(event_iter, None)) is not None:
+#     # TODO to make this more efficient, I think some events can be removed? Not totally clear
+#     # IDEA: I think that the EventPoint struct can be removed and the monotonicity can be
+#     # enforced by doing two passes on the sequence of EID structs.
+#     i = 0
+#     while i < len(event_list):
+#         if event_list[i].type == 1:  # pt-vertex event
+#             res.append(event_list[i])
+#             i += 1
+#             continue
 
-        j = i
-        loc = event_list[i].i
-        t = event_list[i].t
-        while (
-            j < len(event_list)
-            and event_list[j + 1].type == 2
-            and event_list[j + 1].i == loc
-        ):
-            t = max(t, event_list[j].t)
-            if t > event_list[j].t:
-                idx = event_list[j].i
-                new_point = convex_comb(P[idx], P[idx + 1], t)
-                res.append(EventPoint.make_point_edge_event(new_point, idx, t))
-            else:
-                res.append(event_list[j])
+#         j = i
+#         loc = event_list[i].i
+#         t = event_list[i].t
+#         while (
+#             j < len(event_list)
+#             and event_list[j + 1].type == 2
+#             and event_list[j + 1].i == loc
+#         ):
+#             t = max(t, event_list[j].t)
+#             if t > event_list[j].t:
+#                 idx = event_list[j].i
+#                 new_point = convex_comb(P[idx], P[idx + 1], t)
+#                 res.append(EventPoint.make_point_edge_event(new_point, idx, t))
+#             else:
+#                 res.append(event_list[j])
 
-            j += 1
+#             j += 1
 
-        i = j
+#         i = j
 
-    return res
+#     return res
 
 
 @nb.njit
@@ -170,14 +170,16 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float):
 
 
 # Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155
-def get_monotone_morphing_width(morphing: list[rf.EID]) -> float:
+# NOTE this function has weird arguments but is for internal use only, so it's probably ok.
+@nb.njit
+def get_monotone_morphing_width(morphing: nbt.List[rf.EID]) -> list[rf.EID]:
     prev_event: rf.EID = morphing[0]
     res = []
     for k in range(1, len(morphing)):
         event = morphing[k]
 
         # Only happens in vertex-vertex events
-        if event.t is None:
+        if event.i_is_vert and event.i_is_vert:
             res.append(prev_event)
             prev_event = event
 
@@ -195,6 +197,8 @@ def get_monotone_morphing_width(morphing: list[rf.EID]) -> float:
             prev_event = event
 
     res.append(prev_event)
+
+    return res
 
 
 def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:

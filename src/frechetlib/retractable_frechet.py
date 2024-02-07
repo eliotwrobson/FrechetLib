@@ -19,7 +19,7 @@ class EID:
     j: int
     j_is_vert: bool
     dist: float
-    t: Optional[float]
+    t: float
 
     def __init__(
         self,
@@ -34,7 +34,7 @@ class EID:
         self.i_is_vert = i_is_vert_
         self.j = j_
         self.j_is_vert = j_is_vert_
-        self.t = None
+        self.t = 0.0
 
         # Compute the distance
         if self.i_is_vert:
