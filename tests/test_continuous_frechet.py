@@ -24,4 +24,22 @@ def test_get_monotone_morphing_width() -> None:
     assert len(res) == 3
 
 
-# def test_frechet_mono() -> None:
+def test_frechet_add_points() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    morphing = nbt.List(
+        [
+            rf.EID(0, True, 0, True, P, Q),
+            rf.EID(0, False, 0, True, P, Q),
+            rf.EID(0, False, 1, True, P, Q),
+            rf.EID(0, False, 2, True, P, Q),
+            rf.EID(0, False, 3, True, P, Q),
+            rf.EID(0, False, 4, True, P, Q),
+            rf.EID(1, True, 4, True, P, Q),
+        ]
+    )
+
+    P_indices, Q_indices = cf.add_points_to_make_monotone(P, Q, morphing)
+    print(P_indices)
+    print(Q_indices)
+    assert False
