@@ -102,38 +102,47 @@ def add_points_to_make_monotone(
     Q: np.ndarray,
     morphing: nbt.List[rf.EID],
 ) -> tuple[float, list[rf.EID]]:
-    prev_event: rf.EID = morphing[0]
 
     P_indices = []
     Q_indices = []
 
-    for k in range(1, len(morphing)):
-        event = morphing[k]
-
+    for k in range(len(morphing) - 1):
         # Vertex-vertex event, can ignore
-        if event.i_is_vert and event.i_is_vert:
-            prev_event = event
-
+        if morphing[k].i_is_vert and morphing[k].j_is_vert:
             continue
 
-        # Monotonicity case for when i or j stays vertex and the other varies, but the
-        # coefficient goes down.
-        if (prev_event.i_is_vert == event.i_is_vert and prev_event.i == event.i) or (
-            prev_event.j_is_vert == event.j_is_vert and prev_event.j == event.j
+        # Event point in Q got skipped, add to list of skipped
+        if (
+            morphing[k].i_is_vert == morphing[k + 1].i_is_vert == False
+            and morphing[k].i == morphing[k + 1].i
+            and morphing[k].t > morphing[k + 1].t
         ):
-            if prev_event.t > event.t:
-                prev_event = event
+            P_indices.append((morphing[k].i, morphing[k].t))
+        elif (
+            morphing[k].j_is_vert == morphing[k + 1].j_is_vert == False
+            and morphing[k].j == morphing[k + 1].j
+            and morphing[k].t > morphing[k + 1].t
+        ):
+            Q_indices.append((morphing[k].j, morphing[k].t))
 
-                # Event point in Q got skipped, add to list of skipped
-                if prev_event.i_is_vert == event.i_is_vert == False:
-                    Q_indices.append((event.j, event.t))
-                elif prev_event.i_is_vert == event.i_is_vert == False:
-                    P_indices.append((event.i, event.t))
+    # TODO this is inefficient, use a better function call
+    P_new_points = []
+    P_indices_new = []
 
-        else:
-            prev_event = event
+    for idx, t in P_indices:
+        point = P[idx] + t * (P[idx + 1] - P[idx])
+        P_new_points.append(point)
+        P_indices_new.append(idx)
 
-    return Q_indices, P_indices
+    Q_new_points = []
+    Q_indices_new = []
+
+    for idx, t in Q_indices:
+        point = Q[idx] + t * (Q[idx + 1] - Q[idx])
+        Q_new_points.append(point)
+        Q_indices_new.append(idx)
+
+    return ((P_new_points, P_indices_new), (Q_new_points, Q_indices_new))
 
 
 # Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155
