@@ -97,7 +97,7 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float) -> 
 
 
 @nb.njit
-def add_points_to_make_monotone(
+def _add_points_to_make_monotone(
     P: np.ndarray,
     Q: np.ndarray,
     morphing: nbt.List[rf.EID],
@@ -143,6 +143,24 @@ def add_points_to_make_monotone(
         Q_indices_new.append(idx)
 
     return ((P_new_points, P_indices_new), (Q_new_points, Q_indices_new))
+
+
+def add_points_to_make_monotone(
+    P: np.ndarray,
+    Q: np.ndarray,
+    morphing: nbt.List[rf.EID],
+):
+    ((P_new_points, P_indices), (Q_new_points, Q_indices)) = (
+        _add_points_to_make_monotone(P, Q, morphing)
+    )
+
+    if P_indices:
+        P = np.insert(P, P_indices, P_new_points, axis=0)
+
+    if Q_indices:
+        Q = np.insert(Q, Q_indices, Q_new_points, axis=0)
+
+    return P, Q
 
 
 # Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155

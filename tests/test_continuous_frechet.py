@@ -39,12 +39,5 @@ def test_frechet_add_points() -> None:
         ]
     )
 
-    ((P_new_points, P_indices), (Q_new_points, Q_indices)) = (
-        cf.add_points_to_make_monotone(P, Q, morphing)
-    )
-
-    np.insert(P, P_new_points, P_indices)
-    np.insert(Q, Q_new_points, Q_indices)
-    print(P_indices)
-    print(Q_indices)
-    assert False
+    P_new, Q_new = cf.add_points_to_make_monotone(P, Q, morphing)
+    assert P_new.shape[0] > P.shape[0]
