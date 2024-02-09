@@ -68,7 +68,7 @@ def frechet_dist_upper_bound(
 
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
-) -> tuple[np.ndarray, np.ndarray, list[rf.EID], bool]:
+) -> tuple[np.ndarray, np.ndarray, list[rf.EID], float, bool]:
     """
     Computes the "true" monotone Frechet distance between P and Q,
     using the ve_r algorithm. It does refinement, to add vertices if
@@ -103,7 +103,7 @@ def frechet_mono_via_refinement(
 
         P, Q = add_points_to_make_monotone()
 
-    return P, Q, monotone_morphing, f_exact
+    return P, Q, monotone_morphing, fr_r_mono, f_exact
 
 
 @nb.njit
@@ -209,9 +209,17 @@ def get_monotone_morphing_width(
     return longest_dist, res
 
 
+@nb.njit
 def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
-    # TODO write an actual implementation
-    return list(range(len(P)))
+    curr = P[0]
+    indices = [0]
+
+    for i in range(1, len(P)):
+        if np.linalg.norm(P[i] - curr) > r:
+            curr = P[i]
+            indices.append(i)
+
+    return indices
 
 
 def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
@@ -238,7 +246,12 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
         p_indices = simplify_polygon_radius(P, r)
         q_indices = simplify_polygon_radius(Q, r)
 
-        frechet_distance = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+        P = np.take(P, p_indices, axis=0)
+        Q = np.take(Q, q_indices, axis=0)
+
+        _, _, _, frechet_distance, _ = frechet_mono_via_refinement(
+            P, Q, (3.0 + approx_ratio) / 4.0
+        )
 
     # TODO add the stuff about morphing combinations here once I finish the crap above
     return -1
