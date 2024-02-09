@@ -41,3 +41,10 @@ def test_frechet_add_points() -> None:
 
     P_new, Q_new = cf.add_points_to_make_monotone(P, Q, morphing)
     assert P_new.shape[0] > P.shape[0]
+
+
+def test_frechet_mono_via_refinement() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    P, Q, monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)

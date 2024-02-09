@@ -66,7 +66,9 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
-def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float) -> Any:
+def frechet_mono_via_refinement(
+    P: np.ndarray, Q: np.ndarray, approx: float
+) -> tuple[np.ndarray, np.ndarray, list[rf.EID], bool]:
     """
     Computes the "true" monotone Frechet distance between P and Q,
     using the ve_r algorithm. It does refinement, to add vertices if
@@ -82,18 +84,26 @@ def frechet_mono_via_refinement(P: np.ndarray, Q: np.ndarray, approx: float) -> 
     """
 
     # Set these so the loop runs at least once
-    fr_r_mono = 1.0
+    fr_r_mono = -1.0
     fr_retract = 0.0
+    f_exact = False
 
     while fr_r_mono <= approx * fr_retract:
-        ve_dist, ve_morphing = rf.retractable_ve_frechet(P, Q)
+        fr_retract, ve_morphing = rf.retractable_ve_frechet(P, Q)
 
-        monotone_dist, monotone_morphing = get_monotone_morphing_width(ve_morphing)
+        fr_r_mono, monotone_morphing = get_monotone_morphing_width(
+            nbt.List(ve_morphing)
+        )
 
-        if np.isclose(ve_dist, monotone_dist):
-            pass
-        elif monotone_dist <= approx * ve_dist:
-            pass
+        if np.isclose(fr_retract, fr_r_mono):
+            f_exact = True
+            break
+        elif fr_r_mono <= approx * fr_retract:
+            break
+
+        P, Q = add_points_to_make_monotone()
+
+    return P, Q, monotone_morphing, f_exact
 
 
 @nb.njit
