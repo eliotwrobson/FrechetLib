@@ -135,7 +135,6 @@ def _add_points_to_make_monotone(
         ):
             Q_indices.append((morphing[k].j, morphing[k].t))
 
-    # TODO this is inefficient, use a better function call
     P_new_points = []
     P_indices_new = []
 
@@ -234,6 +233,9 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     Importantly, approx can be larger than 1, if you want a really
     rough approximation.
     """
+    P_orig = P
+    Q_orig = Q
+
     # Modeled after:
     # https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L1686
     frechet_distance = frechet_dist_upper_bound(P, Q)
@@ -249,7 +251,7 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
         P = np.take(P, p_indices, axis=0)
         Q = np.take(Q, q_indices, axis=0)
 
-        _, _, _, frechet_distance, _ = frechet_mono_via_refinement(
+        P, Q, morphing, frechet_distance, _ = frechet_mono_via_refinement(
             P, Q, (3.0 + approx_ratio) / 4.0
         )
 
