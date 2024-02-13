@@ -1,6 +1,8 @@
 import numba as nb
 import numpy as np
 
+from frechetlib.retractable_frechet import EID
+
 
 @nb.njit
 def line_point_distance(
@@ -25,3 +27,78 @@ def line_point_distance(
         return float(np.linalg.norm(p2 - q)), t
 
     return float(np.linalg.norm(q - (p1 + t * (p2 - p1)))), t
+
+
+@nb.njit
+def get_prefix_lens(P: np.ndarray) -> np.ndarray:
+    prefix_lens = []
+
+    curr_len = 0.0
+
+    for i in range(len(P) - 1):
+        prefix_lens.append(curr_len)
+        curr_len += np.linalg.norm(P[i] - P[i + 1])
+
+    prefix_lens.append(curr_len)
+
+    return np.ndarray(prefix_lens)
+
+
+@nb.njit
+def morphing_get_prm(
+    P: np.ndarray, Q: np.ndarray, events: list[EID]
+) -> tuple[list[EID], list[EID]]:
+    p_lens = get_prefix_lens(P)
+    q_lens = get_prefix_lens(Q)
+
+    p_events = []
+    q_events = []
+    for k in range(len(events)):
+        event = events[k]
+        # Add event to P event list
+        if event.i_is_vert:
+            p_events.append(p_lens[event.i])
+        else:
+            curr_len = p_lens[event.i]
+            next_len = p_lens[event.i + 1]
+            p_events.append(curr_len + event.t * (next_len - curr_len))
+
+        # Add event to Q event list
+        if event.j_is_vert:
+            p_events.append(q_lens[event.j])
+        else:
+            curr_len = q_lens[event.j]
+            next_len = q_lens[event.j + 1]
+            p_events.append(curr_len + event.t * (next_len - curr_len))
+
+    return p_events, q_events
+
+
+def morphing_combine(
+    P: np.ndarray,
+    Q: np.ndarray,
+    U: np.ndarray,
+    morphing_1: list[EID],
+    morphing_2: list[EID],
+) -> list[EID]:
+    prm_1 = morphing_get_prm(morphing_1)
+    prm_2 = morphing_get_prm(morphing_2)
+
+    # Apparently len(prm_1[1]) == len(prm_2[0])
+
+    idx_1 = 0
+    idx_2 = 0
+
+    len_1 = len(prm_1)
+    len_2 = len(prm_2)
+
+    res = []
+
+    while idx_1 < len_1 and idx_2 < len_2:
+        x_1, y_1 = prm_1[idx_1][1]
+        x_2, y_2 = prm_2[idx_2][0]
+
+        is_equal = np.isclose(y_1, y_2)
+
+        if is_equal and idx_1 == len_1 and idx_2 == len_2:
+            res.append()

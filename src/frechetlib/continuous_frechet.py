@@ -276,9 +276,11 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
         P = np.take(P, p_indices, axis=0)
         Q = np.take(Q, q_indices, axis=0)
 
-        P, Q, morphing, frechet_distance, _ = frechet_mono_via_refinement(
+        frechet_distance = frechet_mono_via_refinement(
             P, Q, (3.0 + approx_ratio) / 4.0
-        )
+        )[3]
+
+    frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
 
     # TODO add the stuff about morphing combinations here once I finish the crap above
     return -1
