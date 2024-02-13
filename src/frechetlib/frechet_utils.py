@@ -47,7 +47,7 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
 @nb.njit
 def morphing_get_prm(
     P: np.ndarray, Q: np.ndarray, events: list[EID]
-) -> tuple[list[EID], list[EID]]:
+) -> tuple[list[float], list[float]]:
     p_lens = get_prefix_lens(P)
     q_lens = get_prefix_lens(Q)
 
@@ -74,6 +74,22 @@ def morphing_get_prm(
     return p_events, q_events
 
 
+@nb.njit
+def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
+    t = (val - p[d]) / (q[d] - p[d])
+    return p * (1.0 - t) + q * t
+
+
+@nb.njit
+def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
+    return eval_pl_func(p, q, val, 0)[1]
+
+
+@nb.njit
+def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
+    return eval_pl_func(p, q, val, 1)[0]
+
+
 def morphing_combine(
     P: np.ndarray,
     Q: np.ndarray,
@@ -94,11 +110,36 @@ def morphing_combine(
 
     res = []
 
-    while idx_1 < len_1 and idx_2 < len_2:
-        x_1, y_1 = prm_1[idx_1][1]
-        x_2, y_2 = prm_2[idx_2][0]
+    while idx_1 < len_1 or idx_2 < len_2:
+        # x = dim(g,1)
+        # y = dim(g,2) = dim(f, 1)
+        # z = dim(f,2)
+        x, y_1 = prm_1[idx_1]
+        y_2, z = prm_2[idx_2]
 
-        is_equal = np.isclose(y_1, x_2)
+        is_equal = np.isclose(y_1, y_2)
 
         if is_equal and idx_1 == len_1 and idx_2 == len_2:
-            res.append()
+            res.append((y_1, y_2))
+        elif is_equal and idx_1 < len_1 and np.isclose(prm_1[idx_1 + 1][1], y_1):
+            res.append((y_1, y_2))
+            idx_1 += 1
+        elif is_equal and idx_2 < len_2 and np.isclose(prm_2[idx_2 + 1][0], y_2):
+            res.append((y_1, y_2))
+            idx_2 += 1
+        elif is_equal:
+            res.append((y_1, y_2))
+            idx_1 = min(idx_1 + 1, len_1)
+            idx_2 = min(idx_2 + 1, len_2)
+        elif y_1 < y_2:
+            new_x = eval_inv_pl_func(prm_1[idx_1 - 1], prm_1[idx_1], y_2)
+            new_x = max(prm_1[idx_1 - 1], new_x)
+            res.append(new_x, z)
+            idx_2 = min(idx_2 + 1, len_2)
+        elif y_1 > y_2:
+            new_z = eval_pl_func(prm_2[idx_2 - 1], prm_2[idx_2], y_1)
+            new_z = max(prm_2[idx_2 - 1], new_z)
+            res.append(x, new_z)
+            idx_1 = min(idx_1 + 1, len_1)
+
+    return res
