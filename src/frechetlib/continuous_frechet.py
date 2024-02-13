@@ -280,7 +280,8 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
             P, Q, (3.0 + approx_ratio) / 4.0
         )[3]
 
-    frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+    morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+    morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
     # TODO add the stuff about morphing combinations here once I finish the crap above
     return -1

@@ -98,7 +98,7 @@ def morphing_combine(
         x_1, y_1 = prm_1[idx_1][1]
         x_2, y_2 = prm_2[idx_2][0]
 
-        is_equal = np.isclose(y_1, y_2)
+        is_equal = np.isclose(y_1, x_2)
 
         if is_equal and idx_1 == len_1 and idx_2 == len_2:
             res.append()
