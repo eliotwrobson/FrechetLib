@@ -221,6 +221,31 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
     return indices
 
 
+@nb.njit
+def frechet_c_mono_approx_subcurve(
+    P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
+) -> list[rf.EID]:
+    """
+    Approximates the Frechet distance between a curve (P) and subcurve
+    (P_subcurve). Here, P_subcurve vertices are the vertices of P
+    specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
+    """
+
+    res = []
+    for i in range(len(p_indices) - 1):
+        curr_idx = p_indices[i]
+        next_idx = p_indices[i + 1]
+
+        res.append(rf.EID(i, True, curr_idx, True, P, P_subcurve))
+
+        for j in range(curr_idx + 1, next_idx):
+            res.append(rf.EID(i, True, j, False, P, P_subcurve))
+
+    res.append(rf.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve))
+
+    return res
+
+
 def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     """
     Approximates the continuous Frechet distance between the two input
