@@ -110,7 +110,9 @@ def _add_points_to_make_monotone(
     Q: np.ndarray,
     morphing: nbt.List[fu.EID],
 ) -> tuple[float, list[fu.EID]]:
-
+    # TODO add intermediate vertices here
+    # Doing the same here:
+    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L626
     P_indices = []
     Q_indices = []
 
