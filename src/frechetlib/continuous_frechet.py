@@ -95,7 +95,7 @@ def frechet_mono_via_refinement(
         elif fr_r_mono <= approx * fr_retract:
             break
 
-        P, Q = add_points_to_make_monotone()
+        P, Q = add_points_to_make_monotone(P, Q, monotone_morphing)
 
     return P, Q, monotone_morphing, fr_r_mono, f_exact
 
