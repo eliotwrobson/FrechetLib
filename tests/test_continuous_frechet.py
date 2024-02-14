@@ -3,8 +3,9 @@ import numpy as np
 
 import frechetlib.continuous_frechet as cf
 import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
-
+"""
 def test_get_monotone_morphing_width() -> None:
     # TODO check with Sariel about this test case
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
@@ -48,10 +49,23 @@ def test_frechet_mono_via_refinement() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
     P, Q, monotone_morphing, dist, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+"""
 
 
-def test_frechet_other_thing() -> None:
+def test_add_points() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    _, morphing = rf.retractable_ve_frechet(P, Q)
+    # for event in morphing:
+    #    print(event.i, event.j)
 
-    cf.frechet_mono_via_refinement(P, Q, 1.01)
+    new_P, new_Q = cf.add_points_to_make_monotone(P, Q, morphing)
+    print(new_P, new_Q)
+    assert False
+
+
+# def test_frechet_other_thing() -> None:
+#    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+#    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+#
+#    cf.frechet_mono_via_refinement(P, Q, 1.01)

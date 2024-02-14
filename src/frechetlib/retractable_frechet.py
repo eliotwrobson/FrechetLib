@@ -6,7 +6,6 @@ from typing import Optional
 
 import numba as nb
 import numpy as np
-from typing_extensions import Self
 
 import frechetlib.frechet_utils as fu
 

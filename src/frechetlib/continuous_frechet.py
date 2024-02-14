@@ -8,10 +8,6 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
-def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p * (1.0 - t) + q * t
-
-
 @nb.njit
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
@@ -104,6 +100,15 @@ def frechet_mono_via_refinement(
     return P, Q, monotone_morphing, fr_r_mono, f_exact
 
 
+def add_points_to_make_monotone(
+    P: np.ndarray,
+    Q: np.ndarray,
+    morphing: list[fu.EID],
+) -> tuple[np.ndarray, np.ndarray]:
+    p_points, q_points = _add_points_to_make_monotone(P, Q, nbt.List(morphing))
+    return np.array(p_points), np.array(q_points)
+
+
 @nb.njit
 def _add_points_to_make_monotone(
     P: np.ndarray,
@@ -113,63 +118,86 @@ def _add_points_to_make_monotone(
     # TODO add intermediate vertices here
     # Doing the same here:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L626
-    P_indices = []
-    Q_indices = []
 
-    for k in range(len(morphing) - 1):
+    # First, add points to P
+    new_P = []
+    k = 0
+    while k < len(morphing):
         # Vertex-vertex event, can ignore
-        if morphing[k].i_is_vert and morphing[k].j_is_vert:
+        if morphing[k].i_is_vert:
+            new_P.append(P[morphing[k].i])
+            k += 1
             continue
 
-        # Event point in Q got skipped, add to list of skipped
-        if (
-            morphing[k].i_is_vert == morphing[k + 1].i_is_vert == False
-            and morphing[k].i == morphing[k + 1].i
-            and morphing[k].t > morphing[k + 1].t
+        new_k = k
+        loc = morphing[k].i
+        offsets = []
+
+        while (
+            new_k < len(morphing) - 1
+            and not morphing[new_k + 1].i_is_vert
+            and morphing[new_k + 1].i == loc
         ):
-            P_indices.append((morphing[k].i, morphing[k].t))
-        elif (
-            morphing[k].j_is_vert == morphing[k + 1].j_is_vert == False
-            and morphing[k].j == morphing[k + 1].j
-            and morphing[k].t > morphing[k + 1].t
+            offsets.append(morphing[new_k].t)
+            new_k += 1
+
+        # [k:new_k) is the indices of points that are on the same segment
+        monotone = True
+        offsets = sorted(offsets)
+        for j in range(len(offsets) - 1):
+            monotone = monotone and (offsets[j] <= offsets[j + 1])
+
+        for j in range(len(offsets)):
+            new_P.append(fu.convex_comb(P[loc], P[loc + 1], offsets[j]))
+            if not monotone and j < len(offsets) - 1:
+                new_P.append(
+                    fu.convex_comb(
+                        P[loc], P[loc + 1], (offsets[j] + offsets[j + 1]) / 2
+                    )
+                )
+        # TODO I think there's an off by one here
+        k = new_k + 1
+
+    # Next, add points to Q, same as above but hard to share logic
+    new_Q = []
+    k = 0
+    while k < len(morphing):
+        # Vertex-vertex event, can ignore
+        if morphing[k].j_is_vert:
+            new_Q.append(Q[morphing[k].j])
+            k += 1
+            continue
+
+        new_k = k
+        loc = morphing[k].i
+        offsets = []
+
+        while (
+            new_k < len(morphing) - 1
+            and not morphing[new_k + 1].j_is_vert
+            and morphing[new_k + 1].j == loc
         ):
-            Q_indices.append((morphing[k].j, morphing[k].t))
+            offsets.append(morphing[new_k].t)
+            new_k += 1
 
-    P_new_points = []
-    P_indices_new = []
+        # [k:new_k) is the indices of points that are on the same segment
+        monotone = True
+        offsets = sorted(offsets)
+        for j in range(len(offsets) - 1):
+            monotone = monotone and (offsets[j] <= offsets[j + 1])
 
-    for idx, t in P_indices:
-        point = P[idx] + t * (P[idx + 1] - P[idx])
-        P_new_points.append(point)
-        P_indices_new.append(idx)
+        for j in range(len(offsets)):
+            new_P.append(fu.convex_comb(Q[loc], Q[loc + 1], offsets[j]))
+            if not monotone and j < len(offsets) - 1:
+                new_P.append(
+                    fu.convex_comb(
+                        Q[loc], Q[loc + 1], (offsets[j] + offsets[j + 1]) / 2
+                    )
+                )
+        # TODO I think there's an off by one here
+        k = new_k + 1
 
-    Q_new_points = []
-    Q_indices_new = []
-
-    for idx, t in Q_indices:
-        point = Q[idx] + t * (Q[idx + 1] - Q[idx])
-        Q_new_points.append(point)
-        Q_indices_new.append(idx)
-
-    return ((P_new_points, P_indices_new), (Q_new_points, Q_indices_new))
-
-
-def add_points_to_make_monotone(
-    P: np.ndarray,
-    Q: np.ndarray,
-    morphing: nbt.List[fu.EID],
-):
-    ((P_new_points, P_indices), (Q_new_points, Q_indices)) = (
-        _add_points_to_make_monotone(P, Q, morphing)
-    )
-
-    if P_indices:
-        P = np.insert(P, P_indices, P_new_points, axis=0)
-
-    if Q_indices:
-        Q = np.insert(Q, Q_indices, Q_new_points, axis=0)
-
-    return P, Q
+    return new_P, new_Q
 
 
 # Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155

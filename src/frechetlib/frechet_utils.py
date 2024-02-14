@@ -132,6 +132,11 @@ def morphing_get_prm(
 
 
 @nb.njit
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p * (1.0 - t) + q * t
+
+
+@nb.njit
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
