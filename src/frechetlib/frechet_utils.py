@@ -3,8 +3,6 @@ import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
 
-import frechetlib.retractable_frechet as rf
-
 
 @jitclass
 class EID:
@@ -157,8 +155,8 @@ def morphing_combine(
     morphing_1: list[EID],
     morphing_2: list[EID],
 ) -> list[EID]:
-    prm_1 = morphing_get_prm(morphing_1)
-    prm_2 = morphing_get_prm(morphing_2)
+    prm_1 = morphing_get_prm(P, Q, morphing_1)
+    prm_2 = morphing_get_prm(Q, U, morphing_2)
 
     # Apparently len(prm_1[1]) == len(prm_2[0])
 

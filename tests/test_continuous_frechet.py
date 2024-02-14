@@ -47,4 +47,11 @@ def test_frechet_mono_via_refinement() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    P, Q, monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+    P, Q, monotone_morphing, dist, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+
+
+def test_frechet_other_thing() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    cf.frechet_mono_via_refinement(P, Q, 1.01)

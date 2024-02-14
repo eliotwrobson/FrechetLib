@@ -274,12 +274,17 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
         P = np.take(P, p_indices, axis=0)
         Q = np.take(Q, q_indices, axis=0)
 
-        frechet_distance = frechet_mono_via_refinement(
+        _, _, morphing, frechet_distance, _ = frechet_mono_via_refinement(
             P, Q, (3.0 + approx_ratio) / 4.0
-        )[3]
+        )
 
     morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
     morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-    # TODO add the stuff about morphing combinations here once I finish the crap above
-    return -1
+    first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
+    _, first_combined_monotone = get_monotone_morphing_width(nbt.List(first_combined))
+    width, final_combined = fu.morphing_combine(
+        P_orig, Q, Q_orig, first_combined_monotone, morphing_q
+    )
+    # TODO might be need to run through this a second time in a loop? Not sure
+    return final_combined
