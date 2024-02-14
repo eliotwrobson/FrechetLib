@@ -1,10 +1,8 @@
-from typing import Any, Optional, Type
+from typing import Any
 
 import numba as nb
 import numba.typed as nbt
 import numpy as np
-from numba.experimental import jitclass
-from typing_extensions import Self
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
@@ -68,7 +66,7 @@ def frechet_dist_upper_bound(
 
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
-) -> tuple[np.ndarray, np.ndarray, list[rf.EID], float, bool]:
+) -> tuple[np.ndarray, np.ndarray, list[fu.EID], float, bool]:
     """
     Computes the "true" monotone Frechet distance between P and Q,
     using the ve_r algorithm. It does refinement, to add vertices if
@@ -110,8 +108,8 @@ def frechet_mono_via_refinement(
 def _add_points_to_make_monotone(
     P: np.ndarray,
     Q: np.ndarray,
-    morphing: nbt.List[rf.EID],
-) -> tuple[float, list[rf.EID]]:
+    morphing: nbt.List[fu.EID],
+) -> tuple[float, list[fu.EID]]:
 
     P_indices = []
     Q_indices = []
@@ -157,7 +155,7 @@ def _add_points_to_make_monotone(
 def add_points_to_make_monotone(
     P: np.ndarray,
     Q: np.ndarray,
-    morphing: nbt.List[rf.EID],
+    morphing: nbt.List[fu.EID],
 ):
     ((P_new_points, P_indices), (Q_new_points, Q_indices)) = (
         _add_points_to_make_monotone(P, Q, morphing)
@@ -176,9 +174,9 @@ def add_points_to_make_monotone(
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
 def get_monotone_morphing_width(
-    morphing: nbt.List[rf.EID],
-) -> tuple[float, list[rf.EID]]:
-    prev_event: rf.EID = morphing[0]
+    morphing: nbt.List[fu.EID],
+) -> tuple[float, list[fu.EID]]:
+    prev_event: fu.EID = morphing[0]
     res = []
     longest_dist = prev_event.dist
 
@@ -224,7 +222,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
 @nb.njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
-) -> list[rf.EID]:
+) -> list[fu.EID]:
     """
     Approximates the Frechet distance between a curve (P) and subcurve
     (P_subcurve). Here, P_subcurve vertices are the vertices of P
@@ -236,12 +234,12 @@ def frechet_c_mono_approx_subcurve(
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
 
-        res.append(rf.EID(i, True, curr_idx, True, P, P_subcurve))
+        res.append(fu.EID(i, True, curr_idx, True, P, P_subcurve))
 
         for j in range(curr_idx + 1, next_idx):
-            res.append(rf.EID(i, True, j, False, P, P_subcurve))
+            res.append(fu.EID(i, True, j, False, P, P_subcurve))
 
-    res.append(rf.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve))
+    res.append(fu.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve))
 
     return res
 

@@ -18,4 +18,4 @@ def test_frechet() -> None:
     assert morphing[0].i_is_vert
     assert morphing[0].j == 0
     assert morphing[0].j_is_vert
-    assert morphing[0].t is None
+    assert morphing[0].t == 0.0

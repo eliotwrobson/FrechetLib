@@ -2,7 +2,7 @@ import numba.typed as nbt
 import numpy as np
 
 import frechetlib.continuous_frechet as cf
-import frechetlib.retractable_frechet as rf
+import frechetlib.frechet_utils as fu
 
 
 def test_get_monotone_morphing_width() -> None:
@@ -11,13 +11,13 @@ def test_get_monotone_morphing_width() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing = nbt.List(
         [
-            rf.EID(0, True, 0, True, P, Q),
-            rf.EID(0, False, 0, True, P, Q),
-            rf.EID(0, False, 1, True, P, Q),
-            rf.EID(0, False, 2, True, P, Q),
-            rf.EID(0, False, 3, True, P, Q),
-            rf.EID(0, False, 4, True, P, Q),
-            rf.EID(1, True, 4, True, P, Q),
+            fu.EID(0, True, 0, True, P, Q),
+            fu.EID(0, False, 0, True, P, Q),
+            fu.EID(0, False, 1, True, P, Q),
+            fu.EID(0, False, 2, True, P, Q),
+            fu.EID(0, False, 3, True, P, Q),
+            fu.EID(0, False, 4, True, P, Q),
+            fu.EID(1, True, 4, True, P, Q),
         ]
     )
     _, res = cf.get_monotone_morphing_width(morphing)
@@ -29,13 +29,13 @@ def test_frechet_add_points() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing = nbt.List(
         [
-            rf.EID(0, True, 0, True, P, Q),
-            rf.EID(0, False, 0, True, P, Q),
-            rf.EID(0, False, 1, True, P, Q),
-            rf.EID(0, False, 2, True, P, Q),
-            rf.EID(0, False, 3, True, P, Q),
-            rf.EID(0, False, 4, True, P, Q),
-            rf.EID(1, True, 4, True, P, Q),
+            fu.EID(0, True, 0, True, P, Q),
+            fu.EID(0, False, 0, True, P, Q),
+            fu.EID(0, False, 1, True, P, Q),
+            fu.EID(0, False, 2, True, P, Q),
+            fu.EID(0, False, 3, True, P, Q),
+            fu.EID(0, False, 4, True, P, Q),
+            fu.EID(1, True, 4, True, P, Q),
         ]
     )
 

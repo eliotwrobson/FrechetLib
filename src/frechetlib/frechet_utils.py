@@ -1,7 +1,66 @@
 import numba as nb
 import numpy as np
+from numba.experimental import jitclass
+from typing_extensions import Self
 
-from frechetlib.retractable_frechet import EID
+import frechetlib.retractable_frechet as rf
+
+
+@jitclass
+class EID:
+    i: int
+    i_is_vert: bool
+    j: int
+    j_is_vert: bool
+    dist: float
+    t: float
+
+    def __init__(
+        self,
+        i_: int,
+        i_is_vert_: bool,
+        j_: int,
+        j_is_vert_: bool,
+        P: np.ndarray,
+        Q: np.ndarray,
+    ) -> None:
+        self.i = i_
+        self.i_is_vert = i_is_vert_
+        self.j = j_
+        self.j_is_vert = j_is_vert_
+        self.t = 0.0
+
+        # Compute the distance
+        if self.i_is_vert:
+            if self.j_is_vert:
+                self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
+
+            else:
+                self.dist, self.t = line_point_distance(
+                    Q[self.j], Q[self.j + 1], P[self.i]
+                )
+
+        elif self.j_is_vert:
+            self.dist, self.t = line_point_distance(P[self.i], P[self.i + 1], Q[self.j])
+        else:
+            raise Exception
+
+    def __lt__(self, other: Self) -> bool:
+        return self.dist < other.dist
+
+    def __hash__(self) -> int:
+        return hash((self.i, self.i_is_vert, self.j, self.j_is_vert))
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, EID):
+            return False
+
+        return (
+            (self.i == other.i)
+            and (self.j == other.j)
+            and (self.i_is_vert == other.i_is_vert)
+            and (self.j_is_vert == other.j_is_vert)
+        )
 
 
 @nb.njit
@@ -90,6 +149,7 @@ def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     return eval_pl_func(p, q, val, 1)[0]
 
 
+@nb.njit
 def morphing_combine(
     P: np.ndarray,
     Q: np.ndarray,
