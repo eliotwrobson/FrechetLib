@@ -12,6 +12,12 @@ import frechetlib.retractable_frechet as rf
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
 ) -> float:
+    """
+    2-approximation to the Frechet distance between
+    P[first(rng)]-P[last(rng)] and he polygon
+    P[rng]
+    Here, rng is a range i:j
+    """
     n = P.shape[0]
 
     if idx_range is None:
@@ -60,6 +66,7 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
+# TODO have to write test cases for this, since it's slowing down other things
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
 ) -> tuple[np.ndarray, np.ndarray, list[fu.EID], float, bool]:

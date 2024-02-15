@@ -56,3 +56,9 @@ def test_add_points() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     _, morphing = rf.retractable_ve_frechet(P, Q)
     new_P, new_Q = cf.add_points_to_make_monotone(P, Q, morphing)
+
+
+def test_frechet_c_approx() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    width, ratio, final_combined = cf.frechet_c_approx(P, Q, 1.01)
