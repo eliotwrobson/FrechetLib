@@ -240,11 +240,14 @@ def get_monotone_morphing_width(
 def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
     curr = P[0]
     indices = [0]
+    n = P.shape[0]
 
-    for i in range(1, len(P)):
+    for i in range(1, n):
         if np.linalg.norm(P[i] - curr) > r:
             curr = P[i]
             indices.append(i)
+
+    indices.append(n - 1)
 
     return indices
 
@@ -252,7 +255,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
 @nb.njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
-) -> list[fu.EID]:
+) -> tuple[float, list[fu.EID]]:
     """
     Approximates the Frechet distance between a curve (P) and subcurve
     (P_subcurve). Here, P_subcurve vertices are the vertices of P
@@ -260,16 +263,23 @@ def frechet_c_mono_approx_subcurve(
     """
 
     res = []
+    width = 0
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
 
-        res.append(fu.EID(i, True, curr_idx, True, P, P_subcurve))
+        next_event = fu.EID(i, True, curr_idx, True, P, P_subcurve)
+        width = max(width, next_event.dist)
+        res.append(next_event)
 
         for j in range(curr_idx + 1, next_idx):
-            res.append(fu.EID(i, True, j, False, P, P_subcurve))
+            next_event = fu.EID(i, True, j, False, P, P_subcurve)
+            width = max(width, next_event.dist)
+            res.append(next_event)
 
-    res.append(fu.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve))
+    next_event = fu.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve)
+    width = width = max(width, next_event.dist)
+    res.append(width)
 
     return res
 
@@ -308,16 +318,16 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
             P, Q, (3.0 + approx_ratio) / 4.0
         )
 
-    morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
-    morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+    p_width, morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+    q_width, morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-    first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
+    _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
     _, first_combined_monotone = get_monotone_morphing_width(nbt.List(first_combined))
     width, final_combined = fu.morphing_combine(
         P_orig, Q, Q_orig, first_combined_monotone, morphing_q
     )
 
-    ratio = width.leash / (d - 2.0 * err)
+    ratio = width / (frechet_distance - 2.0 * max(p_width, q_width))
 
     # TODO might be need to run through this a second time in a loop? Not sure
     return width, ratio, final_combined
@@ -325,8 +335,8 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
 
 def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
 
-    width, morphing = frechet_c_approx(P, Q, 2.0)
-
+    width, ratio, morphing = frechet_c_approx(P, Q, 2.0)
+    approx_refinement = 1.001
     approx_ratio = min(1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * width), 1.1)
 
     # TODO fill this if case with the appx ratio from frechet_c_approx
@@ -334,5 +344,29 @@ def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
         new_morphing = morphing
         ratio = 2.0
     else:
-        width, new_morphing = frechet_c_approx(P, Q, approx_ratio)
+        width, ratio, new_morphing = frechet_c_approx(P, Q, approx_ratio)
         # ratio
+
+    Pl, Ql = fu.extract_vertex_radii(P, Q, new_morphing)
+    lower_bound = width / ratio
+
+    factor = 4.0
+    while True:
+        Pz = (lower_bound - Pl) / factor
+        Qz = (lower_bound - Ql) / factor
+
+        p_indices = fu.simplify_polygon_radii(P, Pz)
+        q_indices = fu.simplify_polygon_radii(Q, Qz)
+
+        Ps = np.take(P, p_indices, axis=0)
+        Qs = np.take(Q, q_indices, axis=0)
+
+        PSR, QSR, morphing, dist, is_exact = frechet_mono_via_refinement(
+            Ps, Qs, approx_refinement
+        )
+        # TODO continue writing with
+        # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
+        # m_a = frechet_ve_r_mono_compute(poly_a, PSR)
+        # mmu = Morphing_combine(m_a, m_mid)
+        # m_b = frechet_ve_r_mono_compute(QSR, poly_b)
+        # mw = Morphing_combine(mmu, m_b)

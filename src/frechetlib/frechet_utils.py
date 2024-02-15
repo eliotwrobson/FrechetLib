@@ -160,8 +160,6 @@ def morphing_combine(
     morphing_1: list[EID],
     morphing_2: list[EID],
 ) -> tuple[float, list[EID]]:
-    
-    
 
     prm_1 = morphing_get_prm(P, Q, morphing_1)
     prm_2 = morphing_get_prm(Q, U, morphing_2)
@@ -246,3 +244,25 @@ def extract_offsets(
         Q_offsets[event.j] = np.max(Q_offsets[event.j], event.dist)
 
     return P_offsets, Q_offsets
+
+
+@nb.njit
+def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
+    assert P.shape[0] == r.shape
+
+    curr = P[0]
+    curr_r = r[0]
+    indices = [0]
+    n = P.shape[0]
+
+    for i in range(1, n):
+        curr_r = min(curr_r, r[i])
+        if np.linalg.norm(P[i] - curr) > curr_r:
+            curr = P[i]
+            if i < n - 1:
+                curr_r = r[i + 1]
+            indices.append(i)
+
+    indices.append(n - 1)
+
+    return indices
