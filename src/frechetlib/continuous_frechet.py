@@ -316,5 +316,23 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     width, final_combined = fu.morphing_combine(
         P_orig, Q, Q_orig, first_combined_monotone, morphing_q
     )
+
+    ratio = width.leash / (d - 2.0 * err)
+
     # TODO might be need to run through this a second time in a loop? Not sure
-    return final_combined
+    return width, ratio, final_combined
+
+
+def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
+
+    width, morphing = frechet_c_approx(P, Q, 2.0)
+
+    approx_ratio = min(1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * width), 1.1)
+
+    # TODO fill this if case with the appx ratio from frechet_c_approx
+    if False:
+        new_morphing = morphing
+        ratio = 2.0
+    else:
+        width, new_morphing = frechet_c_approx(P, Q, approx_ratio)
+        # ratio

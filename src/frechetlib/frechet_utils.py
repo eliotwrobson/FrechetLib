@@ -159,7 +159,10 @@ def morphing_combine(
     U: np.ndarray,
     morphing_1: list[EID],
     morphing_2: list[EID],
-) -> list[EID]:
+) -> tuple[float, list[EID]]:
+    
+    
+
     prm_1 = morphing_get_prm(P, Q, morphing_1)
     prm_2 = morphing_get_prm(Q, U, morphing_2)
 
