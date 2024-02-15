@@ -10,8 +10,11 @@ class EID:
     i_is_vert: bool
     j: int
     j_is_vert: bool
+
+    # The attributes below are computed
     dist: float
     t: float
+    hash_val: int
 
     def __init__(
         self,
@@ -26,6 +29,7 @@ class EID:
         self.i_is_vert = i_is_vert_
         self.j = j_
         self.j_is_vert = j_is_vert_
+        self.hash_val = hash((i_, i_is_vert_, j_, j_is_vert_))
         self.t = 0.0
 
         # Compute the distance
@@ -47,7 +51,7 @@ class EID:
         return self.dist < other.dist
 
     def __hash__(self) -> int:
-        return hash((self.i, self.i_is_vert, self.j, self.j_is_vert))
+        return self.hash_val
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, EID):

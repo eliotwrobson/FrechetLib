@@ -32,6 +32,7 @@ def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[fu
 
         if curr_event.i == n_p - 1 and curr_event.j == n_q - 1:
             last_event = curr_event
+            break
 
         for di, i_vert, dj, j_vert in diffs:
             i = curr_event.i + di
