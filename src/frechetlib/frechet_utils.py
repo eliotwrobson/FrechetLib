@@ -228,3 +228,18 @@ def extract_vertex_radii(
             Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)
 
     return P_leash_lens, Q_leash_lens
+
+
+def extract_offsets(
+    P: np.ndarray, Q: np.ndarray, morphing: list[EID]
+) -> tuple[np.ndarray, np.ndarray]:
+    # I think this is radii without the vertex-vertex restriction
+    P_offsets = np.zeros(P.shape[0], dtype=np.float64)
+    Q_offsets = np.zeros(Q.shape[0], dtype=np.float64)
+
+    for k in range(len(morphing)):
+        event = morphing[k]
+        P_offsets[event.i] = np.max(P_offsets[event.i], event.dist)
+        Q_offsets[event.j] = np.max(Q_offsets[event.j], event.dist)
+
+    return P_offsets, Q_offsets
