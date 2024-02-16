@@ -3,6 +3,7 @@ from typing import Any
 import numba as nb
 import numba.typed as nbt
 import numpy as np
+from icecream import ic
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
@@ -219,7 +220,7 @@ def get_monotone_morphing_width(
     n = len(morphing)
     k = 0
     # TODO have to finish debugging this function.
-    while k < n - 1:
+    while k < n:
         event = morphing[k]
         if event.i_is_vert and event.j_is_vert:
             res.append(event)
@@ -232,7 +233,7 @@ def get_monotone_morphing_width(
             while (
                 new_k < n - 1
                 and morphing[new_k + 1].i_is_vert == event.i_is_vert
-                and morphing[new_k + 1].i == event.i
+                and morphing[new_k + 1].j == event.j
             ):
                 new_event = morphing[new_k].copy(P, Q)
                 best_t = max(best_t, new_event.t)
@@ -262,7 +263,7 @@ def get_monotone_morphing_width(
             while (
                 new_k < n - 1
                 and morphing[new_k + 1].j_is_vert == event.j_is_vert
-                and morphing[new_k + 1].j == event.j
+                and morphing[new_k + 1].i == event.i
             ):
                 new_event = morphing[new_k].copy(P, Q)
                 best_t = max(best_t, new_event.t)
@@ -284,9 +285,6 @@ def get_monotone_morphing_width(
             res.append(new_event)
             k = new_k + 1
 
-    print(len(res))
-    print(len(morphing))
-    assert len(res) == len(morphing)
     return longest_dist, res
 
 

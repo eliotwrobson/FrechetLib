@@ -22,7 +22,7 @@ def test_get_monotone_morphing_width() -> None:
         ]
     )
     _, res = cf.get_monotone_morphing_width(morphing, P, Q)
-    assert len(res) == 3
+    assert len(res) == len(morphing)
 
 
 def test_frechet_mono_via_refinement() -> None:
@@ -30,6 +30,7 @@ def test_frechet_mono_via_refinement() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
     P, Q, monotone_morphing, dist, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+    ve_width, ve_morphing = rf.retractable_ve_frechet(P, Q)
     print(len(monotone_morphing))
     # TODO uncomment and finish debugging this
     # assert False
