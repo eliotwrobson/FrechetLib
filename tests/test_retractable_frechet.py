@@ -13,7 +13,7 @@ def test_retractable_frechet() -> None:
     d = 2
     np.random.seed(12345)
     P = np.random.uniform(low=noise_limit, high=100.0, size=(n, d))
-    Q = P + np.random.uniform(low=0.0, high=noise_limit, size=(n, d))
+    Q = P + np.random.uniform(low=-noise_limit, high=noise_limit, size=(n, d))
 
     frechet_limit = np.linalg.norm(np.ones(d) * noise_limit)
 

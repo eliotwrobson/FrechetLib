@@ -21,7 +21,7 @@ def generate_time_series(
     res[0][0] = 0.0
 
     for i in range(1, n - 1):
-        noise_vec = np.random.uniform(low=0.0, high=drift, size=d)
+        noise_vec = np.random.uniform(low=-drift, high=drift, size=d)
         res[i] = res[i - 1] + noise_vec
         res[i][0] = float(i)
 
@@ -35,11 +35,11 @@ def main() -> None:
     approx = 1.01
 
     low = 0.0
-    high = 10000.0
+    high = 100.0
     drift = (high - low) / num_pts
 
     P = generate_time_series(num_pts, d, low=low, high=high, drift=drift)
-    Q = P + np.random.uniform(low=0.0, high=noise_limit, size=(num_pts, d))
+    Q = P + np.random.uniform(low=-noise_limit, high=noise_limit, size=(num_pts, d))
 
     # Don't time the first run so the compilation step runs first
     frechet_mono_via_refinement(P, Q, approx)
