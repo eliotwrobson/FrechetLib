@@ -3,7 +3,6 @@ from typing import Any
 import numba as nb
 import numba.typed as nbt
 import numpy as np
-from icecream import ic
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
@@ -222,6 +221,7 @@ def get_monotone_morphing_width(
     # TODO have to finish debugging this function.
     while k < n:
         event = morphing[k]
+
         if event.i_is_vert and event.j_is_vert:
             res.append(event)
             k += 1

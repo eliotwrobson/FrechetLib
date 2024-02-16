@@ -29,9 +29,35 @@ def test_frechet_mono_via_refinement() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    P, Q, monotone_morphing, dist, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+    new_P, new_Q, monotone_morphing, mono_width, f_exact = (
+        cf.frechet_mono_via_refinement(P, Q, 1.01)
+    )
     ve_width, ve_morphing = rf.retractable_ve_frechet(P, Q)
-    print(len(monotone_morphing))
+
+    # for event in ve_morphing:
+    #    print(event.dist)
+
+    # print("*" * 100)
+
+    # for event in monotone_morphing:
+    #    print(event.dist)
+
+    if f_exact:
+        assert np.isclose(ve_width, mono_width)
+    else:
+        assert len(monotone_morphing) >= len(ve_morphing)
+
+    assert ve_width >= mono_width
+    assert new_P.shape[0] >= P.shape[0]
+    assert new_Q.shape[0] >= Q.shape[0]
+
+    from icecream import ic
+
+    ic(ve_width)
+    ic(mono_width)
+
+    assert False
+    # print(len(monotone_morphing))
     # TODO uncomment and finish debugging this
     # assert False
 

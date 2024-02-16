@@ -57,6 +57,7 @@ class EID:
         else:
             raise Exception
 
+        assert 0.0 <= self.t <= 1.0
         self.__recompute_hash()
 
     def __recompute_hash(self) -> None:
@@ -83,14 +84,15 @@ class EID:
 
         self.t = new_t
         # Compute the distance
-        if self.i_is_vert:
-            self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
+        if self.j_is_vert:
+            self.p = convex_comb(P[self.i], P[self.i + 1], self.t)
+            self.dist = float(np.linalg.norm(self.p - Q[self.j]))
 
+        elif self.i_is_vert:
+            self.p = convex_comb(Q[self.j], Q[self.j + 1], self.t)
+            self.dist = float(np.linalg.norm(self.p - P[self.i]))
         else:
-            assert self.j_is_vert
-            self.dist, self.t, self.p = line_point_distance(
-                Q[self.j], Q[self.j + 1], P[self.i]
-            )
+            raise Exception
 
         self.__recompute_hash()
 
@@ -142,9 +144,9 @@ def line_point_distance(
     t = np.dot(q - p1, p2 - p1) / l2
 
     if t <= 0.0:
-        return float(np.linalg.norm(p1 - q)), t, p1
+        return float(np.linalg.norm(p1 - q)), 0.0, p1
     elif t >= 1.0:
-        return float(np.linalg.norm(p2 - q)), t, p2
+        return float(np.linalg.norm(p2 - q)), 1.0, p2
 
     point_on_segment = convex_comb(p1, p2, t)
     return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
