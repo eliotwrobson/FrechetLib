@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
 
+from frechetlib.continuous_frechet import frechet_mono_via_refinement
 from frechetlib.retractable_frechet import retractable_ve_frechet
 
 
@@ -28,27 +29,30 @@ def generate_time_series(
 
 
 def main() -> None:
-    num_pts = 50
+    num_pts = 1_000
     d = 2
     noise_limit = 10.0
+    approx = 1.01
 
     low = 0.0
-    high = 100.0
+    high = 10000.0
+    drift = (high - low) / num_pts
 
-    P = generate_time_series(num_pts, d, low=low, high=high)
+    P = generate_time_series(num_pts, d, low=low, high=high, drift=drift)
     Q = P + np.random.uniform(low=0.0, high=noise_limit, size=(num_pts, d))
 
     # Don't time the first run so the compilation step runs first
-    retractable_ve_frechet(P, Q)
+    frechet_mono_via_refinement(P, Q, approx)
 
     start = time.perf_counter()
-    dist, morphing = retractable_ve_frechet(P, Q)
+    P, Q, morphing, dist, is_exact = frechet_mono_via_refinement(P, Q, approx)
     end = time.perf_counter()
 
     print("Compute time: ", end - start)
 
     # Taken from https://matplotlib.org/stable/api/animation_api.html
     fig, ax = plt.subplots()
+    fig.set_size_inches(13, 8)
     xdata1, ydata1 = [], []
     xdata2, ydata2 = [], []
     (line1,) = ax.plot([], [], lw=2)
@@ -61,18 +65,27 @@ def main() -> None:
         return (line1,)
 
     def update(morphing_frame):
-        # print(morphing_frame.i)
-        xdata1.append(P[morphing_frame.i][0])
-        ydata1.append(P[morphing_frame.i][1])
+        if morphing_frame.i_is_vert and morphing_frame.j_is_vert:
+            p_point = P[morphing_frame.i]
+            q_point = Q[morphing_frame.j]
+        elif morphing_frame.i_is_vert:
+            p_point = P[morphing_frame.i]
+            q_point = morphing_frame.p
+        elif morphing_frame.j_is_vert:
+            q_point = Q[morphing_frame.j]
+            p_point = morphing_frame.p
+
+        xdata1.append(p_point[0])
+        ydata1.append(p_point[1])
         line1.set_data(xdata1, ydata1)
 
-        xdata2.append(Q[morphing_frame.j][0])
-        ydata2.append(Q[morphing_frame.j][1])
+        xdata2.append(q_point[0])
+        ydata2.append(q_point[1])
         line2.set_data(xdata2, ydata2)
 
         leash.set_data(
-            [Q[morphing_frame.j][0], P[morphing_frame.j][0]],
-            [Q[morphing_frame.j][1], P[morphing_frame.j][1]],
+            [p_point[0], q_point[0]],
+            [p_point[1], q_point[1]],
         )
         return (line1, line2, leash)
 

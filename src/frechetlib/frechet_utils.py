@@ -6,6 +6,8 @@ from typing_extensions import Self
 spec = [("p", nb.float64[:])]
 
 
+# TODO rewrite this using a proper morphing data class that holds all
+# this crap for you
 @jitclass(spec)
 class EID:
     i: int
