@@ -209,7 +209,7 @@ def _add_points_to_make_monotone(
 
 # Based on https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
-@nb.njit
+# @nb.njit
 def get_monotone_morphing_width(
     morphing: nbt.List[fu.EID], P: np.ndarray, Q: np.ndarray
 ) -> tuple[float, list[fu.EID]]:
@@ -230,10 +230,11 @@ def get_monotone_morphing_width(
         elif not event.i_is_vert:
             new_k = k
             best_t = event.t
+
             while (
                 new_k < n - 1
                 and morphing[new_k + 1].i_is_vert == event.i_is_vert
-                and morphing[new_k + 1].j == event.j
+                and morphing[new_k + 1].i == event.i
             ):
                 new_event = morphing[new_k].copy(P, Q)
                 best_t = max(best_t, new_event.t)
@@ -263,12 +264,14 @@ def get_monotone_morphing_width(
             while (
                 new_k < n - 1
                 and morphing[new_k + 1].j_is_vert == event.j_is_vert
-                and morphing[new_k + 1].i == event.i
+                and morphing[new_k + 1].j == event.j
             ):
                 new_event = morphing[new_k].copy(P, Q)
                 best_t = max(best_t, new_event.t)
+
                 # TODO might be the wrong condition??
                 if best_t > new_event.t:
+                    assert False
                     new_event.reassign_parameter(best_t, P, Q)
 
                 longest_dist = max(longest_dist, new_event.dist)

@@ -34,32 +34,14 @@ def test_frechet_mono_via_refinement() -> None:
     )
     ve_width, ve_morphing = rf.retractable_ve_frechet(P, Q)
 
-    # for event in ve_morphing:
-    #    print(event.dist)
-
-    # print("*" * 100)
-
-    # for event in monotone_morphing:
-    #    print(event.dist)
-
     if f_exact:
         assert np.isclose(ve_width, mono_width)
     else:
-        assert len(monotone_morphing) >= len(ve_morphing)
+        assert ve_width <= mono_width
 
-    assert ve_width >= mono_width
+    assert len(monotone_morphing) >= len(ve_morphing)
     assert new_P.shape[0] >= P.shape[0]
     assert new_Q.shape[0] >= Q.shape[0]
-
-    from icecream import ic
-
-    ic(ve_width)
-    ic(mono_width)
-
-    assert False
-    # print(len(monotone_morphing))
-    # TODO uncomment and finish debugging this
-    # assert False
 
 
 def test_frechet_add_points() -> None:
