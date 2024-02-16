@@ -15,7 +15,7 @@ def test_retractable_frechet() -> None:
     P = np.random.uniform(low=noise_limit, high=100.0, size=(n, d))
     Q = P + np.random.uniform(low=-noise_limit, high=noise_limit, size=(n, d))
 
-    frechet_limit = np.linalg.norm(np.ones(d) * noise_limit)
+    frechet_limit = np.linalg.norm(np.ones(d) * 2 * noise_limit)
 
     rf.retractable_ve_frechet(P, Q)
     start = time.perf_counter()

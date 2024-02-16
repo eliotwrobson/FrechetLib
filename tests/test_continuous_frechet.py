@@ -1,5 +1,6 @@
 import numba.typed as nbt
 import numpy as np
+import utils as u
 
 import frechetlib.continuous_frechet as cf
 import frechetlib.frechet_utils as fu
@@ -23,6 +24,11 @@ def test_get_monotone_morphing_width() -> None:
     )
     _, res = cf.get_monotone_morphing_width(morphing, P, Q)
     assert len(res) == len(morphing)
+
+
+def test_monotone_morphing() -> None:
+    P, Q = u.generate_curves_close(10_000, 100.0)
+    # get_monotone_morphing_width(rf.retractable_ve_frechet(P, Q), P, Q)
 
 
 def test_frechet_mono_via_refinement() -> None:

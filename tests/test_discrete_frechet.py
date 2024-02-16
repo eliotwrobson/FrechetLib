@@ -4,7 +4,7 @@ import typing as t
 import numpy as np
 import numpy.typing as npt
 import pytest
-from utils import leq_with_tolerance
+import utils as u
 
 import frechetlib.discrete_frechet as df
 
@@ -13,30 +13,12 @@ CurveGeneratorFunctionT = t.Callable[[int, float], tuple[np.ndarray, np.ndarray]
 
 
 DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
-# Generator helper functions
-
-
-def generate_curves_random(
-    num_pts: int, scaling_factor: float
-) -> tuple[np.ndarray, np.ndarray]:
-    P = np.random.rand(num_pts, 2) * scaling_factor
-    Q = np.random.rand(num_pts, 2) * scaling_factor
-    return (P, Q)
-
-
-def generate_curves_close(
-    num_pts: int, scaling_factor: float
-) -> tuple[np.ndarray, np.ndarray]:
-    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, 2))
-    Q = P + np.random.uniform(low=0.0, high=0.5, size=(num_pts, 2))
-    return (P, Q)
-
 
 # Start of actual test functions
 
 
 @pytest.mark.parametrize(
-    "generate_curves", [generate_curves_random, generate_curves_close]
+    "generate_curves", [u.generate_curves_random, u.generate_curves_close]
 )
 def test_frechet_equal(generate_curves: CurveGeneratorFunctionT) -> None:
     n = 1000
@@ -49,7 +31,7 @@ def test_frechet_equal(generate_curves: CurveGeneratorFunctionT) -> None:
     DISCRETE_FRECHET_FUNCS,
 )
 @pytest.mark.parametrize(
-    "generate_curves", [generate_curves_random, generate_curves_close]
+    "generate_curves", [u.generate_curves_random, u.generate_curves_close]
 )
 @pytest.mark.parametrize("n", [100, 1000])
 def test_frechet_benchmark_morphing(
@@ -63,14 +45,14 @@ def test_frechet_benchmark_morphing(
 
     # Check that the morphing is valid
     i, j = morphing[0]
-    assert leq_with_tolerance(dist, np.linalg.norm(P[i] - Q[j]))
+    assert u.leq_with_tolerance(dist, np.linalg.norm(P[i] - Q[j]))
 
     for (i1, j1), (i2, j2) in it.pairwise(morphing):
         # Check that change is legal
         assert (i2 - i1, j2 - j1) in {(0, 1), (1, 0), (1, 1)}
 
         # Check the given frechet distance is respected by the morphing
-        assert leq_with_tolerance(dist, np.linalg.norm(P[i2] - Q[j2]))
+        assert u.leq_with_tolerance(dist, np.linalg.norm(P[i2] - Q[j2]))
 
 
 @pytest.mark.parametrize(

@@ -30,13 +30,15 @@ def generate_time_series(
 
 
 def main() -> None:
-    num_pts = 50
+    np.random.seed(12345)
+    num_pts = 100
     d = 2
     noise_limit = 1.0
     approx = 1.01
 
     low = 0.0
     high = 100.0
+    midpoint = (high - low) / 2
     drift = (high - low) / num_pts
 
     P = generate_time_series(num_pts, d, low=low, high=high, drift=drift)
@@ -79,7 +81,7 @@ def main() -> None:
 
     def init():
         ax.set_xlim(0.0, num_pts)
-        ax.set_ylim(low, high)
+        ax.set_ylim(midpoint - 20, midpoint + 20)
         return (line1,)
 
     def update(morphing_frame):

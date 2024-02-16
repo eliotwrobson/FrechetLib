@@ -213,12 +213,11 @@ def _add_points_to_make_monotone(
 def get_monotone_morphing_width(
     morphing: nbt.List[fu.EID], P: np.ndarray, Q: np.ndarray
 ) -> tuple[float, list[fu.EID]]:
-    # prev_event: fu.EID = morphing[0]
     res = []
     longest_dist = 0.0
     n = len(morphing)
     k = 0
-    # TODO have to finish debugging this function.
+
     while k < n:
         event = morphing[k]
 
