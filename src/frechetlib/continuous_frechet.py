@@ -91,7 +91,7 @@ def frechet_mono_via_refinement(
 
     while fr_r_mono <= approx * fr_retract:
         fr_retract, ve_morphing = rf.retractable_ve_frechet(P, Q)
-
+        # fu.print_morphing(ve_morphing)
         fr_r_mono, monotone_morphing = get_monotone_morphing_width(
             nbt.List(ve_morphing)
         )
@@ -207,7 +207,7 @@ def _add_points_to_make_monotone(
     return new_P, new_Q
 
 
-# Based on https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L155
+# Based on https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
 def get_monotone_morphing_width(

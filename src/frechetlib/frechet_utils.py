@@ -270,3 +270,9 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
     indices.append(n - 1)
 
     return indices
+
+
+### Functions below here are good for debugging
+def print_morphing(morphing: list[EID]) -> None:
+    for event in morphing:
+        print(event.i, event.i_is_vert, event.j, event.j_is_vert)
