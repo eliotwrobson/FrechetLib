@@ -37,9 +37,8 @@ class EID:
         self.i_is_vert = i_is_vert_
         self.j = j_
         self.j_is_vert = j_is_vert_
-        self.hash_val = hash((i_, i_is_vert_, j_, j_is_vert_))
         self.t = 0.0
-        self.p = np.zeros(0, dtype=np.float64)
+        # self.p = np.zeros(0, dtype=np.float64)
 
         # Compute the distance
         if self.i_is_vert:
@@ -58,6 +57,20 @@ class EID:
         else:
             raise Exception
 
+        self.__recompute_hash()
+
+    def __recompute_hash(self) -> None:
+        self.hash_val = hash((self.i, self.i_is_vert, self.j, self.j_is_vert, self.t))
+
+    # TODO make a better copy function
+    def copy(self, P: np.ndarray, Q: np.ndarray) -> Self:
+        temp = EID(self.i, self.i_is_vert, self.j, self.j_is_vert, P, Q)
+        temp.dist = self.dist
+        temp.t = self.t
+        temp.hash_val = self.hash_val
+        temp.p = self.p
+        return temp
+
     def reassign_parameter(self, new_t: float, P: np.ndarray, Q: np.ndarray) -> None:
         """
         Using the new value of t, reassign the parameter
@@ -68,7 +81,7 @@ class EID:
         if self.i_is_vert and self.j_is_vert:
             raise Exception
 
-        self.t = self.new_t
+        self.t = new_t
         # Compute the distance
         if self.i_is_vert:
             self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
@@ -78,6 +91,8 @@ class EID:
             self.dist, self.t, self.p = line_point_distance(
                 Q[self.j], Q[self.j + 1], P[self.i]
             )
+
+        self.__recompute_hash()
 
     def __lt__(self, other: Self) -> bool:
         return self.dist < other.dist
@@ -94,13 +109,13 @@ class EID:
             and (self.j == other.j)
             and (self.i_is_vert == other.i_is_vert)
             and (self.j_is_vert == other.j_is_vert)
+            and np.isclose(self.t, other.t)
         )
 
 
 @nb.njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p + t * (q - p)
-    # return p * (1.0 - t) + q * t
 
 
 @nb.njit

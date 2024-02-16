@@ -93,7 +93,7 @@ def frechet_mono_via_refinement(
         fr_retract, ve_morphing = rf.retractable_ve_frechet(P, Q)
         # fu.print_morphing(ve_morphing)
         fr_r_mono, monotone_morphing = get_monotone_morphing_width(
-            nbt.List(ve_morphing)
+            nbt.List(ve_morphing), P, Q
         )
 
         if np.isclose(fr_retract, fr_r_mono):
@@ -211,35 +211,82 @@ def _add_points_to_make_monotone(
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
 def get_monotone_morphing_width(
-    morphing: nbt.List[fu.EID],
+    morphing: nbt.List[fu.EID], P: np.ndarray, Q: np.ndarray
 ) -> tuple[float, list[fu.EID]]:
-    prev_event: fu.EID = morphing[0]
+    # prev_event: fu.EID = morphing[0]
     res = []
-    longest_dist = prev_event.dist
-
-    for k in range(1, len(morphing)):
+    longest_dist = 0.0
+    n = len(morphing)
+    k = 0
+    # TODO have to finish debugging this function.
+    while k < n - 1:
         event = morphing[k]
-
-        # Only happens in vertex-vertex events
-        if event.i_is_vert and event.i_is_vert:
-            res.append(prev_event)
-            prev_event = event
-
+        if event.i_is_vert and event.j_is_vert:
+            res.append(event)
+            k += 1
             continue
 
-        # Monotonicity case for when i or j stays vertex and the other varies, but the
-        # coefficient goes down.
-        if (prev_event.i_is_vert == event.i_is_vert and prev_event.i == event.i) or (
-            prev_event.j_is_vert == event.j_is_vert and prev_event.j == event.j
-        ):
-            if prev_event.t > event.t:
-                prev_event = event
-        else:
-            res.append(prev_event)
-            prev_event = event
+        elif not event.i_is_vert:
+            new_k = k
+            best_t = event.t
+            while (
+                new_k < n - 1
+                and morphing[new_k + 1].i_is_vert == event.i_is_vert
+                and morphing[new_k + 1].i == event.i
+            ):
+                new_event = morphing[new_k].copy(P, Q)
+                best_t = max(best_t, new_event.t)
+                # TODO might be the wrong condition??
+                if best_t > new_event.t:
+                    new_event.reassign_parameter(best_t, P, Q)
 
-    res.append(prev_event)
+                longest_dist = max(longest_dist, new_event.dist)
+                res.append(new_event)
 
+                new_k += 1
+
+            new_event = morphing[new_k].copy(P, Q)
+
+            if best_t > new_event.t:
+                new_event.reassign_parameter(best_t, P, Q)
+
+            longest_dist = max(longest_dist, new_event.dist)
+            res.append(new_event)
+            k = new_k + 1
+
+        # TODO might be able to simplify this?
+        elif not event.j_is_vert:
+            new_k = k
+            best_t = event.t
+
+            while (
+                new_k < n - 1
+                and morphing[new_k + 1].j_is_vert == event.j_is_vert
+                and morphing[new_k + 1].j == event.j
+            ):
+                new_event = morphing[new_k].copy(P, Q)
+                best_t = max(best_t, new_event.t)
+                # TODO might be the wrong condition??
+                if best_t > new_event.t:
+                    new_event.reassign_parameter(best_t, P, Q)
+
+                longest_dist = max(longest_dist, new_event.dist)
+                res.append(new_event)
+
+                new_k += 1
+
+            new_event = morphing[new_k].copy(P, Q)
+
+            if best_t > new_event.t:
+                new_event.reassign_parameter(best_t, P, Q)
+
+            longest_dist = max(longest_dist, new_event.dist)
+            res.append(new_event)
+            k = new_k + 1
+
+    print(len(res))
+    print(len(morphing))
+    assert len(res) == len(morphing)
     return longest_dist, res
 
 
@@ -329,7 +376,9 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     q_width, morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
     _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
-    _, first_combined_monotone = get_monotone_morphing_width(nbt.List(first_combined))
+    _, first_combined_monotone = get_monotone_morphing_width(
+        nbt.List(first_combined), P, Q
+    )
     width, final_combined = fu.morphing_combine(
         P_orig, Q, Q_orig, first_combined_monotone, morphing_q
     )
