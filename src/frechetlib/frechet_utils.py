@@ -47,14 +47,37 @@ class EID:
                 self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
 
             else:
-                self.dist, self.t = line_point_distance(
+                self.dist, self.t, self.p = line_point_distance(
                     Q[self.j], Q[self.j + 1], P[self.i]
                 )
 
         elif self.j_is_vert:
-            self.dist, self.t = line_point_distance(P[self.i], P[self.i + 1], Q[self.j])
+            self.dist, self.t, self.p = line_point_distance(
+                P[self.i], P[self.i + 1], Q[self.j]
+            )
         else:
             raise Exception
+
+    def reassign_parameter(self, new_t: float, P: np.ndarray, Q: np.ndarray) -> None:
+        """
+        Using the new value of t, reassign the parameter
+        and update the point p, which is t.
+        """
+        assert 0.0 <= new_t <= 1.0
+
+        if self.i_is_vert and self.j_is_vert:
+            raise Exception
+
+        self.t = self.new_t
+        # Compute the distance
+        if self.i_is_vert:
+            self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
+
+        else:
+            assert self.j_is_vert
+            self.dist, self.t, self.p = line_point_distance(
+                Q[self.j], Q[self.j + 1], P[self.i]
+            )
 
     def __lt__(self, other: Self) -> bool:
         return self.dist < other.dist
@@ -76,20 +99,27 @@ class EID:
 
 @nb.njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p * (1.0 - t) + q * t
+    return p + t * (q - p)
+    # return p * (1.0 - t) + q * t
 
 
 @nb.njit
 def line_point_distance(
     p1: np.ndarray, p2: np.ndarray, q: np.ndarray
-) -> tuple[float, float]:
+) -> tuple[float, float, np.ndarray]:
     """
     Based on: https://stackoverflow.com/a/1501725/2923069
+
+    Computes the point on the segment p1-p2 closest to q.
+    Returns the distance between the point and the segment,
+    the parameter t from p1 to p2 witnessing the point on the
+    segment, and the witness point itself.
+
     """
     # Return minimum distance between line segment p1-p2 and point q
     l2 = np.linalg.norm(p1 - p2)  # i.e. |p2-p1|^2 -  avoid a sqrt
     if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q - p1)), 0.0
+        return float(np.linalg.norm(q - p1)), 0.0, p1
     # Consider the line extending the segment, parameterized as v + t (p2 - p1).
     # We find projection of point q onto the line.
     # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
@@ -97,15 +127,17 @@ def line_point_distance(
     t = np.dot(q - p1, p2 - p1) / l2
 
     if t <= 0.0:
-        return float(np.linalg.norm(p1 - q)), t
+        return float(np.linalg.norm(p1 - q)), t, p1
     elif t >= 1.0:
-        return float(np.linalg.norm(p2 - q)), t
+        return float(np.linalg.norm(p2 - q)), t, p2
 
-    return float(np.linalg.norm(q - (p1 + t * (p2 - p1)))), t
+    point_on_segment = convex_comb(p1, p2, t)
+    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
 
 
 @nb.njit
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
+
     prefix_lens = []
 
     curr_len = 0.0
