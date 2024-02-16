@@ -3,8 +3,10 @@ import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
 
+spec = [("p", nb.float64[:])]
 
-@jitclass
+
+@jitclass(spec)
 class EID:
     i: int
     i_is_vert: bool
@@ -13,8 +15,14 @@ class EID:
 
     # The attributes below are computed
     dist: float
+    # If used, t starts as being the min point-line distance
+    # between the relevant edge and vertex, but it can be adjusted.
     t: float
     hash_val: int
+
+    # Point on edge that is not a vertex. Can be
+    # adjusted
+    p: np.ndarray
 
     def __init__(
         self,
@@ -31,6 +39,7 @@ class EID:
         self.j_is_vert = j_is_vert_
         self.hash_val = hash((i_, i_is_vert_, j_, j_is_vert_))
         self.t = 0.0
+        self.p = np.zeros(0, dtype=np.float64)
 
         # Compute the distance
         if self.i_is_vert:
@@ -63,6 +72,11 @@ class EID:
             and (self.i_is_vert == other.i_is_vert)
             and (self.j_is_vert == other.j_is_vert)
         )
+
+
+@nb.njit
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p * (1.0 - t) + q * t
 
 
 @nb.njit
@@ -133,11 +147,6 @@ def morphing_get_prm(
             p_events.append(curr_len + event.t * (next_len - curr_len))
 
     return p_events, q_events
-
-
-@nb.njit
-def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p * (1.0 - t) + q * t
 
 
 @nb.njit
