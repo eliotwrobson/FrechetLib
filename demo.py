@@ -1,5 +1,6 @@
 import time
 
+import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
@@ -20,7 +21,7 @@ def generate_time_series(
     res[0] = np.random.uniform(low=midpoint, high=midpoint, size=d)
     res[0][0] = 0.0
 
-    for i in range(1, n - 1):
+    for i in range(1, n):
         noise_vec = np.random.uniform(low=-drift, high=drift, size=d)
         res[i] = res[i - 1] + noise_vec
         res[i][0] = float(i)
@@ -29,9 +30,9 @@ def generate_time_series(
 
 
 def main() -> None:
-    num_pts = 1_000
+    num_pts = 50
     d = 2
-    noise_limit = 10.0
+    noise_limit = 1.0
     approx = 1.01
 
     low = 0.0
@@ -57,14 +58,9 @@ def main() -> None:
     xdata2, ydata2 = [], []
     (line1,) = ax.plot([], [], lw=2)
     (line2,) = ax.plot([], [], lw=2)
-    (leash,) = ax.plot([], [], lw=2)
+    (leash,) = ax.plot([], [], lw=2, color="red")
 
-    def init():
-        ax.set_xlim(0.0, num_pts)
-        ax.set_ylim(low, high)
-        return (line1,)
-
-    def update(morphing_frame):
+    for morphing_frame in morphing:
         if morphing_frame.i_is_vert and morphing_frame.j_is_vert:
             p_point = P[morphing_frame.i]
             q_point = Q[morphing_frame.j]
@@ -77,11 +73,30 @@ def main() -> None:
 
         xdata1.append(p_point[0])
         ydata1.append(p_point[1])
-        line1.set_data(xdata1, ydata1)
 
         xdata2.append(q_point[0])
         ydata2.append(q_point[1])
+
+    def init():
+        ax.set_xlim(0.0, num_pts)
+        ax.set_ylim(low, high)
+        return (line1,)
+
+    def update(morphing_frame):
+
+        line1.set_data(xdata1, ydata1)
+
         line2.set_data(xdata2, ydata2)
+
+        if morphing_frame.i_is_vert and morphing_frame.j_is_vert:
+            p_point = P[morphing_frame.i]
+            q_point = Q[morphing_frame.j]
+        elif morphing_frame.i_is_vert:
+            p_point = P[morphing_frame.i]
+            q_point = morphing_frame.p
+        elif morphing_frame.j_is_vert:
+            q_point = Q[morphing_frame.j]
+            p_point = morphing_frame.p
 
         leash.set_data(
             [p_point[0], q_point[0]],
@@ -90,6 +105,10 @@ def main() -> None:
         return (line1, line2, leash)
 
     ani = FuncAnimation(fig, update, frames=morphing, init_func=init, blit=True)
+
+    writer = animation.PillowWriter(fps=15, metadata=dict(artist="Me"), bitrate=1800)
+    ani.save("frechet_monotone.gif", writer=writer)
+
     plt.show()
 
 
