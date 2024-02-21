@@ -27,51 +27,43 @@ class EID:
 
     def __init__(
         self,
-        i_: int,
-        i_is_vert_: bool,
-        j_: int,
-        j_is_vert_: bool,
-        P: np.ndarray,
-        Q: np.ndarray,
+        i: int,
+        i_is_vert: bool,
+        j: int,
+        j_is_vert: bool,
+        dist: float,
+        t: float,
+        p: np.ndarray,
     ) -> None:
-        self.i = i_
-        self.i_is_vert = i_is_vert_
-        self.j = j_
-        self.j_is_vert = j_is_vert_
-        self.t = 0.0
-        # self.p = np.zeros(0, dtype=np.float64)
+        assert 0.0 <= t <= 1.0
 
-        # Compute the distance
-        if self.i_is_vert:
-            if self.j_is_vert:
-                self.dist = float(np.linalg.norm(P[self.i] - Q[self.j]))
+        self.i = i
+        self.i_is_vert = i_is_vert
+        self.j = j
+        self.j_is_vert = j_is_vert
+        self.t = t
+        self.dist = dist
+        self.t = t
+        self.p = p
 
-            else:
-                self.dist, self.t, self.p = line_point_distance(
-                    Q[self.j], Q[self.j + 1], P[self.i]
-                )
-
-        elif self.j_is_vert:
-            self.dist, self.t, self.p = line_point_distance(
-                P[self.i], P[self.i + 1], Q[self.j]
-            )
-        else:
-            raise Exception
-
-        assert 0.0 <= self.t <= 1.0
         self.__recompute_hash()
 
     def __recompute_hash(self) -> None:
         self.hash_val = hash((self.i, self.i_is_vert, self.j, self.j_is_vert, self.t))
 
-    # TODO make a better copy function
-    def copy(self, P: np.ndarray, Q: np.ndarray) -> Self:
-        temp = EID(self.i, self.i_is_vert, self.j, self.j_is_vert, P, Q)
-        temp.dist = self.dist
-        temp.t = self.t
-        temp.hash_val = self.hash_val
-        temp.p = self.p
-        return temp
+    def copy(self) -> Self:
+        return EID(
+            self.i, self.i_is_vert, self.j, self.j_is_vert, self.dist, self.t, self.p
+        )
+
+    # # TODO make a better copy function
+    # def copy(self, P: np.ndarray, Q: np.ndarray) -> Self:
+    #     temp = EID(self.i, self.i_is_vert, self.j, self.j_is_vert, P, Q)
+    #     temp.dist = self.dist
+    #     temp.t = self.t
+    #     temp.hash_val = self.hash_val
+    #     temp.p = self.p
+    #     return temp
 
     def reassign_parameter(self, new_t: float, P: np.ndarray, Q: np.ndarray) -> None:
         """
@@ -114,6 +106,46 @@ class EID:
             and (self.j_is_vert == other.j_is_vert)
             and np.isclose(self.t, other.t)
         )
+
+
+@nb.njit
+def from_curve_indices(
+    i: int,
+    i_is_vert: bool,
+    j: int,
+    j_is_vert: bool,
+    P: np.ndarray,
+    Q: np.ndarray,
+) -> EID:
+    dist = 0.0
+    t = 0.0
+    p = np.empty(0)
+
+    # Compute the distance
+    if i_is_vert:
+        if j_is_vert:
+            dist = float(np.linalg.norm(P[i] - Q[j]))
+
+        else:
+            dist, t, p = line_point_distance(Q[j], Q[j + 1], P[i])
+
+    elif j_is_vert:
+        dist, t, p = line_point_distance(P[i], P[i + 1], Q[j])
+    else:
+        raise Exception
+
+    return EID(i, i_is_vert, j, j_is_vert, dist, t, p)
+
+
+@nb.njit
+def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> float:
+
+    res = 0.0
+
+    for event in morphing_list:
+        res = max(res, event.dist)
+
+    return res
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366

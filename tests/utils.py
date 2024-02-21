@@ -1,4 +1,7 @@
+import numba.typed as nbt
 import numpy as np
+
+import frechetlib.frechet_utils as fu
 
 
 def leq_with_tolerance(f1: np.floating, f2: np.floating, tol: float = 1e-5) -> bool:
@@ -19,3 +22,22 @@ def generate_curves_close(
     P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, 2))
     Q = P + np.random.uniform(low=0.0, high=0.5, size=(num_pts, 2))
     return P, Q
+
+
+def get_basic_morphing() -> fu.Morphing:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    morphing_list = nbt.List(
+        [
+            fu.from_curve_indices(0, True, 0, True, P, Q),
+            fu.from_curve_indices(0, False, 0, True, P, Q),
+            fu.from_curve_indices(0, False, 1, True, P, Q),
+            fu.from_curve_indices(0, False, 2, True, P, Q),
+            fu.from_curve_indices(0, False, 3, True, P, Q),
+            fu.from_curve_indices(0, False, 4, True, P, Q),
+            fu.from_curve_indices(1, True, 4, True, P, Q),
+        ]
+    )
+
+    dist = fu.get_frechet_dist_from_morphing_list(morphing_list)
+    return fu.Morphing(morphing_list, P, Q, dist)

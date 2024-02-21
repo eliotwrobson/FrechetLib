@@ -1,10 +1,8 @@
 import time
 
-import numba.typed as nbt
 import numpy as np
 from utils import leq_with_tolerance
 
-import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 

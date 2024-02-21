@@ -69,7 +69,7 @@ def frechet_dist_upper_bound(
 # TODO have to write test cases for this, since it's slowing down other things
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
-) -> tuple[np.ndarray, np.ndarray, list[fu.EID], float, bool]:
+) -> tuple[fu.Morphing, bool]:
     """
     Computes the "true" monotone Frechet distance between P and Q,
     using the ve_r algorithm. It does refinement, to add vertices if
@@ -92,9 +92,9 @@ def frechet_mono_via_refinement(
     while fr_r_mono <= approx * fr_retract:
         ve_morphing = rf.retractable_ve_frechet(P, Q)
 
-        fr_r_mono, monotone_morphing = get_monotone_morphing_width(ve_morphing, P, Q)
+        monotone_morphing = get_monotone_morphing_width(ve_morphing)
 
-        if np.isclose(fr_retract, fr_r_mono):
+        if np.isclose(ve_morphing.dist, fr_r_mono):
             f_exact = True
             break
         elif fr_r_mono <= approx * fr_retract:
@@ -102,7 +102,7 @@ def frechet_mono_via_refinement(
 
         P, Q = add_points_to_make_monotone(P, Q, monotone_morphing)
 
-    return P, Q, monotone_morphing, fr_r_mono, f_exact
+    return monotone_morphing, f_exact
 
 
 def add_points_to_make_monotone(
@@ -208,13 +208,17 @@ def _add_points_to_make_monotone(
 # Based on https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
-def get_monotone_morphing_width(
-    morphing: fu.Morphing, P: np.ndarray, Q: np.ndarray
-) -> fu.Morphing:
+def get_monotone_morphing_width(morphing_obj: fu.Morphing) -> fu.Morphing:
     # TODO change this so that it's a function on the new class
-    res = []
+
     longest_dist = 0.0
+    morphing = morphing_obj.morphing_list
     n = len(morphing)
+
+    # TODO figure out how to declare the empty list without this
+    res = nbt.List([morphing[0]])
+    res.clear()
+
     k = 0
 
     while k < n:
@@ -234,21 +238,21 @@ def get_monotone_morphing_width(
                 and morphing[new_k + 1].i_is_vert == event.i_is_vert
                 and morphing[new_k + 1].i == event.i
             ):
-                new_event = morphing[new_k].copy(P, Q)
+                new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
                 best_t = max(best_t, new_event.t)
                 # TODO might be the wrong condition??
                 if best_t > new_event.t:
-                    new_event.reassign_parameter(best_t, P, Q)
+                    new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
 
                 longest_dist = max(longest_dist, new_event.dist)
                 res.append(new_event)
 
                 new_k += 1
 
-            new_event = morphing[new_k].copy(P, Q)
+            new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
 
             if best_t > new_event.t:
-                new_event.reassign_parameter(best_t, P, Q)
+                new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
 
             longest_dist = max(longest_dist, new_event.dist)
             res.append(new_event)
@@ -264,28 +268,28 @@ def get_monotone_morphing_width(
                 and morphing[new_k + 1].j_is_vert == event.j_is_vert
                 and morphing[new_k + 1].j == event.j
             ):
-                new_event = morphing[new_k].copy(P, Q)
+                new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
                 best_t = max(best_t, new_event.t)
 
                 # TODO might be the wrong condition??
                 if best_t > new_event.t:
-                    new_event.reassign_parameter(best_t, P, Q)
+                    new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
 
                 longest_dist = max(longest_dist, new_event.dist)
                 res.append(new_event)
 
                 new_k += 1
 
-            new_event = morphing[new_k].copy(P, Q)
+            new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
 
             if best_t > new_event.t:
-                new_event.reassign_parameter(best_t, P, Q)
+                new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
 
             longest_dist = max(longest_dist, new_event.dist)
             res.append(new_event)
             k = new_k + 1
 
-    return Morphing(res, longest_dist
+    return fu.Morphing(res, morphing_obj.P, morphing_obj.Q, longest_dist)
 
 
 @nb.njit
@@ -320,16 +324,18 @@ def frechet_c_mono_approx_subcurve(
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
 
-        next_event = fu.EID(i, True, curr_idx, True, P, P_subcurve)
+        next_event = fu.from_curve_indices(i, True, curr_idx, True, P, P_subcurve)
         width = max(width, next_event.dist)
         res.append(next_event)
 
         for j in range(curr_idx + 1, next_idx):
-            next_event = fu.EID(i, True, j, False, P, P_subcurve)
+            next_event = fu.from_curve_indices(i, True, j, False, P, P_subcurve)
             width = max(width, next_event.dist)
             res.append(next_event)
 
-    next_event = fu.EID(len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve)
+    next_event = fu.from_curve_indices(
+        len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve
+    )
     width = width = max(width, next_event.dist)
     res.append(width)
 

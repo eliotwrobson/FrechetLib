@@ -8,46 +8,28 @@ import frechetlib.retractable_frechet as rf
 
 
 def test_get_monotone_morphing_width() -> None:
-    # TODO check with Sariel about this test case
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    morphing = nbt.List(
-        [
-            fu.EID(0, True, 0, True, P, Q),
-            fu.EID(0, False, 0, True, P, Q),
-            fu.EID(0, False, 1, True, P, Q),
-            fu.EID(0, False, 2, True, P, Q),
-            fu.EID(0, False, 3, True, P, Q),
-            fu.EID(0, False, 4, True, P, Q),
-            fu.EID(1, True, 4, True, P, Q),
-        ]
-    )
-    _, res = cf.get_monotone_morphing_width(morphing, P, Q)
-    assert len(res) == len(morphing)
-
-
-def test_monotone_morphing() -> None:
-    P, Q = u.generate_curves_close(10_000, 100.0)
-    # get_monotone_morphing_width(rf.retractable_ve_frechet(P, Q), P, Q)
+    morphing = u.get_basic_morphing()
+    monotone_morphing = cf.get_monotone_morphing_width(morphing)
+    assert len(monotone_morphing.morphing_list) == len(morphing.morphing_list)
 
 
 def test_frechet_mono_via_refinement() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    new_P, new_Q, monotone_morphing, mono_width, f_exact = (
-        cf.frechet_mono_via_refinement(P, Q, 1.01)
-    )
-    ve_width, ve_morphing = rf.retractable_ve_frechet(P, Q)
+    monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+    ve_morphing = rf.retractable_ve_frechet(P, Q)
 
     if f_exact:
-        assert np.isclose(ve_width, mono_width)
+        assert np.isclose(ve_morphing.dist, monotone_morphing.dist)
     else:
-        assert ve_width <= mono_width
+        assert ve_morphing.dist <= monotone_morphing.dist
 
-    assert len(monotone_morphing) >= len(ve_morphing)
-    assert new_P.shape[0] >= P.shape[0]
-    assert new_Q.shape[0] >= Q.shape[0]
+    # TODO I think I can assert the length is just the sum of the lengths of the
+    # number of points in each curve
+    assert len(monotone_morphing.morphing_list) >= len(ve_morphing.morphing_list)
+    assert monotone_morphing.P.shape[0] >= P.shape[0]
+    assert monotone_morphing.Q.shape[0] >= Q.shape[0]
 
 
 def test_frechet_add_points() -> None:
@@ -55,13 +37,13 @@ def test_frechet_add_points() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing = nbt.List(
         [
-            fu.EID(0, True, 0, True, P, Q),
-            fu.EID(0, False, 0, True, P, Q),
-            fu.EID(0, False, 1, True, P, Q),
-            fu.EID(0, False, 2, True, P, Q),
-            fu.EID(0, False, 3, True, P, Q),
-            fu.EID(0, False, 4, True, P, Q),
-            fu.EID(1, True, 4, True, P, Q),
+            fu.from_curve_indices(0, True, 0, True, P, Q),
+            fu.from_curve_indices(0, False, 0, True, P, Q),
+            fu.from_curve_indices(0, False, 1, True, P, Q),
+            fu.from_curve_indices(0, False, 2, True, P, Q),
+            fu.from_curve_indices(0, False, 3, True, P, Q),
+            fu.from_curve_indices(0, False, 4, True, P, Q),
+            fu.from_curve_indices(1, True, 4, True, P, Q),
         ]
     )
 
@@ -72,5 +54,5 @@ def test_frechet_add_points() -> None:
 def test_add_points() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    _, morphing = rf.retractable_ve_frechet(P, Q)
+    morphing = rf.retractable_ve_frechet(P, Q)
     new_P, new_Q = cf.add_points_to_make_monotone(P, Q, morphing)
