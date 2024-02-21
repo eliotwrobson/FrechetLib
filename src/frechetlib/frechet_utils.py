@@ -1,14 +1,13 @@
 import numba as nb
+import numba.types as nbt
 import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
 
-spec = [("p", nb.float64[:])]
-
 
 # TODO rewrite this using a proper morphing data class that holds all
 # this crap for you
-@jitclass(spec)
+@jitclass([("p", nb.float64[:])])
 class EID:
     i: int
     i_is_vert: bool
@@ -115,6 +114,20 @@ class EID:
             and (self.j_is_vert == other.j_is_vert)
             and np.isclose(self.t, other.t)
         )
+
+
+@jitclass(
+    [("morphing_list", nbt.List(EID)), ("P", nb.float64[:]), ("Q", nb.float64[:])]
+)
+class Morphing:
+    morphing_list: list[EID]
+    P: np.ndarray
+    Q: np.ndarray
+
+    def __init__(self, morphing_list_: list[EID], P_: np.ndarray, Q_: np.ndarray):
+        self.morphing_list = morphing_list_
+        self.P = P_
+        self.Q = Q_
 
 
 @nb.njit
