@@ -216,8 +216,7 @@ def get_monotone_morphing_width(morphing_obj: fu.Morphing) -> fu.Morphing:
     n = len(morphing)
 
     # TODO figure out how to declare the empty list without this
-    res = nbt.List([morphing[0]])
-    res.clear()
+    res = nbt.List.empty_list(fu.eid_type)
 
     k = 0
 

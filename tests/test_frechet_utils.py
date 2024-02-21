@@ -1,6 +1,7 @@
 import copy
 
 import numpy as np
+import utils as u
 
 import frechetlib.frechet_utils as fu
 
@@ -26,4 +27,5 @@ def test_eid_copy() -> None:
 
 
 def test_morphing_copy() -> None:
-    pass
+    morphing = u.get_basic_morphing()
+    other_morphing = morphing.copy()

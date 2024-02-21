@@ -1,5 +1,5 @@
 import numba as nb
-import numba.types as nbt
+import numba.typed as nbt
 import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
@@ -148,6 +148,11 @@ def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> flo
     return res
 
 
+# I think this is needed at the global scope because numba has issues
+# https://github.com/numba/numba/issues/7291
+eid_type = nb.typeof(EID(0, True, 0, True, 0.0, 0.0, np.empty(0)))
+
+
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
 @jitclass(
     [
@@ -157,18 +162,30 @@ def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> flo
     ]
 )
 class Morphing:
-    # morphing_list
+    morphing_list: nb.types.ListType
     P: np.ndarray
     Q: np.ndarray
     dist: float
 
     def __init__(
-        self, morphing_list_: list[EID], P_: np.ndarray, Q_: np.ndarray, dist_: float
+        self,
+        morphing_list_: nb.types.ListType,
+        P_: np.ndarray,
+        Q_: np.ndarray,
+        dist_: float,
     ):
         self.morphing_list = morphing_list_
         self.P = P_
         self.Q = Q_
         self.dist = dist_
+
+    def copy(self) -> Self:
+        new_morphing = nbt.List.empty_list(eid_type, len(self.morphing_list))
+
+        for event in self.morphing_list:
+            new_morphing.append(event.copy())
+
+        return Morphing(new_morphing, self.P, self.Q, self.dist)
 
 
 @nb.njit
