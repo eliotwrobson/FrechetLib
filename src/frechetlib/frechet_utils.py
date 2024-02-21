@@ -116,18 +116,27 @@ class EID:
         )
 
 
+# https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
 @jitclass(
-    [("morphing_list", nbt.List(EID)), ("P", nb.float64[:]), ("Q", nb.float64[:])]
+    [
+        ("morphing_list", nb.types.ListType(EID.class_type.instance_type)),
+        ("P", nb.float64[:, :]),
+        ("Q", nb.float64[:, :]),
+    ]
 )
 class Morphing:
-    morphing_list: list[EID]
+    # morphing_list
     P: np.ndarray
     Q: np.ndarray
+    dist: float
 
-    def __init__(self, morphing_list_: list[EID], P_: np.ndarray, Q_: np.ndarray):
+    def __init__(
+        self, morphing_list_: list[EID], P_: np.ndarray, Q_: np.ndarray, dist_: float
+    ):
         self.morphing_list = morphing_list_
         self.P = P_
         self.Q = Q_
+        self.dist = dist_
 
 
 @nb.njit

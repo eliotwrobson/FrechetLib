@@ -5,13 +5,14 @@ import heapq as hq
 from typing import Optional
 
 import numba as nb
+import numba.typed as nbt
 import numpy as np
 
 import frechetlib.frechet_utils as fu
 
 
 @nb.njit
-def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[fu.EID]]:
+def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> fu.Morphing:
     start_node = fu.EID(0, True, 0, True, P, Q)
     start_node_1 = fu.EID(0, False, 0, True, P, Q)
     start_node_2 = fu.EID(0, True, 0, False, P, Q)
@@ -51,7 +52,7 @@ def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[fu
             seen[next_node] = curr_event
             hq.heappush(work_queue, next_node)
 
-    morphing = [last_event]
+    morphing = nbt.List([last_event])
 
     while last_event in seen:
         last_event = seen[last_event]
@@ -60,4 +61,4 @@ def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> tuple[float, list[fu
     # TODO maybe add final event??
     morphing.reverse()
 
-    return res, morphing
+    return fu.Morphing(morphing, P, Q, res)
