@@ -90,11 +90,9 @@ def frechet_mono_via_refinement(
     f_exact = False
 
     while fr_r_mono <= approx * fr_retract:
-        fr_retract, ve_morphing = rf.retractable_ve_frechet(P, Q)
-        # fu.print_morphing(ve_morphing)
-        fr_r_mono, monotone_morphing = get_monotone_morphing_width(
-            nbt.List(ve_morphing), P, Q
-        )
+        ve_morphing = rf.retractable_ve_frechet(P, Q)
+
+        fr_r_mono, monotone_morphing = get_monotone_morphing_width(ve_morphing, P, Q)
 
         if np.isclose(fr_retract, fr_r_mono):
             f_exact = True
@@ -211,8 +209,9 @@ def _add_points_to_make_monotone(
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
 def get_monotone_morphing_width(
-    morphing: nbt.List[fu.EID], P: np.ndarray, Q: np.ndarray
-) -> tuple[float, list[fu.EID]]:
+    morphing: fu.Morphing, P: np.ndarray, Q: np.ndarray
+) -> fu.Morphing:
+    # TODO change this so that it's a function on the new class
     res = []
     longest_dist = 0.0
     n = len(morphing)
@@ -286,7 +285,7 @@ def get_monotone_morphing_width(
             res.append(new_event)
             k = new_k + 1
 
-    return longest_dist, res
+    return Morphing(res, longest_dist
 
 
 @nb.njit
