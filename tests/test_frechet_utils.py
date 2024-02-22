@@ -46,3 +46,12 @@ def test_morphing_is_monotone() -> None:
 
     monotone_morphing = u.get_basic_morphing_monotone()
     assert monotone_morphing.is_monotone()
+
+
+def test_morphing_make_monotone() -> None:
+    non_monotone_morphing = u.get_basic_morphing()
+    other_morphing = non_monotone_morphing.copy()
+    other_morphing.make_monotone()
+
+    assert not non_monotone_morphing.is_monotone()
+    assert other_morphing.is_monotone()

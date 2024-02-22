@@ -188,6 +188,10 @@ class Morphing:
         return Morphing(new_morphing, self.P, self.Q, self.dist)
 
     def is_monotone(self) -> bool:
+        """
+        Returns True if this morphing is monotone, False otherwise.
+        """
+
         for k in range(len(self.morphing_list) - 1):
             event = self.morphing_list[k]
             next_event = self.morphing_list[k + 1]
@@ -211,6 +215,81 @@ class Morphing:
                 return False
 
         return True
+
+    def make_monotone(self) -> None:
+        """
+        Modifies this morphing to be monotone in-place.
+        """
+
+        longest_dist = 0.0
+        morphing = self.morphing_list
+        n = len(morphing)
+        k = 0
+
+        while k < n:
+            event = morphing[k]
+
+            if event.i_is_vert and event.j_is_vert:
+                k += 1
+                continue
+
+            elif not event.i_is_vert:
+                new_k = k
+                best_t = event.t
+
+                while (
+                    new_k < n - 1
+                    and morphing[new_k + 1].i_is_vert == event.i_is_vert
+                    and morphing[new_k + 1].i == event.i
+                ):
+                    new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+                    best_t = max(best_t, new_event.t)
+                    # TODO might be the wrong condition??
+                    if best_t > new_event.t:
+                        morphing[new_k].reassign_parameter(best_t, self.P, self.Q)
+
+                    longest_dist = max(longest_dist, morphing[new_k].dist)
+
+                    new_k += 1
+
+                new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+
+                if best_t > new_event.t:
+                    new_event.reassign_parameter(best_t, self.P, self.Q)
+
+                longest_dist = max(longest_dist, new_event.dist)
+                k = new_k + 1
+
+            # TODO might be able to simplify this?
+            elif not event.j_is_vert:
+                new_k = k
+                best_t = event.t
+
+                while (
+                    new_k < n - 1
+                    and morphing[new_k + 1].j_is_vert == event.j_is_vert
+                    and morphing[new_k + 1].j == event.j
+                ):
+                    new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+                    best_t = max(best_t, new_event.t)
+
+                    # TODO might be the wrong condition??
+                    if best_t > new_event.t:
+                        new_event.reassign_parameter(best_t, self.P, self.Q)
+
+                    longest_dist = max(longest_dist, new_event.dist)
+                    # res.append(new_event)
+
+                    new_k += 1
+
+                new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+
+                if best_t > new_event.t:
+                    new_event.reassign_parameter(best_t, self.P, self.Q)
+
+                longest_dist = max(longest_dist, new_event.dist)
+                # res.append(new_event)
+                k = new_k + 1
 
 
 @nb.njit
