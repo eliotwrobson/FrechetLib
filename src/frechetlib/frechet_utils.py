@@ -314,17 +314,20 @@ def line_point_distance(
     """
     # Return minimum distance between line segment p1-p2 and point q
 
-    l2 = np.linalg.norm(p2 - p1) ** 2  # i.e. |p2-p1|^2 -  avoid a sqrt
+    q_diff = q - p1
+    p_diff = p2 - p1
+
+    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
     if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q - p1)), 0.0, p1
+        return float(np.linalg.norm(q_diff)), 0.0, p1
     # Consider the line extending the segment, parameterized as v + t (p2 - p1).
     # We find projection of point q onto the line.
     # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
     # We clamp t from [0,1] to handle points outside the segment vw.
-    t = np.dot(q - p1, p2 - p1) / l2
+    t = np.dot(q_diff, p_diff) / l2
 
     if t <= 0.0:
-        return float(np.linalg.norm(q - p1)), 0.0, p1
+        return float(np.linalg.norm(q_diff)), 0.0, p1
     elif t >= 1.0:
         return float(np.linalg.norm(q - p2)), 1.0, p2
 
