@@ -8,6 +8,7 @@ def leq_with_tolerance(f1: np.floating, f2: np.floating, tol: float = 1e-5) -> b
     return f1 + tol >= f2
 
 
+# https://github.com/TvoroG/pytest-lazy-fixture/issues/65
 def generate_curves_random(
     num_pts: int, scaling_factor: float
 ) -> tuple[np.ndarray, np.ndarray]:

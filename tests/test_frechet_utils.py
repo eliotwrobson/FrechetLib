@@ -29,3 +29,21 @@ def test_eid_copy() -> None:
 def test_morphing_copy() -> None:
     morphing = u.get_basic_morphing()
     other_morphing = morphing.copy()
+
+    assert other_morphing is not morphing
+    assert np.array_equal(other_morphing.P, morphing.P)
+    assert np.array_equal(other_morphing.Q, morphing.Q)
+    assert other_morphing.dist == morphing.dist
+
+    for event_1, event_2 in zip(morphing.morphing_list, other_morphing.morphing_list):
+        assert event_1 == event_2
+        assert event_1 is not event_2
+
+
+def test_morphing_is_monotone() -> None:
+    non_monotone_morphing = u.get_basic_morphing()
+
+    # for thing in non_monotone_morphing.morphing_list:
+    #    print(thing.i, thing.i_is_vert, thing.j, thing.j_is_vert, thing.t)
+
+    assert not non_monotone_morphing.is_monotone()

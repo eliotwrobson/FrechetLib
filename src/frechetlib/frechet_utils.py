@@ -187,6 +187,26 @@ class Morphing:
 
         return Morphing(new_morphing, self.P, self.Q, self.dist)
 
+    def is_monotone(self) -> bool:
+        for k in range(len(self.morphing_list) - 1):
+            event = self.morphing_list[k]
+            next_event = self.morphing_list[k + 1]
+
+            # Matching first or second events
+            first_matches = (
+                event.i == next_event.i and event.i_is_vert == next_event.i_is_vert
+            )
+            second_matches = (
+                event.j == next_event.j and event.j_is_vert == next_event.j_is_vert
+            )
+
+            # Check tuples to see if events are on the same edge
+            # and if monotonicity is violated
+            if first_matches or second_matches and event.t > next_event.t:
+                return False
+
+        return True
+
 
 @nb.njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
