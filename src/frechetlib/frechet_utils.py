@@ -97,6 +97,11 @@ class EID:
 
 
 @nb.njit
+def eid_get_coefficient(event: EID) -> float:
+    return event.t
+
+
+@nb.njit
 def from_curve_indices(
     i: int,
     i_is_vert: bool,

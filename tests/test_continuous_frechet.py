@@ -14,6 +14,10 @@ def test_add_points() -> None:
     print(len(morphing))
     new_P, new_Q = cf.add_points_to_make_monotone(morphing)
     new_morphing = rf.retractable_ve_frechet(P, Q)
+
+    for event in new_morphing:
+        print(event.i, event.i_is_vert, event.j, event.j_is_vert)
+
     print(new_P)
     print(new_Q)
     print(new_morphing.dist)

@@ -142,7 +142,7 @@ def add_points_to_make_monotone(
             continue
 
         loc = morphing_list[k].i
-        offsets = []
+        events = []
 
         # [old_k,k) is the indices of points that are on the same segment
         # So increase new_k to get the max window where this is the case
@@ -151,35 +151,25 @@ def add_points_to_make_monotone(
             and not morphing_list[k].i_is_vert
             and morphing_list[k].i == loc
         ):
-            coeff = morphing_list[k].t
-
-            # No need for a new point if we have a 0 coefficient,
-            # since this just means we're at the original point anyway.
-            if not np.isclose(coeff, 0.0):
-                offsets.append(coeff)
-
+            events.append(morphing_list[k])
             k += 1
 
         # TODO there's an extra 1.0 getting added here for some reason
         # Next, check if the offsets are monotone as-given
         monotone = True
-        for j in range(len(offsets) - 1):
-            monotone = monotone and (offsets[j] <= offsets[j + 1])
+        for j in range(len(events) - 1):
+            monotone = monotone and (events[j].t <= events[j + 1].t)
 
-        offsets = sorted(offsets)
+        events = sorted(events, key=fu.eid_get_coefficient)
         print("old:", new_P)
 
-        for j in range(len(offsets)):
-            # TODO if speed is an issue, could be possible to use stored points of P
-            new_P.append(fu.convex_comb(P[loc], P[loc + 1], offsets[j]))
-            if not monotone and j < len(offsets) - 1:
-                new_P.append(
-                    fu.convex_comb(
-                        P[loc], P[loc + 1], (offsets[j] + offsets[j + 1]) / 2
-                    )
-                )
+        for j in range(len(events)):
+            new_P.append(events[j].p)
 
-        print(k, offsets, monotone, new_P)
+            if not monotone and j < len(events) - 1:
+                new_P.append((events[j].p + events[j + 1].p) / 2)
+
+        print(k, events, monotone, new_P)
         # TODO I think there's an off by one here
         # k = new_k + 1
 
