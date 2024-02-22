@@ -293,6 +293,11 @@ class Morphing:
                 # res.append(new_event)
                 k = new_k + 1
 
+        self.dist = longest_dist
+
+    def __len__(self) -> int:
+        return len(self.morphing_list)
+
 
 @nb.njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:

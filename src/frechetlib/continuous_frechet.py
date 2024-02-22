@@ -205,7 +205,6 @@ def _add_points_to_make_monotone(
     return new_P, new_Q
 
 
-# Based on https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
 # NOTE this function has weird arguments but is for internal use only, so it's probably ok.
 @nb.njit
 def get_monotone_morphing_width(morphing_obj: fu.Morphing) -> fu.Morphing:

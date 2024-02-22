@@ -1,10 +1,37 @@
-import copy
-
 import numpy as np
 import pytest
 import utils as u
 
 import frechetlib.frechet_utils as fu
+
+
+def check_morphing_witness(morphing: fu.Morphing) -> None:
+    """
+    Test helper function to ensure morphing is valid + correctly
+    witnessess the given distance.
+    """
+    target_dist = morphing.dist
+    prev_event = None
+    saw_witness = False
+
+    morphing_iter = iter(morphing.morphing_list)
+    # Skip first iteration because first two events are treated identical
+    next(morphing_iter)
+
+    for event in morphing_iter:
+        saw_witness = saw_witness or np.isclose(target_dist, event.dist)
+
+        if prev_event is not None:
+
+            assert (event.i - prev_event.i, event.j - prev_event.j) in {
+                (0, 1),
+                (1, 0),
+                (1, 1),
+            }
+
+        prev_event = event
+
+    assert saw_witness
 
 
 @pytest.mark.parametrize(
@@ -101,3 +128,6 @@ def test_morphing_make_monotone() -> None:
 
     assert not non_monotone_morphing.is_monotone()
     assert other_morphing.is_monotone()
+    assert len(other_morphing) == len(non_monotone_morphing)
+    check_morphing_witness(other_morphing)
+    assert other_morphing.dist >= non_monotone_morphing.dist
