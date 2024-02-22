@@ -1,9 +1,55 @@
 import copy
 
 import numpy as np
+import pytest
 import utils as u
 
 import frechetlib.frechet_utils as fu
+
+
+@pytest.mark.parametrize(
+    "p1,p2,q,distance,t,p_new",
+    [
+        (
+            np.array([-1.0, 0.0]),
+            np.array([1.0, 0.0]),
+            np.array([0.0, 1.0]),
+            1.0,
+            0.5,
+            np.array([0.0, 0.0]),
+        ),
+        (
+            np.array([-1.0, 0.0]),
+            np.array([1.0, 0.0]),
+            np.array([2.0, 0.0]),
+            1.0,
+            1.0,
+            np.array([1.0, 0.0]),
+        ),
+        (
+            np.array([-1.0, 0.0]),
+            np.array([1.0, 0.0]),
+            np.array([-2.0, 0.0]),
+            1.0,
+            0.0,
+            np.array([-1.0, 0.0]),
+        ),
+    ],
+)
+def test_line_point_distance(
+    p1: np.ndarray,
+    p2: np.ndarray,
+    q: np.ndarray,
+    distance: float,
+    t: float,
+    p_new: np.ndarray,
+) -> None:
+    new_dist, new_t, new_p = fu.line_point_distance(p1, p2, q)
+
+    assert 0.0 <= new_t <= 1.0
+    assert np.isclose(distance, new_dist)
+    assert np.isclose(t, new_t)
+    assert np.allclose(p_new, new_p)
 
 
 def test_convex_comb() -> None:

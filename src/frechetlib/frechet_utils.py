@@ -219,6 +219,8 @@ class Morphing:
     def make_monotone(self) -> None:
         """
         Modifies this morphing to be monotone in-place.
+        Based on:
+        https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
         """
 
         longest_dist = 0.0
@@ -311,7 +313,8 @@ def line_point_distance(
 
     """
     # Return minimum distance between line segment p1-p2 and point q
-    l2 = np.linalg.norm(p1 - p2)  # i.e. |p2-p1|^2 -  avoid a sqrt
+
+    l2 = np.linalg.norm(p2 - p1) ** 2  # i.e. |p2-p1|^2 -  avoid a sqrt
     if np.isclose(l2, 0.0):  # p1 == p2 case
         return float(np.linalg.norm(q - p1)), 0.0, p1
     # Consider the line extending the segment, parameterized as v + t (p2 - p1).
@@ -321,9 +324,9 @@ def line_point_distance(
     t = np.dot(q - p1, p2 - p1) / l2
 
     if t <= 0.0:
-        return float(np.linalg.norm(p1 - q)), 0.0, p1
+        return float(np.linalg.norm(q - p1)), 0.0, p1
     elif t >= 1.0:
-        return float(np.linalg.norm(p2 - q)), 1.0, p2
+        return float(np.linalg.norm(q - p2)), 1.0, p2
 
     point_on_segment = convex_comb(p1, p2, t)
     return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
