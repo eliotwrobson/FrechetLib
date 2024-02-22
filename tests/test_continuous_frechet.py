@@ -7,10 +7,17 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
-def test_get_monotone_morphing_width() -> None:
-    morphing = u.get_basic_morphing()
-    monotone_morphing = cf.get_monotone_morphing_width(morphing)
-    assert len(monotone_morphing.morphing_list) == len(morphing.morphing_list)
+def test_add_points() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    morphing = rf.retractable_ve_frechet(P, Q)
+    print(len(morphing))
+    new_P, new_Q = cf.add_points_to_make_monotone(morphing)
+    new_morphing = rf.retractable_ve_frechet(P, Q)
+    print(new_P)
+    print(new_Q)
+    print(new_morphing.dist)
+    assert False
 
 
 def test_frechet_mono_via_refinement() -> None:
@@ -49,10 +56,3 @@ def test_frechet_add_points() -> None:
 
     P_new, Q_new = cf.add_points_to_make_monotone(P, Q, morphing)
     assert P_new.shape[0] > P.shape[0]
-
-
-def test_add_points() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    morphing = rf.retractable_ve_frechet(P, Q)
-    new_P, new_Q = cf.add_points_to_make_monotone(P, Q, morphing)

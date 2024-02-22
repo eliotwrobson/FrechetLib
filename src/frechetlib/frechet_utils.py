@@ -5,8 +5,6 @@ from numba.experimental import jitclass
 from typing_extensions import Self
 
 
-# TODO rewrite this using a proper morphing data class that holds all
-# this crap for you
 @jitclass([("p", nb.float64[:])])
 class EID:
     i: int
@@ -35,7 +33,6 @@ class EID:
         t: float,
         p: np.ndarray,
     ) -> None:
-        assert 0.0 <= t <= 1.0
 
         self.i = i
         self.i_is_vert = i_is_vert
@@ -55,15 +52,6 @@ class EID:
         return EID(
             self.i, self.i_is_vert, self.j, self.j_is_vert, self.dist, self.t, self.p
         )
-
-    # # TODO make a better copy function
-    # def copy(self, P: np.ndarray, Q: np.ndarray) -> Self:
-    #     temp = EID(self.i, self.i_is_vert, self.j, self.j_is_vert, P, Q)
-    #     temp.dist = self.dist
-    #     temp.t = self.t
-    #     temp.hash_val = self.hash_val
-    #     temp.p = self.p
-    #     return temp
 
     def reassign_parameter(self, new_t: float, P: np.ndarray, Q: np.ndarray) -> None:
         """
@@ -133,6 +121,8 @@ def from_curve_indices(
         dist, t, p = line_point_distance(P[i], P[i + 1], Q[j])
     else:
         raise Exception
+
+    assert 0.0 <= t <= 1.0
 
     return EID(i, i_is_vert, j, j_is_vert, dist, t, p)
 

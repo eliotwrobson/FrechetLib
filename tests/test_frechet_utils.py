@@ -22,7 +22,7 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
         saw_witness = saw_witness or np.isclose(target_dist, event.dist)
 
         if prev_event is not None:
-
+            # Asserts that consecutive events are contiguous
             assert (event.i - prev_event.i, event.j - prev_event.j) in {
                 (0, 1),
                 (1, 0),
@@ -80,6 +80,7 @@ def test_line_point_distance(
 
 
 def test_convex_comb() -> None:
+    # TODO replace this with an actual test of the convex combination function
     p1 = np.array([0.0, 0.0])
     p2 = np.array([1.0, 1.0])
     q = np.array([1.0, 1.0])
