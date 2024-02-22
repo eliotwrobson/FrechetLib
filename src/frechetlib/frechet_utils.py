@@ -192,6 +192,11 @@ class Morphing:
             event = self.morphing_list[k]
             next_event = self.morphing_list[k + 1]
 
+            if (event.i_is_vert and event.j_is_vert) or (
+                next_event.i_is_vert and next_event.j_is_vert
+            ):
+                continue
+
             # Matching first or second events
             first_matches = (
                 event.i == next_event.i and event.i_is_vert == next_event.i_is_vert
@@ -202,7 +207,7 @@ class Morphing:
 
             # Check tuples to see if events are on the same edge
             # and if monotonicity is violated
-            if first_matches or second_matches and event.t > next_event.t:
+            if (first_matches or second_matches) and event.t > next_event.t:
                 return False
 
         return True

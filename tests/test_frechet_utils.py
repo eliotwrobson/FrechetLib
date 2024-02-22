@@ -42,8 +42,7 @@ def test_morphing_copy() -> None:
 
 def test_morphing_is_monotone() -> None:
     non_monotone_morphing = u.get_basic_morphing()
-
-    # for thing in non_monotone_morphing.morphing_list:
-    #    print(thing.i, thing.i_is_vert, thing.j, thing.j_is_vert, thing.t)
-
     assert not non_monotone_morphing.is_monotone()
+
+    monotone_morphing = u.get_basic_morphing_monotone()
+    assert monotone_morphing.is_monotone()
