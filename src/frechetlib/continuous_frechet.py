@@ -151,7 +151,13 @@ def add_points_to_make_monotone(
             and not morphing_list[k].i_is_vert
             and morphing_list[k].i == loc
         ):
-            offsets.append(morphing_list[k].t)
+            coeff = morphing_list[k].t
+
+            # No need for a new point if we have a 0 coefficient,
+            # since this just means we're at the original point anyway.
+            if not np.isclose(coeff, 0.0):
+                offsets.append(coeff)
+
             k += 1
 
         # TODO there's an extra 1.0 getting added here for some reason
