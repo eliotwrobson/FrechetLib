@@ -36,17 +36,16 @@ def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> fu.Morphing:
             break
 
         for di, i_vert, dj, j_vert in diffs:
+            # Start with bounds creation and checking
             i = curr_event.i + di
             j = curr_event.j + dj
+
+            if i >= n_p or j >= n_q:
+                continue
+
             next_node = fu.from_curve_indices(i, i_vert, j, j_vert, P, Q)
 
-            if (
-                i >= n_p
-                or j >= n_q
-                or (i == n_p and not i_vert)
-                or (j == n_q and not j_vert)
-                or next_node in seen
-            ):
+            if next_node in seen:
                 continue
 
             seen[next_node] = curr_event

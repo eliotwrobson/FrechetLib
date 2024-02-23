@@ -91,18 +91,23 @@ def frechet_mono_via_refinement(
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
 
-    limit = 3
+    limit = 10
     k = 0
     # Continue until monotone_morphing.dist <= approx * ve_morphing.dist
     while monotone_morphing.dist > approx * ve_morphing.dist:
         # print(monotone_morphing.dist > approx * ve_morphing.dist,monotone_morphing.dist,approx,ve_morphing.dist,)
-
         k += 1
+
+        print(monotone_morphing.dist)
+        print(ve_morphing.dist)
+
         if k >= limit:
+            print(len(monotone_morphing))
             raise Exception
         # Add points where monotonicity was broken to improve distance
-        new_P, new_Q = add_points_to_make_monotone(monotone_morphing)
-
+        new_P, new_Q = add_points_to_make_monotone(ve_morphing)
+        print(new_P)
+        print(new_Q)
         # Compute new ve frechet distance for curves
         ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
 
@@ -113,7 +118,7 @@ def frechet_mono_via_refinement(
     return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
 
 
-# TODO have to write test cases for this, it's buggy and inserting points with nan coordinates
+# TODO have to write test cases for this
 @nb.njit
 def add_points_to_make_monotone(
     morphing: fu.Morphing,
@@ -135,7 +140,8 @@ def add_points_to_make_monotone(
             new_P.append(P[morphing_list[k].i])
             old_k = k
             while (
-                morphing_list[old_k].i == morphing_list[k].i
+                k < len(morphing_list)
+                and morphing_list[old_k].i == morphing_list[k].i
                 and morphing_list[k].i_is_vert
             ):
                 k += 1
@@ -154,14 +160,16 @@ def add_points_to_make_monotone(
             events.append(morphing_list[k])
             k += 1
 
-        # TODO there's an extra 1.0 getting added here for some reason
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
             monotone = monotone and (events[j].t <= events[j + 1].t)
 
+        # TODO double check this is the right thing to do
+        if monotone:
+            continue
+
         events = sorted(events, key=fu.eid_get_coefficient)
-        print("old:", new_P)
 
         for j in range(len(events)):
             new_P.append(events[j].p)
@@ -169,53 +177,54 @@ def add_points_to_make_monotone(
             if not monotone and j < len(events) - 1:
                 new_P.append((events[j].p + events[j + 1].p) / 2)
 
-        print(k, events, monotone, new_P)
-        # TODO I think there's an off by one here
-        # k = new_k + 1
-
-    # Next, add points to Q, same as above but hard to share logic
+    # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
     k = 0
     while k < len(morphing_list):
-        # Vertex-vertex event, can ignore
         if morphing_list[k].j_is_vert:
             new_Q.append(Q[morphing_list[k].j])
-            k += 1
+            old_k = k
+            while (
+                k < len(morphing_list)
+                and morphing_list[old_k].j == morphing_list[k].j
+                and morphing_list[k].j_is_vert
+            ):
+                k += 1
             continue
 
-        new_k = k
-        loc = morphing_list[k].i
-        offsets = []
+        loc = morphing_list[k].j
+        events = []
 
+        # [old_k,k) is the indices of points that are on the same segment
+        # So increase new_k to get the max window where this is the case
         while (
-            new_k < len(morphing_list) - 1
-            and not morphing_list[new_k + 1].j_is_vert
-            and morphing_list[new_k + 1].j == loc
+            k < len(morphing_list)
+            and not morphing_list[k].j_is_vert
+            and morphing_list[k].j == loc
         ):
-            offsets.append(morphing_list[new_k].t)
-            new_k += 1
+            events.append(morphing_list[k])
+            k += 1
 
-        # [k:new_k) is the indices of points that are on the same segment
+        # Next, check if the offsets are monotone as-given
         monotone = True
-        offsets = sorted(offsets)
-        for j in range(len(offsets) - 1):
-            monotone = monotone and (offsets[j] <= offsets[j + 1])
+        for j in range(len(events) - 1):
+            monotone = monotone and (events[j].t <= events[j + 1].t)
 
-        for j in range(len(offsets)):
-            new_P.append(fu.convex_comb(Q[loc], Q[loc + 1], offsets[j]))
-            if not monotone and j < len(offsets) - 1:
-                new_P.append(
-                    fu.convex_comb(
-                        Q[loc], Q[loc + 1], (offsets[j] + offsets[j + 1]) / 2
-                    )
-                )
-        # TODO I think there's an off by one here
-        k = new_k + 1
+        if monotone:
+            continue
 
+        events = sorted(events, key=fu.eid_get_coefficient)
+        print("old: ", new_Q)
+        for j in range(len(events)):
+            new_Q.append(events[j].p)
+
+            if not monotone and j < len(events) - 1:
+                new_Q.append((events[j].p + events[j + 1].p) / 2)
+
+    # Finally, assemble into output arrays
     new_P_final = np.empty((len(new_P), new_P[0].shape[0]))
     new_Q_final = np.empty((len(new_Q), new_Q[0].shape[0]))
 
-    # Finally, make the arrays
     for k in range(len(new_P)):
         new_P_final[k] = new_P[k]
 
@@ -223,91 +232,6 @@ def add_points_to_make_monotone(
         new_Q_final[k] = new_Q[k]
 
     return new_P_final, new_Q_final
-
-
-# NOTE this function has weird arguments but is for internal use only, so it's probably ok.
-# @nb.njit
-# def get_monotone_morphing_width(morphing_obj: fu.Morphing) -> fu.Morphing:
-#     # TODO change this so that it's a function on the new class
-
-#     longest_dist = 0.0
-#     morphing = morphing_obj.morphing_list
-#     n = len(morphing)
-
-#     # TODO figure out how to declare the empty list without this
-#     res = nbt.List.empty_list(fu.eid_type)
-
-#     k = 0
-
-#     while k < n:
-#         event = morphing[k]
-
-#         if event.i_is_vert and event.j_is_vert:
-#             res.append(event)
-#             k += 1
-#             continue
-
-#         elif not event.i_is_vert:
-#             new_k = k
-#             best_t = event.t
-
-#             while (
-#                 new_k < n - 1
-#                 and morphing[new_k + 1].i_is_vert == event.i_is_vert
-#                 and morphing[new_k + 1].i == event.i
-#             ):
-#                 new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
-#                 best_t = max(best_t, new_event.t)
-#                 # TODO might be the wrong condition??
-#                 if best_t > new_event.t:
-#                     new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
-
-#                 longest_dist = max(longest_dist, new_event.dist)
-#                 res.append(new_event)
-
-#                 new_k += 1
-
-#             new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
-
-#             if best_t > new_event.t:
-#                 new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
-
-#             longest_dist = max(longest_dist, new_event.dist)
-#             res.append(new_event)
-#             k = new_k + 1
-
-#         # TODO might be able to simplify this?
-#         elif not event.j_is_vert:
-#             new_k = k
-#             best_t = event.t
-
-#             while (
-#                 new_k < n - 1
-#                 and morphing[new_k + 1].j_is_vert == event.j_is_vert
-#                 and morphing[new_k + 1].j == event.j
-#             ):
-#                 new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
-#                 best_t = max(best_t, new_event.t)
-
-#                 # TODO might be the wrong condition??
-#                 if best_t > new_event.t:
-#                     new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
-
-#                 longest_dist = max(longest_dist, new_event.dist)
-#                 res.append(new_event)
-
-#                 new_k += 1
-
-#             new_event = morphing[new_k].copy(morphing_obj.P, morphing_obj.Q)
-
-#             if best_t > new_event.t:
-#                 new_event.reassign_parameter(best_t, morphing_obj.P, morphing_obj.Q)
-
-#             longest_dist = max(longest_dist, new_event.dist)
-#             res.append(new_event)
-#             k = new_k + 1
-
-#     return fu.Morphing(res, morphing_obj.P, morphing_obj.Q, longest_dist)
 
 
 @nb.njit

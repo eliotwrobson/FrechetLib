@@ -114,16 +114,22 @@ def from_curve_indices(
     t = 0.0
     p = np.empty(0)
 
-    # Compute the distance
-    if i_is_vert:
-        if j_is_vert:
-            dist = float(np.linalg.norm(P[i] - Q[j]))
+    assert 0 <= i < P.shape[0]
+    assert 0 <= j < Q.shape[0]
 
+    if i_is_vert and j_is_vert:
+        dist = float(np.linalg.norm(P[i] - Q[j]))
+    elif i_is_vert:
+        if j == Q.shape[0] - 1:
+            dist = float(np.linalg.norm(P[i] - Q[j]))
         else:
             dist, t, p = line_point_distance(Q[j], Q[j + 1], P[i])
 
     elif j_is_vert:
-        dist, t, p = line_point_distance(P[i], P[i + 1], Q[j])
+        if i == P.shape[0] - 1:
+            dist = float(np.linalg.norm(P[i] - Q[j]))
+        else:
+            dist, t, p = line_point_distance(P[i], P[i + 1], Q[j])
     else:
         raise Exception
 
@@ -292,6 +298,11 @@ class Morphing:
 
     def __len__(self) -> int:
         return len(self.morphing_list)
+
+    def _print_event_list(self) -> None:
+
+        for event in self.morphing_list:
+            print(event.i, event.i_is_vert, event.j, event.j_is_vert, event.t)
 
 
 @nb.njit

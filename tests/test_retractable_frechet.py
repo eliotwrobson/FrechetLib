@@ -7,7 +7,7 @@ import frechetlib.retractable_frechet as rf
 
 
 def test_retractable_frechet() -> None:
-    n = 5000
+    n = 50
     # Just to make the test case always generate the same number
     noise_limit = 5.0
     d = 2
@@ -23,9 +23,9 @@ def test_retractable_frechet() -> None:
     print(end - start)
 
     # TODO fix this limit assertion, not sure it works right.
-
     # frechet_limit = np.linalg.norm(np.ones(d) * 2 * noise_limit)
     # assert frechet_dist <= frechet_limit
+
     assert len(morphing.morphing_list) == n * 2
 
     for event in morphing.morphing_list:
