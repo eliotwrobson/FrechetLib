@@ -317,15 +317,17 @@ class Morphing:
         for event in self.morphing_list:
             print(event.i, event.i_is_vert, event.j, event.j_is_vert, event.t)
 
-    def get_prm(self) -> tuple[list[float], list[float]]:
+    def get_prm(self) -> np.ndarray:
         # TODO once I write tests for this, it's probably possible to remove the
         # helper function and compute the prefix lengths on-the-fly. This will save
         # time / memory.
         p_lens = get_prefix_lens(self.P)
         q_lens = get_prefix_lens(self.Q)
 
-        p_events = np.empty(len(self.morphing_list))
-        q_events = np.empty(len(self.morphing_list))
+        prm = np.empty((2, len(self.morphing_list)))
+
+        p_events = prm[0]
+        q_events = prm[1]
 
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
@@ -350,7 +352,7 @@ class Morphing:
 
                 q_events[k] = curr_len + event.t * (next_len - curr_len)
 
-        return p_events, q_events
+        return prm
 
 
 @nb.njit
@@ -431,23 +433,26 @@ def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
 ) -> Morphing:
+    # Code is based on:
+    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
+
     P = morphing_1.P
     Q = morphing_1.Q
     assert np.allclose(morphing_1.Q, morphing_2.P)
     R = morphing_2.Q
 
-    prm_1 = morphing_1.get_prm()
-    prm_2 = morphing_2.get_prm()
+    p_events, q_events_1 = morphing_1.get_prm()
+    q_events_2, r_events = morphing_2.get_prm()
 
-    assert len(prm_1[1].shape) == len(prm_2[0].shape)
-    assert False
+    assert len(q_events_1.shape) == len(q_events_2.shape)
+
     # Apparently len(prm_1[1]) == len(prm_2[0])
 
     idx_1 = 0
     idx_2 = 0
 
-    len_1 = len(prm_1)
-    len_2 = len(prm_2)
+    len_1 = len(p_events)
+    len_2 = len(r_events)
 
     res = []
 
@@ -455,14 +460,14 @@ def morphing_combine(
         # x = dim(g,1)
         # y = dim(g,2) = dim(f, 1)
         # z = dim(f,2)
-        x, y_1 = prm_1[idx_1]
-        y_2, z = prm_2[idx_2]
+        y_1 = q_events_1[idx_1]
+        y_2 = q_events_2[idx_2]
 
         is_equal = np.isclose(y_1, y_2)
 
         if is_equal and idx_1 == len_1 and idx_2 == len_2:
             res.append((y_1, y_2))
-        elif is_equal and idx_1 < len_1 and np.isclose(prm_1[idx_1 + 1][1], y_1):
+        elif is_equal and idx_1 < len_1 and np.isclose(p_events[idx_1 + 1], y_1):
             res.append((y_1, y_2))
             idx_1 += 1
         elif is_equal and idx_2 < len_2 and np.isclose(prm_2[idx_2 + 1][0], y_2):
@@ -543,9 +548,3 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
     indices.append(n - 1)
 
     return indices
-
-
-### Functions below here are good for debugging
-def print_morphing(morphing: list[EID]) -> None:
-    for event in morphing:
-        print(event.i, event.i_is_vert, event.j, event.j_is_vert)
