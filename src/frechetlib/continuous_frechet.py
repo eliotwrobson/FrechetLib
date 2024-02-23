@@ -233,9 +233,10 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[i
             curr = P[i]
             indices.append(i)
 
-    indices.append(n - 1)
+    if indices[-1] != n - 1:
+        indices.append(n - 1)
 
-    new_P = np.empty((len(indices), P.shape[0]))
+    new_P = np.empty((len(indices), P.shape[1]))
 
     for k in range(len(indices)):
         new_P[k] = P[indices[k]]
@@ -255,7 +256,7 @@ def frechet_c_mono_approx_subcurve(
     specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
     """
 
-    res = []
+    res = nbt.List.empty_list(fu.eid_type)
     width = 0.0
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
@@ -279,6 +280,7 @@ def frechet_c_mono_approx_subcurve(
     return fu.Morphing(res, P, P_subcurve, width)
 
 
+@nb.njit
 def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     """
     Approximates the continuous Frechet distance between the two input
@@ -311,18 +313,18 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
     morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-    _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
-    _, first_combined_monotone = get_monotone_morphing_width(
-        nbt.List(first_combined), P, Q
-    )
-    width, final_combined = fu.morphing_combine(
-        P_orig, Q, Q_orig, first_combined_monotone, morphing_q
-    )
+    # _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
+    # _, first_combined_monotone = get_monotone_morphing_width(
+    #     nbt.List(first_combined), P, Q
+    # )
+    # width, final_combined = fu.morphing_combine(
+    #     P_orig, Q, Q_orig, first_combined_monotone, morphing_q
+    # )
 
-    ratio = width / (frechet_distance - 2.0 * max(morphing_p.dist, morphing_q.dist))
+    # ratio = width / (frechet_distance - 2.0 * max(morphing_p.dist, morphing_q.dist))
 
-    # TODO might be need to run through this a second time in a loop? Not sure
-    return width, ratio, final_combined
+    # # TODO might be need to run through this a second time in a loop? Not sure
+    # return width, ratio, final_combined
 
 
 def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
