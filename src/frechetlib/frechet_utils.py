@@ -317,6 +317,41 @@ class Morphing:
         for event in self.morphing_list:
             print(event.i, event.i_is_vert, event.j, event.j_is_vert, event.t)
 
+    def get_prm(self) -> tuple[list[float], list[float]]:
+        # TODO once I write tests for this, it's probably possible to remove the
+        # helper function and compute the prefix lengths on-the-fly. This will save
+        # time / memory.
+        p_lens = get_prefix_lens(self.P)
+        q_lens = get_prefix_lens(self.Q)
+
+        p_events = np.empty(len(self.morphing_list))
+        q_events = np.empty(len(self.morphing_list))
+
+        for k in range(len(self.morphing_list)):
+            event = self.morphing_list[k]
+            # Add event to P event list
+            # TODO check that this equality condition still gives you the
+            # correct answer
+            if event.i_is_vert or event.i + 1 == p_lens.shape[0]:
+                p_events[k] = p_lens[event.i]
+            else:
+                curr_len = p_lens[event.i]
+                assert event.i + 1 < p_lens.shape[0]
+                next_len = p_lens[event.i + 1]
+                p_events[k] = curr_len + event.t * (next_len - curr_len)
+
+            # Add event to Q event list
+            if event.j_is_vert or event.j + 1 == q_lens.shape[0]:
+                q_events[k] = q_lens[event.j]
+            else:
+                curr_len = q_lens[event.j]
+                assert event.j + 1 < q_lens.shape[0]
+                next_len = q_lens[event.j + 1]
+
+                q_events[k] = curr_len + event.t * (next_len - curr_len)
+
+        return p_events, q_events
+
 
 @nb.njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
@@ -361,48 +396,18 @@ def line_point_distance(
 
 @nb.njit
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
-
-    prefix_lens = []
+    n = P.shape[0]
+    prefix_lens = np.empty(n)
 
     curr_len = 0.0
 
-    for i in range(len(P) - 1):
-        prefix_lens.append(curr_len)
+    for i in range(n - 1):
+        prefix_lens[i] = curr_len
         curr_len += np.linalg.norm(P[i] - P[i + 1])
 
-    prefix_lens.append(curr_len)
+    prefix_lens[n - 1] = curr_len
 
-    return np.ndarray(prefix_lens)
-
-
-@nb.njit
-def morphing_get_prm(
-    P: np.ndarray, Q: np.ndarray, events: list[EID]
-) -> tuple[list[float], list[float]]:
-    p_lens = get_prefix_lens(P)
-    q_lens = get_prefix_lens(Q)
-
-    p_events = []
-    q_events = []
-    for k in range(len(events)):
-        event = events[k]
-        # Add event to P event list
-        if event.i_is_vert:
-            p_events.append(p_lens[event.i])
-        else:
-            curr_len = p_lens[event.i]
-            next_len = p_lens[event.i + 1]
-            p_events.append(curr_len + event.t * (next_len - curr_len))
-
-        # Add event to Q event list
-        if event.j_is_vert:
-            p_events.append(q_lens[event.j])
-        else:
-            curr_len = q_lens[event.j]
-            next_len = q_lens[event.j + 1]
-            p_events.append(curr_len + event.t * (next_len - curr_len))
-
-    return p_events, q_events
+    return prefix_lens
 
 
 @nb.njit
@@ -423,16 +428,19 @@ def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
 
 @nb.njit
 def morphing_combine(
-    P: np.ndarray,
-    Q: np.ndarray,
-    U: np.ndarray,
-    morphing_1: list[EID],
-    morphing_2: list[EID],
-) -> tuple[float, list[EID]]:
+    morphing_1: Morphing,
+    morphing_2: Morphing,
+) -> Morphing:
+    P = morphing_1.P
+    Q = morphing_1.Q
+    assert np.allclose(morphing_1.Q, morphing_2.P)
+    R = morphing_2.Q
 
-    prm_1 = morphing_get_prm(P, Q, morphing_1)
-    prm_2 = morphing_get_prm(Q, U, morphing_2)
+    prm_1 = morphing_1.get_prm()
+    prm_2 = morphing_2.get_prm()
 
+    assert len(prm_1[1].shape) == len(prm_2[0].shape)
+    assert False
     # Apparently len(prm_1[1]) == len(prm_2[0])
 
     idx_1 = 0
