@@ -223,7 +223,7 @@ def add_points_to_make_monotone(
 
 
 @nb.njit
-def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
+def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[int]]:
     curr = P[0]
     indices = [0]
     n = P.shape[0]
@@ -235,7 +235,12 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> list[int]:
 
     indices.append(n - 1)
 
-    return indices
+    new_P = np.empty((len(indices), P.shape[0]))
+
+    for k in range(len(indices)):
+        new_P[k] = P[indices[k]]
+
+    return new_P, indices
 
 
 @nb.njit
@@ -279,32 +284,27 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
 
     # Arguments
 
-    - `approx` : The output morhing has Frechet distance <= (1+approx)*optimal.
+    - `approx` : The output morhing has Frechet distance <= approx*optimal.
 
-    Importantly, approx can be larger than 1, if you want a really
+    Importantly, approx can be larger than 2, if you want a really
     rough approximation.
     """
     P_orig = P
     Q_orig = Q
 
     # Modeled after:
-    # https://github.com/sarielhp/retractable_frechet/blob/main/src/frechet.jl#L1686
-    frechet_distance = frechet_dist_upper_bound(P, Q)
+    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
+    upper_bound_dist = frechet_dist_upper_bound(P, Q)
 
     # radius of simplification allowed
-    r = frechet_distance / (approx_ratio + 4.0)
+    r = upper_bound_dist / (approx_ratio + 4.0)
 
-    while r >= (frechet_distance / (approx_ratio + 4.0)):
+    while r >= (upper_bound_dist / (approx_ratio + 4.0)):
         r /= 2.0
-        p_indices = simplify_polygon_radius(P, r)
-        q_indices = simplify_polygon_radius(Q, r)
+        P = simplify_polygon_radius(P, r)
+        Q = simplify_polygon_radius(Q, r)
 
-        P = np.take(P, p_indices, axis=0)
-        Q = np.take(Q, q_indices, axis=0)
-
-        _, _, morphing, frechet_distance, _ = frechet_mono_via_refinement(
-            P, Q, (3.0 + approx_ratio) / 4.0
-        )
+        morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
 
     p_width, morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
     q_width, morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)

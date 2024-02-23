@@ -7,6 +7,12 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
+def test_frechet_c_approx() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    cf.frechet_c_approx(P, Q, 1.01)
+
+
 def test_add_points() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
