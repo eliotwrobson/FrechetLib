@@ -91,23 +91,11 @@ def frechet_mono_via_refinement(
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
 
-    limit = 10
-    k = 0
     # Continue until monotone_morphing.dist <= approx * ve_morphing.dist
     while monotone_morphing.dist > approx * ve_morphing.dist:
-        # print(monotone_morphing.dist > approx * ve_morphing.dist,monotone_morphing.dist,approx,ve_morphing.dist,)
-        k += 1
-
-        print(monotone_morphing.dist)
-        print(ve_morphing.dist)
-
-        if k >= limit:
-            print(len(monotone_morphing))
-            raise Exception
         # Add points where monotonicity was broken to improve distance
         new_P, new_Q = add_points_to_make_monotone(ve_morphing)
-        print(new_P)
-        print(new_Q)
+
         # Compute new ve frechet distance for curves
         ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
 
