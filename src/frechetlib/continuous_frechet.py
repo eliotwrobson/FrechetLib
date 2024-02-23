@@ -12,16 +12,16 @@ import frechetlib.retractable_frechet as rf
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
 ) -> float:
+    # TODO write some test code for this bc the indexing might be off
     """
     2-approximation to the Frechet distance between
     P[first(rng)]-P[last(rng)] and he polygon
     P[rng]
     Here, rng is a range i:j
     """
-    n = P.shape[0]
 
     if idx_range is None:
-        start, end = 0, n
+        start, end = 0, P.shape[0]
     else:
         start, end = idx_range
 
@@ -33,7 +33,7 @@ def frechet_width_approx(
 
     # TODO double check w/ Sariel because this seems like a weird min condition
     for i in range(start + 1, end - 1):
-        dist, new_t = fu.line_point_distance(start_point, end_point, P[i])
+        dist, new_t, _ = fu.line_point_distance(start_point, end_point, P[i])
 
         if new_t > t:
             t = new_t
@@ -246,7 +246,9 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[i
 @nb.njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
-) -> tuple[float, list[fu.EID]]:
+) -> fu.Morphing:
+    # TODO add a test case that checks the validity of the Morphing output
+    # by this.
     """
     Approximates the Frechet distance between a curve (P) and subcurve
     (P_subcurve). Here, P_subcurve vertices are the vertices of P
@@ -254,7 +256,7 @@ def frechet_c_mono_approx_subcurve(
     """
 
     res = []
-    width = 0
+    width = 0.0
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
@@ -271,10 +273,10 @@ def frechet_c_mono_approx_subcurve(
     next_event = fu.from_curve_indices(
         len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve
     )
-    width = width = max(width, next_event.dist)
-    res.append(width)
+    width = max(width, next_event.dist)
+    res.append(next_event)
 
-    return res
+    return fu.Morphing(res, P, P_subcurve, width)
 
 
 def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
@@ -301,13 +303,13 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
 
     while r >= (upper_bound_dist / (approx_ratio + 4.0)):
         r /= 2.0
-        P = simplify_polygon_radius(P, r)
-        Q = simplify_polygon_radius(Q, r)
+        P, p_indices = simplify_polygon_radius(P, r)
+        Q, q_indices = simplify_polygon_radius(Q, r)
 
         morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
 
-    p_width, morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
-    q_width, morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+    morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+    morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
     _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
     _, first_combined_monotone = get_monotone_morphing_width(
@@ -317,7 +319,7 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
         P_orig, Q, Q_orig, first_combined_monotone, morphing_q
     )
 
-    ratio = width / (frechet_distance - 2.0 * max(p_width, q_width))
+    ratio = width / (frechet_distance - 2.0 * max(morphing_p.dist, morphing_q.dist))
 
     # TODO might be need to run through this a second time in a loop? Not sure
     return width, ratio, final_combined

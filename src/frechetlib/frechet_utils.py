@@ -77,6 +77,10 @@ class EID:
 
         self.__recompute_hash()
 
+    def flip(self) -> None:
+        self.i, self.j = self.j, self.i
+        self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
+
     def __lt__(self, other: Self) -> bool:
         return self.dist < other.dist
 
@@ -179,6 +183,15 @@ class Morphing:
         self.P = P_
         self.Q = Q_
         self.dist = dist_
+
+    def flip(self) -> None:
+        """
+        Flips P and Q in this morphing.
+        """
+        for event in self.morphing_list:
+            event.flip()
+
+        self.P, self.Q = self.Q, self.P
 
     def copy(self) -> Self:
         new_morphing = nbt.List.empty_list(eid_type, len(self.morphing_list))

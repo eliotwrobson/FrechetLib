@@ -3,6 +3,7 @@ import pytest
 import utils as u
 
 import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:
@@ -32,6 +33,22 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
         prev_event = event
 
     assert saw_witness
+
+
+def test_morphing_flip() -> None:
+    P, Q = u.generate_curves_close(100, 100.0)
+    morphing = rf.retractable_ve_frechet(P, Q)
+    orig_morphing = morphing.copy()
+    morphing.flip()
+
+    assert np.allclose(P, morphing.Q)
+    assert np.allclose(Q, morphing.P)
+
+    for orig_event, new_event in zip(
+        orig_morphing.morphing_list, morphing.morphing_list
+    ):
+        assert orig_event.i == new_event.j
+        assert orig_event.j == new_event.i
 
 
 @pytest.mark.parametrize(
@@ -92,7 +109,7 @@ def test_eid_copy() -> None:
     # Contents here are not really important for this test
     P = np.array([[0.0, 1.0], [1.0, 0.0], [2.0, 2.0]])
     Q = np.array([[0.0, 1.0], [1.0, 0.0], [3.0, 3.0]])
-    event = fu.from_curve_indices(2, True, 3, False, P, Q)
+    event = fu.from_curve_indices(2, True, 2, False, P, Q)
     event_copy = event.copy()
 
     assert event == event_copy

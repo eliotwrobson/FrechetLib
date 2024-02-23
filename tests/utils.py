@@ -18,10 +18,10 @@ def generate_curves_random(
 
 
 def generate_curves_close(
-    num_pts: int, scaling_factor: float
+    num_pts: int, scaling_factor: float, d: int = 2
 ) -> tuple[np.ndarray, np.ndarray]:
-    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, 2))
-    Q = P + np.random.uniform(low=0.0, high=0.5, size=(num_pts, 2))
+    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    Q = P + np.random.uniform(low=0.0, high=scaling_factor / 100.0, size=(num_pts, d))
     return P, Q
 
 
