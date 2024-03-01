@@ -281,7 +281,7 @@ def frechet_c_mono_approx_subcurve(
 
 
 @nb.njit
-def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
+def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> fu.Morphing:
     """
     Approximates the continuous Frechet distance between the two input
     curves. Returns a monotone morphing realizing it.
@@ -301,30 +301,31 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> Any:
     upper_bound_dist = frechet_dist_upper_bound(P, Q)
 
     # radius of simplification allowed
-    r = upper_bound_dist / (approx_ratio + 4.0)
+    radius = upper_bound_dist / (approx_ratio + 4.0)
+    ratio = approx_ratio + 1.0  # Set to force loop to run at least once
+    output_morphing = None
 
-    while r >= (upper_bound_dist / (approx_ratio + 4.0)):
-        r /= 2.0
-        P, p_indices = simplify_polygon_radius(P, r)
-        Q, q_indices = simplify_polygon_radius(Q, r)
+    while ratio > approx_ratio:
+        while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
+            radius /= 2.0
+            P, p_indices = simplify_polygon_radius(P, radius)
+            Q, q_indices = simplify_polygon_radius(Q, radius)
 
-        morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+            morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
 
-    morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
-    morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+        morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+        morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-    # _, first_combined = fu.morphing_combine(P_orig, P, Q, morphing_p, morphing)
-    # _, first_combined_monotone = get_monotone_morphing_width(
-    #     nbt.List(first_combined), P, Q
-    # )
-    # width, final_combined = fu.morphing_combine(
-    #     P_orig, Q, Q_orig, first_combined_monotone, morphing_q
-    # )
+        error = max(morphing_p, morphing_q)
 
-    # ratio = width / (frechet_distance - 2.0 * max(morphing_p.dist, morphing_q.dist))
+        # TODO possibly monotonize these?
+        first_morphing = fu.morphing_combine(morphing_p, morphing)
+        morphing_q.flip()
+        output_morphing = fu.morphing_combine(morphing_q, first_morphing)
 
-    # # TODO might be need to run through this a second time in a loop? Not sure
-    # return width, ratio, final_combined
+        ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
+
+    return output_morphing
 
 
 def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
