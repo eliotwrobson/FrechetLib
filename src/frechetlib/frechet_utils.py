@@ -436,13 +436,16 @@ def morphing_combine(
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
-    P = morphing_1.P
-    Q = morphing_1.Q
-    assert np.allclose(morphing_1.Q, morphing_2.P)
-    R = morphing_2.Q
+    P = morphing_2.P
+    Q = morphing_2.Q  # Equal to morphing_1.P
+    assert np.allclose(morphing_1.P, morphing_2.Q)
+    R = morphing_1.Q
 
-    p_events, q_events_1 = morphing_1.get_prm()
-    q_events_2, r_events = morphing_2.get_prm()
+    prm_1 = morphing_1.get_prm()
+    prm_2 = morphing_2.get_prm()
+
+    q_events_1, r_events = prm_1
+    p_events, q_events_2 = prm_2
 
     assert len(q_events_1.shape) == len(q_events_2.shape)
 
@@ -451,42 +454,54 @@ def morphing_combine(
     idx_1 = 0
     idx_2 = 0
 
-    len_1 = len(p_events)
-    len_2 = len(r_events)
+    len_1 = prm_1.shape[0]
+    len_2 = prm_2.shape[0]
 
     res = []
 
+    # P = morphing_2.P
+    # Q = morphing_2.Q = morphing_1.P
+    # R = morphing_1.Q
     while idx_1 < len_1 or idx_2 < len_2:
-        # x = dim(g,1)
-        # y = dim(g,2) = dim(f, 1)
-        # z = dim(f,2)
-        y_1 = q_events_1[idx_1]
-        y_2 = q_events_2[idx_2]
+        q_event_1 = q_events_1[idx_1]
+        q_event_2 = q_events_2[idx_2]
 
-        is_equal = np.isclose(y_1, y_2)
+        is_equal = np.isclose(q_event_1, q_event_2)
 
         if is_equal and idx_1 == len_1 and idx_2 == len_2:
-            res.append((y_1, y_2))
-        elif is_equal and idx_1 < len_1 and np.isclose(p_events[idx_1 + 1], y_1):
-            res.append((y_1, y_2))
+            res.append((p_events[idx_2], r_events[idx_1]))
+        elif (
+            is_equal and idx_1 < len_1 and np.isclose(q_events_1[idx_1 + 1], q_event_1)
+        ):
+            res.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
-        elif is_equal and idx_2 < len_2 and np.isclose(prm_2[idx_2 + 1][0], y_2):
-            res.append((y_1, y_2))
+        elif (
+            is_equal and idx_2 < len_2 and np.isclose(q_events_2[idx_2 + 1], q_event_2)
+        ):
+            res.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
         elif is_equal:
-            res.append((y_1, y_2))
+            res.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1)
             idx_2 = min(idx_2 + 1, len_2)
-        elif y_1 < y_2:
-            new_x = eval_inv_pl_func(prm_1[idx_1 - 1], prm_1[idx_1], y_2)
-            new_x = max(prm_1[idx_1 - 1], new_x)
-            res.append(new_x, z)
-            idx_2 = min(idx_2 + 1, len_2)
-        elif y_1 > y_2:
-            new_z = eval_pl_func(prm_2[idx_2 - 1], prm_2[idx_2], y_1)
-            new_z = max(prm_2[idx_2 - 1], new_z)
-            res.append(x, new_z)
+
+        # NOTE I think everything above this line is right
+        # TODO Check for floating point errors
+        elif q_event_1 < q_event_2:
+            new_p = eval_inv_pl_func(prm_2[idx_2 - 1], prm_2[idx_2], q_event_1)
+            new_p = max(prm_1[idx_1 - 1], new_p)
+            # TODO enforce monotonicity
+            res.append((new_p, r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1)
+
+        elif q_event_1 > q_event_2:
+            new_r = eval_pl_func(prm_1[idx_1 - 1], prm_1[idx_1], q_event_2)
+            new_r = max(prm_2[idx_2 - 1], new_r)
+            res.append((p_events[idx_2], new_r))
+            idx_2 = min(idx_2 + 1, len_2)
+
+        else:
+            raise Exception("Should never get here")
 
     return res
 
