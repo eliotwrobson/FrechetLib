@@ -1,9 +1,8 @@
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
-
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 
 
 def test_morphing_combine() -> None:
@@ -17,6 +16,7 @@ def test_morphing_combine() -> None:
     morphing_1 = rf.retractable_ve_frechet(P, Q)
     morphing_2 = rf.retractable_ve_frechet(Q, R)
     fu.morphing_combine(morphing_1, morphing_2)
+
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:
     """

@@ -33,7 +33,6 @@ class EID:
         t: float,
         p: np.ndarray,
     ) -> None:
-
         self.i = i
         self.i_is_vert = i_is_vert
         self.j = j
@@ -144,7 +143,6 @@ def from_curve_indices(
 
 @nb.njit
 def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> float:
-
     res = 0.0
 
     for event in morphing_list:
@@ -313,7 +311,6 @@ class Morphing:
         return len(self.morphing_list)
 
     def _print_event_list(self) -> None:
-
         for event in self.morphing_list:
             print(event.i, event.i_is_vert, event.j, event.j_is_vert, event.t)
 
@@ -420,12 +417,12 @@ def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> flo
 
 @nb.njit
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
-    return eval_pl_func(p, q, val, 0)[1]
+    return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
 @nb.njit
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
-    return eval_pl_func(p, q, val, 1)[0]
+    return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
 # TODO there's like maybe a 10% chance this works. Fix it for the love of god.

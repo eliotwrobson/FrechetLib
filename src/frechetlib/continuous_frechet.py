@@ -1,5 +1,3 @@
-from typing import Any
-
 import numba as nb
 import numba.typed as nbt
 import numpy as np
@@ -318,7 +316,7 @@ def frechet_c_approx(
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-        error = max(morphing_p, morphing_q)
+        error = max(morphing_p.dist, morphing_q.dist)
 
         # TODO possibly monotonize these?
         first_morphing = fu.morphing_combine(morphing_p, morphing)
