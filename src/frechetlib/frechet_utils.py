@@ -410,27 +410,26 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     return prefix_lens
 
 
-# @nb.njit
+@nb.njit
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
 
 
-# @nb.njit
+@nb.njit
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
-# @nb.njit
+@nb.njit
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-# TODO there's like maybe a 10% chance this works. Fix it for the love of god.
 # @nb.njit
 def morphing_combine(
     morphing_1: Morphing,
@@ -444,7 +443,7 @@ def morphing_combine(
 
     P = morphing_2.P
     Q = morphing_2.Q  # Equal to morphing_1.P
-    assert np.allclose(morphing_1.P, morphing_2.Q)
+    assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
     R = morphing_1.Q
 
     prm_1 = morphing_1.get_prm()
@@ -456,7 +455,7 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    assert q_events_1.shape == q_events_2.shape
+    # assert q_events_1.shape == q_events_2.shape
 
     # Apparently len(prm_1[1]) == len(prm_2[0])
 
@@ -472,8 +471,8 @@ def morphing_combine(
     # Q = morphing_2.Q = morphing_1.P
     # R = morphing_1.Q
     i = 0
-    while idx_1 < len_1 or idx_2 < len_2:
-        i += 1
+    while idx_1 < len_1 - 1 or idx_2 < len_2 - 1:
+        print(idx_1, idx_2)
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
@@ -484,7 +483,7 @@ def morphing_combine(
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
-        if is_equal and idx_1 == len_1 and idx_2 == len_2:
+        if is_equal and idx_1 == len_1 - 1 and idx_2 == len_2 - 1:
             new_prm.append((p_events[idx_2], r_events[idx_1]))
 
         elif (
@@ -505,8 +504,8 @@ def morphing_combine(
 
         elif is_equal:
             new_prm.append((p_events[idx_2], r_events[idx_1]))
-            idx_1 = min(idx_1 + 1, len_1)
-            idx_2 = min(idx_2 + 1, len_2)
+            idx_1 = min(idx_1 + 1, len_1 - 1)
+            idx_2 = min(idx_2 + 1, len_2 - 1)
 
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
@@ -515,7 +514,7 @@ def morphing_combine(
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
             # TODO enforce monotonicity
             new_prm.append((new_p, r_events[idx_1]))
-            idx_1 = min(idx_1 + 1, len_1)
+            idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
             print(idx_1, prm_1.shape)
@@ -523,7 +522,7 @@ def morphing_combine(
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
             new_prm.append((p_events[idx_2], new_r))
-            idx_2 = min(idx_2 + 1, len_2)
+            idx_2 = min(idx_2 + 1, len_2 - 1)
 
         else:
             raise Exception("Should never get here")

@@ -278,7 +278,7 @@ def frechet_c_mono_approx_subcurve(
     return fu.Morphing(res, P, P_subcurve, width)
 
 
-@nb.njit
+# @nb.njit
 def frechet_c_approx(
     P: np.ndarray, Q: np.ndarray, approx_ratio: float
 ) -> tuple[float, fu.Morphing]:
