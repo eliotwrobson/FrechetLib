@@ -452,11 +452,6 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    print(q_events_1)
-    print(r_events)
-    print(p_events)
-    print(q_events_2)
-
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     # assert q_events_1.shape == q_events_2.shape
@@ -465,12 +460,9 @@ def morphing_combine(
 
     idx_1 = 0
     idx_2 = 0
-    # print(q_events_2.shape)
+
     len_1 = q_events_1.shape[0]
     len_2 = q_events_2.shape[0]
-
-    print(q_events_1)
-    print(q_events_2)
 
     new_prm = []
 
@@ -479,7 +471,6 @@ def morphing_combine(
     # R = morphing_1.Q
     i = 0
     while idx_1 < len_1 - 1 or idx_2 < len_2 - 1:
-        print(idx_1, idx_2)
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
@@ -515,8 +506,7 @@ def morphing_combine(
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
-            print(new_p)
-            assert False
+
             new_prm.append((new_p, r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
@@ -549,7 +539,9 @@ def morphing_combine(
     # TODO getting to this point and seeing that neither point is a
     # vertex, so something is wrong with the PRMs. Need to debug
     # using Sariel's code.
-
+    print(p_lens)
+    print(r_lens)
+    print(new_prm)
     for i in range(len(new_prm) - 1):
         p_loc, r_loc = new_prm[i]
 
@@ -572,7 +564,8 @@ def morphing_combine(
         # Can't both be false, since otherwise we have an edge-edge event
 
         assert (i_p == i_r == 0) or (p_is_vert or r_is_vert)
-
+        print(p_lens[i_p], r_lens[i_r])
+        print(i_p, i_r, p_is_vert, r_is_vert)
         new_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
