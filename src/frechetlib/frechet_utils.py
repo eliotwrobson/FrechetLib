@@ -347,6 +347,7 @@ class Morphing:
                 assert event.j + 1 < q_lens.shape[0]
                 next_len = q_lens[event.j + 1]
 
+                # TODO switch this with convex combination helper function
                 q_events[k] = curr_len + event.t * (next_len - curr_len)
 
         return prm
@@ -446,6 +447,9 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
+    print(prm_1)
+    print(prm_2)
+
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
@@ -543,15 +547,15 @@ def morphing_combine(
     for i in range(len(new_prm) - 1):
         p_loc, r_loc = new_prm[i]
 
-        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p]:
+        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
             i_p += 1
 
-        assert i_p == p_num_pts - 1 or p_lens[i_p] > p_loc
+        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc
 
-        while i_r < r_num_pts - 1 and r_loc >= r_lens[i_r]:
+        while i_r < r_num_pts - 1 and r_loc >= r_lens[i_r + 1]:
             i_r += 1
 
-        assert i_p == r_num_pts - 1 or r_lens[i_r] > r_loc
+        assert i_p == r_num_pts - 1 or r_lens[i_r] <= r_loc
 
         p_is_vert = np.isclose(p_lens[i_p], p_loc)
         r_is_vert = np.isclose(r_lens[i_r], r_loc)
@@ -559,7 +563,8 @@ def morphing_combine(
         print(p_lens[i_p], r_lens[i_r])
         print("about to assert")
         # Can't both be false, since otherwise we have an edge-edge event
-        assert (i_p == i_r == 0) or not (not p_is_vert and not r_is_vert)
+
+        assert (i_p == i_r == 0) or (p_is_vert or r_is_vert)
 
         new_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
         max_dist = max(max_dist, new_event.dist)

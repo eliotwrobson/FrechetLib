@@ -1,8 +1,52 @@
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
+
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
+
+
+def example_3():
+    P = np.array(
+        [
+            [0.0, 0],
+            [1.1, 0.0],
+            [1.1, 0.1],
+            [1.0, 0.1],
+            [1.0, 0.2],
+            [1.2, 0.2],
+            [1.2, 0.0],
+            [2.0, 0.0],
+        ]
+    )
+
+    Q = np.array(
+        [
+            [0.0, 0.3],
+            [0.4, 0.3],
+            [0.4, 0.6],
+            [0.3, 0.6],
+            [0.3, 0.7],
+            [0.5, 0.7],
+            [0.5, 0.3],
+            [2.0, 0.3],
+        ]
+    )
+
+    R = np.array(
+        [
+            [2.0, 2.3],
+            [2.4, 2.3],
+            [2.4, 2.6],
+            [2.3, 2.6],
+            [2.3, 2.7],
+            [2.5, 2.7],
+            [2.5, 2.3],
+            [4.0, 2.3],
+        ]
+    )
+
+    return P, Q, R
 
 
 def test_morphing_combine() -> None:
@@ -10,13 +54,22 @@ def test_morphing_combine() -> None:
     num_pts = 5
     d = 2
     np.random.seed(12345)
-    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
-    Q = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
-    R = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    # P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    # Q = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    # R = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+
+    P, Q, R = example_3()
 
     morphing_1 = rf.retractable_ve_frechet(P, Q)
     morphing_2 = rf.retractable_ve_frechet(Q, R)
-    fu.morphing_combine(morphing_2, morphing_1)
+
+    # Apparently these need to be monotone for this to work
+    morphing_1.make_monotone()
+    morphing_2.make_monotone()
+
+    print(len(morphing_1.morphing_list), len(morphing_2.morphing_list))
+    res = fu.morphing_combine(morphing_2, morphing_1)
+    assert res.dist == 0.0
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:
