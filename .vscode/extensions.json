@@ -1,8 +1,9 @@
 {
   "recommendations": [
-    "EditorConfig.EditorConfig",
-    "ms-python.black-formatter",
+    "charliermarsh.ruff",
     "matangover.mypy",
-    "kevinglasson.cornflakes-linter"
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "tamasfe.even-better-toml"
   ]
 }

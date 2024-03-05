@@ -6,6 +6,18 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
+def test_morphing_combine() -> None:
+    scaling_factor = 100.0
+    num_pts = 100
+    d = 2
+    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    Q = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+    R = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
+
+    morphing_1 = rf.retractable_ve_frechet(P, Q)
+    morphing_2 = rf.retractable_ve_frechet(Q, R)
+    fu.morphing_combine(morphing_1, morphing_2)
+
 def check_morphing_witness(morphing: fu.Morphing) -> None:
     """
     Test helper function to ensure morphing is valid + correctly
@@ -33,19 +45,6 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
         prev_event = event
 
     assert saw_witness
-
-
-def test_morphing_combine() -> None:
-    scaling_factor = 100.0
-    num_pts = 100
-    d = 2
-    P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
-    Q = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
-    R = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
-
-    morphing_1 = rf.retractable_ve_frechet(P, Q)
-    morphing_2 = rf.retractable_ve_frechet(Q, R)
-    fu.morphing_combine(morphing_1, morphing_2)
 
 
 def test_morphing_flip() -> None:
