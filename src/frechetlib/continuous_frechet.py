@@ -304,23 +304,33 @@ def frechet_c_approx(
     radius = upper_bound_dist / (approx_ratio + 4.0)
     ratio = approx_ratio + 1.0  # Set to force loop to run at least once
     output_morphing = None
-
+    i = 0
     while ratio > approx_ratio:
+        i += 1
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
+            i += 1
+            if i > 100:
+                print("here")
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P, radius)
             Q, q_indices = simplify_polygon_radius(Q, radius)
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
 
+        if i > 100:
+            print("here")
+
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
         error = max(morphing_p.dist, morphing_q.dist)
 
-        # TODO possibly monotonize these?
-        first_morphing = fu.morphing_combine(morphing_p, morphing)
+        morphing_p.make_monotone()
+        morphing_q.make_monotone()
+
+        first_morphing = fu.morphing_combine(morphing, morphing_p)
         morphing_q.flip()
+        first_morphing.make_monotone()
         output_morphing = fu.morphing_combine(morphing_q, first_morphing)
 
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)

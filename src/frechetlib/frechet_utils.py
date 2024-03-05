@@ -449,11 +449,15 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    print(prm_1)
-    print(prm_2)
-
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
+
+    print(q_events_1)
+    print(r_events)
+    print(p_events)
+    print(q_events_2)
+
+    assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     # assert q_events_1.shape == q_events_2.shape
 
@@ -465,6 +469,9 @@ def morphing_combine(
     len_1 = q_events_1.shape[0]
     len_2 = q_events_2.shape[0]
 
+    print(q_events_1)
+    print(q_events_2)
+
     new_prm = []
 
     # P = morphing_2.P
@@ -475,11 +482,6 @@ def morphing_combine(
         print(idx_1, idx_2)
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
-
-        # print(idx_1, len_1, idx_2, len_2)
-        # print(idx_1 < len_1 and np.isclose(q_events_1[idx_1 + 1], q_event_1))
-        # if i > 10:
-        #     assert False
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
@@ -511,8 +513,10 @@ def morphing_combine(
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
+            # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
-            # TODO enforce monotonicity
+            print(new_p)
+            assert False
             new_prm.append((new_p, r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
