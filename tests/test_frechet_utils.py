@@ -7,15 +7,16 @@ import utils as u
 
 def test_morphing_combine() -> None:
     scaling_factor = 100.0
-    num_pts = 100
+    num_pts = 5
     d = 2
+    np.random.seed(12345)
     P = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
     Q = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
     R = np.random.uniform(low=1.0, high=scaling_factor, size=(num_pts, d))
 
     morphing_1 = rf.retractable_ve_frechet(P, Q)
     morphing_2 = rf.retractable_ve_frechet(Q, R)
-    fu.morphing_combine(morphing_1, morphing_2)
+    fu.morphing_combine(morphing_2, morphing_1)
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:

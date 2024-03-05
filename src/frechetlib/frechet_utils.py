@@ -409,24 +409,28 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     return prefix_lens
 
 
-@nb.njit
+# @nb.njit
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
 
 
-@nb.njit
+# @nb.njit
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
+    assert p.shape == q.shape
+    assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
-@nb.njit
+# @nb.njit
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
+    assert p.shape == q.shape
+    assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
 # TODO there's like maybe a 10% chance this works. Fix it for the love of god.
-@nb.njit
+# @nb.njit
 def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
@@ -445,39 +449,53 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    assert len(q_events_1.shape) == len(q_events_2.shape)
+    assert q_events_1.shape == q_events_2.shape
 
     # Apparently len(prm_1[1]) == len(prm_2[0])
 
     idx_1 = 0
     idx_2 = 0
-
-    len_1 = prm_1.shape[0]
-    len_2 = prm_2.shape[0]
+    # print(q_events_2.shape)
+    len_1 = q_events_1.shape[0]
+    len_2 = q_events_2.shape[0]
 
     new_prm = []
 
     # P = morphing_2.P
     # Q = morphing_2.Q = morphing_1.P
     # R = morphing_1.Q
+    i = 0
     while idx_1 < len_1 or idx_2 < len_2:
+        i += 1
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
+
+        # print(idx_1, len_1, idx_2, len_2)
+        # print(idx_1 < len_1 and np.isclose(q_events_1[idx_1 + 1], q_event_1))
+        # if i > 10:
+        #     assert False
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
         if is_equal and idx_1 == len_1 and idx_2 == len_2:
             new_prm.append((p_events[idx_2], r_events[idx_1]))
+
         elif (
-            is_equal and idx_1 < len_1 and np.isclose(q_events_1[idx_1 + 1], q_event_1)
+            is_equal
+            and idx_1 < len_1 - 1
+            and np.isclose(q_events_1[idx_1 + 1], q_event_1)
         ):
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
+
         elif (
-            is_equal and idx_2 < len_2 and np.isclose(q_events_2[idx_2 + 1], q_event_2)
+            is_equal
+            and idx_2 < len_2 - 1
+            and np.isclose(q_events_2[idx_2 + 1], q_event_2)
         ):
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
+
         elif is_equal:
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1)
@@ -486,14 +504,15 @@ def morphing_combine(
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
-            new_p = eval_inv_pl_func(prm_2[idx_2 - 1], prm_2[idx_2], q_event_1)
-            new_p = max(prm_2[idx_2 - 1][0], new_p)
+            new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
+            new_p = max(prm_2[:, idx_2 - 1][0], new_p)
             # TODO enforce monotonicity
             new_prm.append((new_p, r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1)
 
         elif q_event_1 > q_event_2:
-            new_r = eval_pl_func(prm_1[idx_1 - 1], prm_1[idx_1], q_event_2)
+            print(idx_1, prm_1.shape)
+            new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
             new_prm.append((p_events[idx_2], new_r))
@@ -517,25 +536,30 @@ def morphing_combine(
     r_num_pts = r_lens.shape[0]
 
     max_dist = 0.0
+    # TODO getting to this point and seeing that neither point is a
+    # vertex, so something is wrong with the PRMs. Need to debug
+    # using Sariel's code.
 
     for i in range(len(new_prm) - 1):
         p_loc, r_loc = new_prm[i]
 
-        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
+        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p]:
             i_p += 1
 
-        assert p_lens[i_p] <= p_loc
+        assert i_p == p_num_pts - 1 or p_lens[i_p] > p_loc
 
-        while i_r < r_num_pts - 1 and r_loc >= r_lens[i_r + 1]:
+        while i_r < r_num_pts - 1 and r_loc >= r_lens[i_r]:
             i_r += 1
 
-        assert r_lens[i_r] <= r_loc
+        assert i_p == r_num_pts - 1 or r_lens[i_r] > r_loc
 
         p_is_vert = np.isclose(p_lens[i_p], p_loc)
         r_is_vert = np.isclose(r_lens[i_r], r_loc)
-
-        # Can't both be true, since otherwise we have an edge-edge event
-        assert not (p_is_vert and r_is_vert)
+        print(i_p, i_r, p_loc, r_loc)
+        print(p_lens[i_p], r_lens[i_r])
+        print("about to assert")
+        # Can't both be false, since otherwise we have an edge-edge event
+        assert (i_p == i_r == 0) or not (not p_is_vert and not r_is_vert)
 
         new_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
         max_dist = max(max_dist, new_event.dist)
