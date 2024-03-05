@@ -487,14 +487,15 @@ def morphing_combine(
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
             new_p = eval_inv_pl_func(prm_2[idx_2 - 1], prm_2[idx_2], q_event_1)
-            new_p = max(prm_1[idx_1 - 1], new_p)
+            new_p = max(prm_2[idx_2 - 1][0], new_p)
             # TODO enforce monotonicity
             new_prm.append((new_p, r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1)
 
         elif q_event_1 > q_event_2:
             new_r = eval_pl_func(prm_1[idx_1 - 1], prm_1[idx_1], q_event_2)
-            new_r = max(prm_2[idx_2 - 1], new_r)
+            # TODO double check whether or not this line is necessary
+            # new_r = max(prm_1[idx_1 - 1], new_r)
             new_prm.append((p_events[idx_2], new_r))
             idx_2 = min(idx_2 + 1, len_2)
 
@@ -503,7 +504,7 @@ def morphing_combine(
 
     # Now that we have the new PRM, need to extract new event
     # sequences
-    new_event_sequence = []
+    new_event_sequence = nbt.List.empty_list(eid_type)
     # TODO this information gets computed when the initial PRMs are
     # created. Avoid recomputing it if possible.
     p_lens = get_prefix_lens(P)
