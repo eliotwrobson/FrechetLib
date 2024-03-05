@@ -1,9 +1,8 @@
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
-
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -63,17 +62,18 @@ def test_morphing_combine() -> None:
     morphing_1 = rf.retractable_ve_frechet(P, Q)
     morphing_2 = rf.retractable_ve_frechet(Q, R)
 
-    print(morphing_1.dist)
-    print(morphing_2.dist)
-
     # Apparently these need to be monotone for this to work
     morphing_1.make_monotone()
     morphing_2.make_monotone()
 
-    print(len(morphing_1.morphing_list), len(morphing_2.morphing_list))
     res = fu.morphing_combine(morphing_2, morphing_1)
-    print(res.dist)
-    assert res.dist == 0.0
+
+    # Magic numbers I got by running the same data through
+    # Sariel's code
+    assert np.isclose(morphing_1.dist, 0.7071067811865475)
+    assert np.isclose(morphing_2.dist, 2.82842712474619)
+
+    assert np.isclose(res.dist, 3.047950130825634)
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:
