@@ -436,6 +436,9 @@ def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
 ) -> Morphing:
+    # TODO this function only works on monotone morphings (I think). Use the
+    # same helper function that Sariel used to fail when violations to the
+    # monotonicity are found.
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
@@ -559,9 +562,10 @@ def morphing_combine(
 
         p_is_vert = np.isclose(p_lens[i_p], p_loc)
         r_is_vert = np.isclose(r_lens[i_r], r_loc)
-        print(i_p, i_r, p_loc, r_loc)
-        print(p_lens[i_p], r_lens[i_r])
-        print("about to assert")
+
+        # print(i_p, i_r, p_loc, r_loc)
+        # print(p_lens[i_p], r_lens[i_r])
+        # print("about to assert")
         # Can't both be false, since otherwise we have an edge-edge event
 
         assert (i_p == i_r == 0) or (p_is_vert or r_is_vert)
