@@ -281,7 +281,9 @@ def frechet_c_mono_approx_subcurve(
 
 
 @nb.njit
-def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> fu.Morphing:
+def frechet_c_approx(
+    P: np.ndarray, Q: np.ndarray, approx_ratio: float
+) -> tuple[float, fu.Morphing]:
     """
     Approximates the continuous Frechet distance between the two input
     curves. Returns a monotone morphing realizing it.
@@ -325,25 +327,58 @@ def frechet_c_approx(P: np.ndarray, Q: np.ndarray, approx_ratio: float) -> fu.Mo
 
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
 
-    return output_morphing
+    return ratio, output_morphing
 
 
 def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
+    """
+    Compute the exact continuous (monotone) Frechet distance between the
+    two polygons. It should be reasonably fast.
 
-    width, ratio, morphing = frechet_c_approx(P, Q, 2.0)
+    This function is somewhat slower than the approximate versions. Use it
+    only if you really want the exact answer. Consider using
+    frechet_continous_approx instead.
+
+    # Details
+
+    This works by first computing a very rough approximation, followed by
+    distance senstiave simplification of the curves. It then compute the
+    monotone fr_ve_r distance between the simplified curves, and it
+    combine it to get a distance between the two original cuves. It makre
+    sure the answers are the same, otherwise, it repeates with a finer
+    simplification/approximation till they are equal.
+
+    Finally, the algorithm uses the fr_ve_r_with_offests distance between
+    the two simplified curves to comptue a lower bound, and make sure this
+    is equal to the Frechet distance computed. If they are equal, then the
+    upper/lower bounds on the Frechet distance of the two curves are the
+    same, which implies that the computed distance is indeed the desired
+    Frechet distance.
+
+    # More details
+
+    To really ensure converges, the monotone distance computed between the
+    simplification is computed using refinement, so tha the ve_r distance
+    """
+
+    baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
     approx_refinement = 1.001
-    approx_ratio = min(1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * width), 1.1)
 
-    # TODO fill this if case with the appx ratio from frechet_c_approx
-    if False:
-        new_morphing = morphing
-        ratio = 2.0
+    min_approx_ratio = min(
+        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * morphing.dist), 1.1
+    )
+
+    # If initial ratio is good enough, use this morphing
+    if baseline_ratio <= min_approx_ratio:
+        morphing = baseline_morphing
+        ratio = baseline_ratio
+
+    # Otherwise recompute
     else:
-        width, ratio, new_morphing = frechet_c_approx(P, Q, approx_ratio)
-        # ratio
+        ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
 
-    Pl, Ql = fu.extract_vertex_radii(P, Q, new_morphing)
-    lower_bound = width / ratio
+    Pl, Ql = fu.extract_vertex_radii(P, Q, morphing)
+    lower_bound = morphing.dist / ratio
 
     factor = 4.0
     while True:
