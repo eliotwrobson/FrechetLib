@@ -5,23 +5,24 @@ from numba.experimental import jitclass
 from typing_extensions import Self
 
 
-@jitclass([("p", nb.float64[:])])
+@jitclass([("p_i", nb.float64[:]), ("p_j", nb.float64[:])])
 class EID:
     i: int
     i_is_vert: bool
     j: int
     j_is_vert: bool
 
-    # The attributes below are computed
+    # Computed distance between the points
     dist: float
-    # If used, t starts as being the min point-line distance
-    # between the relevant edge and vertex, but it can be adjusted.
-    t: float
     hash_val: int
 
-    # Point on edge that is not a vertex. Can be
-    # adjusted
-    p: np.ndarray
+    # Points on edges if not a vertex. Can be adjusted.
+    p_i: np.ndarray
+    p_j: np.ndarray
+
+    # Parameters for the points on each curve.
+    t_i: float
+    t_j: float
 
     def __init__(
         self,
@@ -29,56 +30,104 @@ class EID:
         i_is_vert: bool,
         j: int,
         j_is_vert: bool,
+        p_i: np.ndarray,
+        p_j: np.ndarray,
+        t_i: float,
+        t_j: float,
         dist: float,
-        t: float,
-        p: np.ndarray,
     ) -> None:
         self.i = i
         self.i_is_vert = i_is_vert
         self.j = j
         self.j_is_vert = j_is_vert
-        self.t = t
+        self.p_i = p_i
+        self.p_j = p_j
+        self.t_i = t_i
+        self.t_j = t_j
+
         self.dist = dist
-        self.t = t
-        self.p = p
 
         self.__recompute_hash()
 
     def __recompute_hash(self) -> None:
-        self.hash_val = hash((self.i, self.i_is_vert, self.j, self.j_is_vert, self.t))
+        # We actually don't need p_i and p_j here since the
+        # other attributes uniquely determine the point relative
+        # to others
+        self.hash_val = hash(
+            (
+                self.i,
+                self.i_is_vert,
+                self.j,
+                self.j_is_vert,
+                self.t_i,
+                self.t_j,
+            )
+        )
 
     def copy(self) -> Self:
         return EID(
-            self.i, self.i_is_vert, self.j, self.j_is_vert, self.dist, self.t, self.p
+            self.i,
+            self.i_is_vert,
+            self.j,
+            self.j_is_vert,
+            self.p_i,
+            self.p_j,
+            self.t_i,
+            self.t_j,
+            self.dist,
         )
 
-    def reassign_parameter(self, new_t: float, P: np.ndarray, Q: np.ndarray) -> None:
+    def reassign_parameter_i(self, new_t: float, P: np.ndarray) -> None:
         """
-        Using the new value of t, reassign the parameter
-        and update the point p, which is t.
+        Reassign the point and parameter from the curve P.
         """
         assert 0.0 <= new_t <= 1.0
 
-        if self.i_is_vert and self.j_is_vert:
-            raise Exception
-
-        self.t = new_t
-        # Compute the distance
-        if self.j_is_vert:
-            self.p = convex_comb(P[self.i], P[self.i + 1], self.t)
-            self.dist = float(np.linalg.norm(self.p - Q[self.j]))
-
-        elif self.i_is_vert:
-            self.p = convex_comb(Q[self.j], Q[self.j + 1], self.t)
-            self.dist = float(np.linalg.norm(self.p - P[self.i]))
+        if np.isclose(0.0, new_t):
+            self.t_i = 0.0
+            self.p_i = P[self.i]
+        elif np.isclose(1.0, new_t):
+            self.t_i = 1.0
+            self.p_i = P[self.i + 1]
+            # TODO maybe change the number based on index?
+            # I don't think the convention matters.
         else:
-            raise Exception
+            # Case where 0.0 < new_t < 1.0
+            self.t_i = new_t
+            self.p_i = convex_comb(P[self.i], P[self.i + 1], self.t_i)
+
+        self.dist = float(np.linalg.norm(self.p_i - self.p_j))
+
+        self.__recompute_hash()
+
+    def reassign_parameter_j(self, new_t: float, Q: np.ndarray) -> None:
+        """
+        Reassign the point and parameter from the curve Q.
+        """
+        assert 0.0 <= new_t <= 1.0
+
+        if np.isclose(0.0, new_t):
+            self.t_j = 0.0
+            self.p_j = Q[self.j]
+        elif np.isclose(1.0, new_t):
+            self.t_j = 1.0
+            self.p_j = Q[self.j + 1]
+            # TODO maybe change the number based on index?
+            # I don't think the convention matters.
+        else:
+            # Case where 0.0 < new_t < 1.0
+            self.t_j = new_t
+            self.p_j = convex_comb(Q[self.j], Q[self.j + 1], self.t_j)
+
+        self.dist = float(np.linalg.norm(self.p_i - self.p_j))
 
         self.__recompute_hash()
 
     def flip(self) -> None:
         self.i, self.j = self.j, self.i
         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
+        self.p_i, self.p_j = self.p_j, self.p_i
+        self.t_i, self.t_j = self.t_j, self.t_i
 
     def __lt__(self, other: Self) -> bool:
         return self.dist < other.dist
@@ -95,13 +144,21 @@ class EID:
             and (self.j == other.j)
             and (self.i_is_vert == other.i_is_vert)
             and (self.j_is_vert == other.j_is_vert)
-            and np.isclose(self.t, other.t)
+            and np.allclose(self.p_i, other.p_i)
+            and np.allclose(self.p_j, other.p_j)
+            and np.isclose(self.t_i, other.t_i)
+            and np.isclose(self.t_j, other.t_j)
         )
 
 
 @nb.njit
-def eid_get_coefficient(event: EID) -> float:
-    return event.t
+def eid_get_coefficient_i(event: EID) -> float:
+    return event.t_i
+
+
+@nb.njit
+def eid_get_coefficient_j(event: EID) -> float:
+    return event.t_j
 
 
 @nb.njit
@@ -113,9 +170,12 @@ def from_curve_indices(
     P: np.ndarray,
     Q: np.ndarray,
 ) -> EID:
+    # These values will get overwritten later
     dist = 0.0
-    t = 0.0
-    p = np.empty(0)
+    t_i = 0.0
+    t_j = 0.0
+    p_i = P[i]
+    p_j = Q[j]
 
     assert 0 <= i < P.shape[0]
     assert 0 <= j < Q.shape[0]
@@ -126,19 +186,20 @@ def from_curve_indices(
         if j == Q.shape[0] - 1:
             dist = float(np.linalg.norm(P[i] - Q[j]))
         else:
-            dist, t, p = line_point_distance(Q[j], Q[j + 1], P[i])
+            dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
 
     elif j_is_vert:
         if i == P.shape[0] - 1:
             dist = float(np.linalg.norm(P[i] - Q[j]))
         else:
-            dist, t, p = line_point_distance(P[i], P[i + 1], Q[j])
+            dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
     else:
         raise Exception
 
-    assert 0.0 <= t <= 1.0
+    assert 0.0 <= t_i <= 1.0
+    assert 0.0 <= t_j <= 1.0
 
-    return EID(i, i_is_vert, j, j_is_vert, dist, t, p)
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
 @nb.njit
@@ -153,7 +214,7 @@ def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> flo
 
 # I think this is needed at the global scope because numba has issues
 # https://github.com/numba/numba/issues/7291
-eid_type = nb.typeof(EID(0, True, 0, True, 0.0, 0.0, np.empty(0)))
+eid_type = nb.typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
@@ -223,7 +284,9 @@ class Morphing:
 
             # Check tuples to see if events are on the same edge
             # and if monotonicity is violated
-            if (first_matches or second_matches) and event.t > next_event.t:
+            if (first_matches and event.t_i > next_event.t_i) or (
+                second_matches and event.t_j > next_event.t_j
+            ):
                 return False
 
         return True
@@ -249,7 +312,7 @@ class Morphing:
 
             elif not event.i_is_vert:
                 new_k = k
-                best_t = event.t
+                best_t = event.t_i
 
                 while (
                     new_k < n - 1
@@ -257,10 +320,10 @@ class Morphing:
                     and morphing[new_k + 1].i == event.i
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
-                    best_t = max(best_t, new_event.t)
+                    best_t = max(best_t, new_event.t_i)
                     # TODO might be the wrong condition??
-                    if best_t > new_event.t:
-                        morphing[new_k].reassign_parameter(best_t, self.P, self.Q)
+                    if best_t > new_event.t_i:
+                        morphing[new_k].reassign_parameter_i(best_t, self.P)
 
                     longest_dist = max(longest_dist, morphing[new_k].dist)
 
@@ -268,8 +331,8 @@ class Morphing:
 
                 new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
 
-                if best_t > new_event.t:
-                    new_event.reassign_parameter(best_t, self.P, self.Q)
+                if best_t > new_event.t_i:
+                    new_event.reassign_parameter_i(best_t, self.P)
 
                 longest_dist = max(longest_dist, new_event.dist)
                 k = new_k + 1
@@ -277,7 +340,7 @@ class Morphing:
             # TODO might be able to simplify this?
             elif not event.j_is_vert:
                 new_k = k
-                best_t = event.t
+                best_t = event.t_j
 
                 while (
                     new_k < n - 1
@@ -285,11 +348,11 @@ class Morphing:
                     and morphing[new_k + 1].j == event.j
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
-                    best_t = max(best_t, new_event.t)
+                    best_t = max(best_t, new_event.t_j)
 
                     # TODO might be the wrong condition??
-                    if best_t > new_event.t:
-                        new_event.reassign_parameter(best_t, self.P, self.Q)
+                    if best_t > new_event.t_j:
+                        new_event.reassign_parameter_j(best_t, self.Q)
 
                     longest_dist = max(longest_dist, new_event.dist)
                     # res.append(new_event)
@@ -298,8 +361,8 @@ class Morphing:
 
                 new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
 
-                if best_t > new_event.t:
-                    new_event.reassign_parameter(best_t, self.P, self.Q)
+                if best_t > new_event.t_j:
+                    new_event.reassign_parameter_j(best_t, self.Q)
 
                 longest_dist = max(longest_dist, new_event.dist)
                 # res.append(new_event)
@@ -337,7 +400,7 @@ class Morphing:
                 curr_len = p_lens[event.i]
                 assert event.i + 1 < p_lens.shape[0]
                 next_len = p_lens[event.i + 1]
-                p_events[k] = curr_len + event.t * (next_len - curr_len)
+                p_events[k] = curr_len + event.t_i * (next_len - curr_len)
 
             # Add event to Q event list
             if event.j_is_vert or event.j + 1 == q_lens.shape[0]:
@@ -348,7 +411,7 @@ class Morphing:
                 next_len = q_lens[event.j + 1]
 
                 # TODO switch this with convex combination helper function
-                q_events[k] = curr_len + event.t * (next_len - curr_len)
+                q_events[k] = curr_len + event.t_j * (next_len - curr_len)
 
         return prm
 

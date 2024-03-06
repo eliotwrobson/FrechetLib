@@ -149,19 +149,19 @@ def add_points_to_make_monotone(
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
-            monotone = monotone and (events[j].t <= events[j + 1].t)
+            monotone = monotone and (events[j].t_i <= events[j + 1].t_i)
 
         # TODO double check this is the right thing to do
         if monotone:
             continue
 
-        events = sorted(events, key=fu.eid_get_coefficient)
+        events = sorted(events, key=fu.eid_get_coefficient_i)
 
         for j in range(len(events)):
-            new_P.append(events[j].p)
+            new_P.append(events[j].p_i)
 
             if not monotone and j < len(events) - 1:
-                new_P.append((events[j].p + events[j + 1].p) / 2)
+                new_P.append((events[j].p_i + events[j + 1].p_i) / 2)
 
     # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
@@ -194,18 +194,18 @@ def add_points_to_make_monotone(
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
-            monotone = monotone and (events[j].t <= events[j + 1].t)
+            monotone = monotone and (events[j].t_j <= events[j + 1].t_j)
 
         if monotone:
             continue
 
-        events = sorted(events, key=fu.eid_get_coefficient)
+        events = sorted(events, key=fu.eid_get_coefficient_j)
         print("old: ", new_Q)
         for j in range(len(events)):
-            new_Q.append(events[j].p)
+            new_Q.append(events[j].p_j)
 
             if not monotone and j < len(events) - 1:
-                new_Q.append((events[j].p + events[j + 1].p) / 2)
+                new_Q.append((events[j].p_j + events[j + 1].p_j) / 2)
 
     # Finally, assemble into output arrays
     new_P_final = np.empty((len(new_P), new_P[0].shape[0]))
