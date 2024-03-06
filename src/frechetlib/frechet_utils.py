@@ -539,9 +539,9 @@ def morphing_combine(
     # TODO getting to this point and seeing that neither point is a
     # vertex, so something is wrong with the PRMs. Need to debug
     # using Sariel's code.
-    print(p_lens)
-    print(r_lens)
-    print(new_prm)
+    # NOTE Thing that is wrong is that EID events don't allow
+    # for edge-edge events. Need to add a constructor that does this.
+
     for i in range(len(new_prm) - 1):
         p_loc, r_loc = new_prm[i]
 
@@ -558,9 +558,9 @@ def morphing_combine(
         p_is_vert = np.isclose(p_lens[i_p], p_loc)
         r_is_vert = np.isclose(r_lens[i_r], r_loc)
 
-        # print(i_p, i_r, p_loc, r_loc)
-        # print(p_lens[i_p], r_lens[i_r])
-        # print("about to assert")
+        print(i_p, i_r, p_loc, r_loc)
+        print(p_lens[i_p], r_lens[i_r])
+        print("about to assert")
         # Can't both be false, since otherwise we have an edge-edge event
 
         assert (i_p == i_r == 0) or (p_is_vert or r_is_vert)
