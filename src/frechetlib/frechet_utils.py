@@ -680,32 +680,9 @@ def morphing_combine(
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_r = coefficient_from_prefix_lens(r_loc, r_lens, i_r)
 
-        # TODO make this work with edge-edge events
-        # p_is_vert = np.isclose(p_lens[i_p], p_loc)
-        # r_is_vert = np.isclose(r_lens[i_r], r_loc)
-
-        # print(i_p, i_r, p_loc, r_loc)
-        # print(p_lens[i_p], r_lens[i_r])
         print("about to assert")
-        # Can't both be false, since otherwise we have an edge-edge event
-
-        # print(p_lens[i_p], r_lens[i_r])
-        # print(i_p, i_r, p_is_vert, r_is_vert)
-        # old_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
 
         new_event = from_coefficients(i_p, i_r, t_p, t_r, P, R)
-        # print(p_is_vert, r_is_vert, old_event.dist, new_event.dist)
-        # print(t_p, t_r)
-        # print(old_event.t_i, old_event.t_j)
-        # assert np.isclose(old_event.dist, new_event.dist)
-        if new_event.dist > 3.047950130825634:
-            p_is_vert = np.isclose(p_lens[i_p], p_loc)
-            r_is_vert = np.isclose(r_lens[i_r], r_loc)
-            # old_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
-
-            print(new_event.p_i, new_event.p_j)
-            print(new_event.dist)
-            assert False
 
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
