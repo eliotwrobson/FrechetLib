@@ -1,8 +1,9 @@
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
+
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -74,6 +75,8 @@ def test_morphing_combine() -> None:
     assert np.isclose(morphing_2.dist, 2.82842712474619)
 
     assert np.isclose(res.dist, 3.047950130825634)
+    assert np.allclose(res.P, P)
+    assert np.allclose(res.Q, R)
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:

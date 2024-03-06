@@ -447,9 +447,12 @@ class Morphing:
         # TODO Apparently sometimes it's possible to have non-zero coefficient
         # while being at the last index of the morphing. Figure out where that's
         # happening. This is why there are >= checks below
-
+        print(n_p, n_q)
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
+            assert 0 <= event.i < n_p
+            assert 0 <= event.j < n_q
+            print(p_lens[event.i], q_lens[event.j])
             # Add event to P event list
             # TODO check that this equality condition still gives you the
             # correct answer
@@ -577,6 +580,8 @@ def morphing_combine(
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
+    print("Starting combine")
+
     P = morphing_2.P
     Q = morphing_2.Q  # Original curve equal to morphing_1.P
     assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
@@ -588,8 +593,10 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    # TODO I don't actually think this is needed
-    # assert np.allclose(q_events_1[-1], q_events_2[-1])
+    print(prm_1)
+    print(prm_2)
+
+    assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     idx_1 = 0
     idx_2 = 0
@@ -604,19 +611,22 @@ def morphing_combine(
     # R = morphing_1.Q
     i = 0
     while idx_1 < len_1 - 1 or idx_2 < len_2 - 1:
+        print(idx_1, idx_2, q_events_1.shape[0], q_events_2.shape[0])
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
-        if is_equal and idx_1 == len_1 - 1 and idx_2 == len_2 - 1:
-            new_prm.append((p_events[idx_2], r_events[idx_1]))
+        # if is_equal and idx_1 == len_1 - 1 and idx_2 == len_2 - 1:
+        #     assert False
+        #     new_prm.append((p_events[idx_2], r_events[idx_1]))
 
-        elif (
+        if (
             is_equal
             and idx_1 < len_1 - 1
             and np.isclose(q_events_1[idx_1 + 1], q_event_1)
         ):
+            print("case2")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
 
@@ -625,10 +635,12 @@ def morphing_combine(
             and idx_2 < len_2 - 1
             and np.isclose(q_events_2[idx_2 + 1], q_event_2)
         ):
+            print("case3")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
 
         elif is_equal:
+            print("case4")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
             idx_2 = min(idx_2 + 1, len_2 - 1)
@@ -636,6 +648,7 @@ def morphing_combine(
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
+            print("case5")
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
@@ -644,6 +657,7 @@ def morphing_combine(
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
+            print("case6")
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
@@ -652,6 +666,14 @@ def morphing_combine(
 
         else:
             raise Exception("Should never get here")
+
+    q_event_1 = q_events_1[idx_1]
+    q_event_2 = q_events_2[idx_2]
+    assert (
+        idx_1 == len_1 - 1 and idx_2 == len_2 - 1 and np.isclose(q_event_1, q_event_2)
+    )
+
+    new_prm.append((p_events[idx_2], r_events[idx_1]))
 
     # Now that we have the new PRM, need to extract new event
     # sequences
@@ -698,7 +720,7 @@ def morphing_combine(
         new_event_sequence.append(new_event)
 
     # TODO maybe add end event
-    return Morphing(new_event_sequence, P, Q, max_dist)
+    return Morphing(new_event_sequence, P, R, max_dist)
 
 
 def extract_vertex_radii(
