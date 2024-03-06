@@ -161,6 +161,51 @@ def eid_get_coefficient_j(event: EID) -> float:
     return event.t_j
 
 
+# @nb.njit
+def from_coefficients(
+    i: int,
+    j: int,
+    t_p: float,
+    t_q: float,
+    P: np.ndarray,
+    Q: np.ndarray,
+) -> EID:
+    """
+    Create a new EID from coefficients. This shouldn't be
+    used in a VE-Frechet algorithm, since this allows for
+    edge-edge matchings.
+    """
+
+    i_is_vert = False
+
+    # Use this to avoid issues with floating point error
+    if np.isclose(t_p, 0.0):
+        p_i = P[i]
+        i_is_vert = True
+    elif np.isclose(t_p, 1.0):
+        p_i = P[i + 1]
+        i_is_vert = True
+    else:
+        p_i = convex_comb(P[i], P[i + 1], t_p)
+
+    j_is_vert = False
+
+    # Same as above, now for Q
+    if np.isclose(t_q, 0.0):
+        p_j = Q[j]
+        j_is_vert = True
+    elif np.isclose(t_q, 1.0):
+        p_j = Q[j + 1]
+        j_is_vert = True
+    else:
+        p_j = convex_comb(Q[j], Q[j + 1], t_q)
+
+    dist = float(np.linalg.norm(p_i - p_j))
+    # TODO remove the distance from the constructor and just always
+    # compute it
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
+
+
 @nb.njit
 def from_curve_indices(
     i: int,
@@ -493,6 +538,20 @@ def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
+@nb.njit
+def coefficient_from_prefix_lens(
+    distance_along_curve: float, p_lens: np.ndarray, idx: int
+) -> float:
+    if idx == p_lens.shape[0] - 1:
+        assert np.isclose(distance_along_curve, p_lens[idx])
+        return 0.0
+
+    edge_len = p_lens[idx + 1] - p_lens[idx]
+    t = (distance_along_curve - p_lens[idx]) / edge_len
+
+    return t
+
+
 # @nb.njit
 def morphing_combine(
     morphing_1: Morphing,
@@ -618,18 +677,36 @@ def morphing_combine(
 
         assert i_p == r_num_pts - 1 or r_lens[i_r] <= r_loc
 
-        p_is_vert = np.isclose(p_lens[i_p], p_loc)
-        r_is_vert = np.isclose(r_lens[i_r], r_loc)
+        t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
+        t_r = coefficient_from_prefix_lens(r_loc, r_lens, i_r)
 
-        print(i_p, i_r, p_loc, r_loc)
-        print(p_lens[i_p], r_lens[i_r])
+        # TODO make this work with edge-edge events
+        # p_is_vert = np.isclose(p_lens[i_p], p_loc)
+        # r_is_vert = np.isclose(r_lens[i_r], r_loc)
+
+        # print(i_p, i_r, p_loc, r_loc)
+        # print(p_lens[i_p], r_lens[i_r])
         print("about to assert")
         # Can't both be false, since otherwise we have an edge-edge event
 
-        assert (i_p == i_r == 0) or (p_is_vert or r_is_vert)
-        print(p_lens[i_p], r_lens[i_r])
-        print(i_p, i_r, p_is_vert, r_is_vert)
-        new_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
+        # print(p_lens[i_p], r_lens[i_r])
+        # print(i_p, i_r, p_is_vert, r_is_vert)
+        # old_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
+
+        new_event = from_coefficients(i_p, i_r, t_p, t_r, P, R)
+        # print(p_is_vert, r_is_vert, old_event.dist, new_event.dist)
+        # print(t_p, t_r)
+        # print(old_event.t_i, old_event.t_j)
+        # assert np.isclose(old_event.dist, new_event.dist)
+        if new_event.dist > 3.047950130825634:
+            p_is_vert = np.isclose(p_lens[i_p], p_loc)
+            r_is_vert = np.isclose(r_lens[i_r], r_loc)
+            # old_event = from_curve_indices(i_p, p_is_vert, i_r, r_is_vert, P, R)
+
+            print(new_event.p_i, new_event.p_j)
+            print(new_event.dist)
+            assert False
+
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
 

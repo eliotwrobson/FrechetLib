@@ -305,6 +305,7 @@ def frechet_c_approx(
     ratio = approx_ratio + 1.0  # Set to force loop to run at least once
     output_morphing = None
     i = 0
+    print("starting")
     while ratio > approx_ratio:
         i += 1
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
@@ -317,8 +318,7 @@ def frechet_c_approx(
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
 
-        if i > 100:
-            print("here")
+        print("here")
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
