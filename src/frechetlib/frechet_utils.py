@@ -176,6 +176,9 @@ def from_coefficients(
     edge-edge matchings.
     """
 
+    assert 0 <= i < P.shape[0]
+    assert 0 <= j < Q.shape[0]
+
     i_is_vert = False
 
     # Use this to avoid issues with floating point error
@@ -183,9 +186,11 @@ def from_coefficients(
         p_i = P[i]
         i_is_vert = True
     elif np.isclose(t_p, 1.0):
+        assert i + 1 < P.shape[0]
         p_i = P[i + 1]
         i_is_vert = True
     else:
+        assert i + 1 < P.shape[0]
         p_i = convex_comb(P[i], P[i + 1], t_p)
 
     j_is_vert = False
@@ -195,9 +200,11 @@ def from_coefficients(
         p_j = Q[j]
         j_is_vert = True
     elif np.isclose(t_q, 1.0):
+        assert j + 1 < Q.shape[0]
         p_j = Q[j + 1]
         j_is_vert = True
     else:
+        assert j + 1 < Q.shape[0]
         p_j = convex_comb(Q[j], Q[j + 1], t_q)
 
     dist = float(np.linalg.norm(p_i - p_j))
@@ -434,25 +441,32 @@ class Morphing:
         p_events = prm[0]
         q_events = prm[1]
 
+        n_p = p_lens.shape[0]
+        n_q = q_lens.shape[0]
+
+        # TODO Apparently sometimes it's possible to have non-zero coefficient
+        # while being at the last index of the morphing. Figure out where that's
+        # happening. This is why there are >= checks below
+
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
             # Add event to P event list
             # TODO check that this equality condition still gives you the
             # correct answer
-            if event.i_is_vert or event.i + 1 == p_lens.shape[0]:
+            if event.i_is_vert or event.i + 1 >= n_p:
                 p_events[k] = p_lens[event.i]
             else:
                 curr_len = p_lens[event.i]
-                assert event.i + 1 < p_lens.shape[0]
+                assert event.i + 1 < n_p
                 next_len = p_lens[event.i + 1]
                 p_events[k] = curr_len + event.t_i * (next_len - curr_len)
 
             # Add event to Q event list
-            if event.j_is_vert or event.j + 1 == q_lens.shape[0]:
+            if event.j_is_vert or event.j + 1 >= n_q:
                 q_events[k] = q_lens[event.j]
             else:
                 curr_len = q_lens[event.j]
-                assert event.j + 1 < q_lens.shape[0]
+                assert event.j + 1 < n_q
                 next_len = q_lens[event.j + 1]
 
                 # TODO switch this with convex combination helper function
@@ -564,7 +578,7 @@ def morphing_combine(
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
     P = morphing_2.P
-    Q = morphing_2.Q  # Equal to morphing_1.P
+    Q = morphing_2.Q  # Original curve equal to morphing_1.P
     assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
     R = morphing_1.Q
 
@@ -574,11 +588,8 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    assert np.allclose(q_events_1[-1], q_events_2[-1])
-
-    # assert q_events_1.shape == q_events_2.shape
-
-    # Apparently len(prm_1[1]) == len(prm_2[0])
+    # TODO I don't actually think this is needed
+    # assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     idx_1 = 0
     idx_2 = 0
@@ -633,7 +644,6 @@ def morphing_combine(
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
-            print(idx_1, prm_1.shape)
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
