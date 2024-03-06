@@ -580,10 +580,10 @@ def morphing_combine(
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
-    print("Starting combine")
+    # print("Starting combine")
 
     P = morphing_2.P
-    Q = morphing_2.Q  # Original curve equal to morphing_1.P
+    # Original curve equal to morphing_1.P
     assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
     R = morphing_1.Q
 
@@ -593,8 +593,8 @@ def morphing_combine(
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    print(prm_1)
-    print(prm_2)
+    # print(prm_1)
+    # print(prm_2)
 
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
@@ -626,7 +626,7 @@ def morphing_combine(
             and idx_1 < len_1 - 1
             and np.isclose(q_events_1[idx_1 + 1], q_event_1)
         ):
-            print("case2")
+            # print("case2")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
 
@@ -635,12 +635,12 @@ def morphing_combine(
             and idx_2 < len_2 - 1
             and np.isclose(q_events_2[idx_2 + 1], q_event_2)
         ):
-            print("case3")
+            # print("case3")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
 
         elif is_equal:
-            print("case4")
+            # print("case4")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
             idx_2 = min(idx_2 + 1, len_2 - 1)
@@ -648,7 +648,7 @@ def morphing_combine(
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
-            print("case5")
+            # print("case5")
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
@@ -657,7 +657,7 @@ def morphing_combine(
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
-            print("case6")
+            # print("case6")
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
@@ -712,7 +712,7 @@ def morphing_combine(
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_r = coefficient_from_prefix_lens(r_loc, r_lens, i_r)
 
-        print("about to assert")
+        # print("about to assert")
 
         new_event = from_coefficients(i_p, i_r, t_p, t_r, P, R)
 
