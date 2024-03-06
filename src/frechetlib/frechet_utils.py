@@ -447,12 +447,12 @@ class Morphing:
         # TODO Apparently sometimes it's possible to have non-zero coefficient
         # while being at the last index of the morphing. Figure out where that's
         # happening. This is why there are >= checks below
-        print(n_p, n_q)
+        # print(n_p, n_q)
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
             assert 0 <= event.i < n_p
             assert 0 <= event.j < n_q
-            print(p_lens[event.i], q_lens[event.j])
+            # print(p_lens[event.i], q_lens[event.j])
             # Add event to P event list
             # TODO check that this equality condition still gives you the
             # correct answer
@@ -609,9 +609,7 @@ def morphing_combine(
     # P = morphing_2.P
     # Q = morphing_2.Q = morphing_1.P
     # R = morphing_1.Q
-    i = 0
     while idx_1 < len_1 - 1 or idx_2 < len_2 - 1:
-        print(idx_1, idx_2, q_events_1.shape[0], q_events_2.shape[0])
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
