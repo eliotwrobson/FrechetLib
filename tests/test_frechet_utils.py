@@ -1,9 +1,8 @@
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 import numba.typed as nbt
 import numpy as np
 import pytest
-
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -123,7 +122,56 @@ def test_morphing_combine_manual() -> None:
         ]
     )
 
-    middle_morphing = fu.Morphing(middle_morphing_list, P, Q, dist)
+    middle_morphing = fu.Morphing(middle_morphing_list, P_refined, Q, dist)
+
+    P_self_morphing_prm = np.array(
+        [
+            [0.0, 1.4142135623730951],
+            [0.0, 1.4142135623730951],
+        ]
+    )
+
+    assert np.allclose(P_self_morphing.get_prm(), P_self_morphing_prm)
+
+    # Pulled from Sariel's code
+    middle_morphing_prm = np.array(
+        [
+            [
+                0.0,
+                0.0,
+                0.21213203435596426,
+                0.4242640687119285,
+                0.565685424949238,
+                0.565685424949238,
+                0.565685424949238,
+                0.7071067811865475,
+                0.8485281374238569,
+                0.9899494936611664,
+                0.9899494936611664,
+                1.2020815280171306,
+                1.414213562373095,
+            ],
+            [
+                0.0,
+                0.0,
+                0.21213203435596426,
+                0.4242640687119285,
+                0.7071067811865476,
+                0.9899494936611666,
+                1.131370849898476,
+                1.2727922061357857,
+                1.414213562373095,
+                1.5556349186104046,
+                1.5556349186104046,
+                1.7677669529663689,
+                1.9798989873223332,
+            ],
+        ]
+    )
+
+    assert np.allclose(middle_morphing_prm, middle_morphing.get_prm())
+
+    m_before_monotone = fu.morphing_combine(P_self_morphing, middle_morphing)
 
     assert False
 
