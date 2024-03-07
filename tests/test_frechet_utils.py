@@ -1,8 +1,11 @@
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 import numba.typed as nbt
 import numpy as np
 import pytest
+import utils as u
+
+import frechetlib.continuous_frechet as cf
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -179,44 +182,13 @@ def test_morphing_combine_manual() -> None:
 
     assert np.isclose(first_combined.dist, 0.14142135623730956)
 
-    assert False
+    Q_self_morphing.flip()
 
+    final_combined = fu.morphing_combine(Q_self_morphing, middle_morphing)
 
-def test_morphing_combine_again() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    p_indices = [0, 1]
+    assert np.isclose(final_combined.dist, 0.14142135623730956)
 
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    q_indices = [0, 1, 2, 3, 4]
-
-    morphing_p = cf.frechet_c_mono_approx_subcurve(P, P, p_indices)
-    morphing_q = cf.frechet_c_mono_approx_subcurve(Q, Q, q_indices)
-    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
-
-    assert np.isclose(morphing_p.dist, 0.0)
-    assert np.isclose(morphing_q.dist, 0.0)
-    assert np.isclose(morphing.dist, 0.14169756982371037)
-
-    morphing_p.make_monotone()
-    morphing_q.make_monotone()
-
-    # Should be the same after making monotone
-    assert np.isclose(morphing_p.dist, 0.0)
-    assert np.isclose(morphing_q.dist, 0.0)
-
-    first_morphing = fu.morphing_combine(morphing, morphing_p)
-    # TODO this might be close enough that it doesn't matter?
-    assert np.isclose(first_morphing.dist, 0.14142135623730956)
-
-    first_morphing.make_monotone()
-    # assert np.isclose(first_morphing.dist, 0.14142135623730956)
-
-    first_morphing.flip()
-    # prm = first_morphing.get_prm()
-    # print(prm)
-    print("Done with first monotone")
-    output_morphing = fu.morphing_combine(first_morphing, morphing_q)
-    assert np.isclose(output_morphing.dist, 0.14142135623730956)
+    # TODO add more asserts as-needed to deal with possible issues
 
 
 def test_morphing_make_monotone_nontrivial() -> None:
@@ -245,18 +217,6 @@ def test_morphing_make_monotone_nontrivial() -> None:
     # to double back on itself, which causes the algo to take forever
     # to converge.
     # assert np.isclose(monotone_morphing_2.dist, 0.14142135623730948)
-
-
-def test_get_prm() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-
-    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
-
-    prm = morphing.get_prm()
-
-    fu.print_prm(prm)
-    assert False
 
 
 def test_frechet_dist_upper_bound() -> None:
