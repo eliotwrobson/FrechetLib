@@ -35,14 +35,15 @@ def frechet_mono_via_refinement(
         # Add points where monotonicity was broken to improve distance
         new_P, new_Q = add_points_to_make_monotone(ve_morphing)
 
-        print(new_P.shape, new_Q.shape)
-
         # Compute new ve frechet distance for curves
         ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
 
         # Make monotone
         monotone_morphing = ve_morphing.copy()
         monotone_morphing.make_monotone()
+
+        print("ve: ", ve_morphing.dist)
+        print("monotone: ", monotone_morphing.dist)
 
     return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
 

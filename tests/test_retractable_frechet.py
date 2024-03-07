@@ -6,6 +6,26 @@ from utils import leq_with_tolerance
 import frechetlib.retractable_frechet as rf
 
 
+def test_retractable_weird() -> None:
+    P = np.array(
+        [
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
+
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    morphing = rf.retractable_ve_frechet(P, Q)
+    assert np.isclose(morphing.dist, 0.14142135623730948)
+
+
 def test_retractable_frechet() -> None:
     n = 50
     # Just to make the test case always generate the same number

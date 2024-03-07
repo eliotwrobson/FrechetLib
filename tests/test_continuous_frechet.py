@@ -3,6 +3,35 @@ import frechetlib.retractable_frechet as rf
 import numpy as np
 
 
+# Debug this next
+def test_frechet_mono_via_refinement() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
+
+    assert len(monotone_morphing.morphing_list) == 13
+
+    ve_morphing = rf.retractable_ve_frechet(P, Q)
+
+    if f_exact:
+        assert np.isclose(ve_morphing.dist, monotone_morphing.dist)
+    else:
+        assert ve_morphing.dist <= monotone_morphing.dist
+
+    # TODO I think I can assert the length is just the sum of the lengths of the
+    # number of points in each curve
+    assert len(monotone_morphing.morphing_list) >= len(ve_morphing.morphing_list)
+    assert monotone_morphing.P.shape[0] >= P.shape[0]
+    assert monotone_morphing.Q.shape[0] >= Q.shape[0]
+
+
+def test_frechet_c_approx() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    cf.frechet_c_approx(P, Q, 1.01)
+
+
 def test_add_points_to_make_monotone() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
@@ -50,34 +79,6 @@ def test_add_points_to_make_monotone() -> None:
 
     assert np.allclose(new_P, new_P_expected)
     assert np.allclose(new_Q, Q)
-
-
-def test_frechet_mono_via_refinement() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-
-    monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
-
-    assert len(monotone_morphing.morphing_list) == 13
-
-    ve_morphing = rf.retractable_ve_frechet(P, Q)
-
-    if f_exact:
-        assert np.isclose(ve_morphing.dist, monotone_morphing.dist)
-    else:
-        assert ve_morphing.dist <= monotone_morphing.dist
-
-    # TODO I think I can assert the length is just the sum of the lengths of the
-    # number of points in each curve
-    assert len(monotone_morphing.morphing_list) >= len(ve_morphing.morphing_list)
-    assert monotone_morphing.P.shape[0] >= P.shape[0]
-    assert monotone_morphing.Q.shape[0] >= Q.shape[0]
-
-
-def test_frechet_c_approx() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    cf.frechet_c_approx(P, Q, 1.01)
 
 
 def test_add_points() -> None:

@@ -1,10 +1,9 @@
-import numpy as np
-import pytest
-import utils as u
-
 import frechetlib.continuous_frechet as cf
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
+import numpy as np
+import pytest
+import utils as u
 
 
 def example_3():
@@ -48,6 +47,29 @@ def example_3():
     )
 
     return P, Q, R
+
+
+def test_morphing_make_monotone_nontrivial() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    ve_morphing = rf.retractable_ve_frechet(P, Q)
+    assert np.isclose(ve_morphing.dist, 0.0)
+    ve_morphing.make_monotone()
+    assert np.isclose(ve_morphing.dist, 0.28284271247461906)
+
+    new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
+
+    # Compute new ve frechet distance for curves
+    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
+
+    assert np.isclose(ve_morphing.dist, 0.14142135623730948)
+
+    # Make monotone
+    monotone_morphing = ve_morphing.copy()
+    monotone_morphing.make_monotone()
+
+    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
 
 
 def test_get_prm() -> None:
