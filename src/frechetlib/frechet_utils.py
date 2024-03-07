@@ -645,12 +645,15 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    # print()
-    # print_prm(prm_1)
-    # print_prm(prm_2)
+    print()
+    print_prm(prm_1)
+    print_prm(prm_2)
 
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
+
+    print("q_events_1: ", q_events_1)
+    print("q_events_2: ", q_events_2)
 
     # print(prm_1)
     # print(prm_2)
@@ -671,6 +674,9 @@ def morphing_combine(
     while idx_1 < len_1 - 1 or idx_2 < len_2 - 1:
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
+
+        # print(idx_1, idx_2)
+        # print("Two points: ", q_event_1, q_event_2)
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
@@ -750,9 +756,14 @@ def morphing_combine(
     # TODO getting to this point and seeing that neither point is a
     # vertex, so something is wrong with the PRMs. Need to debug
     # using Sariel's code.
-    # NOTE Thing that is wrong is that EID events don't allow
-    # for edge-edge events. Need to add a constructor that does this.
 
+    print("New PRM:")
+    print(new_prm)
+
+    return event_sequence_from_prm(new_prm, P, R)
+
+    # TODO I think the bug is in here. It looks like the PRM matches the
+    # expected output
     for i in range(len(new_prm) - 1):
         p_loc, r_loc = new_prm[i]
 
@@ -777,7 +788,57 @@ def morphing_combine(
         new_event_sequence.append(new_event)
 
     # TODO maybe add end event
+    print(P)
+    print(R)
+    assert False
     return Morphing(new_event_sequence, P, R, max_dist)
+
+
+def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
+    p_lens = get_prefix_lens(P)
+    q_lens = get_prefix_lens(Q)
+
+    i_p = 0
+    i_q = 0
+
+    p_num_pts = p_lens.shape[0]
+    q_num_pts = q_lens.shape[0]
+
+    max_dist = 0.0
+
+    new_event_sequence = nbt.List.empty_list(eid_type)
+
+    for i in range(len(prm) - 1):
+        print(i, prm[i])
+        p_loc, q_loc = prm[i]
+
+        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
+            i_p += 1
+
+        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc
+
+        while i_q < q_num_pts - 1 and q_loc >= q_lens[i_q + 1]:
+            i_q += 1
+
+        assert i_p == q_num_pts - 1 or q_lens[i_q] <= q_loc
+
+        t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
+        t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
+
+        # print("about to assert")
+
+        new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
+
+        print("New points: ", new_event.p_i, new_event.p_j)
+
+        max_dist = max(max_dist, new_event.dist)
+        new_event_sequence.append(new_event)
+
+    final_event = from_curve_indices(p_num_pts - 1, True, q_num_pts - 1, True, P, Q)
+    max_dist = max(max_dist, final_event.dist)
+    new_event_sequence.append(final_event)
+
+    return Morphing(new_event_sequence, P, Q, max_dist)
 
 
 def extract_vertex_radii(

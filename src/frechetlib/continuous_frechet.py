@@ -285,20 +285,18 @@ def frechet_c_approx(
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
-        # print(q_indices)
-        # assert False
-        # print("P dist: ", morphing_p.dist, "Q dist: ", morphing_q.dist)
 
         error = max(morphing_p.dist, morphing_q.dist)
 
         morphing_p.make_monotone()
         morphing_q.make_monotone()
+        morphing_q.flip()
 
         first_morphing = fu.morphing_combine(morphing, morphing_p)
         # print("done w/ first combine")
 
         first_morphing.make_monotone()
-        first_morphing.flip()
+
         # prm = first_morphing.get_prm()
         # print(prm)
         print("Done with first monotone")

@@ -51,6 +51,67 @@ def example_3():
     return P, Q, R
 
 
+def test_event_sequence_from_prm() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    prm_tuples = [
+        (0.0, 0.0),
+        (0.0, 0.0),
+        (0.21213203435596426, 0.21213203435596426),
+        (0.4242640687119285, 0.4242640687119285),
+        (0.565685424949238, 0.7071067811865476),
+        (0.565685424949238, 0.9899494936611666),
+        (0.565685424949238, 1.131370849898476),
+        (0.7071067811865475, 1.2727922061357857),
+        (0.8485281374238569, 1.414213562373095),
+        (0.9899494936611664, 1.5556349186104046),
+        (0.9899494936611664, 1.5556349186104046),
+        (1.2020815280171306, 1.7677669529663689),
+        (1.4142135623730951, 1.9798989873223332),
+    ]
+
+    expected_prm = np.array(
+        [
+            [
+                0.0,
+                0.0,
+                0.21213203435596426,
+                0.4242640687119285,
+                0.565685424949238,
+                0.565685424949238,
+                0.565685424949238,
+                0.7071067811865475,
+                0.8485281374238569,
+                0.9899494936611664,
+                0.9899494936611664,
+                1.2020815280171306,
+                1.414213562373095,
+            ],
+            [
+                0.0,
+                0.0,
+                0.21213203435596426,
+                0.4242640687119285,
+                0.7071067811865476,
+                0.9899494936611666,
+                1.131370849898476,
+                1.2727922061357857,
+                1.414213562373095,
+                1.5556349186104046,
+                1.5556349186104046,
+                1.7677669529663689,
+                1.9798989873223332,
+            ],
+        ]
+    )
+
+    morphing_from_prm = fu.event_sequence_from_prm(prm_tuples, P, Q)
+    assert 13 == len(morphing_from_prm.morphing_list)
+
+    assert np.allclose(expected_prm, morphing_from_prm.get_prm())
+
+
 def test_morphing_combine_manual() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
@@ -182,9 +243,20 @@ def test_morphing_combine_manual() -> None:
 
     assert np.isclose(first_combined.dist, 0.14142135623730956)
 
+    for i in range(len(first_combined.morphing_list)):
+        event = first_combined.morphing_list[i]
+        print("Event: ", i + 1)
+        print(event.i, event.i_is_vert, event.j, event.j_is_vert)
+
+    print("Combined PRM:", first_combined.get_prm())
+    # assert False
+    # NOTE bug is somewhere below here
     Q_self_morphing.flip()
 
-    final_combined = fu.morphing_combine(Q_self_morphing, middle_morphing)
+    Q_prm = Q_self_morphing.get_prm()
+    print(Q_prm)
+
+    final_combined = fu.morphing_combine(Q_self_morphing, first_combined)
 
     assert np.isclose(final_combined.dist, 0.14142135623730956)
 
