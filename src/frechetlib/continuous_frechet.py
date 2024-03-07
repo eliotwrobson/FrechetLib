@@ -48,7 +48,7 @@ def frechet_mono_via_refinement(
 
 
 # TODO have to write test cases for this
-@nb.njit
+# @nb.njit
 def add_points_to_make_monotone(
     morphing: fu.Morphing,
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -103,13 +103,21 @@ def add_points_to_make_monotone(
 
         events = sorted(events, key=fu.eid_get_coefficient_i)
 
+        # Tracking which events we're looking at
+        to_print = []
+        for event in events:
+            to_print.append(event.t_i)
+        print(to_print)
+        # End print segment
+
         if not monotone:
-            new_P.append(events[j].p_i / 2.0)
+            new_P.append(events[0].p_i / 2.0)
 
         for j in range(len(events)):
             new_P.append(events[j].p_i)
 
             if not monotone and j < len(events) - 1:
+                print("Adding average: ", events[j].p_i, events[j + 1].p_i)
                 new_P.append((events[j].p_i + events[j + 1].p_i) / 2.0)
 
     # # Next, add points to Q, same as above but hard to share logic
