@@ -89,9 +89,6 @@ def add_points_to_make_monotone(
             events.append(morphing_list[k])
             k += 1
 
-        print("k: ", k)
-        print("len events: ", len(events))
-
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
@@ -102,13 +99,6 @@ def add_points_to_make_monotone(
             continue
 
         events = sorted(events, key=fu.eid_get_coefficient_i)
-
-        # Tracking which events we're looking at
-        # to_print = []
-        # for event in events:
-        #     to_print.append(event.t_i)
-        # print(to_print)
-        # End print segment
 
         if not monotone:
             # NOTE Use i because we know we're not at the vertex from case checked above
@@ -161,13 +151,6 @@ def add_points_to_make_monotone(
             continue
 
         events = sorted(events, key=fu.eid_get_coefficient_j)
-
-        # Tracking which events we're looking at
-        # to_print = []
-        # for event in events:
-        #     to_print.append(event.t_i)
-        # print(to_print)
-        # End print segment
 
         if not monotone:
             # NOTE Use j because we know we're not at the vertex from case checked above

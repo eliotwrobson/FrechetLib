@@ -1,7 +1,6 @@
-import numpy as np
-
 import frechetlib.continuous_frechet as cf
 import frechetlib.retractable_frechet as rf
+import numpy as np
 
 
 def test_add_points_to_make_monotone() -> None:
@@ -27,6 +26,23 @@ def test_add_points_to_make_monotone() -> None:
 
     assert np.allclose(new_P, new_P_expected)
     assert np.allclose(new_Q, Q)
+
+    # Extra zeroes because of a quirk with the ve-frechet algo
+    new_P_expected = np.array(
+        [
+            [0.0, 0.0],
+            [0.0, 0.0],
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
 
     # Assert the flipped side because of code structure
     morphing = rf.retractable_ve_frechet(Q, P)
