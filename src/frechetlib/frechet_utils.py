@@ -778,3 +778,68 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
     indices.append(n - 1)
 
     return indices
+
+
+@nb.njit
+def frechet_dist_upper_bound(
+    P: np.ndarray,
+    Q: np.ndarray,
+) -> float:
+    """
+    Returns a rough upper bound on the Frechet distance between the two
+    curves. This upper bound is on the continuous distance. No guarentee
+    on how bad the approximation is. This is used as a starting point for
+    real approximation of the Frechet distance, and should not be used
+    otherwise.
+    """
+
+    w_a = frechet_width_approx(P)
+    w_b = frechet_width_approx(Q)
+
+    if P.shape[0] <= 2 or Q.shape[0] <= 2:
+        return w_a + w_b
+
+    w = max(np.linalg.norm(P[0] - Q[0]), np.linalg.norm(P[-1] - Q[-1]))
+
+    return w_a + w_b + w
+
+
+@nb.njit
+def frechet_width_approx(
+    P: np.ndarray, idx_range: tuple[int, int] | None = None
+) -> float:
+    # TODO write some test code for this bc the indexing might be off
+    """
+    2-approximation to the Frechet distance between
+    P[first(rng)]-P[last(rng)] and he polygon
+    P[rng]
+    Here, rng is a range i:j
+    """
+
+    if idx_range is None:
+        start, end = 0, P.shape[0]
+    else:
+        start, end = idx_range
+
+    if end - start <= 2:
+        return 0.0
+
+    start_point = P[start]
+    end_point = P[end - 1]
+
+    leash = 0.0
+    t = 0.0
+    curr = start_point
+
+    # TODO double check w/ Sariel because this seems like a weird min condition
+    for i in range(start + 1, end - 1):
+        p = P[i]
+        _, new_t, q = line_point_distance(start_point, end_point, p)
+
+        if new_t > t:
+            t = new_t
+            curr = q
+
+        leash = max(leash, np.linalg.norm(curr - p))
+
+    return leash

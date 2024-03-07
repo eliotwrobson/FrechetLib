@@ -6,65 +6,6 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
-@nb.njit
-def frechet_width_approx(
-    P: np.ndarray, idx_range: tuple[int, int] | None = None
-) -> float:
-    # TODO write some test code for this bc the indexing might be off
-    """
-    2-approximation to the Frechet distance between
-    P[first(rng)]-P[last(rng)] and he polygon
-    P[rng]
-    Here, rng is a range i:j
-    """
-
-    if idx_range is None:
-        start, end = 0, P.shape[0]
-    else:
-        start, end = idx_range
-
-    start_point = P[start]
-    end_point = P[end - 1]
-
-    leash = 0.0
-    t = 0.0
-
-    # TODO double check w/ Sariel because this seems like a weird min condition
-    for i in range(start + 1, end - 1):
-        dist, new_t, _ = fu.line_point_distance(start_point, end_point, P[i])
-
-        if new_t > t:
-            t = new_t
-            leash = max(leash, dist)
-
-    return leash
-
-
-@nb.njit
-def frechet_dist_upper_bound(
-    P: np.ndarray,
-    Q: np.ndarray,
-) -> float:
-    """
-    Returns a rough upper bound on the Frechet distance between the two
-    curves. This upper bound is on the continuous distance. No guarentee
-    on how bad the approximation is. This is used as a starting point for
-    real approximation of the Frechet distance, and should not be used
-    otherwise.
-    """
-
-    w_a = frechet_width_approx(P)
-    w_b = frechet_width_approx(Q)
-
-    if P.shape[0] < 2 or Q.shape[0] < 2:
-        return w_a + w_b
-
-    w = max(np.linalg.norm(P[0] - Q[0]), np.linalg.norm(P[-1] - Q[-1]))
-
-    return w_a + w_b + w
-
-
-@nb.njit
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
 ) -> tuple[fu.Morphing, bool]:
@@ -298,17 +239,18 @@ def frechet_c_approx(
 
     # Modeled after:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
-    upper_bound_dist = frechet_dist_upper_bound(P, Q)
+    upper_bound_dist = fu.frechet_dist_upper_bound(P, Q)
 
     # radius of simplification allowed
     radius = upper_bound_dist / (approx_ratio + 4.0)
-    ratio = approx_ratio + 1.0  # Set to force loop to run at least once
+    ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
     i = 0
-    print("starting")
+    print("starting: ", radius, upper_bound_dist)
+    assert False
     while ratio > approx_ratio:
         i += 1
-        print(i)
+        print(ratio, approx_ratio)
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
             print("inner simplification")
             radius /= 2.0
@@ -316,6 +258,7 @@ def frechet_c_approx(
             Q, q_indices = simplify_polygon_radius(Q, radius)
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+            upper_bound_dist = morphing.dist
 
         print("outer simplification")
 

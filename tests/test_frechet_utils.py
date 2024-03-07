@@ -1,9 +1,8 @@
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
-
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -47,6 +46,16 @@ def example_3():
     )
 
     return P, Q, R
+
+
+def test_frechet_dist_upper_bound() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    res = fu.frechet_dist_upper_bound(P, Q)
+
+    assert np.isclose(fu.frechet_width_approx(P), 0.0)
+    assert np.isclose(fu.frechet_width_approx(Q), 0.28284271247461906)
+    assert np.isclose(res, 0.28284271247461906)
 
 
 def test_morphing_combine() -> None:
