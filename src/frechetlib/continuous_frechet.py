@@ -42,8 +42,8 @@ def frechet_mono_via_refinement(
         monotone_morphing = ve_morphing.copy()
         monotone_morphing.make_monotone()
 
-        print("ve: ", ve_morphing.dist)
-        print("monotone: ", monotone_morphing.dist)
+        # print("ve: ", ve_morphing.dist)
+        # print("monotone: ", monotone_morphing.dist)
 
     return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
 
@@ -308,7 +308,7 @@ def frechet_c_approx(
         # asert False
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         print(ratio)
-        assert False
+        # assert False
 
     return ratio, output_morphing
 

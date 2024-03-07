@@ -1,9 +1,8 @@
 import time
 
+import frechetlib.retractable_frechet as rf
 import numpy as np
 from utils import leq_with_tolerance
-
-import frechetlib.retractable_frechet as rf
 
 
 def test_retractable_weird() -> None:
@@ -23,6 +22,9 @@ def test_retractable_weird() -> None:
 
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing = rf.retractable_ve_frechet(P, Q)
+    assert np.isclose(morphing.dist, 0.14142135623730948)
+    morphing.make_monotone()
+
     assert np.isclose(morphing.dist, 0.14142135623730948)
 
 

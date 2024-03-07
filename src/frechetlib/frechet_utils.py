@@ -358,8 +358,10 @@ class Morphing:
         while k < n:
             event = morphing[k]
 
+            # print(event.dist)
             if event.i_is_vert and event.j_is_vert:
                 k += 1
+                longest_dist = max(longest_dist, event.dist)
                 continue
 
             elif not event.i_is_vert:
@@ -372,9 +374,19 @@ class Morphing:
                     and morphing[new_k + 1].i == event.i
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+                    # print(best_t, new_event.t_i)
+                    # print(
+                    #    new_event.p_i, new_event.i, new_event.i_is_vert, new_event.t_i
+                    # )
+                    # print(event.j, new_event.j)
+
                     best_t = max(best_t, new_event.t_i)
                     # TODO might be the wrong condition??
+
                     if best_t > new_event.t_i:
+                        print("Reassigning!!")
+                        # print()
+                        # assert False
                         morphing[new_k].reassign_parameter_i(best_t, self.P)
 
                     longest_dist = max(longest_dist, morphing[new_k].dist)
@@ -383,7 +395,32 @@ class Morphing:
 
                 new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
 
+                # print(
+                #     event.p_i,
+                #     event.p_j,
+                #     event.i,
+                #     event.i_is_vert,
+                #     event.j,
+                #     event.j_is_vert,
+                #     event.t_i,
+                #     event.t_j,
+                # )
+                # print(
+                #     new_event.p_i,
+                #     new_event.p_j,
+                #     new_event.i,
+                #     new_event.i_is_vert,
+                #     new_event.j,
+                #     new_event.j_is_vert,
+                #     new_event.t_i,
+                #     new_event.t_j,
+                #     new_event.dist,
+                # )
+
+                # print("Ks: ", k, new_k)
+                # print("Ts: ", best_t, new_event.t_i)
                 if best_t > new_event.t_i:
+                    # print("Reassigning other: ", new_k)
                     new_event.reassign_parameter_i(best_t, self.P)
 
                 longest_dist = max(longest_dist, new_event.dist)
@@ -404,6 +441,7 @@ class Morphing:
 
                     # TODO might be the wrong condition??
                     if best_t > new_event.t_j:
+                        print("Reassigning!!")
                         new_event.reassign_parameter_j(best_t, self.Q)
 
                     longest_dist = max(longest_dist, new_event.dist)
@@ -419,6 +457,18 @@ class Morphing:
                 longest_dist = max(longest_dist, new_event.dist)
                 # res.append(new_event)
                 k = new_k + 1
+
+        # for i in range(n):
+        #     print(
+        #         i,
+        #         morphing[i].i,
+        #         morphing[i].i_is_vert,
+        #         morphing[i].j,
+        #         morphing[i].j_is_vert,
+        #         morphing[i].p_i,
+        #         morphing[i].p_j,
+        #     )
+        #     print(morphing[i].dist)
 
         self.dist = longest_dist
 
