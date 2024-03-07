@@ -55,10 +55,14 @@ def test_morphing_make_monotone_nontrivial() -> None:
 
     ve_morphing = rf.retractable_ve_frechet(P, Q)
     assert np.isclose(ve_morphing.dist, 0.0)
-    ve_morphing.make_monotone()
-    assert np.isclose(ve_morphing.dist, 0.28284271247461906)
+    monotone_morphing = ve_morphing.copy()
+    monotone_morphing.make_monotone()
+    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
 
     new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
+
+    print(new_P)
+    print(new_Q)
 
     # Compute new ve frechet distance for curves
     ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
@@ -69,7 +73,7 @@ def test_morphing_make_monotone_nontrivial() -> None:
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
 
-    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
+    assert np.isclose(monotone_morphing.dist, 0.14142135623730948)
 
 
 def test_get_prm() -> None:

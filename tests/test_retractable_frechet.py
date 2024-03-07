@@ -55,7 +55,8 @@ def test_retractable_frechet() -> None:
     assert morphing.morphing_list[0].i_is_vert
     assert morphing.morphing_list[0].j == 0
     assert morphing.morphing_list[0].j_is_vert
-    assert morphing.morphing_list[0].t == 0.0
+    assert morphing.morphing_list[0].t_i == 0.0
+    assert morphing.morphing_list[0].t_j == 0.0
 
     # Check that only one vertex changes at a time,
     # ignoring the first event.
