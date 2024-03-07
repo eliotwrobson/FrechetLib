@@ -247,7 +247,7 @@ def frechet_c_approx(
     output_morphing = None
     i = 0
     print("starting: ", radius, upper_bound_dist)
-    assert False
+
     while ratio > approx_ratio:
         i += 1
         print(ratio, approx_ratio)
@@ -259,11 +259,13 @@ def frechet_c_approx(
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
             upper_bound_dist = morphing.dist
-
-        print("outer simplification")
+        if i > 100:
+            assert False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+
+        # print("P dist: ", morphing_p.dist, "Q dist: ", morphing_q.dist)
 
         error = max(morphing_p.dist, morphing_q.dist)
 
@@ -273,11 +275,6 @@ def frechet_c_approx(
         first_morphing = fu.morphing_combine(morphing, morphing_p)
         # print("done w/ first combine")
 
-        print(first_morphing.P)
-        print(first_morphing.Q)
-        print(morphing_q.P)
-        print(morphing_q.Q)
-
         first_morphing.make_monotone()
         first_morphing.flip()
         # prm = first_morphing.get_prm()
@@ -285,6 +282,8 @@ def frechet_c_approx(
         print("Done with first monotone")
         output_morphing = fu.morphing_combine(first_morphing, morphing_q)
         print("Done with combining")
+        print(output_morphing.dist)
+        assert False
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
 
     return ratio, output_morphing

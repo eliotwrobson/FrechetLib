@@ -48,6 +48,17 @@ def example_3():
     return P, Q, R
 
 
+def test_morphing_combine_again() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    p_indices = [0, 1]
+
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    q_indices = [0, 1, 2, 3, 4]
+
+    morphing_p = cf.frechet_c_mono_approx_subcurve(P, P, p_indices)
+    morphing_q = cf.frechet_c_mono_approx_subcurve(P, Q, q_indices)
+
+
 def test_frechet_dist_upper_bound() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
