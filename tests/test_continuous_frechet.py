@@ -9,12 +9,31 @@ def test_add_points_to_make_monotone() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
     morphing = rf.retractable_ve_frechet(P, Q)
-
     new_P, new_Q = cf.add_points_to_make_monotone(morphing)
-    print(new_P)
-    assert new_P.shape == (9, 2)
-    print(new_P)
-    print(new_Q)
+
+    new_P_expected = np.array(
+        [
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
+
+    assert np.allclose(new_P, new_P_expected)
+    assert np.allclose(new_Q, Q)
+
+    # Assert the flipped side because of code structure
+    morphing = rf.retractable_ve_frechet(Q, P)
+    new_Q, new_P = cf.add_points_to_make_monotone(morphing)
+
+    assert np.allclose(new_P, new_P_expected)
+    assert np.allclose(new_Q, Q)
 
 
 def test_frechet_mono_via_refinement() -> None:

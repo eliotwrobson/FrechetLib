@@ -104,21 +104,25 @@ def add_points_to_make_monotone(
         events = sorted(events, key=fu.eid_get_coefficient_i)
 
         # Tracking which events we're looking at
-        to_print = []
-        for event in events:
-            to_print.append(event.t_i)
-        print(to_print)
+        # to_print = []
+        # for event in events:
+        #     to_print.append(event.t_i)
+        # print(to_print)
         # End print segment
 
         if not monotone:
-            new_P.append(events[0].p_i / 2.0)
+            # NOTE Use i because we know we're not at the vertex from case checked above
+            new_P.append((P[events[0].i] + events[0].p_i) / 2.0)
 
         for j in range(len(events)):
             new_P.append(events[j].p_i)
 
             if not monotone and j < len(events) - 1:
-                print("Adding average: ", events[j].p_i, events[j + 1].p_i)
+                # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
                 new_P.append((events[j].p_i + events[j + 1].p_i) / 2.0)
+
+        if not monotone and events[-1].i + 1 < P.shape[0]:
+            new_P.append((P[events[-1].i + 1] + events[-1].p_i) / 2.0)
 
     # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
@@ -157,12 +161,27 @@ def add_points_to_make_monotone(
             continue
 
         events = sorted(events, key=fu.eid_get_coefficient_j)
-        print("old: ", new_Q)
+
+        # Tracking which events we're looking at
+        # to_print = []
+        # for event in events:
+        #     to_print.append(event.t_i)
+        # print(to_print)
+        # End print segment
+
+        if not monotone:
+            # NOTE Use j because we know we're not at the vertex from case checked above
+            new_Q.append((Q[events[0].j] + events[0].p_j) / 2.0)
+
         for j in range(len(events)):
             new_Q.append(events[j].p_j)
 
             if not monotone and j < len(events) - 1:
-                new_Q.append((events[j].p_j + events[j + 1].p_j) / 2)
+                # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
+                new_Q.append((events[j].p_j + events[j + 1].p_j) / 2.0)
+
+        if not monotone and events[-1].j + 1 < Q.shape[0]:
+            new_Q.append((Q[events[-1].j + 1] + events[-1].p_j) / 2.0)
 
     # Finally, assemble into output arrays
     new_P_final = np.empty((len(new_P), new_P[0].shape[0]))
