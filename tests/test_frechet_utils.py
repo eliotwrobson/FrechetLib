@@ -1,11 +1,10 @@
+import frechetlib.continuous_frechet as cf
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 import numba.typed as nbt
 import numpy as np
 import pytest
 import utils as u
-
-import frechetlib.continuous_frechet as cf
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -254,7 +253,7 @@ def test_morphing_combine_manual() -> None:
     Q_self_morphing.flip()
 
     Q_prm = Q_self_morphing.get_prm()
-    print(Q_prm)
+    # print(Q_prm)
 
     final_combined = fu.morphing_combine(Q_self_morphing, first_combined)
 

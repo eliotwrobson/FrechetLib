@@ -280,7 +280,7 @@ def frechet_c_approx(
             print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
             upper_bound_dist = morphing.dist
-        if i > 100:
+        if i > 10:
             assert False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
@@ -299,8 +299,9 @@ def frechet_c_approx(
 
         # prm = first_morphing.get_prm()
         # print(prm)
-        print("Done with first monotone")
-        output_morphing = fu.morphing_combine(first_morphing, morphing_q)
+        print("morphing len: ", len(morphing.morphing_list))
+        print("Done with first monotone: ", first_morphing.dist)
+        output_morphing = fu.morphing_combine(morphing_q, first_morphing)
         print("Done with combining")
         print(output_morphing.dist)
         # asert False

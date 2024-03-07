@@ -645,15 +645,15 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    print()
-    print_prm(prm_1)
-    print_prm(prm_2)
+    # print()
+    # print_prm(prm_1)
+    # print_prm(prm_2)
 
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    print("q_events_1: ", q_events_1)
-    print("q_events_2: ", q_events_2)
+    # print("q_events_1: ", q_events_1)
+    # print("q_events_2: ", q_events_2)
 
     # print(prm_1)
     # print(prm_2)
@@ -757,8 +757,8 @@ def morphing_combine(
     # vertex, so something is wrong with the PRMs. Need to debug
     # using Sariel's code.
 
-    print("New PRM:")
-    print(new_prm)
+    # print("New PRM:")
+    # print(new_prm)
 
     return event_sequence_from_prm(new_prm, P, R)
 
@@ -809,7 +809,7 @@ def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
     new_event_sequence = nbt.List.empty_list(eid_type)
 
     for i in range(len(prm) - 1):
-        print(i, prm[i])
+        # print(i, prm[i])
         p_loc, q_loc = prm[i]
 
         while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
@@ -829,7 +829,7 @@ def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
 
         new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
 
-        print("New points: ", new_event.p_i, new_event.p_j)
+        # print("New points: ", new_event.p_i, new_event.p_j)
 
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
