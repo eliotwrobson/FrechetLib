@@ -569,6 +569,11 @@ def coefficient_from_prefix_lens(
     return t
 
 
+def print_prm(prm) -> None:
+    for i in range(prm.shape[1]):
+        print(i, prm[:, i])
+
+
 # @nb.njit
 def morphing_combine(
     morphing_1: Morphing,
@@ -589,6 +594,10 @@ def morphing_combine(
 
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
+
+    print()
+    print_prm(prm_1)
+    print_prm(prm_2)
 
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2

@@ -258,13 +258,16 @@ def frechet_c_approx(
             Q, q_indices = simplify_polygon_radius(Q, radius)
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+            print(morphing.dist, (3.0 + approx_ratio) / 4.0)
+
             upper_bound_dist = morphing.dist
         if i > 100:
             assert False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
-
+        print(q_indices)
+        # assert False
         # print("P dist: ", morphing_p.dist, "Q dist: ", morphing_q.dist)
 
         error = max(morphing_p.dist, morphing_q.dist)
@@ -283,8 +286,10 @@ def frechet_c_approx(
         output_morphing = fu.morphing_combine(first_morphing, morphing_q)
         print("Done with combining")
         print(output_morphing.dist)
-        assert False
+        # asert False
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
+        print(ratio)
+        assert False
 
     return ratio, output_morphing
 

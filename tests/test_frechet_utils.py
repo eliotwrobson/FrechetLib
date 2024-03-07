@@ -1,8 +1,10 @@
-import frechetlib.frechet_utils as fu
-import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 import utils as u
+
+import frechetlib.continuous_frechet as cf
+import frechetlib.frechet_utils as fu
+import frechetlib.retractable_frechet as rf
 
 
 def example_3():
@@ -48,6 +50,18 @@ def example_3():
     return P, Q, R
 
 
+def test_get_prm() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
+
+    prm = morphing.get_prm()
+    assert prm.shape == (2, 13)
+    fu.print_prm(prm)
+    assert False
+
+
 def test_morphing_combine_again() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     p_indices = [0, 1]
@@ -56,7 +70,33 @@ def test_morphing_combine_again() -> None:
     q_indices = [0, 1, 2, 3, 4]
 
     morphing_p = cf.frechet_c_mono_approx_subcurve(P, P, p_indices)
-    morphing_q = cf.frechet_c_mono_approx_subcurve(P, Q, q_indices)
+    morphing_q = cf.frechet_c_mono_approx_subcurve(Q, Q, q_indices)
+    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
+
+    assert np.isclose(morphing_p.dist, 0.0)
+    assert np.isclose(morphing_q.dist, 0.0)
+    assert np.isclose(morphing.dist, 0.14169756982371037)
+
+    morphing_p.make_monotone()
+    morphing_q.make_monotone()
+
+    # Should be the same after making monotone
+    assert np.isclose(morphing_p.dist, 0.0)
+    assert np.isclose(morphing_q.dist, 0.0)
+
+    first_morphing = fu.morphing_combine(morphing, morphing_p)
+    # TODO this might be close enough that it doesn't matter?
+    assert np.isclose(first_morphing.dist, 0.14142135623730956)
+
+    first_morphing.make_monotone()
+    # assert np.isclose(first_morphing.dist, 0.14142135623730956)
+
+    first_morphing.flip()
+    # prm = first_morphing.get_prm()
+    # print(prm)
+    print("Done with first monotone")
+    output_morphing = fu.morphing_combine(first_morphing, morphing_q)
+    assert np.isclose(output_morphing.dist, 0.14142135623730956)
 
 
 def test_frechet_dist_upper_bound() -> None:
