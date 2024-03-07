@@ -60,7 +60,7 @@ def add_points_to_make_monotone(
     P = morphing.P
     Q = morphing.Q
     morphing_list = morphing.morphing_list
-    print(len(morphing_list))
+    # print(len(morphing_list))
     # First, add points to P
     new_P = []
     k = 0
@@ -265,7 +265,7 @@ def frechet_c_approx(
     ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
     i = 0
-    print("starting: ", radius, upper_bound_dist)
+    # print("starting: ", radius, upper_bound_dist)
 
     while ratio > approx_ratio:
         i += 1
@@ -273,8 +273,8 @@ def frechet_c_approx(
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
             print("inner simplification")
             radius /= 2.0
-            P, p_indices = simplify_polygon_radius(P, radius)
-            Q, q_indices = simplify_polygon_radius(Q, radius)
+            P, p_indices = simplify_polygon_radius(P_orig, radius)
+            Q, q_indices = simplify_polygon_radius(Q_orig, radius)
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
             print(morphing.dist, (3.0 + approx_ratio) / 4.0)
@@ -285,7 +285,7 @@ def frechet_c_approx(
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
-        print(q_indices)
+        # print(q_indices)
         # assert False
         # print("P dist: ", morphing_p.dist, "Q dist: ", morphing_q.dist)
 

@@ -384,7 +384,7 @@ class Morphing:
                     # TODO might be the wrong condition??
 
                     if best_t > new_event.t_i:
-                        print("Reassigning!!")
+                        # print("Reassigning!!")
                         # print()
                         # assert False
                         morphing[new_k].reassign_parameter_i(best_t, self.P)
@@ -441,7 +441,7 @@ class Morphing:
 
                     # TODO might be the wrong condition??
                     if best_t > new_event.t_j:
-                        print("Reassigning!!")
+                        # print("Reassigning!!")
                         new_event.reassign_parameter_j(best_t, self.Q)
 
                     longest_dist = max(longest_dist, new_event.dist)
@@ -645,9 +645,9 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    print()
-    print_prm(prm_1)
-    print_prm(prm_2)
+    # print()
+    # print_prm(prm_1)
+    # print_prm(prm_2)
 
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2

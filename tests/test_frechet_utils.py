@@ -1,9 +1,8 @@
-import frechetlib.continuous_frechet as cf
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
+import numba.typed as nbt
 import numpy as np
 import pytest
-import utils as u
 
 
 def example_3():
@@ -49,43 +48,76 @@ def example_3():
     return P, Q, R
 
 
-def test_morphing_make_monotone_nontrivial() -> None:
+def test_morphing_combine_manual() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    ve_morphing = rf.retractable_ve_frechet(P, Q)
-    assert np.isclose(ve_morphing.dist, 0.0)
-    monotone_morphing = ve_morphing.copy()
-    monotone_morphing.make_monotone()
-    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
+    # Morphing P with itself
+    P_self_morphing_list = nbt.List(
+        [
+            fu.EID(0, True, 0, True, P[0], P[0], 0.0, 0.0, 0.0),
+            fu.EID(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0),
+        ]
+    )
 
-    new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
+    P_self_morphing = fu.Morphing(P_self_morphing_list, P, P, 0.0)
 
-    # Compute new ve frechet distance for curves
-    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
+    # Morphing Q with itself
+    Q_self_morphing_list = nbt.List(
+        [
+            fu.EID(0, True, 0, True, Q[0], Q[0], 0.0, 0.0, 0.0),
+            fu.EID(1, True, 1, True, Q[1], Q[1], 0.0, 0.0, 0.0),
+            fu.EID(2, True, 2, True, Q[2], Q[2], 0.0, 0.0, 0.0),
+            fu.EID(3, True, 3, True, Q[3], Q[3], 0.0, 0.0, 0.0),
+            fu.EID(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0),
+        ]
+    )
 
-    assert np.isclose(ve_morphing.dist, 0.14142135623730948)
+    Q_self_morphing = fu.Morphing(Q_self_morphing_list, Q, Q, 0.0)
 
-    print("Starting the actual run")
-    # Make monotone
-    monotone_morphing_2 = ve_morphing.copy()
-    monotone_morphing_2.make_monotone()
+    P_refined = np.array(
+        [
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
 
-    # TODO this fails because, on th 6th point, the first curve has
-    # to double back on itself, which causes the algo to take forever
-    # to converge.
-    # assert np.isclose(monotone_morphing_2.dist, 0.14142135623730948)
+    # Middle Morphing. Using P points in multiple places to avoid having to redefine points
+    middle_morphing_list = nbt.List(
+        [
+            fu.EID(0, True, 0, True, P_refined[0], Q[0], 0.0, 0.0, 0.0),
+            fu.EID(0, True, 0, True, P_refined[1], Q[1], 0.0, 0.0, 0.0),
+            #
+            fu.EID(1, True, 2, True, P_refined[2], Q[2], 0.0, 0.0, 0.0),
+            #
+            fu.EID(2, True, 3, True, P_refined[3], Q[3], 0.0, 0.0, 0.0),
+            fu.EID(2, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            fu.EID(2, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(3, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(4, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(5, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(6, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            fu.EID(6, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(7, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+            #
+            fu.EID(8, True, 4, True, P_refined[4], Q[4], 0.0, 0.0, 0.0),
+        ]
+    )
 
+    middle_morphing = fu.Morphing(middle_morphing_list, P, Q, 0.14142135623730956)
 
-def test_get_prm() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-
-    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
-
-    prm = morphing.get_prm()
-
-    fu.print_prm(prm)
     assert False
 
 
@@ -124,6 +156,46 @@ def test_morphing_combine_again() -> None:
     print("Done with first monotone")
     output_morphing = fu.morphing_combine(first_morphing, morphing_q)
     assert np.isclose(output_morphing.dist, 0.14142135623730956)
+
+
+def test_morphing_make_monotone_nontrivial() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    ve_morphing = rf.retractable_ve_frechet(P, Q)
+    assert np.isclose(ve_morphing.dist, 0.0)
+    monotone_morphing = ve_morphing.copy()
+    monotone_morphing.make_monotone()
+    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
+
+    new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
+
+    # Compute new ve frechet distance for curves
+    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
+
+    assert np.isclose(ve_morphing.dist, 0.14142135623730948)
+
+    print("Starting the actual run")
+    # Make monotone
+    monotone_morphing_2 = ve_morphing.copy()
+    monotone_morphing_2.make_monotone()
+
+    # TODO this fails because, on th 6th point, the first curve has
+    # to double back on itself, which causes the algo to take forever
+    # to converge.
+    # assert np.isclose(monotone_morphing_2.dist, 0.14142135623730948)
+
+
+def test_get_prm() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    morphing, _ = cf.frechet_mono_via_refinement(P, Q, 1.0025)
+
+    prm = morphing.get_prm()
+
+    fu.print_prm(prm)
+    assert False
 
 
 def test_frechet_dist_upper_bound() -> None:
