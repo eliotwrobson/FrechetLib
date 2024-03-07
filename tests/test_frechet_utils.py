@@ -171,7 +171,13 @@ def test_morphing_combine_manual() -> None:
 
     assert np.allclose(middle_morphing_prm, middle_morphing.get_prm())
 
-    m_before_monotone = fu.morphing_combine(P_self_morphing, middle_morphing)
+    first_combined = fu.morphing_combine(middle_morphing, P_self_morphing)
+
+    assert np.isclose(first_combined.dist, 0.14142135623730956)
+
+    first_combined.make_monotone()
+
+    assert np.isclose(first_combined.dist, 0.14142135623730956)
 
     assert False
 
