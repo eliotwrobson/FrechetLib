@@ -4,6 +4,19 @@ import frechetlib.continuous_frechet as cf
 import frechetlib.retractable_frechet as rf
 
 
+def test_add_points_to_make_monotone() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    morphing = rf.retractable_ve_frechet(P, Q)
+
+    new_P, new_Q = cf.add_points_to_make_monotone(morphing)
+    print(new_P)
+    assert new_P.shape == (9, 2)
+    print(new_P)
+    print(new_Q)
+
+
 def test_frechet_mono_via_refinement() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])

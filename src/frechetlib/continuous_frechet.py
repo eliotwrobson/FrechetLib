@@ -35,6 +35,8 @@ def frechet_mono_via_refinement(
         # Add points where monotonicity was broken to improve distance
         new_P, new_Q = add_points_to_make_monotone(ve_morphing)
 
+        print(new_P.shape, new_Q.shape)
+
         # Compute new ve frechet distance for curves
         ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
 
@@ -57,7 +59,7 @@ def add_points_to_make_monotone(
     P = morphing.P
     Q = morphing.Q
     morphing_list = morphing.morphing_list
-
+    print(len(morphing_list))
     # First, add points to P
     new_P = []
     k = 0
@@ -87,6 +89,9 @@ def add_points_to_make_monotone(
             events.append(morphing_list[k])
             k += 1
 
+        print("k: ", k)
+        print("len events: ", len(events))
+
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
@@ -98,11 +103,14 @@ def add_points_to_make_monotone(
 
         events = sorted(events, key=fu.eid_get_coefficient_i)
 
+        if not monotone:
+            new_P.append(events[j].p_i / 2.0)
+
         for j in range(len(events)):
             new_P.append(events[j].p_i)
 
             if not monotone and j < len(events) - 1:
-                new_P.append((events[j].p_i + events[j + 1].p_i) / 2)
+                new_P.append((events[j].p_i + events[j + 1].p_i) / 2.0)
 
     # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
