@@ -9,9 +9,8 @@ def test_frechet_c_approx() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     ratio, output_morphing = cf.frechet_c_approx(P, Q, 1.01)
 
-    print(output_morphing.dist)
-    print(ratio)
-    assert False
+    assert np.isclose(output_morphing.dist, 0.14142135623730956)
+    assert np.isclose(ratio, 1.0)
 
 
 def test_frechet_mono_via_refinement() -> None:
