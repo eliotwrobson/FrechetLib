@@ -327,18 +327,82 @@ class Morphing:
 
             # First, assert monotonicity on the "P" side.
             if event.i > next_event.i:
+                print(
+                    event.i,
+                    event.i_is_vert,
+                    event.j,
+                    event.j_is_vert,
+                    event.t_i,
+                    event.t_j,
+                )
+                print(
+                    next_event.i,
+                    next_event.i_is_vert,
+                    next_event.j,
+                    next_event.j_is_vert,
+                    next_event.t_i,
+                    next_event.t_j,
+                )
                 return False
 
             # TODO change checks to account for floating point issues.
             if event.i == next_event.i and event.t_i > next_event.t_i:
+                print(
+                    event.i,
+                    event.i_is_vert,
+                    event.j,
+                    event.j_is_vert,
+                    event.t_i,
+                    event.t_j,
+                )
+                print(
+                    next_event.i,
+                    next_event.i_is_vert,
+                    next_event.j,
+                    next_event.j_is_vert,
+                    next_event.t_i,
+                    next_event.t_j,
+                )
                 return False
 
             # Next, assert monotonicity on the "Q" side.
             if event.j > next_event.j:
+                print(
+                    event.i,
+                    event.i_is_vert,
+                    event.j,
+                    event.j_is_vert,
+                    event.t_i,
+                    event.t_j,
+                )
+                print(
+                    next_event.i,
+                    next_event.i_is_vert,
+                    next_event.j,
+                    next_event.j_is_vert,
+                    next_event.t_i,
+                    next_event.t_j,
+                )
                 return False
 
             # TODO change checks to account for floating point issues.
             if event.j == next_event.j and event.t_j > next_event.t_j:
+                print(
+                    event.i,
+                    event.i_is_vert,
+                    event.j,
+                    event.j_is_vert,
+                    event.t_i,
+                    event.t_j,
+                )
+                print(
+                    next_event.i,
+                    next_event.i_is_vert,
+                    next_event.j,
+                    next_event.j_is_vert,
+                    next_event.t_i,
+                    next_event.t_j,
+                )
                 return False
 
         return True
@@ -502,11 +566,11 @@ class Morphing:
             event = self.morphing_list[k]
             assert 0 <= event.i < n_p
             assert 0 <= event.j < n_q
-            print(k)
-            print(
-                event.i, event.i_is_vert, event.j, event.j_is_vert, event.t_i, event.t_j
-            )
-            # print(p_lens[event.i], q_lens[event.j])
+            # print(k)
+            # print(
+            #    event.i, event.i_is_vert, event.j, event.j_is_vert, event.t_i, event.t_j
+            # )
+
             # Add event to P event list
             # TODO check that this equality condition still gives you the
             # correct answer
@@ -529,8 +593,8 @@ class Morphing:
                 # TODO switch this with convex combination helper function
                 q_events[k] = curr_len + event.t_j * (next_len - curr_len)
 
-            print(p_events[k], q_events[k])
-            print()
+            # print(p_events[k], q_events[k])
+            # print()
         return prm
 
 
@@ -764,10 +828,10 @@ def morphing_combine(
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    print("PRMs")
-    print(repr(prm_1))
-    print(repr(prm_2))
-    print("Done printing PRMs")
+    # print("PRMs")
+    # print(repr(prm_1))
+    # print(repr(prm_2))
+    # print("Done printing PRMs")
 
     # Now that we have the new PRM, need to extract new event
     # sequences
@@ -791,7 +855,7 @@ def morphing_combine(
     # print("New PRM:")
     # print(new_prm)
     new_prm = construct_new_prm(prm_1, prm_2)
-    print("New PRM: ", new_prm)
+    # print("New PRM: ", new_prm)
     return event_sequence_from_prm(new_prm, P, R)
 
     # TODO I think the bug is in here. It looks like the PRM matches the

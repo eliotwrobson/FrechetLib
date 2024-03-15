@@ -307,7 +307,7 @@ def frechet_c_approx(
         print("Combined: ", output_morphing.dist)
         print("Done with combining")
         print(output_morphing.dist)
-        assert False
+        # assert False
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         print(ratio)
         # assert False
