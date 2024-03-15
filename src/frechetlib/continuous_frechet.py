@@ -293,15 +293,13 @@ def frechet_c_approx(
         morphing_q.flip()
 
         first_morphing = fu.morphing_combine(morphing, morphing_p)
-        # print("done w/ first combine")
 
         first_morphing.make_monotone()
 
-        # prm = first_morphing.get_prm()
-        # print(prm)
-        print("morphing len: ", len(morphing.morphing_list))
-        print("Done with first monotone: ", first_morphing.dist)
+        print("First distance: ", first_morphing.dist)
+        print("Second distance: ", morphing_q.dist)
         output_morphing = fu.morphing_combine(morphing_q, first_morphing)
+        print("Combined: ", output_morphing.dist)
         print("Done with combining")
         print(output_morphing.dist)
         # asert False

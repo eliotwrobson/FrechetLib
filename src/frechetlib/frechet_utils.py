@@ -624,31 +624,9 @@ def print_prm(prm) -> None:
         print(i, prm[:, i])
 
 
-# @nb.njit
-def morphing_combine(
-    morphing_1: Morphing,
-    morphing_2: Morphing,
-) -> Morphing:
-    # TODO this function only works on monotone morphings (I think). Use the
-    # same helper function that Sariel used to fail when violations to the
-    # monotonicity are found.
-    # Code is based on:
-    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
-
-    # print("Starting combine")
-
-    P = morphing_2.P
-    # Original curve equal to morphing_1.P
-    assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
-    R = morphing_1.Q
-
-    prm_1 = morphing_1.get_prm()
-    prm_2 = morphing_2.get_prm()
-
-    # print()
-    # print_prm(prm_1)
-    # print_prm(prm_2)
-
+def construct_new_prm(
+    prm_1: np.ndarray, prm_2: np.ndarray
+) -> list[tuple[np.ndarray, np.ndarray]]:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
@@ -675,21 +653,17 @@ def morphing_combine(
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
-        # print(idx_1, idx_2)
-        # print("Two points: ", q_event_1, q_event_2)
+        print(idx_1, idx_2)
+        print("Two points: ", q_event_1, q_event_2)
 
         is_equal = np.isclose(q_event_1, q_event_2)
-
-        # if is_equal and idx_1 == len_1 - 1 and idx_2 == len_2 - 1:
-        #     assert False
-        #     new_prm.append((p_events[idx_2], r_events[idx_1]))
 
         if (
             is_equal
             and idx_1 < len_1 - 1
             and np.isclose(q_events_1[idx_1 + 1], q_event_1)
         ):
-            # print("case2")
+            print("case2")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
 
@@ -698,12 +672,12 @@ def morphing_combine(
             and idx_2 < len_2 - 1
             and np.isclose(q_events_2[idx_2 + 1], q_event_2)
         ):
-            # print("case3")
+            print("case3")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
 
         elif is_equal:
-            # print("case4")
+            print("case4")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
             idx_2 = min(idx_2 + 1, len_2 - 1)
@@ -711,7 +685,7 @@ def morphing_combine(
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
-            # print("case5")
+            print("case5")
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
@@ -720,7 +694,7 @@ def morphing_combine(
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
-            # print("case6")
+            print("case6")
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
@@ -737,6 +711,36 @@ def morphing_combine(
     )
 
     new_prm.append((p_events[idx_2], r_events[idx_1]))
+
+    return new_prm
+
+
+# @nb.njit
+def morphing_combine(
+    morphing_1: Morphing,
+    morphing_2: Morphing,
+) -> Morphing:
+    # TODO this function only works on monotone morphings (I think). Use the
+    # same helper function that Sariel used to fail when violations to the
+    # monotonicity are found.
+    # Code is based on:
+    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
+
+    # print("Starting combine")
+
+    P = morphing_2.P
+    # Original curve equal to morphing_1.P
+    assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
+    R = morphing_1.Q
+
+    prm_1 = morphing_1.get_prm()
+    prm_2 = morphing_2.get_prm()
+
+    print("PRMs")
+    print(repr(prm_1))
+    print(repr(prm_2))
+    print("Done printing PRMs")
+    assert False
 
     # Now that we have the new PRM, need to extract new event
     # sequences
@@ -759,7 +763,8 @@ def morphing_combine(
 
     # print("New PRM:")
     # print(new_prm)
-
+    new_prm = construct_new_prm(prm_1, prm_2)
+    print("New PRM: ", new_prm)
     return event_sequence_from_prm(new_prm, P, R)
 
     # TODO I think the bug is in here. It looks like the PRM matches the
