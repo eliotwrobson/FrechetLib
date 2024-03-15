@@ -624,6 +624,25 @@ def print_prm(prm) -> None:
         print(i, prm[:, i])
 
 
+def assert_monotone_top(prm) -> None:
+    """
+    Asserts monotonicity of the top of the PRM.
+    """
+    n = len(prm)
+    if n < 2:
+        return
+
+    p = prm[-2]
+    q = prm[-1]
+
+    # Avoid raising exceptions on floating point jitters
+    factor = 1.0001
+
+    # TODO switch with vectorized comparison
+    if p[0] > factor * q[0] or p[1] > factor * q[1]:
+        raise Exception("Monotonicity violated.")
+
+
 def construct_new_prm(
     prm_1: np.ndarray, prm_2: np.ndarray
 ) -> list[tuple[np.ndarray, np.ndarray]]:
@@ -704,6 +723,8 @@ def construct_new_prm(
         else:
             raise Exception("Should never get here")
 
+        assert_monotone_top(new_prm)
+
     q_event_1 = q_events_1[idx_1]
     q_event_2 = q_events_2[idx_2]
     assert (
@@ -711,6 +732,8 @@ def construct_new_prm(
     )
 
     new_prm.append((p_events[idx_2], r_events[idx_1]))
+
+    assert_monotone_top(new_prm)
 
     return new_prm
 
@@ -740,7 +763,6 @@ def morphing_combine(
     print(repr(prm_1))
     print(repr(prm_2))
     print("Done printing PRMs")
-    assert False
 
     # Now that we have the new PRM, need to extract new event
     # sequences
