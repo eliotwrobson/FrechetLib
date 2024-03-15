@@ -321,24 +321,20 @@ class Morphing:
             event = self.morphing_list[k]
             next_event = self.morphing_list[k + 1]
 
-            if (event.i_is_vert and event.j_is_vert) or (
-                next_event.i_is_vert and next_event.j_is_vert
-            ):
-                continue
+            # First, assert monotonicity on the "P" side.
+            if event.i > next_event.i:
+                return False
 
-            # Matching first or second events
-            first_matches = (
-                event.i == next_event.i and event.i_is_vert == next_event.i_is_vert
-            )
-            second_matches = (
-                event.j == next_event.j and event.j_is_vert == next_event.j_is_vert
-            )
+            # TODO change checks to account for floating point issues.
+            if event.i == next_event.i and event.t_i > next_event.t_i:
+                return False
 
-            # Check tuples to see if events are on the same edge
-            # and if monotonicity is violated
-            if (first_matches and event.t_i > next_event.t_i) or (
-                second_matches and event.t_j > next_event.t_j
-            ):
+            # Next, assert monotonicity on the "Q" side.
+            if event.j > next_event.j:
+                return False
+
+            # TODO change checks to account for floating point issues.
+            if event.j == next_event.j and event.t_j > next_event.t_j:
                 return False
 
         return True
@@ -638,7 +634,6 @@ def assert_monotone_top(prm) -> None:
     # Avoid raising exceptions on floating point jitters
     factor = 1.0001
 
-    # TODO switch with vectorized comparison
     if p[0] > factor * q[0] or p[1] > factor * q[1]:
         raise Exception("Monotonicity violated.")
 

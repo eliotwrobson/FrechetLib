@@ -51,6 +51,8 @@ def example_3():
 
 
 def test_prm_combination_hard() -> None:
+    # TODO these inputs contain an error. Make a new test case
+    # after identifying whatever bug this is being caused by.
     prm_1 = np.array(
         [
             [0.0, 0.70710678, 0.98994949, 1.55563492, 1.97989899],

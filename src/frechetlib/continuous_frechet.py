@@ -202,7 +202,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[i
     return new_P, indices
 
 
-@nb.njit
+# @nb.njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
 ) -> fu.Morphing:
@@ -292,9 +292,15 @@ def frechet_c_approx(
         morphing_q.make_monotone()
         morphing_q.flip()
 
+        assert morphing_p.is_monotone()
+        assert morphing_q.is_monotone()
+
         first_morphing = fu.morphing_combine(morphing, morphing_p)
 
         first_morphing.make_monotone()
+        assert first_morphing.is_monotone()
+
+        print(first_morphing.get_prm())
 
         print("First distance: ", first_morphing.dist)
         print("Second distance: ", morphing_q.dist)
