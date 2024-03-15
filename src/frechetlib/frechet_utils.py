@@ -187,7 +187,8 @@ def from_coefficients(
         i_is_vert = True
     elif np.isclose(t_p, 1.0):
         assert i + 1 < P.shape[0]
-        p_i = P[i + 1]
+        i += 1
+        p_i = P[i]
         i_is_vert = True
     else:
         assert i + 1 < P.shape[0]
@@ -201,7 +202,8 @@ def from_coefficients(
         j_is_vert = True
     elif np.isclose(t_q, 1.0):
         assert j + 1 < Q.shape[0]
-        p_j = Q[j + 1]
+        j += 1
+        p_j = Q[j]
         j_is_vert = True
     else:
         assert j + 1 < Q.shape[0]
@@ -498,6 +500,10 @@ class Morphing:
             event = self.morphing_list[k]
             assert 0 <= event.i < n_p
             assert 0 <= event.j < n_q
+            print(k)
+            print(
+                event.i, event.i_is_vert, event.j, event.j_is_vert, event.t_i, event.t_j
+            )
             # print(p_lens[event.i], q_lens[event.j])
             # Add event to P event list
             # TODO check that this equality condition still gives you the
@@ -521,6 +527,8 @@ class Morphing:
                 # TODO switch this with convex combination helper function
                 q_events[k] = curr_len + event.t_j * (next_len - curr_len)
 
+            print(p_events[k], q_events[k])
+            print()
         return prm
 
 
