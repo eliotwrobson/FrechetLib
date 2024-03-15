@@ -188,6 +188,7 @@ def from_coefficients(
     elif np.isclose(t_p, 1.0):
         assert i + 1 < P.shape[0]
         i += 1
+        t_p = 0.0
         p_i = P[i]
         i_is_vert = True
     else:
@@ -203,6 +204,7 @@ def from_coefficients(
     elif np.isclose(t_q, 1.0):
         assert j + 1 < Q.shape[0]
         j += 1
+        t_q = 0.0
         p_j = Q[j]
         j_is_vert = True
     else:
