@@ -4,11 +4,13 @@ import typing as t
 
 import numba.typed as nbt
 import numpy as np
+import numpy.typing as npt
 from numba import float64, njit, typeof, types  # type: ignore[attr-defined]
 from numba.experimental import jitclass
 from typing_extensions import Self
 
 PRM = t.List[t.Tuple[float, float]]
+Curve = npt.NDArray[np.float64]
 
 
 @jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore

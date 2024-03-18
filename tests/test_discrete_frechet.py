@@ -1,18 +1,17 @@
 import itertools as it
 import typing as t
 
+import frechetlib.discrete_frechet as df
 import numpy as np
 import numpy.typing as npt
 import pytest
 import utils as u
 
-import frechetlib.discrete_frechet as df
-
 FrechetDistFuncT = t.Callable[[np.ndarray, np.ndarray], df._DiscreteReturnT]
 CurveGeneratorFunctionT = t.Callable[[int, float], tuple[np.ndarray, np.ndarray]]
 
 
-DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
+DISCRETE_FRECHET_FUNCS = (df.discrete_frechet, df.discrete_retractable_frechet)
 
 # Start of actual test functions
 
@@ -23,7 +22,9 @@ DISCRETE_FRECHET_FUNCS = (df.linear_frechet, df.linear_frechet_2)
 def test_frechet_equal(generate_curves: CurveGeneratorFunctionT) -> None:
     n = 1000
     P, Q = generate_curves(n, 100.0)
-    assert np.isclose(df.linear_frechet(P, Q)[0], df.linear_frechet_2(P, Q)[0])
+    assert np.isclose(
+        df.discrete_frechet(P, Q)[0], df.discrete_retractable_frechet(P, Q)[0]
+    )
 
 
 @pytest.mark.parametrize(
