@@ -8,7 +8,7 @@ import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
 
-PRM = t.List[t.Tuple[np.ndarray, np.ndarray]]
+PRM = t.List[t.Tuple[float, float]]
 
 
 @jitclass([("p_i", nb.float64[:]), ("p_j", nb.float64[:])])  # type: ignore

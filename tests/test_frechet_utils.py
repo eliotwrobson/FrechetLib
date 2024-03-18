@@ -7,7 +7,7 @@ import pytest
 import utils as u
 
 
-def example_3():
+def example_3() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     P = np.array(
         [
             [0.0, 0],

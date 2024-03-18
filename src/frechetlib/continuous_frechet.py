@@ -265,13 +265,11 @@ def frechet_c_approx(
     ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
     i = 0
-    # print("starting: ", radius, upper_bound_dist)
 
     while ratio > approx_ratio:
         i += 1
         print(ratio, approx_ratio)
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            print("inner simplification")
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
@@ -300,88 +298,89 @@ def frechet_c_approx(
         first_morphing.make_monotone()
         assert first_morphing.is_monotone()
 
-        # assert False
-        print("First distance: ", first_morphing.dist)
-        print("Second distance: ", morphing_q.dist)
+        # print("First distance: ", first_morphing.dist)
+        # print("Second distance: ", morphing_q.dist)
         output_morphing = fu.morphing_combine(morphing_q, first_morphing)
-        print("Combined: ", output_morphing.dist)
-        print("Done with combining")
-        print(output_morphing.dist)
-        # assert False
+        # print("Combined: ", output_morphing.dist)
+        # print("Done with combining")
+        # print(output_morphing.dist)
+
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
-        print(ratio)
-        # assert False
+        # print(ratio)
+
+    if output_morphing is None:
+        raise Exception("Output morphing not set!")
 
     return ratio, output_morphing
 
 
-def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
-    """
-    Compute the exact continuous (monotone) Frechet distance between the
-    two polygons. It should be reasonably fast.
+# def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
+#     """
+#     Compute the exact continuous (monotone) Frechet distance between the
+#     two polygons. It should be reasonably fast.
 
-    This function is somewhat slower than the approximate versions. Use it
-    only if you really want the exact answer. Consider using
-    frechet_continous_approx instead.
+#     This function is somewhat slower than the approximate versions. Use it
+#     only if you really want the exact answer. Consider using
+#     frechet_continous_approx instead.
 
-    # Details
+#     # Details
 
-    This works by first computing a very rough approximation, followed by
-    distance senstiave simplification of the curves. It then compute the
-    monotone fr_ve_r distance between the simplified curves, and it
-    combine it to get a distance between the two original cuves. It makre
-    sure the answers are the same, otherwise, it repeates with a finer
-    simplification/approximation till they are equal.
+#     This works by first computing a very rough approximation, followed by
+#     distance senstiave simplification of the curves. It then compute the
+#     monotone fr_ve_r distance between the simplified curves, and it
+#     combine it to get a distance between the two original cuves. It makre
+#     sure the answers are the same, otherwise, it repeates with a finer
+#     simplification/approximation till they are equal.
 
-    Finally, the algorithm uses the fr_ve_r_with_offests distance between
-    the two simplified curves to comptue a lower bound, and make sure this
-    is equal to the Frechet distance computed. If they are equal, then the
-    upper/lower bounds on the Frechet distance of the two curves are the
-    same, which implies that the computed distance is indeed the desired
-    Frechet distance.
+#     Finally, the algorithm uses the fr_ve_r_with_offests distance between
+#     the two simplified curves to comptue a lower bound, and make sure this
+#     is equal to the Frechet distance computed. If they are equal, then the
+#     upper/lower bounds on the Frechet distance of the two curves are the
+#     same, which implies that the computed distance is indeed the desired
+#     Frechet distance.
 
-    # More details
+#     # More details
 
-    To really ensure converges, the monotone distance computed between the
-    simplification is computed using refinement, so tha the ve_r distance
-    """
+#     To really ensure converges, the monotone distance computed between the
+#     simplification is computed using refinement, so tha the ve_r distance
+#     """
 
-    baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
-    approx_refinement = 1.001
+#     baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
+#     approx_refinement = 1.001
 
-    min_approx_ratio = min(
-        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * morphing.dist), 1.1
-    )
+#     min_approx_ratio = min(
+#         1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * morphing.dist), 1.1
+#     )
 
-    # If initial ratio is good enough, use this morphing
-    if baseline_ratio <= min_approx_ratio:
-        morphing = baseline_morphing
-        ratio = baseline_ratio
+#     # If initial ratio is good enough, use this morphing
+#     if baseline_ratio <= min_approx_ratio:
+#         morphing = baseline_morphing
+#         ratio = baseline_ratio
 
-    # Otherwise recompute
-    else:
-        ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
+#     # Otherwise recompute
+#     else:
+#         ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
 
-    Pl, Ql = fu.extract_vertex_radii(P, Q, morphing)
-    lower_bound = morphing.dist / ratio
+#     Pl, Ql = fu.extract_vertex_radii(P, Q, morphing)
+#     lower_bound = morphing.dist / ratio
 
-    factor = 4.0
-    while True:
-        Pz = (lower_bound - Pl) / factor
-        Qz = (lower_bound - Ql) / factor
+#     factor = 4.0
+#     while True:
+#         Pz = (lower_bound - Pl) / factor
+#         Qz = (lower_bound - Ql) / factor
 
-        p_indices = fu.simplify_polygon_radii(P, Pz)
-        q_indices = fu.simplify_polygon_radii(Q, Qz)
+#         p_indices = fu.simplify_polygon_radii(P, Pz)
+#         q_indices = fu.simplify_polygon_radii(Q, Qz)
 
-        Ps = np.take(P, p_indices, axis=0)
-        Qs = np.take(Q, q_indices, axis=0)
+#         Ps = np.take(P, p_indices, axis=0)
+#         Qs = np.take(Q, q_indices, axis=0)
 
-        PSR, QSR, morphing, dist, is_exact = frechet_mono_via_refinement(
-            Ps, Qs, approx_refinement
-        )
-        # TODO continue writing with
-        # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
-        # m_a = frechet_ve_r_mono_compute(poly_a, PSR)
-        # mmu = Morphing_combine(m_a, m_mid)
-        # m_b = frechet_ve_r_mono_compute(QSR, poly_b)
-        # mw = Morphing_combine(mmu, m_b)
+#         PSR, QSR, morphing, dist, is_exact = frechet_mono_via_refinement(
+#             Ps, Qs, approx_refinement
+#         )
+#         # TODO continue writing with
+#         # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
+#         # m_a = frechet_ve_r_mono_compute(poly_a, PSR)
+#         # mmu = Morphing_combine(m_a, m_mid)
+#         # m_b = frechet_ve_r_mono_compute(QSR, poly_b)
+#         # mw = Morphing_combine(mmu, m_b)

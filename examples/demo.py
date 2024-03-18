@@ -3,10 +3,8 @@ import time
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.animation import FuncAnimation
-
 from frechetlib.continuous_frechet import frechet_mono_via_refinement
-from frechetlib.retractable_frechet import retractable_ve_frechet
+from matplotlib.animation import FuncAnimation
 
 
 def generate_time_series(
@@ -17,7 +15,7 @@ def generate_time_series(
 
     midpoint = (high + low) / 2.0
 
-    res = np.ndarray((n, d))
+    res: np.ndarray = np.ndarray((n, d))
     res[0] = np.random.uniform(low=midpoint, high=midpoint, size=d)
     res[0][0] = 0.0
 
@@ -85,7 +83,6 @@ def main() -> None:
         return (line1,)
 
     def update(morphing_frame):
-
         line1.set_data(xdata1, ydata1)
 
         line2.set_data(xdata2, ydata2)
