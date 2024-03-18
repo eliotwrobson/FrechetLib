@@ -282,7 +282,7 @@ eid_type = nb.typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
 @jitclass(
     [
-        ("morphing_list", nb.types.ListType(EID.class_type.instance_type)),
+        ("morphing_list", nb.types.ListType(EID.class_type.instance_type)),  # type: ignore
         ("P", nb.float64[:, :]),
         ("Q", nb.float64[:, :]),
     ]
@@ -314,7 +314,7 @@ class Morphing:
 
         self.P, self.Q = self.Q, self.P
 
-    def copy(self) -> Self:
+    def copy(self) -> Morphing:
         new_morphing = nbt.List.empty_list(eid_type, len(self.morphing_list))
 
         for event in self.morphing_list:
@@ -463,34 +463,9 @@ class Morphing:
 
                     new_k += 1
 
-                new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
+                new_event = morphing[new_k]
 
-                # print(
-                #     event.p_i,
-                #     event.p_j,
-                #     event.i,
-                #     event.i_is_vert,
-                #     event.j,
-                #     event.j_is_vert,
-                #     event.t_i,
-                #     event.t_j,
-                # )
-                # print(
-                #     new_event.p_i,
-                #     new_event.p_j,
-                #     new_event.i,
-                #     new_event.i_is_vert,
-                #     new_event.j,
-                #     new_event.j_is_vert,
-                #     new_event.t_i,
-                #     new_event.t_j,
-                #     new_event.dist,
-                # )
-
-                # print("Ks: ", k, new_k)
-                # print("Ts: ", best_t, new_event.t_i)
                 if best_t > new_event.t_i:
-                    # print("Reassigning other: ", new_k)
                     new_event.reassign_parameter_i(best_t, self.P)
 
                 longest_dist = max(longest_dist, new_event.dist)
@@ -511,11 +486,9 @@ class Morphing:
 
                     # TODO might be the wrong condition??
                     if best_t > new_event.t_j:
-                        # print("Reassigning!!")
                         new_event.reassign_parameter_j(best_t, self.Q)
 
                     longest_dist = max(longest_dist, new_event.dist)
-                    # res.append(new_event)
 
                     new_k += 1
 
@@ -525,20 +498,7 @@ class Morphing:
                     new_event.reassign_parameter_j(best_t, self.Q)
 
                 longest_dist = max(longest_dist, new_event.dist)
-                # res.append(new_event)
                 k = new_k + 1
-
-        # for i in range(n):
-        #     print(
-        #         i,
-        #         morphing[i].i,
-        #         morphing[i].i_is_vert,
-        #         morphing[i].j,
-        #         morphing[i].j_is_vert,
-        #         morphing[i].p_i,
-        #         morphing[i].p_j,
-        #     )
-        #     print(morphing[i].dist)
 
         self.dist = longest_dist
 
@@ -654,7 +614,7 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
 
     for i in range(n - 1):
         prefix_lens[i] = curr_len
-        curr_len += np.linalg.norm(P[i] - P[i + 1])
+        curr_len += float(np.linalg.norm(P[i] - P[i + 1]))
 
     prefix_lens[n - 1] = curr_len
 
@@ -695,12 +655,7 @@ def coefficient_from_prefix_lens(
     return t
 
 
-def print_prm(prm) -> None:
-    for i in range(prm.shape[1]):
-        print(i, prm[:, i])
-
-
-def assert_monotone_top(prm) -> None:
+def assert_monotone_top(prm: PRM) -> None:
     """
     Asserts monotonicity of the top of the PRM.
     """
@@ -718,9 +673,7 @@ def assert_monotone_top(prm) -> None:
         raise Exception("Monotonicity violated.")
 
 
-def construct_new_prm(
-    prm_1: np.ndarray, prm_2: np.ndarray
-) -> list[tuple[np.ndarray, np.ndarray]]:
+def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
@@ -859,7 +812,7 @@ def morphing_combine(
     return event_sequence_from_prm(new_prm, P, R)
 
 
-def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
+def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     p_lens = get_prefix_lens(P)
     q_lens = get_prefix_lens(Q)
 
@@ -874,7 +827,6 @@ def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
     new_event_sequence = nbt.List.empty_list(eid_type)
 
     for i in range(len(prm) - 1):
-        # print(i, prm[i])
         p_loc, q_loc = prm[i]
 
         while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
@@ -890,11 +842,7 @@ def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
 
-        # print("about to assert")
-
         new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
-
-        # print("New points: ", new_event.p_i, new_event.p_j)
 
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
@@ -920,10 +868,10 @@ def extract_vertex_radii(
     for k in range(len(morphing)):
         event = morphing[k]
         if event.i_is_vert:
-            P_leash_lens[event.i] = np.max(P_leash_lens[event.i], event.dist)
+            P_leash_lens[event.i] = np.max(P_leash_lens[event.i], event.dist)  # type: ignore
 
         if event.j_is_vert:
-            Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)
+            Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)  # type: ignore
 
     return P_leash_lens, Q_leash_lens
 
@@ -937,8 +885,8 @@ def extract_offsets(
 
     for k in range(len(morphing)):
         event = morphing[k]
-        P_offsets[event.i] = np.max(P_offsets[event.i], event.dist)
-        Q_offsets[event.j] = np.max(Q_offsets[event.j], event.dist)
+        P_offsets[event.i] = np.max(P_offsets[event.i], event.dist)  # type: ignore
+        Q_offsets[event.j] = np.max(Q_offsets[event.j], event.dist)  # type: ignore
 
     return P_offsets, Q_offsets
 
@@ -1025,6 +973,6 @@ def frechet_width_approx(
             t = new_t
             curr = q
 
-        leash = max(leash, np.linalg.norm(curr - p))
+        leash = max(leash, float(np.linalg.norm(curr - p)))
 
     return leash
