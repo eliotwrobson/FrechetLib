@@ -1,11 +1,17 @@
+from __future__ import annotations
+
+import typing as t
+
 import numba as nb
 import numba.typed as nbt
 import numpy as np
 from numba.experimental import jitclass
 from typing_extensions import Self
 
+PRM = t.List[t.Tuple[np.ndarray, np.ndarray]]
 
-@jitclass([("p_i", nb.float64[:]), ("p_j", nb.float64[:])])
+
+@jitclass([("p_i", nb.float64[:]), ("p_j", nb.float64[:])])  # type: ignore
 class EID:
     i: int
     i_is_vert: bool
@@ -64,7 +70,7 @@ class EID:
             )
         )
 
-    def copy(self) -> Self:
+    def copy(self) -> EID:
         return EID(
             self.i,
             self.i_is_vert,
@@ -144,10 +150,10 @@ class EID:
             and (self.j == other.j)
             and (self.i_is_vert == other.i_is_vert)
             and (self.j_is_vert == other.j_is_vert)
-            and np.allclose(self.p_i, other.p_i)
-            and np.allclose(self.p_j, other.p_j)
-            and np.isclose(self.t_i, other.t_i)
-            and np.isclose(self.t_j, other.t_j)
+            and bool(np.allclose(self.p_i, other.p_i))
+            and bool(np.allclose(self.p_j, other.p_j))
+            and bool(np.isclose(self.t_i, other.t_i))
+            and bool(np.isclose(self.t_j, other.t_j))
         )
 
 
@@ -848,46 +854,9 @@ def morphing_combine(
     r_num_pts = r_lens.shape[0]
 
     max_dist = 0.0
-    # TODO getting to this point and seeing that neither point is a
-    # vertex, so something is wrong with the PRMs. Need to debug
-    # using Sariel's code.
 
-    # print("New PRM:")
-    # print(new_prm)
     new_prm = construct_new_prm(prm_1, prm_2)
-    # print("New PRM: ", new_prm)
     return event_sequence_from_prm(new_prm, P, R)
-
-    # TODO I think the bug is in here. It looks like the PRM matches the
-    # expected output
-    for i in range(len(new_prm) - 1):
-        p_loc, r_loc = new_prm[i]
-
-        while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
-            i_p += 1
-
-        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc
-
-        while i_r < r_num_pts - 1 and r_loc >= r_lens[i_r + 1]:
-            i_r += 1
-
-        assert i_p == r_num_pts - 1 or r_lens[i_r] <= r_loc
-
-        t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
-        t_r = coefficient_from_prefix_lens(r_loc, r_lens, i_r)
-
-        # print("about to assert")
-
-        new_event = from_coefficients(i_p, i_r, t_p, t_r, P, R)
-
-        max_dist = max(max_dist, new_event.dist)
-        new_event_sequence.append(new_event)
-
-    # TODO maybe add end event
-    print(P)
-    print(R)
-    assert False
-    return Morphing(new_event_sequence, P, R, max_dist)
 
 
 def event_sequence_from_prm(prm, P: np.ndarray, Q: np.ndarray) -> Morphing:
