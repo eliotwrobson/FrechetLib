@@ -2,16 +2,16 @@ from __future__ import annotations
 
 import typing as t
 
-import numba as nb
 import numba.typed as nbt
 import numpy as np
+from numba import float64, njit, typeof, types  # type: ignore[attr-defined]
 from numba.experimental import jitclass
 from typing_extensions import Self
 
 PRM = t.List[t.Tuple[float, float]]
 
 
-@jitclass([("p_i", nb.float64[:]), ("p_j", nb.float64[:])])  # type: ignore
+@jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore
 class EID:
     i: int
     i_is_vert: bool
@@ -157,17 +157,17 @@ class EID:
         )
 
 
-@nb.njit
+@njit
 def eid_get_coefficient_i(event: EID) -> float:
     return event.t_i
 
 
-@nb.njit
+@njit
 def eid_get_coefficient_j(event: EID) -> float:
     return event.t_j
 
 
-# @nb.njit
+# @njit
 def from_coefficients(
     i: int,
     j: int,
@@ -223,7 +223,7 @@ def from_coefficients(
     return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
 
 
-@nb.njit
+@njit
 def from_curve_indices(
     i: int,
     i_is_vert: bool,
@@ -264,8 +264,8 @@ def from_curve_indices(
     return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
-@nb.njit
-def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> float:
+@njit
+def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
     res = 0.0
 
     for event in morphing_list:
@@ -276,26 +276,26 @@ def get_frechet_dist_from_morphing_list(morphing_list: nb.types.ListType) -> flo
 
 # I think this is needed at the global scope because numba has issues
 # https://github.com/numba/numba/issues/7291
-eid_type = nb.typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
+eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
 @jitclass(
     [
-        ("morphing_list", nb.types.ListType(EID.class_type.instance_type)),  # type: ignore
-        ("P", nb.float64[:, :]),
-        ("Q", nb.float64[:, :]),
+        ("morphing_list", types.ListType(EID.class_type.instance_type)),  # type: ignore
+        ("P", float64[:, :]),
+        ("Q", float64[:, :]),
     ]
 )
 class Morphing:
-    morphing_list: nb.types.ListType
+    morphing_list: types.ListType
     P: np.ndarray
     Q: np.ndarray
     dist: float
 
     def __init__(
         self,
-        morphing_list_: nb.types.ListType,
+        morphing_list_: types.ListType,
         P_: np.ndarray,
         Q_: np.ndarray,
         dist_: float,
@@ -564,12 +564,12 @@ class Morphing:
         return prm
 
 
-@nb.njit
+@njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p + t * (q - p)
 
 
-@nb.njit
+@njit
 def line_point_distance(
     p1: np.ndarray, p2: np.ndarray, q: np.ndarray
 ) -> tuple[float, float, np.ndarray]:
@@ -605,7 +605,7 @@ def line_point_distance(
     return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
 
 
-@nb.njit
+@njit
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     n = P.shape[0]
     prefix_lens = np.empty(n)
@@ -621,27 +621,27 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     return prefix_lens
 
 
-@nb.njit
+@njit
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
 
 
-@nb.njit
+@njit
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
-@nb.njit
+@njit
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-@nb.njit
+@njit
 def coefficient_from_prefix_lens(
     distance_along_curve: float, p_lens: np.ndarray, idx: int
 ) -> float:
@@ -766,7 +766,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     return new_prm
 
 
-# @nb.njit
+# @njit
 def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
@@ -891,7 +891,7 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-@nb.njit
+@njit
 def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
     assert P.shape[0] == r.shape
 
@@ -913,7 +913,7 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
     return indices
 
 
-@nb.njit
+@njit
 def frechet_dist_upper_bound(
     P: np.ndarray,
     Q: np.ndarray,
@@ -937,7 +937,7 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
-@nb.njit
+@njit
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
 ) -> float:

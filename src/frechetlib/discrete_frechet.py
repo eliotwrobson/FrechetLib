@@ -5,7 +5,7 @@ import heapq
 
 import numpy as np
 import scipy
-from numba import njit
+from numba import njit  # type: ignore[attr-defined]
 
 _DiscreteReturnT = tuple[np.float64, list[tuple[int, int]]]
 

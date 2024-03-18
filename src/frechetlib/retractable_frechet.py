@@ -2,16 +2,15 @@
 # -*- coding: utf-8 -*-
 
 import heapq as hq
-from typing import Optional
 
-import numba as nb
 import numba.typed as nbt
 import numpy as np
+from numba import njit  # type: ignore[attr-defined]
 
 import frechetlib.frechet_utils as fu
 
 
-@nb.njit
+@njit
 def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> fu.Morphing:
     start_node = fu.from_curve_indices(0, True, 0, True, P, Q)
     start_node_1 = fu.from_curve_indices(0, False, 0, True, P, Q)

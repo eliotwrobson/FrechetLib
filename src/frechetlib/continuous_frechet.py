@@ -1,6 +1,6 @@
-import numba as nb
 import numba.typed as nbt
 import numpy as np
+from numba import njit  # type: ignore[attr-defined]
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
@@ -180,7 +180,7 @@ def add_points_to_make_monotone(
     return new_P_final, new_Q_final
 
 
-@nb.njit
+@njit
 def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[int]]:
     curr = P[0]
     indices = [0]
