@@ -28,6 +28,11 @@ class Singleton(type, t.Generic[_T]):
 
 
 class FrechetDownloader(metaclass=Singleton):
+    """
+    Registry for all the example data stored on Sariel's site, with corresponding hashes.
+    See: https://sarielhp.org/p/24/frechet_ve/examples/
+    """
+
     __slots__ = ("__curves", "__file_fetcher", "__registry")
 
     __curves: t.Dict[str, np.ndarray]
@@ -35,8 +40,6 @@ class FrechetDownloader(metaclass=Singleton):
     __registry: t.Dict[str, str]
 
     def __init__(self) -> None:
-        # Registry for all the files stored on Sariel's site, with corresponding hashes. See:
-        # https://sarielhp.org/p/24/frechet_ve/examples/
         self.__registry = {
             "01/poly_a.txt": "f16ed62fd6139dcbc3ef6c474fef9b08aa93f1db17b83f0c4be2a5d352a37399",
             "01/poly_b.txt": "f16ed62fd6139dcbc3ef6c474fef9b08aa93f1db17b83f0c4be2a5d352a37399",
