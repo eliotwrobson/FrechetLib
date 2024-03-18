@@ -794,19 +794,19 @@ def morphing_combine(
 
     # Now that we have the new PRM, need to extract new event
     # sequences
-    new_event_sequence = nbt.List.empty_list(eid_type)
+    # new_event_sequence = nbt.List.empty_list(eid_type)
     # TODO this information gets computed when the initial PRMs are
     # created. Avoid recomputing it if possible.
-    p_lens = get_prefix_lens(P)
-    r_lens = get_prefix_lens(R)
+    # p_lens = get_prefix_lens(P)
+    # r_lens = get_prefix_lens(R)
 
-    i_p = 0
-    i_r = 0
+    # i_p = 0
+    # i_r = 0
 
-    p_num_pts = p_lens.shape[0]
-    r_num_pts = r_lens.shape[0]
+    # p_num_pts = p_lens.shape[0]
+    # r_num_pts = r_lens.shape[0]
 
-    max_dist = 0.0
+    # max_dist = 0.0
 
     new_prm = construct_new_prm(prm_1, prm_2)
     return event_sequence_from_prm(new_prm, P, R)
