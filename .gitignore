@@ -3,3 +3,4 @@
 /executables
 /source_files
 __pycache__/
+get_curve_hashes.py

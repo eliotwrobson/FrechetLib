@@ -50,14 +50,16 @@ def _discrete_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT
             elif i == 0 and j > 0:
                 ca[i, j] = max(ca[0, j - 1], d)
                 prev[i, j] = 0, j - 1
-            else:
+            elif i == 0 and j == 0:
                 ca[i, j] = d
+            else:
+                raise Exception
 
     # Reconstructing the solution
     curr_x = n_p - 1
     curr_y = n_q - 1
     morphing = [(curr_x, curr_y)]
-    while curr_x != 0 and curr_y != 0:
+    while curr_x != 0 or curr_y != 0:
         curr_x, curr_y = prev[curr_x, curr_y]
         morphing.append((curr_x, curr_y))
 

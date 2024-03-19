@@ -305,6 +305,8 @@ def frechet_c_approx(
         # print("Done with combining")
         # print(output_morphing.dist)
 
+        output_morphing.make_monotone()
+
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         # print(ratio)
 
@@ -314,7 +316,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True):
+def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True) -> None:
     """
     Compute the exact continuous (monotone) Frechet distance between the
     two polygons. It should be reasonably fast.
