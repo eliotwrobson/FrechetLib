@@ -220,8 +220,6 @@ def from_coefficients(
         p_j = convex_comb(Q[j], Q[j + 1], t_q)
 
     dist = float(np.linalg.norm(p_i - p_j))
-    # TODO remove the distance from the constructor and just always
-    # compute it
     return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
 
 
@@ -335,82 +333,82 @@ class Morphing:
 
             # First, assert monotonicity on the "P" side.
             if event.i > next_event.i:
-                print(
-                    event.i,
-                    event.i_is_vert,
-                    event.j,
-                    event.j_is_vert,
-                    event.t_i,
-                    event.t_j,
-                )
-                print(
-                    next_event.i,
-                    next_event.i_is_vert,
-                    next_event.j,
-                    next_event.j_is_vert,
-                    next_event.t_i,
-                    next_event.t_j,
-                )
+                # print(
+                #     event.i,
+                #     event.i_is_vert,
+                #     event.j,
+                #     event.j_is_vert,
+                #     event.t_i,
+                #     event.t_j,
+                # )
+                # print(
+                #     next_event.i,
+                #     next_event.i_is_vert,
+                #     next_event.j,
+                #     next_event.j_is_vert,
+                #     next_event.t_i,
+                #     next_event.t_j,
+                # )
                 return False
 
             # TODO change checks to account for floating point issues.
             if event.i == next_event.i and event.t_i > next_event.t_i:
-                print(
-                    event.i,
-                    event.i_is_vert,
-                    event.j,
-                    event.j_is_vert,
-                    event.t_i,
-                    event.t_j,
-                )
-                print(
-                    next_event.i,
-                    next_event.i_is_vert,
-                    next_event.j,
-                    next_event.j_is_vert,
-                    next_event.t_i,
-                    next_event.t_j,
-                )
+                # print(
+                #     event.i,
+                #     event.i_is_vert,
+                #     event.j,
+                #     event.j_is_vert,
+                #     event.t_i,
+                #     event.t_j,
+                # )
+                # print(
+                #     next_event.i,
+                #     next_event.i_is_vert,
+                #     next_event.j,
+                #     next_event.j_is_vert,
+                #     next_event.t_i,
+                #     next_event.t_j,
+                # )
                 return False
 
             # Next, assert monotonicity on the "Q" side.
             if event.j > next_event.j:
-                print(
-                    event.i,
-                    event.i_is_vert,
-                    event.j,
-                    event.j_is_vert,
-                    event.t_i,
-                    event.t_j,
-                )
-                print(
-                    next_event.i,
-                    next_event.i_is_vert,
-                    next_event.j,
-                    next_event.j_is_vert,
-                    next_event.t_i,
-                    next_event.t_j,
-                )
+                # print(
+                #     event.i,
+                #     event.i_is_vert,
+                #     event.j,
+                #     event.j_is_vert,
+                #     event.t_i,
+                #     event.t_j,
+                # )
+                # print(
+                #     next_event.i,
+                #     next_event.i_is_vert,
+                #     next_event.j,
+                #     next_event.j_is_vert,
+                #     next_event.t_i,
+                #     next_event.t_j,
+                # )
                 return False
 
             # TODO change checks to account for floating point issues.
             if event.j == next_event.j and event.t_j > next_event.t_j:
-                print(
-                    event.i,
-                    event.i_is_vert,
-                    event.j,
-                    event.j_is_vert,
-                    event.t_i,
-                    event.t_j,
-                )
-                print(
-                    next_event.i,
-                    next_event.i_is_vert,
-                    next_event.j,
-                    next_event.j_is_vert,
-                    next_event.t_i,
-                    next_event.t_j,
-                )
+                # print(
+                #     event.i,
+                #     event.i_is_vert,
+                #     event.j,
+                #     event.j_is_vert,
+                #     event.t_i,
+                #     event.t_j,
+                # )
+                # print(
+                #     next_event.i,
+                #     next_event.i_is_vert,
+                #     next_event.j,
+                #     next_event.j_is_vert,
+                #     next_event.t_i,
+                #     next_event.t_j,
+                # )
                 return False
 
         return True
@@ -446,19 +444,11 @@ class Morphing:
                     and morphing[new_k + 1].i == event.i
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
-                    # print(best_t, new_event.t_i)
-                    # print(
-                    #    new_event.p_i, new_event.i, new_event.i_is_vert, new_event.t_i
-                    # )
-                    # print(event.j, new_event.j)
 
                     best_t = max(best_t, new_event.t_i)
                     # TODO might be the wrong condition??
 
                     if best_t > new_event.t_i:
-                        # print("Reassigning!!")
-                        # print()
-                        # assert False
                         morphing[new_k].reassign_parameter_i(best_t, self.P)
 
                     longest_dist = max(longest_dist, morphing[new_k].dist)
@@ -534,10 +524,6 @@ class Morphing:
             event = self.morphing_list[k]
             assert 0 <= event.i < n_p
             assert 0 <= event.j < n_q
-            # print(k)
-            # print(
-            #    event.i, event.i_is_vert, event.j, event.j_is_vert, event.t_i, event.t_j
-            # )
 
             # Add event to P event list
             # TODO check that this equality condition still gives you the
@@ -679,12 +665,6 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
-    # print("q_events_1: ", q_events_1)
-    # print("q_events_2: ", q_events_2)
-
-    # print(prm_1)
-    # print(prm_2)
-
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     idx_1 = 0
@@ -702,8 +682,8 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
         q_event_1 = q_events_1[idx_1]
         q_event_2 = q_events_2[idx_2]
 
-        print(idx_1, idx_2)
-        print("Two points: ", q_event_1, q_event_2)
+        # print(idx_1, idx_2)
+        # print("Two points: ", q_event_1, q_event_2)
 
         is_equal = np.isclose(q_event_1, q_event_2)
 
@@ -712,7 +692,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
             and idx_1 < len_1 - 1
             and np.isclose(q_events_1[idx_1 + 1], q_event_1)
         ):
-            print("case2")
+            # print("case2")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 += 1
 
@@ -721,12 +701,12 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
             and idx_2 < len_2 - 1
             and np.isclose(q_events_2[idx_2 + 1], q_event_2)
         ):
-            print("case3")
+            # print("case3")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_2 += 1
 
         elif is_equal:
-            print("case4")
+            # print("case4")
             new_prm.append((p_events[idx_2], r_events[idx_1]))
             idx_1 = min(idx_1 + 1, len_1 - 1)
             idx_2 = min(idx_2 + 1, len_2 - 1)
@@ -734,7 +714,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
         # NOTE I think everything above this line is right
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
-            print("case5")
+            # print("case5")
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
@@ -743,7 +723,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
             idx_1 = min(idx_1 + 1, len_1 - 1)
 
         elif q_event_1 > q_event_2:
-            print("case6")
+            # print("case6")
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
             # TODO double check whether or not this line is necessary
             # new_r = max(prm_1[idx_1 - 1], new_r)
@@ -788,27 +768,6 @@ def morphing_combine(
 
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
-
-    # print("PRMs")
-    # print(repr(prm_1))
-    # print(repr(prm_2))
-    # print("Done printing PRMs")
-
-    # Now that we have the new PRM, need to extract new event
-    # sequences
-    # new_event_sequence = nbt.List.empty_list(eid_type)
-    # TODO this information gets computed when the initial PRMs are
-    # created. Avoid recomputing it if possible.
-    # p_lens = get_prefix_lens(P)
-    # r_lens = get_prefix_lens(R)
-
-    # i_p = 0
-    # i_r = 0
-
-    # p_num_pts = p_lens.shape[0]
-    # r_num_pts = r_lens.shape[0]
-
-    # max_dist = 0.0
 
     new_prm = construct_new_prm(prm_1, prm_2)
     return event_sequence_from_prm(new_prm, P, R)

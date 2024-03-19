@@ -300,21 +300,11 @@ def test_morphing_combine_manual() -> None:
 
     assert np.isclose(first_combined.dist, 0.14142135623730956)
 
-    for i in range(len(first_combined.morphing_list)):
-        event = first_combined.morphing_list[i]
-        print("Event: ", i + 1)
-        print(event.i, event.i_is_vert, event.j, event.j_is_vert)
-
-    print("Combined PRM:", first_combined.get_prm())
-    # assert False
-    # NOTE bug is somewhere below here
     Q_self_morphing.flip()
 
     final_combined = fu.morphing_combine(Q_self_morphing, first_combined)
 
     assert np.isclose(final_combined.dist, 0.14142135623730956)
-
-    # TODO add more asserts as-needed to deal with possible issues
 
 
 def test_morphing_make_monotone_nontrivial() -> None:
@@ -334,7 +324,6 @@ def test_morphing_make_monotone_nontrivial() -> None:
 
     assert np.isclose(ve_morphing.dist, 0.14142135623730948)
 
-    print("Starting the actual run")
     # Make monotone
     monotone_morphing_2 = ve_morphing.copy()
     monotone_morphing_2.make_monotone()
