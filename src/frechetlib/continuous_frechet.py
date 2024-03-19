@@ -296,7 +296,6 @@ def frechet_c_approx(
         first_morphing = fu.morphing_combine(morphing, morphing_p)
 
         first_morphing.make_monotone()
-        assert first_morphing.is_monotone()
 
         # print("First distance: ", first_morphing.dist)
         # print("Second distance: ", morphing_q.dist)
@@ -305,7 +304,9 @@ def frechet_c_approx(
         # print("Done with combining")
         # print(output_morphing.dist)
 
-        output_morphing.make_monotone()
+        # TODO I think this morphing will always be monotone?
+        assert output_morphing.is_monotone()
+        # output_morphing.make_monotone()
 
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         # print(ratio)

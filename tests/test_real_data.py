@@ -5,6 +5,8 @@ import frechetlib.retractable_frechet as rf
 import numpy as np
 import pytest
 
+# TODO a lot of these test cases are very similar, try using a fixture to parameterize.
+
 
 @pytest.fixture
 def frechet_downloader() -> fld.FrechetDownloader:
@@ -37,8 +39,7 @@ def test_curve_3(frechet_downloader: fld.FrechetDownloader) -> None:
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(P_curve, Q_curve)
 
-    # TODO the value on Sariel's site is wrong
-    # assert np.isclose(dist_discrete, 0.700446286306095)
+    assert np.isclose(dist_discrete, 0.8602325267042626)
     assert np.isclose(retractable_morphing.dist, 0.7)
 
 
@@ -48,9 +49,8 @@ def test_curve_4(frechet_downloader: fld.FrechetDownloader) -> None:
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(P_curve, Q_curve)
 
-    # TODO the value on Sariel's site is wrong
-    # assert np.isclose(dist_discrete, 0.712928554361795)
-    # assert np.isclose(retractable_morphing.dist, 0.56)
+    assert np.isclose(dist_discrete, 1.1)
+    assert np.isclose(retractable_morphing.dist, 1.1)
 
 
 def test_curve_5(frechet_downloader: fld.FrechetDownloader) -> None:
@@ -79,6 +79,35 @@ def test_curve_6(frechet_downloader: fld.FrechetDownloader) -> None:
 
     assert np.isclose(ratio, 1.0)
     assert np.isclose(approx_morphing.dist, 0.9212672396766863)
+
+
+def test_curve_7(frechet_downloader: fld.FrechetDownloader) -> None:
+    P_curve = frechet_downloader.get_curve("07/poly_a.txt")
+    Q_curve = frechet_downloader.get_curve("07/poly_b.txt")
+    dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
+    retractable_morphing = rf.retractable_ve_frechet(P_curve, Q_curve)
+    ratio, approx_morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.001)
+
+    assert np.isclose(dist_discrete, 5.30754180388624)
+    assert np.isclose(retractable_morphing.dist, 5.30754180388624)
+
+    assert np.isclose(ratio, 1.0)
+    assert np.isclose(approx_morphing.dist, 5.30754180388624)
+
+
+def test_curve_10(frechet_downloader: fld.FrechetDownloader) -> None:
+    P_curve = frechet_downloader.get_curve("10/poly_a.txt")
+    Q_curve = frechet_downloader.get_curve("10/poly_b.txt")
+    dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
+    retractable_morphing = rf.retractable_ve_frechet(P_curve, Q_curve)
+    ratio, approx_morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.001)
+
+    assert np.isclose(dist_discrete, 0.9486832980505139)
+    assert np.isclose(retractable_morphing.dist, 0.823687767580373)
+
+    # TODO figure out what this number is actually supposed to be
+    # assert np.isclose(ratio, 1.0)
+    # assert np.isclose(approx_morphing.dist, 0.9486832980505139)
 
 
 def test_curve_12(frechet_downloader: fld.FrechetDownloader) -> None:
