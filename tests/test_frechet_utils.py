@@ -176,8 +176,8 @@ def test_morphing_combine_manual() -> None:
     # Morphing P with itself
     P_self_morphing_list = nbt.List(
         [
-            fu.EID(0, True, 0, True, P[0], P[0], 0.0, 0.0, 0.0),
-            fu.EID(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0),
+            fu.EID(0, True, 0, True, P[0], P[0], 0.0, 0.0, 0.0, 0.0),
+            fu.EID(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0, 0.0),
         ]
     )
 
@@ -186,11 +186,11 @@ def test_morphing_combine_manual() -> None:
     # Morphing Q with itself
     Q_self_morphing_list = nbt.List(
         [
-            fu.EID(0, True, 0, True, Q[0], Q[0], 0.0, 0.0, 0.0),
-            fu.EID(1, True, 1, True, Q[1], Q[1], 0.0, 0.0, 0.0),
-            fu.EID(2, True, 2, True, Q[2], Q[2], 0.0, 0.0, 0.0),
-            fu.EID(3, True, 3, True, Q[3], Q[3], 0.0, 0.0, 0.0),
-            fu.EID(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0),
+            fu.EID(0, True, 0, True, Q[0], Q[0], 0.0, 0.0, 0.0, 0.0),
+            fu.EID(1, True, 1, True, Q[1], Q[1], 0.0, 0.0, 0.0, 0.0),
+            fu.EID(2, True, 2, True, Q[2], Q[2], 0.0, 0.0, 0.0, 0.0),
+            fu.EID(3, True, 3, True, Q[3], Q[3], 0.0, 0.0, 0.0, 0.0),
+            fu.EID(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0, 0.0),
         ]
     )
 
@@ -212,34 +212,35 @@ def test_morphing_combine_manual() -> None:
 
     dist = 0.14142135623730956
     # Middle Morphing. Using P points in multiple places to avoid having to redefine points
+    # NOTE last value (heap key) probably doesn't matter
     middle_morphing_list = nbt.List(
         [
             # 1
-            fu.EID(0, True, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
+            fu.EID(0, True, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0, 0.0),
             # 2
-            fu.EID(0, False, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
+            fu.EID(0, False, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0, 0.0),
             # 3
-            fu.EID(1, True, 0, False, P_refined[1], P_refined[1], 0.0, 0.3, 0.0),
+            fu.EID(1, True, 0, False, P_refined[1], P_refined[1], 0.0, 0.3, 0.0, 0.0),
             # 4
-            fu.EID(2, True, 0, False, P_refined[2], P_refined[2], 0.0, 0.6, 0.0),
+            fu.EID(2, True, 0, False, P_refined[2], P_refined[2], 0.0, 0.6, 0.0, 0.0),
             # 5, only one witnessing a difference
-            fu.EID(2, False, 1, True, P_refined[3], P_refined[4], 1.0, 0.0, dist),
+            fu.EID(2, False, 1, True, P_refined[3], P_refined[4], 1.0, 0.0, dist, dist),
             # 6, flips backwards
-            fu.EID(2, False, 2, True, P_refined[3], P_refined[2], 1.0, 0.0, dist),
+            fu.EID(2, False, 2, True, P_refined[3], P_refined[2], 1.0, 0.0, dist, dist),
             # 7
-            fu.EID(3, True, 2, False, P_refined[3], P_refined[3], 0.0, 0.25, 0.0),
+            fu.EID(3, True, 2, False, P_refined[3], P_refined[3], 0.0, 0.25, 0.0, 0.0),
             # 8
-            fu.EID(4, True, 2, False, P_refined[4], P_refined[4], 0.0, 0.5, 0.0),
+            fu.EID(4, True, 2, False, P_refined[4], P_refined[4], 0.0, 0.5, 0.0, 0.0),
             # 9
-            fu.EID(5, True, 2, False, P_refined[5], P_refined[5], 0.0, 0.75, 0.0),
+            fu.EID(5, True, 2, False, P_refined[5], P_refined[5], 0.0, 0.75, 0.0, 0.0),
             # 10
-            fu.EID(6, True, 2, False, P_refined[6], P_refined[6], 0.0, 1.0, 0.0),
+            fu.EID(6, True, 2, False, P_refined[6], P_refined[6], 0.0, 1.0, 0.0, 0.0),
             # 11
-            fu.EID(6, False, 3, True, P_refined[6], P_refined[6], 0.0, 0.0, 0.0),
+            fu.EID(6, False, 3, True, P_refined[6], P_refined[6], 0.0, 0.0, 0.0, 0.0),
             # 12
-            fu.EID(7, True, 3, False, P_refined[7], P_refined[7], 0.0, 0.5, 0.0),
+            fu.EID(7, True, 3, False, P_refined[7], P_refined[7], 0.0, 0.5, 0.0, 0.0),
             # 13
-            fu.EID(8, True, 4, True, P_refined[8], P_refined[8], 0.0, 0.0, 0.0),
+            fu.EID(8, True, 4, True, P_refined[8], P_refined[8], 0.0, 0.0, 0.0, 0.0),
         ]
     )
 

@@ -317,7 +317,9 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True) -> None:
+def frechet_c_compute(
+    P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
+) -> fu.Morphing:
     """
     Compute the exact continuous (monotone) Frechet distance between the
     two polygons. It should be reasonably fast.
@@ -388,6 +390,31 @@ def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True) 
         # TODO continue writing with
         # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
         first_morphing = fu.morphing_combine(morphing_P, mid_morphing)
-        final_morphing = fu.morphing_combine(first_morphing, morphing_Q)
+        combined_morphing = fu.morphing_combine(first_morphing, morphing_Q)
 
         # TODO next step: Refactor to allow for refinement.
+
+        # Try shooting for the opt?
+        if np.isclose(combined_morphing.dist, mid_morphing.dist):
+            factor *= 2.0
+
+        # TODO these are the wrong offsets!! Need to get the offsets
+        # off of morphing_P and morphing_Q
+        mid_morphing_offsets_P, mid_morphing_offsets_Q = (
+            mid_morphing.extract_vertex_radii()
+        )
+
+        morphing_with_offsets = rf.retractable_ve_frechet(
+            mid_morphing.P,
+            mid_morphing.Q,
+            mid_morphing_offsets_P,
+            mid_morphing_offsets_Q,
+        )
+
+        # If distances are equal, return the simpler of the two
+        # (computed without offsets)
+        if np.isclose(morphing_with_offsets.dist, combined_morphing.dist):
+            return combined_morphing
+
+        factor *= 2.0
+        approx_refinement = (1.0 + approx_refinement) / 2.0

@@ -22,7 +22,10 @@ class EID:
 
     # Computed distance between the points
     dist: float
-    hash_val: int
+
+    # Attribute to use for comparison in heap insertion
+    # TODO refactor to get rid of this.
+    heap_key: float
 
     # Points on edges if not a vertex. Can be adjusted.
     p_i: np.ndarray
@@ -43,6 +46,7 @@ class EID:
         t_i: float,
         t_j: float,
         dist: float,
+        heap_key: float,
     ) -> None:
         self.i = i
         self.i_is_vert = i_is_vert
@@ -54,23 +58,7 @@ class EID:
         self.t_j = t_j
 
         self.dist = dist
-
-        self.__recompute_hash()
-
-    def __recompute_hash(self) -> None:
-        # We actually don't need p_i and p_j here since the
-        # other attributes uniquely determine the point relative
-        # to others
-        self.hash_val = hash(
-            (
-                self.i,
-                self.i_is_vert,
-                self.j,
-                self.j_is_vert,
-                self.t_i,
-                self.t_j,
-            )
-        )
+        self.heap_key = heap_key
 
     def copy(self) -> EID:
         return EID(
@@ -83,6 +71,7 @@ class EID:
             self.t_i,
             self.t_j,
             self.dist,
+            self.heap_key,
         )
 
     def reassign_parameter_i(self, new_t: float, P: np.ndarray) -> None:
@@ -106,8 +95,6 @@ class EID:
 
         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
 
-        self.__recompute_hash()
-
     def reassign_parameter_j(self, new_t: float, Q: np.ndarray) -> None:
         """
         Reassign the point and parameter from the curve Q.
@@ -129,8 +116,6 @@ class EID:
 
         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
 
-        self.__recompute_hash()
-
     def flip(self) -> None:
         self.i, self.j = self.j, self.i
         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
@@ -138,10 +123,22 @@ class EID:
         self.t_i, self.t_j = self.t_j, self.t_i
 
     def __lt__(self, other: Self) -> bool:
+        # This function is mainly used to schedule events for heap insertion.
+        # TODO when this project gets refactored, get rid of this function and
+        # just manually compute the key used in the heap.
         return self.dist < other.dist
 
     def __hash__(self) -> int:
-        return self.hash_val
+        return hash(
+            (
+                self.i,
+                self.i_is_vert,
+                self.j,
+                self.j_is_vert,
+                self.t_i,
+                self.t_j,
+            )
+        )
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, EID):
@@ -220,7 +217,9 @@ def from_coefficients(
         p_j = convex_comb(Q[j], Q[j + 1], t_q)
 
     dist = float(np.linalg.norm(p_i - p_j))
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
+    # Dist is used directly as the heap key, probably doesn't matter for
+    # the purposes of this function.
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist, dist)
 
 
 @njit
@@ -231,6 +230,8 @@ def from_curve_indices(
     j_is_vert: bool,
     P: np.ndarray,
     Q: np.ndarray,
+    P_offs: np.ndarray = np.zeros(0),
+    Q_offs: np.ndarray = np.zeros(0),
 ) -> EID:
     # These values will get overwritten later
     dist = 0.0
@@ -261,7 +262,8 @@ def from_curve_indices(
     assert 0.0 <= t_i <= 1.0
     assert 0.0 <= t_j <= 1.0
 
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
+    # TODO figure out how to use offsets as the key.
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist, dist)
 
 
 @njit
@@ -276,7 +278,7 @@ def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
 
 # I think this is needed at the global scope because numba has issues
 # https://github.com/numba/numba/issues/7291
-eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
+eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0, 0.0))
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
