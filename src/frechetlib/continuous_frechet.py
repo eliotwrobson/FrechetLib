@@ -25,7 +25,7 @@ def frechet_mono_via_refinement(
 
     assert 1.0 <= approx
 
-    ve_morphing = rf.retractable_ve_frechet(P, Q)
+    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None)
 
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
@@ -36,7 +36,7 @@ def frechet_mono_via_refinement(
         new_P, new_Q = add_points_to_make_monotone(ve_morphing)
 
         # Compute new ve frechet distance for curves
-        ve_morphing = rf.retractable_ve_frechet(new_P, new_Q)
+        ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None)
 
         # Make monotone
         monotone_morphing = ve_morphing.copy()
@@ -388,8 +388,8 @@ def frechet_c_compute(
         mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
         # The P and Q from the refinement might be a
-        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P)
-        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q)
+        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None)
+        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None)
 
         # TODO continue writing with
         # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057

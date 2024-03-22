@@ -21,7 +21,7 @@ def test_retractable_weird() -> None:
     )
 
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    morphing = rf.retractable_ve_frechet(P, Q)
+    morphing = rf.retractable_ve_frechet(P, Q, None, None)
     assert np.isclose(morphing.dist, 0.14142135623730948)
     morphing.make_monotone()
 
@@ -37,9 +37,9 @@ def test_retractable_frechet() -> None:
     P = np.random.uniform(low=noise_limit, high=100.0, size=(n, d))
     Q = P + np.random.uniform(low=-noise_limit, high=noise_limit, size=(n, d))
 
-    rf.retractable_ve_frechet(P, Q)
+    rf.retractable_ve_frechet(P, Q, None, None)
     start = time.perf_counter()
-    morphing = rf.retractable_ve_frechet(P, Q)
+    morphing = rf.retractable_ve_frechet(P, Q, None, None)
     end = time.perf_counter()
 
     print(end - start)
