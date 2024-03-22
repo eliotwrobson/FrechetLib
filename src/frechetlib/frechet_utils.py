@@ -5,12 +5,61 @@ import typing as t
 import numba.typed as nbt
 import numpy as np
 import numpy.typing as npt
-from numba import float64, njit, typeof, types  # type: ignore[attr-defined]
+from numba import (  # type: ignore[attr-defined]
+    boolean,
+    float64,
+    int64,
+    njit,
+    optional,
+    typeof,
+    types,
+)
 from numba.experimental import jitclass
 from typing_extensions import Self
 
 PRM = t.List[t.Tuple[float, float]]
 Curve = npt.NDArray[np.float64]
+
+
+@njit
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p + t * (q - p)
+
+
+@njit
+def line_point_distance(
+    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
+) -> tuple[float, float, np.ndarray]:
+    """
+    Based on: https://stackoverflow.com/a/1501725/2923069
+
+    Computes the point on the segment p1-p2 closest to q.
+    Returns the distance between the point and the segment,
+    the parameter t from p1 to p2 witnessing the point on the
+    segment, and the witness point itself.
+
+    """
+    # Return minimum distance between line segment p1-p2 and point q
+
+    q_diff = q - p1
+    p_diff = p2 - p1
+
+    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
+    if np.isclose(l2, 0.0):  # p1 == p2 case
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
+    # We find projection of point q onto the line.
+    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
+    # We clamp t from [0,1] to handle points outside the segment vw.
+    t = np.dot(q_diff, p_diff) / l2
+
+    if t <= 0.0:
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    elif t >= 1.0:
+        return float(np.linalg.norm(q - p2)), 1.0, p2
+
+    point_on_segment = convex_comb(p1, p2, t)
+    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
 
 
 @jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore
@@ -222,7 +271,20 @@ def from_coefficients(
     return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist, dist)
 
 
-@njit
+# Using this stupid type signature
+# https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
+@njit(
+    EID.class_type.instance_type(
+        int64,
+        boolean,
+        int64,
+        boolean,
+        float64[:, :],
+        float64[:, :],
+        optional(float64[:]),
+        optional(float64[:]),
+    )
+)
 def from_curve_indices(
     i: int,
     i_is_vert: bool,
@@ -230,11 +292,14 @@ def from_curve_indices(
     j_is_vert: bool,
     P: np.ndarray,
     Q: np.ndarray,
-    P_offs: np.ndarray = np.zeros(0),
-    Q_offs: np.ndarray = np.zeros(0),
+    P_offs: t.Optional[np.ndarray],  # np.zeros(0),
+    Q_offs: t.Optional[np.ndarray],  # np.zeros(0),
 ) -> EID:
     # These values will get overwritten later
+    # TODO I think some of the logic below can be refactored to reduce
+    # the number of cases
     dist = 0.0
+    heap_key = 0.0
     t_i = 0.0
     t_j = 0.0
     p_i = P[i]
@@ -243,19 +308,51 @@ def from_curve_indices(
     assert 0 <= i < P.shape[0]
     assert 0 <= j < Q.shape[0]
 
+    use_offsets = P_offs is not None and Q_offs is not None
+
+    if use_offsets:
+        assert P.shape[0] == P_offs.shape[0]
+        assert Q.shape[0] == Q_offs.shape[0]
+
     if i_is_vert and j_is_vert:
         dist = float(np.linalg.norm(P[i] - Q[j]))
+
+        if use_offsets:
+            heap_key = dist - P_offs[i] - Q_offs[j]
+        else:
+            heap_key = dist
+
     elif i_is_vert:
         if j == Q.shape[0] - 1:
             dist = float(np.linalg.norm(P[i] - Q[j]))
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - Q_offs[j]
+            else:
+                heap_key = dist
         else:
             dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])
+            else:
+                heap_key = dist
 
     elif j_is_vert:
         if i == P.shape[0] - 1:
             dist = float(np.linalg.norm(P[i] - Q[j]))
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - Q_offs[j]
+            else:
+                heap_key = dist
         else:
             dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
+
+            if use_offsets:
+                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]
+            else:
+                heap_key = dist
     else:
         raise Exception
 
@@ -263,7 +360,7 @@ def from_curve_indices(
     assert 0.0 <= t_j <= 1.0
 
     # TODO figure out how to use offsets as the key.
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist, dist)
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist, heap_key)
 
 
 @njit
@@ -574,47 +671,6 @@ class Morphing:
 
 
 @njit
-def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p + t * (q - p)
-
-
-@njit
-def line_point_distance(
-    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
-) -> tuple[float, float, np.ndarray]:
-    """
-    Based on: https://stackoverflow.com/a/1501725/2923069
-
-    Computes the point on the segment p1-p2 closest to q.
-    Returns the distance between the point and the segment,
-    the parameter t from p1 to p2 witnessing the point on the
-    segment, and the witness point itself.
-
-    """
-    # Return minimum distance between line segment p1-p2 and point q
-
-    q_diff = q - p1
-    p_diff = p2 - p1
-
-    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
-    if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
-    # We find projection of point q onto the line.
-    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
-    # We clamp t from [0,1] to handle points outside the segment vw.
-    t = np.dot(q_diff, p_diff) / l2
-
-    if t <= 0.0:
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    elif t >= 1.0:
-        return float(np.linalg.norm(q - p2)), 1.0, p2
-
-    point_on_segment = convex_comb(p1, p2, t)
-    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
-
-
-@njit
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     n = P.shape[0]
     prefix_lens = np.empty(n)
@@ -829,7 +885,9 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
 
-    final_event = from_curve_indices(p_num_pts - 1, True, q_num_pts - 1, True, P, Q)
+    final_event = from_curve_indices(
+        p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
+    )
     max_dist = max(max_dist, final_event.dist)
     new_event_sequence.append(final_event)
 

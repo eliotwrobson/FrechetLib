@@ -12,9 +12,9 @@ import frechetlib.frechet_utils as fu
 
 @njit
 def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> fu.Morphing:
-    start_node = fu.from_curve_indices(0, True, 0, True, P, Q)
-    start_node_1 = fu.from_curve_indices(0, False, 0, True, P, Q)
-    start_node_2 = fu.from_curve_indices(0, True, 0, False, P, Q)
+    start_node = fu.from_curve_indices(0, True, 0, True, P, Q, None, None)
+    start_node_1 = fu.from_curve_indices(0, False, 0, True, P, Q, None, None)
+    start_node_2 = fu.from_curve_indices(0, True, 0, False, P, Q, None, None)
     work_queue = [start_node_1, start_node_2]
 
     seen = {start_node_1: start_node, start_node_2: start_node}
@@ -42,7 +42,7 @@ def retractable_ve_frechet(P: np.ndarray, Q: np.ndarray) -> fu.Morphing:
             if i >= n_p or j >= n_q:
                 continue
 
-            next_node = fu.from_curve_indices(i, i_vert, j, j_vert, P, Q)
+            next_node = fu.from_curve_indices(i, i_vert, j, j_vert, P, Q, None, None)
 
             if next_node in seen:
                 continue
