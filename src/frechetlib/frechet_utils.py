@@ -551,6 +551,25 @@ class Morphing:
             # print()
         return prm
 
+    def extract_vertex_radii(self) -> tuple[np.ndarray, np.ndarray]:
+        """
+        For each vertex in either polygon, take the maximum leash length
+        on the given vertices.
+        """
+
+        P_leash_lens = np.zeros(self.P.shape[0], dtype=np.float64)
+        Q_leash_lens = np.zeros(self.Q.shape[0], dtype=np.float64)
+
+        for k in range(len(self.morphing_list)):
+            event = self.morphing_list[k]
+            if event.i_is_vert:
+                P_leash_lens[event.i] = np.max(P_leash_lens[event.i], event.dist)  # type: ignore
+
+            if event.j_is_vert:
+                Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)  # type: ignore
+
+        return P_leash_lens, Q_leash_lens
+
 
 @njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
@@ -815,28 +834,6 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     return Morphing(new_event_sequence, P, Q, max_dist)
 
 
-def extract_vertex_radii(
-    P: np.ndarray, Q: np.ndarray, morphing: list[EID]
-) -> tuple[np.ndarray, np.ndarray]:
-    """
-    For each vertex in either polygon, take the maximum leash length
-    on the given vertices.
-    """
-
-    P_leash_lens = np.zeros(P.shape[0], dtype=np.float64)
-    Q_leash_lens = np.zeros(Q.shape[0], dtype=np.float64)
-
-    for k in range(len(morphing)):
-        event = morphing[k]
-        if event.i_is_vert:
-            P_leash_lens[event.i] = np.max(P_leash_lens[event.i], event.dist)  # type: ignore
-
-        if event.j_is_vert:
-            Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)  # type: ignore
-
-    return P_leash_lens, Q_leash_lens
-
-
 def extract_offsets(
     P: np.ndarray, Q: np.ndarray, morphing: list[EID]
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -852,8 +849,8 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-@njit
-def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
+# @njit
+def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     assert P.shape[0] == r.shape
 
     curr = P[0]
@@ -871,7 +868,14 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> list[int]:
 
     indices.append(n - 1)
 
-    return indices
+    m = len(indices)
+
+    P_simplified = np.zeros(m, dtype=np.float64)
+
+    for i in range(m):
+        P_simplified[i] = P[indices[i]]
+
+    return P_simplified
 
 
 @njit

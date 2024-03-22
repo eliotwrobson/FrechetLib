@@ -364,26 +364,30 @@ def frechet_c_compute(P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True) 
     else:
         ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
 
-    Pl, Ql = fu.extract_vertex_radii(P, Q, morphing)
+    Pl, Ql = morphing.extract_vertex_radii()
     lower_bound = morphing.dist / ratio
 
     factor = 4.0
     while True:
+        # Vectorized sums
         Pz = (lower_bound - Pl) / factor
         Qz = (lower_bound - Ql) / factor
 
-        p_indices = fu.simplify_polygon_radii(P, Pz)
-        q_indices = fu.simplify_polygon_radii(Q, Qz)
+        Ps = fu.simplify_polygon_radii(P, Pz)
+        Qs = fu.simplify_polygon_radii(Q, Qz)
 
-        Ps = np.take(P, p_indices, axis=0)
-        Qs = np.take(Q, q_indices, axis=0)
+        # TODO need to refactor to reduce the distance to simplified versions of the
+        # curves (i.e. using offsets when defining event values, or something like that)
+        # see https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L103
+        mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
-        PSR, QSR, morphing, dist, is_exact = frechet_mono_via_refinement(
-            Ps, Qs, approx_refinement
-        )
+        # The P and Q from the refinement might be a
+        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P)
+        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q)
+
         # TODO continue writing with
         # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
-        # m_a = frechet_ve_r_mono_compute(poly_a, PSR)
-        # mmu = Morphing_combine(m_a, m_mid)
-        # m_b = frechet_ve_r_mono_compute(QSR, poly_b)
-        # mw = Morphing_combine(mmu, m_b)
+        first_morphing = fu.morphing_combine(morphing_P, mid_morphing)
+        final_morphing = fu.morphing_combine(first_morphing, morphing_Q)
+
+        # TODO next step: Refactor to allow for refinement.
