@@ -292,8 +292,8 @@ def from_curve_indices(
     j_is_vert: bool,
     P: np.ndarray,
     Q: np.ndarray,
-    P_offs: t.Optional[np.ndarray],  # np.zeros(0),
-    Q_offs: t.Optional[np.ndarray],  # np.zeros(0),
+    P_offs: t.Optional[np.ndarray],
+    Q_offs: t.Optional[np.ndarray],
 ) -> EID:
     # These values will get overwritten later
     # TODO I think some of the logic below can be refactored to reduce
