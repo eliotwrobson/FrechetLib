@@ -662,10 +662,10 @@ class Morphing:
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
             if event.i_is_vert:
-                P_leash_lens[event.i] = np.max(P_leash_lens[event.i], event.dist)  # type: ignore
+                P_leash_lens[event.i] = max(P_leash_lens[event.i], event.dist)  # type: ignore
 
             if event.j_is_vert:
-                Q_leash_lens[event.j] = np.max(Q_leash_lens[event.j], event.dist)  # type: ignore
+                Q_leash_lens[event.j] = max(Q_leash_lens[event.j], event.dist)  # type: ignore
 
         return P_leash_lens, Q_leash_lens
 
@@ -911,13 +911,13 @@ def extract_offsets(
 
 # @njit
 def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
-    assert P.shape[0] == r.shape
+    assert P.shape[0] == r.shape[0]
 
-    curr = P[0]
-    curr_r = r[0]
     indices = [0]
     n = P.shape[0]
 
+    curr = P[0]
+    curr_r = r[0]
     for i in range(1, n):
         curr_r = min(curr_r, r[i])
         if np.linalg.norm(P[i] - curr) > curr_r:
@@ -930,7 +930,7 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
 
     m = len(indices)
 
-    P_simplified = np.zeros(m, dtype=np.float64)
+    P_simplified = np.zeros((n, m), dtype=np.float64)
 
     for i in range(m):
         P_simplified[i] = P[indices[i]]

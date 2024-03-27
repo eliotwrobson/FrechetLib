@@ -422,3 +422,8 @@ def frechet_c_compute(
 
         factor *= 2.0
         approx_refinement = (1.0 + approx_refinement) / 2.0
+
+        if f_accept_appx and (
+            1.000001 * combined_morphing.dist > morphing_with_offsets.dist
+        ):
+            return combined_morphing

@@ -3,6 +3,15 @@ import frechetlib.retractable_frechet as rf
 import numpy as np
 
 
+def test_frechet_c_compute() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    output = cf.frechet_c_compute(P, Q)
+
+    print(output)
+    assert False
+
+
 def test_frechet_c_approx() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
