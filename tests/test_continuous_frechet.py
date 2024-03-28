@@ -1,6 +1,19 @@
 import frechetlib.continuous_frechet as cf
+import frechetlib.data as fld
 import frechetlib.retractable_frechet as rf
 import numpy as np
+
+
+def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> None:
+    P_curve = frechet_downloader.get_curve("05/poly_a.txt")
+    Q_curve = frechet_downloader.get_curve("05/poly_b.txt")
+
+    _, output = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
+    print(output.dist)
+
+    output = cf.frechet_c_compute(P_curve, Q_curve)
+    print(output.dist)
+    assert False
 
 
 def test_frechet_c_compute() -> None:
