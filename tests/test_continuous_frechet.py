@@ -5,6 +5,7 @@ import numpy as np
 
 
 def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> None:
+    # Testing with curve number 5
     P_curve = frechet_downloader.get_curve("05/poly_a.txt")
     Q_curve = frechet_downloader.get_curve("05/poly_b.txt")
 
@@ -13,6 +14,16 @@ def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> No
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
     assert np.isclose(output_exact.dist, 0.712928554361795)
+
+    # Testing with curve number 6
+    P_curve = frechet_downloader.get_curve("06/poly_a.txt")
+    Q_curve = frechet_downloader.get_curve("06/poly_b.txt")
+
+    _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
+    assert np.isclose(output_appx.dist, 0.9228858795210783)
+
+    output_exact = cf.frechet_c_compute(P_curve, Q_curve)
+    assert np.isclose(output_exact.dist, 0.9212672396766863)
 
 
 def test_frechet_c_compute() -> None:
