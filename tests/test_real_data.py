@@ -3,14 +3,8 @@ import frechetlib.data as fld
 import frechetlib.discrete_frechet as df
 import frechetlib.retractable_frechet as rf
 import numpy as np
-import pytest
 
 # TODO a lot of these test cases are very similar, try using a fixture to parameterize.
-
-
-@pytest.fixture
-def frechet_downloader() -> fld.FrechetDownloader:
-    return fld.FrechetDownloader()
 
 
 def test_curve_1(frechet_downloader: fld.FrechetDownloader) -> None:
