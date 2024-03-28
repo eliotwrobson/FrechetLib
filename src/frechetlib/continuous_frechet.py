@@ -391,12 +391,15 @@ def frechet_c_compute(
         morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None)
         morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None)
 
+        morphing_P.make_monotone()
+        morphing_Q.make_monotone()
+        morphing_Q.flip()
+
         # TODO continue writing with
         # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
-        first_morphing = fu.morphing_combine(morphing_P, mid_morphing)
-        combined_morphing = fu.morphing_combine(first_morphing, morphing_Q)
-
-        # TODO next step: Refactor to allow for refinement.
+        first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
+        first_morphing.make_monotone()
+        combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
 
         # Try shooting for the opt?
         if np.isclose(combined_morphing.dist, mid_morphing.dist):

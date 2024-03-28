@@ -929,8 +929,10 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     indices.append(n - 1)
 
     m = len(indices)
+    d = P.shape[1]
 
-    P_simplified = np.zeros((n, m), dtype=np.float64)
+    # Resulting curve will only have m indices
+    P_simplified = np.zeros((m, d), dtype=np.float64)
 
     for i in range(m):
         P_simplified[i] = P[indices[i]]
