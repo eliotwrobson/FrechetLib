@@ -8,8 +8,7 @@ def test_frechet_c_compute() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     output = cf.frechet_c_compute(P, Q)
 
-    print(output)
-    assert False
+    assert np.isclose(output.dist, 0.14155946303050976)
 
 
 def test_frechet_c_approx() -> None:
