@@ -64,7 +64,7 @@ def test_curve_5(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(retractable_morphing.dist, 0.56)
 
     assert np.isclose(ratio, 1.0)
-    assert np.isclose(approx_morphing.dist, 0.712928554361795, atol=0.7124)
+    assert np.isclose(approx_morphing.dist, 0.712928554361795, atol=0.0004)
 
 
 def test_curve_6(frechet_downloader: fld.FrechetDownloader) -> None:
