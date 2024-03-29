@@ -270,17 +270,21 @@ def frechet_c_approx(
     radius = upper_bound_dist / (approx_ratio + 4.0)
     ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
+    should_simplify = True
 
     while ratio > approx_ratio:
-        while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
+        # print("outer")
+        while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
+            # print("inner")
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
 
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
-            print(morphing.dist, (3.0 + approx_ratio) / 4.0)
+            # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
             upper_bound_dist = morphing.dist
+            should_simplify = False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
@@ -303,7 +307,9 @@ def frechet_c_approx(
         # output_morphing.make_monotone()
 
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
-        # print(ratio)
+        # NOTE This should advance the inner loop on the next iteration.
+        should_simplify = True
+        # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
 
     if output_morphing is None:
         raise Exception("Output morphing not set!")
