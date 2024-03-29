@@ -21,6 +21,10 @@ PRM = t.List[t.Tuple[float, float]]
 Curve = npt.NDArray[np.float64]
 
 
+# NOTE used for inner type of PRMs with numba
+tuple_type = typeof((0.0, 0.0))
+
+
 @njit
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p + t * (q - p)
@@ -770,11 +774,7 @@ def assert_monotone_top(prm: PRM) -> None:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
-# TODO unify the dumb tuple type
-tuple_type = typeof((0.0, 0.0))
-
-
-@njit(types.ListType(types.Tuple((float64, float64)))(float64[:, :], float64[:, :]))
+@njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]))
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
@@ -889,8 +889,8 @@ def morphing_combine(
 
 
 @njit(
-    Morphing.class_type.instance_type(
-        types.ListType(types.Tuple((float64, float64))), float64[:, :], float64[:, :]
+    Morphing.class_type.instance_type(  # type: ignore[attr-defined]
+        types.ListType(tuple_type), float64[:, :], float64[:, :]
     )
 )
 def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
