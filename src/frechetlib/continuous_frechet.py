@@ -387,7 +387,7 @@ def frechet_c_compute(
         # see https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L103
         mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
-        # The P and Q from the refinement might be a
+        # The P and Q from the refinement without offsets
         morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None)
         morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None)
 
@@ -395,8 +395,7 @@ def frechet_c_compute(
         morphing_Q.make_monotone()
         morphing_Q.flip()
 
-        # TODO continue writing with
-        # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L1057
+        # Do the combination
         first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
         first_morphing.make_monotone()
         combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
@@ -405,12 +404,7 @@ def frechet_c_compute(
         if np.isclose(combined_morphing.dist, mid_morphing.dist):
             factor *= 2.0
 
-        # TODO these are the wrong offsets!! Need to get the offsets
-        # off of morphing_P and morphing_Q
-        # mid_morphing_offsets_P, mid_morphing_offsets_Q = (
-        #    mid_morphing.extract_vertex_radii()
-        # )
-
+        # TODO Triple check these are the correct offsets
         _, morphing_offsets_P = morphing_P.extract_vertex_radii()
         _, morphing_offsets_Q = morphing_Q.extract_vertex_radii()
 
