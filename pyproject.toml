@@ -9,10 +9,8 @@ packages = [{ include = "frechetlib", from = "src" }]
 
 
 [tool.poetry.urls]
-homepage = "https://github.com/eliotwrobson/CodeforcesRunnerEliot"
-documentation = "https://github.com/eliotwrobson/CodeforcesRunnerEliot#readme"
-repository = "https://github.com/eliotwrobson/CodeforcesRunnerEliot"
-changelog = "https://github.com/eliotwrobson/CodeforcesRunnerEliot/releases"
+Homepage = "https://github.com/eliotwrobson/FrechetLib"
+repository = "https://github.com/eliotwrobson/FrechetLib"
 
 [tool.poetry.dependencies]
 python = "^3.10"
