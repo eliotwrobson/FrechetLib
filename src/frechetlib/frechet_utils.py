@@ -232,12 +232,14 @@ def from_coefficients(
 
     if not 0 <= i < P.shape[0]:
         raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape {P.shape}.'
+            f'Cannot create event with index "{i}" on a curve with shape:'
+            f"{P.shape[0]}, {P.shape[1]}."
         )
 
     if not 0 <= j < Q.shape[0]:
         raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape {Q.shape}.'
+            f'Cannot create event with index "{j}" on a curve with shape:'
+            f"{Q.shape[0]}, {Q.shape[1]}."
         )
 
     i_is_vert = False
@@ -312,8 +314,17 @@ def from_curve_indices(
     p_i = P[i]
     p_j = Q[j]
 
-    assert 0 <= i < P.shape[0]
-    assert 0 <= j < Q.shape[0]
+    if not 0 <= i < P.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{i}" on a curve with shape:'
+            f"{P.shape[0]}, {P.shape[1]}."
+        )
+
+    if not 0 <= j < Q.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{j}" on a curve with shape:'
+            f"{Q.shape[0]}, {Q.shape[1]}."
+        )
 
     use_offsets = P_offs is not None and Q_offs is not None
 
