@@ -450,6 +450,7 @@ class Morphing:
 
             # First, assert monotonicity on the "P" side.
             if event.i > next_event.i:
+                print("Case 1")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -470,6 +471,7 @@ class Morphing:
 
             # TODO change checks to account for floating point issues.
             if event.i == next_event.i and event.t_i > next_event.t_i:
+                print("Case 2")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -490,6 +492,7 @@ class Morphing:
 
             # Next, assert monotonicity on the "Q" side.
             if event.j > next_event.j:
+                print("Case 3")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -510,6 +513,7 @@ class Morphing:
 
             # TODO change checks to account for floating point issues.
             if event.j == next_event.j and event.t_j > next_event.t_j:
+                print("Case 4")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
