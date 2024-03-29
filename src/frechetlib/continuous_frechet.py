@@ -220,7 +220,6 @@ def frechet_c_mono_approx_subcurve(
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
-        # print("Indices:", curr_idx, next_idx)
 
         next_event = fu.from_curve_indices(
             curr_idx, True, i, True, P, P_subcurve, None, None
@@ -235,7 +234,7 @@ def frechet_c_mono_approx_subcurve(
             )
             width = max(width, next_event.dist)
             res.append(next_event)
-    # print("Done w indices")
+
     next_event = fu.from_curve_indices(
         len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve, None, None
     )
@@ -271,11 +270,8 @@ def frechet_c_approx(
     radius = upper_bound_dist / (approx_ratio + 4.0)
     ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
-    i = 0
 
     while ratio > approx_ratio:
-        i += 1
-        print(ratio, approx_ratio)
         while radius >= (upper_bound_dist / (approx_ratio + 4.0)):
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
@@ -285,8 +281,6 @@ def frechet_c_approx(
             print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
             upper_bound_dist = morphing.dist
-        if i > 10:
-            assert False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
@@ -301,15 +295,8 @@ def frechet_c_approx(
         assert morphing_q.is_monotone()
 
         first_morphing = fu.morphing_combine(morphing, morphing_p)
-
         first_morphing.make_monotone()
-
-        # print("First distance: ", first_morphing.dist)
-        # print("Second distance: ", morphing_q.dist)
         output_morphing = fu.morphing_combine(morphing_q, first_morphing)
-        # print("Combined: ", output_morphing.dist)
-        # print("Done with combining")
-        # print(output_morphing.dist)
 
         # TODO I think this morphing will always be monotone?
         assert output_morphing.is_monotone()

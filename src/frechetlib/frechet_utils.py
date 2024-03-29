@@ -109,6 +109,9 @@ class EID:
         self.dist = dist
         self.heap_key = heap_key
 
+        assert 0.0 <= t_i <= 1.0
+        assert 0.0 <= t_j <= 1.0
+
     def copy(self) -> EID:
         return EID(
             self.i,
@@ -470,8 +473,10 @@ class Morphing:
                 return False
 
             # TODO change checks to account for floating point issues.
-            if event.i == next_event.i and event.t_i > next_event.t_i:
-                print("Case 2")
+            # Make it so that make_monotone gets rid of the need for this
+            if event.i == next_event.i and event.t_i > next_event.t_i * 1.001:
+                print("Case 2", event.t_i, next_event.t_i)
+                print(event.i_is_vert, next_event.i_is_vert)
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -512,8 +517,8 @@ class Morphing:
                 return False
 
             # TODO change checks to account for floating point issues.
-            if event.j == next_event.j and event.t_j > next_event.t_j:
-                print("Case 4")
+            if event.j == next_event.j and event.t_j > next_event.t_j * 1.001:
+                print("Case 4", event.t_j, next_event.t_j)
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -866,11 +871,12 @@ def morphing_combine(
     # Original curve equal to morphing_1.P
     assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
     R = morphing_1.Q
-
+    print("getting prms")
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
-
+    print("done getting")
     new_prm = construct_new_prm(prm_1, prm_2)
+    print("new event sequence maed")
     return event_sequence_from_prm(new_prm, P, R)
 
 
