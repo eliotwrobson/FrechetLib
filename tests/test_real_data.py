@@ -104,13 +104,12 @@ def test_curve_10(frechet_downloader: fld.FrechetDownloader) -> None:
     # assert np.isclose(approx_morphing.dist, 0.9486832980505139)
 
 
-# TODO play around more with benchmarks in a script.
-# def test_curve_11(frechet_downloader: fld.FrechetDownloader) -> None:
-#     P_curve = frechet_downloader.get_curve("11/poly_a.txt")
-#     Q_curve = frechet_downloader.get_curve("11/poly_b.txt")
-#     dist, _ = df.discrete_retractable_frechet(P_curve, Q_curve)
+def test_curve_11(frechet_downloader: fld.FrechetDownloader) -> None:
+    P_curve = frechet_downloader.get_curve("11/poly_a.txt")
+    Q_curve = frechet_downloader.get_curve("11/poly_b.txt")
+    res, morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
 
-#     assert np.isclose(dist, 16.337960155589464)
+    assert np.isclose(morphing.dist, 16.35198236364533)
 
 
 def test_curve_12(frechet_downloader: fld.FrechetDownloader) -> None:

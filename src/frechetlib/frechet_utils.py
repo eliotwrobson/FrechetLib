@@ -770,7 +770,11 @@ def assert_monotone_top(prm: PRM) -> None:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
-@njit
+# TODO unify the dumb tuple type
+tuple_type = typeof((0.0, 0.0))
+
+
+@njit(types.ListType(types.Tuple((float64, float64)))(float64[:, :], float64[:, :]))
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
@@ -783,7 +787,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     len_1 = q_events_1.shape[0]
     len_2 = q_events_2.shape[0]
 
-    new_prm = []
+    new_prm = nbt.List.empty_list(tuple_type)
 
     # P = morphing_2.P
     # Q = morphing_2.Q = morphing_1.P
@@ -884,7 +888,11 @@ def morphing_combine(
     return event_sequence_from_prm(new_prm, P, R)
 
 
-@njit
+@njit(
+    Morphing.class_type.instance_type(
+        types.ListType(types.Tuple((float64, float64))), float64[:, :], float64[:, :]
+    )
+)
 def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     p_lens = get_prefix_lens(P)
     q_lens = get_prefix_lens(Q)
