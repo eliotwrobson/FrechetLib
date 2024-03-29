@@ -453,7 +453,7 @@ class Morphing:
 
             # First, assert monotonicity on the "P" side.
             if event.i > next_event.i:
-                print("Case 1")
+                # print("Case 1")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -475,8 +475,8 @@ class Morphing:
             # TODO change checks to account for floating point issues.
             # Make it so that make_monotone gets rid of the need for this
             if event.i == next_event.i and event.t_i > next_event.t_i * 1.001:
-                print("Case 2", event.t_i, next_event.t_i)
-                print(event.i_is_vert, next_event.i_is_vert)
+                # print("Case 2", event.t_i, next_event.t_i)
+                # print(event.i_is_vert, next_event.i_is_vert)
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -497,7 +497,7 @@ class Morphing:
 
             # Next, assert monotonicity on the "Q" side.
             if event.j > next_event.j:
-                print("Case 3")
+                # print("Case 3")
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -518,7 +518,7 @@ class Morphing:
 
             # TODO change checks to account for floating point issues.
             if event.j == next_event.j and event.t_j > next_event.t_j * 1.001:
-                print("Case 4", event.t_j, next_event.t_j)
+                # print("Case 4", event.t_j, next_event.t_j)
                 # print(
                 #     event.i,
                 #     event.i_is_vert,
@@ -740,6 +740,10 @@ def coefficient_from_prefix_lens(
     if idx == p_lens.shape[0] - 1:
         assert np.isclose(distance_along_curve, p_lens[idx])
         return 0.0
+    elif np.isclose(distance_along_curve, p_lens[idx]):
+        return 0.0
+
+    assert p_lens[idx] <= distance_along_curve <= p_lens[idx + 1]
 
     edge_len = p_lens[idx + 1] - p_lens[idx]
     t = (distance_along_curve - p_lens[idx]) / edge_len
@@ -831,8 +835,8 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
         elif q_event_1 > q_event_2:
             # print("case6")
             new_r = eval_pl_func(prm_1[:, idx_1 - 1], prm_1[:, idx_1], q_event_2)
-            # TODO double check whether or not this line is necessary
-            # new_r = max(prm_1[idx_1 - 1], new_r)
+            # NOTE this line is needed because of extremely annoying floating point jitters
+            new_r = max(prm_1[:, idx_1 - 1][1], new_r)
             new_prm.append((p_events[idx_2], new_r))
             idx_2 = min(idx_2 + 1, len_2 - 1)
 
@@ -871,12 +875,12 @@ def morphing_combine(
     # Original curve equal to morphing_1.P
     assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
     R = morphing_1.Q
-    print("getting prms")
+
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
-    print("done getting")
+
     new_prm = construct_new_prm(prm_1, prm_2)
-    print("new event sequence maed")
+
     return event_sequence_from_prm(new_prm, P, R)
 
 
@@ -892,10 +896,10 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     q_num_pts = q_lens.shape[0]
 
     max_dist = 0.0
-
     new_event_sequence = nbt.List.empty_list(eid_type)
 
     for i in range(len(prm) - 1):
+        # print(i)
         p_loc, q_loc = prm[i]
 
         while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
@@ -910,15 +914,16 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
 
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
-
+        # print(t_p, t_q)
         new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
 
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
-
+    # print("end event sequence")
     final_event = from_curve_indices(
         p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
     )
+    # print("actually done")
     max_dist = max(max_dist, final_event.dist)
     new_event_sequence.append(final_event)
 
