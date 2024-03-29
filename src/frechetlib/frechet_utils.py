@@ -230,8 +230,15 @@ def from_coefficients(
     edge-edge matchings.
     """
 
-    assert 0 <= i < P.shape[0]
-    assert 0 <= j < Q.shape[0]
+    if not 0 <= i < P.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{i}" on a curve with shape {P.shape}.'
+        )
+
+    if not 0 <= j < Q.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{j}" on a curve with shape {Q.shape}.'
+        )
 
     i_is_vert = False
 
