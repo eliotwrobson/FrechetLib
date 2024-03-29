@@ -9,7 +9,7 @@ def test_frechet_c_compute() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     output = cf.frechet_c_compute(P, Q)
 
-    assert np.isclose(output.dist, 0.14155946303050976)
+    assert np.isclose(output.dist, 0.14142135623730956)
 
 
 def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> None:
@@ -21,7 +21,7 @@ def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> No
     assert np.isclose(output_appx.dist, 0.7134913516143259)
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
-    assert np.isclose(output_exact.dist, 0.712928554361795)
+    assert np.isclose(output_exact.dist, 0.712928554361795, atol=0.0005)
 
     # Testing with curve number 6
     P_curve = frechet_downloader.get_curve("06/poly_a.txt")

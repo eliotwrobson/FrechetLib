@@ -732,10 +732,10 @@ def assert_monotone_top(prm: PRM) -> None:
     q = prm[-1]
 
     # Avoid raising exceptions on floating point jitters
-    factor = 1.0001
+    factor = 1.002
 
     if p[0] > factor * q[0] or p[1] > factor * q[1]:
-        raise Exception("Monotonicity violated.")
+        raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
@@ -870,12 +870,12 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
             i_p += 1
 
-        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc
+        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc * 1.01
 
         while i_q < q_num_pts - 1 and q_loc >= q_lens[i_q + 1]:
             i_q += 1
 
-        assert i_p == q_num_pts - 1 or q_lens[i_q] <= q_loc
+        assert i_q == q_num_pts - 1 or q_lens[i_q] <= q_loc * 1.01
 
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)

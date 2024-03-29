@@ -423,17 +423,19 @@ def frechet_c_compute(
 
         # If distances are equal, return the simpler of the two
         # (computed without offsets)
-        print("offset dist:", morphing_with_offsets.dist)
+        # print("offset dist:", morphing_with_offsets.dist)
         if np.isclose(morphing_with_offsets.dist, combined_morphing.dist):
             return combined_morphing
 
         factor *= 2.0
         approx_refinement = (1.0 + approx_refinement) / 2.0
 
+        # TODO I flipped the inequality here from the original Julia code.
+        # make sure this is correct (though I think it is).
         if f_accept_appx and (
-            1.000001 * combined_morphing.dist > morphing_with_offsets.dist
+            1.000001 * combined_morphing.dist < morphing_with_offsets.dist
         ):
-            print("HERE")
-            print(combined_morphing.dist, morphing_with_offsets.dist)
+            # print("HERE")
+            # print(combined_morphing.dist, morphing_with_offsets.dist)
             # assert False
             return combined_morphing
