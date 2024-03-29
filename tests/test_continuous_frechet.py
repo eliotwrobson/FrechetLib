@@ -4,6 +4,14 @@ import frechetlib.retractable_frechet as rf
 import numpy as np
 
 
+def test_frechet_c_compute() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    output = cf.frechet_c_compute(P, Q)
+
+    assert np.isclose(output.dist, 0.14155946303050976)
+
+
 def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> None:
     # Testing with curve number 5
     P_curve = frechet_downloader.get_curve("05/poly_a.txt")
@@ -24,14 +32,6 @@ def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> No
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
     assert np.isclose(output_exact.dist, 0.9212672396766863)
-
-
-def test_frechet_c_compute() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    output = cf.frechet_c_compute(P, Q)
-
-    assert np.isclose(output.dist, 0.14155946303050976)
 
 
 def test_frechet_c_approx() -> None:

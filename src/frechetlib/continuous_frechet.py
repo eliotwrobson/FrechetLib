@@ -407,19 +407,23 @@ def frechet_c_compute(
 
         # TODO these are the wrong offsets!! Need to get the offsets
         # off of morphing_P and morphing_Q
-        mid_morphing_offsets_P, mid_morphing_offsets_Q = (
-            mid_morphing.extract_vertex_radii()
-        )
+        # mid_morphing_offsets_P, mid_morphing_offsets_Q = (
+        #    mid_morphing.extract_vertex_radii()
+        # )
+
+        _, morphing_offsets_P = morphing_P.extract_vertex_radii()
+        _, morphing_offsets_Q = morphing_Q.extract_vertex_radii()
 
         morphing_with_offsets = rf.retractable_ve_frechet(
             mid_morphing.P,
             mid_morphing.Q,
-            mid_morphing_offsets_P,
-            mid_morphing_offsets_Q,
+            morphing_offsets_P,
+            morphing_offsets_Q,
         )
 
         # If distances are equal, return the simpler of the two
         # (computed without offsets)
+        print("offset dist:", morphing_with_offsets.dist)
         if np.isclose(morphing_with_offsets.dist, combined_morphing.dist):
             return combined_morphing
 
@@ -429,4 +433,7 @@ def frechet_c_compute(
         if f_accept_appx and (
             1.000001 * combined_morphing.dist > morphing_with_offsets.dist
         ):
+            print("HERE")
+            print(combined_morphing.dist, morphing_with_offsets.dist)
+            # assert False
             return combined_morphing
