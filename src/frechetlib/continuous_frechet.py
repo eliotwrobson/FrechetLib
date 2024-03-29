@@ -6,6 +6,7 @@ import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
+@njit
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
 ) -> tuple[fu.Morphing, bool]:
@@ -49,7 +50,7 @@ def frechet_mono_via_refinement(
 
 
 # TODO have to write test cases for this
-# @nb.njit
+@njit
 def add_points_to_make_monotone(
     morphing: fu.Morphing,
 ) -> tuple[np.ndarray, np.ndarray]:
@@ -202,7 +203,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[i
     return new_P, indices
 
 
-# @nb.njit
+@njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
 ) -> fu.Morphing:
@@ -242,7 +243,7 @@ def frechet_c_mono_approx_subcurve(
     return fu.Morphing(res, P, P_subcurve, width)
 
 
-# @nb.njit
+@njit
 def frechet_c_approx(
     P: np.ndarray, Q: np.ndarray, approx_ratio: float
 ) -> tuple[float, fu.Morphing]:
@@ -321,6 +322,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
+@njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:

@@ -215,7 +215,7 @@ def eid_get_coefficient_j(event: EID) -> float:
     return event.t_j
 
 
-# @njit
+@njit
 def from_coefficients(
     i: int,
     j: int,
@@ -720,6 +720,7 @@ def coefficient_from_prefix_lens(
     return t
 
 
+@njit
 def assert_monotone_top(prm: PRM) -> None:
     """
     Asserts monotonicity of the top of the PRM.
@@ -738,6 +739,7 @@ def assert_monotone_top(prm: PRM) -> None:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
+@njit
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
@@ -825,7 +827,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     return new_prm
 
 
-# @njit
+@njit
 def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
@@ -850,6 +852,7 @@ def morphing_combine(
     return event_sequence_from_prm(new_prm, P, R)
 
 
+@njit
 def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     p_lens = get_prefix_lens(P)
     q_lens = get_prefix_lens(Q)
@@ -909,7 +912,7 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-# @njit
+@njit
 def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     assert P.shape[0] == r.shape[0]
 
