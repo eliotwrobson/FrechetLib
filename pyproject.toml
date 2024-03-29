@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "frechetlib"
-version = "0.1.0"
+version = "0.1.1"
 description = "A package to compute distances between curves."
 authors = ["Eliot Robson <eliot.robson24@gmail.com>"]
 license = "MIT"
@@ -12,11 +12,14 @@ packages = [{ include = "frechetlib", from = "src" }]
 Homepage = "https://github.com/eliotwrobson/FrechetLib"
 repository = "https://github.com/eliotwrobson/FrechetLib"
 
+# TODO make the pooch dependency optional
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10"
 numpy = "^1.26.3"
 numba = "^0.58.1"
 scipy = "^1.11.4"
+typing-extensions = "^4.10.0"
+pooch = "^1.8.1"
 
 [tool.poetry.group.dev]
 optional = true
