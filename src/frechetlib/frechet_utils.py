@@ -274,7 +274,7 @@ def from_coefficients(
 # Using this stupid type signature
 # https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
 @njit(
-    EID.class_type.instance_type(
+    EID.class_type.instance_type(  # type: ignore
         int64,
         boolean,
         int64,
@@ -311,14 +311,14 @@ def from_curve_indices(
     use_offsets = P_offs is not None and Q_offs is not None
 
     if use_offsets:
-        assert P.shape[0] == P_offs.shape[0]
-        assert Q.shape[0] == Q_offs.shape[0]
+        assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
+        assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
 
     if i_is_vert and j_is_vert:
         dist = float(np.linalg.norm(P[i] - Q[j]))
 
         if use_offsets:
-            heap_key = dist - P_offs[i] - Q_offs[j]
+            heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
         else:
             heap_key = dist
 
@@ -327,14 +327,14 @@ def from_curve_indices(
             dist = float(np.linalg.norm(P[i] - Q[j]))
 
             if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]
+                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
             else:
                 heap_key = dist
         else:
             dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
 
             if use_offsets:
-                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])
+                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
             else:
                 heap_key = dist
 
@@ -343,14 +343,14 @@ def from_curve_indices(
             dist = float(np.linalg.norm(P[i] - Q[j]))
 
             if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]
+                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
             else:
                 heap_key = dist
         else:
             dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
 
             if use_offsets:
-                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]
+                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
             else:
                 heap_key = dist
     else:

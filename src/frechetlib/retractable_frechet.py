@@ -12,7 +12,7 @@ import frechetlib.frechet_utils as fu
 
 
 @njit(
-    fu.Morphing.class_type.instance_type(
+    fu.Morphing.class_type.instance_type(  # type: ignore[attr-defined]
         float64[:, :],
         float64[:, :],
         optional(float64[:]),
