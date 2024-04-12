@@ -474,7 +474,7 @@ def test_eid_copy() -> None:
     # Contents here are not really important for this test
     P = np.array([[0.0, 1.0], [1.0, 0.0], [2.0, 2.0]])
     Q = np.array([[0.0, 1.0], [1.0, 0.0], [3.0, 3.0]])
-    event = fu.from_curve_indices(2, True, 2, False, P, Q, None, None)
+    _, event = fu.from_curve_indices(2, True, 2, False, P, Q, None, None)
     event_copy = event.copy()
 
     assert event == event_copy

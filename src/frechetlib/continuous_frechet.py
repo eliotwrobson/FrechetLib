@@ -221,7 +221,7 @@ def frechet_c_mono_approx_subcurve(
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
 
-        next_event = fu.from_curve_indices(
+        _, next_event = fu.from_curve_indices(
             curr_idx, True, i, True, P, P_subcurve, None, None
         )
         width = max(width, next_event.dist)
@@ -229,13 +229,13 @@ def frechet_c_mono_approx_subcurve(
 
         for j in range(curr_idx + 1, next_idx):
             # print("index", i, j)
-            next_event = fu.from_curve_indices(
+            _, next_event = fu.from_curve_indices(
                 j, True, i, False, P, P_subcurve, None, None
             )
             width = max(width, next_event.dist)
             res.append(next_event)
 
-    next_event = fu.from_curve_indices(
+    _, next_event = fu.from_curve_indices(
         len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve, None, None
     )
     width = max(width, next_event.dist)

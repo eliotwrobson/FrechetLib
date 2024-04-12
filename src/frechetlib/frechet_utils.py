@@ -76,10 +76,6 @@ class EID:
     # Computed distance between the points
     dist: float
 
-    # Attribute to use for comparison in heap insertion
-    # TODO refactor to get rid of this.
-    heap_key: float
-
     # Points on edges if not a vertex. Can be adjusted.
     p_i: np.ndarray
     p_j: np.ndarray
@@ -99,7 +95,6 @@ class EID:
         t_i: float,
         t_j: float,
         dist: float,
-        heap_key: float,
     ) -> None:
         self.i = i
         self.i_is_vert = i_is_vert
@@ -111,7 +106,6 @@ class EID:
         self.t_j = t_j
 
         self.dist = dist
-        self.heap_key = heap_key
 
         assert 0.0 <= t_i <= 1.0
         assert 0.0 <= t_j <= 1.0
@@ -127,7 +121,6 @@ class EID:
             self.t_i,
             self.t_j,
             self.dist,
-            self.heap_key,
         )
 
     def reassign_parameter_i(self, new_t: float, P: np.ndarray) -> None:
@@ -282,9 +275,8 @@ def from_coefficients(
         p_j = convex_comb(Q[j], Q[j + 1], t_q)
 
     dist = float(np.linalg.norm(p_i - p_j))
-    # Dist is used directly as the heap key, probably doesn't matter for
-    # the purposes of this function.
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist, dist)
+
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
 
 
 # Using this stupid type signature
@@ -310,7 +302,7 @@ def from_curve_indices(
     Q: np.ndarray,
     P_offs: t.Optional[np.ndarray],
     Q_offs: t.Optional[np.ndarray],
-) -> EID:
+) -> t.Tuple[float, EID]:
     # These values will get overwritten later
     # TODO I think some of the logic below can be refactored to reduce
     # the number of cases
@@ -385,7 +377,7 @@ def from_curve_indices(
     assert 0.0 <= t_j <= 1.0
 
     # TODO figure out how to use offsets as the key.
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist, heap_key)
+    return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
 @njit
@@ -928,7 +920,7 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         max_dist = max(max_dist, new_event.dist)
         new_event_sequence.append(new_event)
     # print("end event sequence")
-    final_event = from_curve_indices(
+    _, final_event = from_curve_indices(
         p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
     )
     # print("actually done")
