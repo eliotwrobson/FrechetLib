@@ -282,7 +282,7 @@ def from_coefficients(
 # Using this stupid type signature
 # https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
 @njit(
-    EID.class_type.instance_type(  # type: ignore
+    types.Tuple((float64, EID.class_type.instance_type))(  # type: ignore
         int64,
         boolean,
         int64,
@@ -392,7 +392,7 @@ def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
 
 # I think this is needed at the global scope because numba has issues
 # https://github.com/numba/numba/issues/7291
-eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0, 0.0))
+eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
