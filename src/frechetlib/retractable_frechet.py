@@ -6,7 +6,12 @@ import typing as t
 
 import numba.typed as nbt
 import numpy as np
-from numba import float64, njit, optional  # type: ignore[attr-defined]
+from numba import (  # type: ignore[attr-defined]
+    boolean,
+    float64,
+    njit,
+    optional,
+)
 
 import frechetlib.frechet_utils as fu
 
@@ -17,13 +22,16 @@ import frechetlib.frechet_utils as fu
         float64[:, :],
         optional(float64[:]),
         optional(float64[:]),
+        boolean,
     )
 )
+# TODO this doesn't work, fix it in other places.
 def retractable_ve_frechet(
     P: np.ndarray,
     Q: np.ndarray,
     P_offs: t.Optional[np.ndarray],
     Q_offs: t.Optional[np.ndarray],
+    summed: bool,
 ) -> fu.Morphing:
     _, start_node = fu.from_curve_indices(0, True, 0, True, P, Q, P_offs, Q_offs)
     start_tuple_1 = fu.from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
