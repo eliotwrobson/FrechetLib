@@ -385,8 +385,8 @@ def frechet_c_compute(
         mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
         # The P and Q from the refinement without offsets
-        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None)
-        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None)
+        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None, False)
+        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None, False)
 
         morphing_P.make_monotone()
         morphing_Q.make_monotone()
@@ -410,6 +410,7 @@ def frechet_c_compute(
             mid_morphing.Q,
             morphing_offsets_P,
             morphing_offsets_Q,
+            False,
         )
 
         # If distances are equal, return the simpler of the two

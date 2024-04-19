@@ -316,7 +316,7 @@ def test_morphing_make_monotone_nontrivial() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None)
+    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
     assert np.isclose(ve_morphing.dist, 0.0)
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
@@ -325,7 +325,7 @@ def test_morphing_make_monotone_nontrivial() -> None:
     new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
 
     # Compute new ve frechet distance for curves
-    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None)
+    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
 
     assert np.isclose(ve_morphing.dist, 0.14142135623730948)
 
@@ -352,8 +352,8 @@ def test_frechet_dist_upper_bound() -> None:
 def test_morphing_combine() -> None:
     P, Q, R = example_3()
 
-    morphing_1 = rf.retractable_ve_frechet(P, Q, None, None)
-    morphing_2 = rf.retractable_ve_frechet(Q, R, None, None)
+    morphing_1 = rf.retractable_ve_frechet(P, Q, None, None, False)
+    morphing_2 = rf.retractable_ve_frechet(Q, R, None, None, False)
 
     # Apparently these need to be monotone for this to work
     morphing_1.make_monotone()
@@ -402,7 +402,7 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
 
 def test_morphing_flip() -> None:
     P, Q = u.generate_curves_close(100, 100.0)
-    morphing = rf.retractable_ve_frechet(P, Q, None, None)
+    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
     orig_morphing = morphing.copy()
     morphing.flip()
 
