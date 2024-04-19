@@ -44,12 +44,10 @@ def retractable_ve_frechet(
     n_p = P.shape[0]
     n_q = Q.shape[0]
     diffs = ((1, True, 0, False), (0, False, 1, True))
-    res = start_node.dist
     last_event = start_node
 
     while work_queue:
-        _, curr_event = hq.heappop(work_queue)
-        res = max(res, curr_event.dist)
+        curr_cost, curr_event = hq.heappop(work_queue)
 
         if curr_event.i == n_p - 1 and curr_event.j == n_q - 1:
             last_event = curr_event
@@ -63,10 +61,16 @@ def retractable_ve_frechet(
             if i >= n_p or j >= n_q:
                 continue
 
-            next_tuple = fu.from_curve_indices(
+            next_cost, next_node = fu.from_curve_indices(
                 i, i_vert, j, j_vert, P, Q, P_offs, Q_offs
             )
-            _, next_node = next_tuple
+
+            # NOTE in the bottleneck Frechet case, we always take the
+            # local optimum, but in the summed case, we need to
+            if summed:
+                next_cost += curr_cost
+
+            next_tuple = (next_cost, next_node)
 
             if next_node in seen:
                 continue
@@ -76,8 +80,15 @@ def retractable_ve_frechet(
 
     morphing = nbt.List([last_event])
 
+    res = last_event.dist
     while last_event in seen:
         last_event = seen[last_event]
+
+        if summed:
+            res += last_event.dist
+        else:
+            res = max(res, last_event.dist)
+
         morphing.append(last_event)
 
     # TODO maybe add final event??

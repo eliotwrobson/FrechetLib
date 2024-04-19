@@ -8,7 +8,8 @@ def test_frechet_c_compute() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     output = cf.frechet_c_compute(P, Q)
-
+    # TODO this test is flaky best on the operating system because of some annoying tiebreak
+    # logic (implementation dependant).
     assert np.isclose(output.dist, 0.14142135623730956)
 
 
