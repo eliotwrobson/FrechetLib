@@ -542,6 +542,8 @@ class Morphing:
         https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L172
         """
 
+        # TODO distance adjustment needs to be fixed for summed case.
+
         longest_dist = 0.0
         morphing = self.morphing_list
         n = len(morphing)
@@ -619,10 +621,6 @@ class Morphing:
     def __len__(self) -> int:
         return len(self.morphing_list)
 
-    def _print_event_list(self) -> None:
-        for event in self.morphing_list:
-            print(event.i, event.i_is_vert, event.j, event.j_is_vert, event.t)
-
     def get_prm(self) -> np.ndarray:
         # TODO once I write tests for this, it's probably possible to remove the
         # helper function and compute the prefix lengths on-the-fly. This will save
@@ -691,6 +689,19 @@ class Morphing:
                 Q_leash_lens[event.j] = max(Q_leash_lens[event.j], event.dist)  # type: ignore
 
         return P_leash_lens, Q_leash_lens
+
+
+def _print_event_list(morphing: Morphing) -> None:
+    for event in morphing.morphing_list:
+        print(
+            event.i,
+            event.i_is_vert,
+            event.j,
+            event.j_is_vert,
+            event.t_i,
+            event.t_j,
+            event.dist,
+        )
 
 
 @njit

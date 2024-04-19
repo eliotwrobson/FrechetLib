@@ -1,8 +1,31 @@
 import time
 
+import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 import numpy as np
 from utils import leq_with_tolerance
+
+
+def test_retractable_basic() -> None:
+    P = np.array([[1.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.0, 1.0]])
+
+    bottleneck_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+    assert len(bottleneck_morphing.morphing_list) == 4
+    assert np.isclose(bottleneck_morphing.dist, 1.0)
+
+    # TODO there might be an extra event here? Either way, this is being done
+    # consistently so curves with the same number of vertices should be comparable
+    summed_morphing = rf.retractable_ve_frechet(P, Q, None, None, True)
+    assert len(summed_morphing.morphing_list) == 4
+    assert np.isclose(summed_morphing.dist, 4.0)
+
+    P = np.array([[1.0, 0.0], [1.0, 0.5], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.0, 1.0]])
+
+    summed_morphing = rf.retractable_ve_frechet(P, Q, None, None, True)
+    assert len(summed_morphing.morphing_list) == 5
+    assert np.isclose(summed_morphing.dist, 5.0)
 
 
 def test_retractable_weird() -> None:
@@ -47,6 +70,8 @@ def test_retractable_frechet() -> None:
     # TODO fix this limit assertion, not sure it works right.
     # frechet_limit = np.linalg.norm(np.ones(d) * 2 * noise_limit)
     # assert frechet_dist <= frechet_limit
+
+    fu._print_event_list(morphing)
 
     assert len(morphing.morphing_list) == n * 2
 

@@ -91,6 +91,7 @@ def retractable_ve_frechet(
 
         morphing.append(last_event)
 
+    assert last_event == start_node
     # TODO maybe add final event??
     morphing.reverse()
 
