@@ -1,4 +1,3 @@
-import frechetlib.continuous_frechet as cf
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 import numba.typed as nbt
@@ -322,7 +321,7 @@ def test_morphing_make_monotone_nontrivial() -> None:
     monotone_morphing.make_monotone()
     assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
 
-    new_P, new_Q = cf.add_points_to_make_monotone(ve_morphing)
+    new_P, new_Q = fu.add_points_to_make_monotone(ve_morphing)
 
     # Compute new ve frechet distance for curves
     ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
@@ -514,3 +513,86 @@ def test_morphing_make_monotone() -> None:
     assert len(other_morphing) == len(non_monotone_morphing)
     check_morphing_witness(other_morphing)
     assert other_morphing.dist >= non_monotone_morphing.dist
+
+
+def test_add_points_to_make_monotone() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+    new_P, new_Q = fu.add_points_to_make_monotone(morphing)
+
+    new_P_expected = np.array(
+        [
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
+
+    assert np.allclose(new_P, new_P_expected)
+    assert np.allclose(new_Q, Q)
+
+    # Extra zeroes because of a quirk with the ve-frechet algo
+    new_P_expected = np.array(
+        [
+            [0.0, 0.0],
+            [0.0, 0.0],
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
+
+    # Assert the flipped side because of code structure
+    morphing = rf.retractable_ve_frechet(Q, P, None, None, False)
+    new_Q, new_P = fu.add_points_to_make_monotone(morphing)
+
+    assert np.allclose(new_P, new_P_expected)
+    assert np.allclose(new_Q, Q)
+
+
+def test_add_points() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    new_P_expected = np.array(
+        [
+            [0.0, 0.0],
+            [0.15, 0.15],
+            [0.3, 0.3],
+            [0.4, 0.4],
+            [0.5, 0.5],
+            [0.6, 0.6],
+            [0.7, 0.7],
+            [0.85, 0.85],
+            [1.0, 1.0],
+        ]
+    )
+
+    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+    new_P, new_Q = fu.add_points_to_make_monotone(morphing)
+
+    assert np.allclose(new_P, new_P_expected)
+    assert np.allclose(new_Q, Q)
+
+    # Check the same but flipping the arguments
+    morphing = rf.retractable_ve_frechet(Q, P, None, None, False)
+    new_Q, new_P = fu.add_points_to_make_monotone(morphing)
+
+    # We don't check for new_P because of an edge case that produces
+    # a slightly different morphing. This isn't a bug
+    assert new_P.shape[0] > P.shape[0]
+    assert np.allclose(new_Q, Q)
