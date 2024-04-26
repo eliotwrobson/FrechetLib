@@ -25,7 +25,6 @@ import frechetlib.frechet_utils as fu
         boolean,
     )
 )
-# TODO this doesn't work, fix it in other places.
 def retractable_ve_frechet(
     P: np.ndarray,
     Q: np.ndarray,
@@ -66,7 +65,7 @@ def retractable_ve_frechet(
             )
 
             # NOTE in the bottleneck Frechet case, we always take the
-            # local optimum, but in the summed case, we need to
+            # local optimum, but in the summed case, we need to add
             if summed:
                 next_cost += curr_cost
 
