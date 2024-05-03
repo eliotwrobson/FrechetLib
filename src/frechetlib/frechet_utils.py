@@ -1201,7 +1201,7 @@ def add_points_to_make_monotone(
     return new_P_final, new_Q_final
 
 
-@njit
+# @njit
 def line_line_distance(
     a0: np.ndarray, a1: np.ndarray, b0: np.ndarray, b1: np.ndarray
 ) -> float:
@@ -1211,91 +1211,61 @@ def line_line_distance(
     From: https://stackoverflow.com/a/18994296/2923069
     """
 
-    # Set all clamps to True
+    v_1 = a0 - b0
+    v_2 = a1 - a0
+    v_3 = b0 - b1
 
-    clampA0 = True
-    clampA1 = True
-    clampB0 = True
-    clampB1 = True
+    # D(s,t)
+    # = <v_1 + s*v_2 + t *v_3, v_1 + s*v_2 + t *v_3>
+    # = ||v_1||^2  +  2 * s * <v_1, v_2>  +  2 * t *<v_1,v_3>
+    #    + s^2 * ||v_2||^2 + 2*s*t*<v_2,v_3>  + t^2 ||v_3||^2
+    # =
+    # Need to solve the linear system:
 
-    # Calculate denomitator
-    A = a1 - a0
-    B = b1 - b0
-    magA = np.linalg.norm(A)
-    magB = np.linalg.norm(B)
+    # 0 = D'_s(s,t) = 2*<v_1,v_2> + 2*s*||V_2||^2  +  2*t<v_2,v_3>
+    # 0 = D'_t(s,t) = 2*<v_1,v_3> + 2*s*<v_2,v_3> + 2*t * ||v_3||^2
 
-    _A = A / magA
-    _B = B / magB
+    # or equivalently:
 
-    cross = np.cross(_A, _B)
-    denom = np.linalg.norm(cross) ** 2
+    # -<v_1,v_2> = s * ||V_2||^2  +  t * <v_2,v_3>
+    # -<v_1,v_3> = s * <v_2,v_3>  +  t * ||v_3||^2
 
-    # If lines are parallel (denom=0) test if lines overlap.
-    # If they don't overlap then there is a closest point solution.
-    # If they do overlap, there are infinite closest positions, but there is a closest distance
-    if not denom:
-        d0 = np.dot(_A, (b0 - a0))
+    c = np.array([-np.dot(v_1, v_2), -np.dot(v_1, v_3)])
 
-        # Overlap only possible with clamping
-        if clampA0 or clampA1 or clampB0 or clampB1:
-            d1 = np.dot(_A, (b1 - a0))
+    m = np.array(
+        [[np.dot(v_2, v_2), np.dot(v_2, v_3)], [np.dot(v_2, v_3), np.dot(v_3, v_3)]]
+    )
 
-            # Is segment B before A?
-            if d0 <= 0 >= d1:
-                if clampA0 and clampB1:
-                    if np.absolute(d0) < np.absolute(d1):
-                        return float(np.linalg.norm(a0 - b0))
-                    return float(np.linalg.norm(a0 - b1))
+    if np.linalg.matrix_rank(m) == 1:
+        # The minimum distance is realized by one of the endpoints.
+        return min(
+            line_point_distance(a0, a1, b0)[0],
+            line_point_distance(a0, a1, b1)[0],
+            line_point_distance(b0, b1, a0)[0],
+            line_point_distance(b0, b1, a1)[0],
+        )
 
-            # Is segment B after A?
-            elif d0 >= magA <= d1:
-                if clampA1 and clampB0:
-                    if np.absolute(d0) < np.absolute(d1):
-                        return float(np.linalg.norm(a1 - b0))
-                    return float(np.linalg.norm(a1 - b1))
+        # Solve the system...
+    b = np.linalg.solve(m, c)
+    # println( "b.size: ", size( b ) );
+    s = b[0]
+    t = b[1]
 
-        # Segments overlap, return distance between parallel segments
-        return float(np.linalg.norm(((d0 * _A) + a0) - b0))
+    # Snap solution if needed to the [0,1.0] interval....
+    s = np.clip(s, 0.0, 1.0)
+    t = np.clip(t, 0.0, 1.0)
 
-    # Lines criss-cross: Calculate the projected closest points
-    t = b0 - a0
-    detA = np.linalg.det([t, _B, cross])
-    detB = np.linalg.det([t, _A, cross])
+    d = np.linalg.norm(convex_comb(a0, a1, s) - convex_comb(b0, b1, t))
 
-    t0 = detA / denom
-    t1 = detB / denom
+    # d::Float64 =  Dist( convex_comb( a0, a1, s ),
+    #    convex_comb( b0, b1, t ) )
 
-    pA = a0 + (_A * t0)  # Projected closest point on segment A
-    pB = b0 + (_B * t1)  # Projected closest point on segment B
+    d = min(
+        d,
+        line_point_distance(a0, a1, b0)[0],
+        line_point_distance(a0, a1, b1)[0],
+        line_point_distance(b0, b1, a0)[0],
+        line_point_distance(b0, b1, a1)[0],
+    )
 
-    # Clamp projections
-    if clampA0 or clampA1 or clampB0 or clampB1:
-        if clampA0 and t0 < 0:
-            pA = a0
-        elif clampA1 and t0 > magA:
-            pA = a1
-
-        if clampB0 and t1 < 0:
-            pB = b0
-        elif clampB1 and t1 > magB:
-            pB = b1
-
-        # Clamp projection A
-        if (clampA0 and t0 < 0) or (clampA1 and t0 > magA):
-            dot = np.dot(_B, (pA - b0))
-            if clampB0 and dot < 0:
-                dot = 0
-            elif clampB1 and dot > magB:
-                dot = magB
-            pB = b0 + (_B * dot)
-
-        # Clamp projection B
-        if (clampB0 and t1 < 0) or (clampB1 and t1 > magB):
-            dot = np.dot(_A, (pB - a0))
-            if clampA0 and dot < 0:
-                dot = 0
-            elif clampA1 and dot > magA:
-                dot = magA
-            pA = a0 + (_A * dot)
-
-    return float(np.linalg.norm(pA - pB))
+    return d

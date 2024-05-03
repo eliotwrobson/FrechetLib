@@ -8,5 +8,6 @@ def test_sweep_frechet_refinement(frechet_downloader: fld.FrechetDownloader) -> 
     sweep_morphing = sf.sweep_frechet_compute_refine_mono(P_curve, Q_curve)
 
     print(len(sweep_morphing.morphing_list))
-    sf.sweep_frechet_compute_lower_bound(P_curve, Q_curve)
-    assert False
+    dist = sf.sweep_frechet_compute_lower_bound(P_curve, Q_curve)
+    print(dist)
+    # assert False
