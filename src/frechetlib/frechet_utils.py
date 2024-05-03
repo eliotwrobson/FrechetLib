@@ -1255,7 +1255,7 @@ def line_line_distance(
     s = np.clip(s, 0.0, 1.0)
     t = np.clip(t, 0.0, 1.0)
 
-    d = np.linalg.norm(convex_comb(a0, a1, s) - convex_comb(b0, b1, t))
+    d = float(np.linalg.norm(convex_comb(a0, a1, s) - convex_comb(b0, b1, t)))
 
     # d::Float64 =  Dist( convex_comb( a0, a1, s ),
     #    convex_comb( b0, b1, t ) )
