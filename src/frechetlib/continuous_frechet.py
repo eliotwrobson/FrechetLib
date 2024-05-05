@@ -129,7 +129,7 @@ def frechet_c_approx(
     """
     P_orig = P
     Q_orig = Q
-
+    # print("starting")
     # Modeled after:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
     upper_bound_dist = fu.frechet_dist_upper_bound(P, Q)
@@ -141,9 +141,10 @@ def frechet_c_approx(
     should_simplify = True
 
     while ratio > approx_ratio:
+        # print(ratio, approx_ratio)
         # print("outer")
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            # print("inner")
+            print("inner", upper_bound_dist, radius)
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
