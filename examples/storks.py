@@ -1,4 +1,5 @@
 import csv
+import time
 from collections import defaultdict
 
 import numpy as np
@@ -40,10 +41,22 @@ def main() -> None:
     # print(stork_np_dict["1787/HH582"].shape, stork_np_dict["1787/HH582"].dtype)
     # exit()
     # print(stork_np_dict["1787/HH582"][100:], stork_np_dict["1791/HE140"][100:])
+    print("starting first")
+    start_time = time.perf_counter()
+
     ratio, morphing = frechet_c_approx(
-        stork_np_dict["1787/HH582"], stork_np_dict["1791/HE140"], 1.01
+        stork_np_dict["1787/HH582"], stork_np_dict["1791/HE140"], 1.1
     )
-    # print(ratio, morphing.dist)
+    time_taken = time.perf_counter() - start_time
+
+    print("starting", time_taken)
+
+    start_time = time.perf_counter()
+    ratio, morphing = frechet_c_approx(
+        stork_np_dict["1787/HH582"], stork_np_dict["1791/HE140"], 1.1
+    )
+    time_taken = time.perf_counter() - start_time
+    print(time_taken, ratio, morphing.dist)
 
 
 if __name__ == "__main__":
