@@ -141,10 +141,10 @@ def frechet_c_approx(
     should_simplify = True
 
     while ratio > approx_ratio:
-        # print(ratio, approx_ratio)
-        # print("outer")
+        print("outer", ratio, approx_ratio)
+
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            # print("inner", upper_bound_dist, radius)
+            print("inner", upper_bound_dist, radius)
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
@@ -178,7 +178,7 @@ def frechet_c_approx(
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         # NOTE This should advance the inner loop on the next iteration.
         should_simplify = True
-        # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
+        print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
 
     if output_morphing is None:
         raise Exception("Output morphing not set!")

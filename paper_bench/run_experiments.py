@@ -27,30 +27,36 @@ def main() -> None:
     print("Warmup done.")
 
     curve_numbers = list(range(1, 9))
-    factors = [4.0, 1.1, 1.001]
+    # TODO see what's going on with the lower factor (1.001). This isn't
+    # getting stuck in Sariel's code, so something weird may be happening.
+    factors = [1.001, 1.1, 4.0]
 
     # TODO add exact computation and raw VE computation workloads.
     results = []
     for factor, curve_num in product(factors, curve_numbers):
-        p_curve = np.genfromtxt(
-            data_archive.open(f"data/test/00{curve_num}_p.plt"), delimiter=","
-        )
-        q_curve = np.genfromtxt(
-            data_archive.open(f"data/test/00{curve_num}_q.plt"), delimiter=","
-        )
+        try:
+            p_curve = np.genfromtxt(
+                data_archive.open(f"data/test/00{curve_num}_p.plt"), delimiter=","
+            )
+            q_curve = np.genfromtxt(
+                data_archive.open(f"data/test/00{curve_num}_q.plt"), delimiter=","
+            )
+        except Exception:
+            print(f"Could not read curve file {curve_num}, skipping.")
+            continue
 
         print(f"Starting workload {curve_num} with approx factor {factor}")
         start = time.perf_counter()
         ratio, morphing = frechet_c_approx(p_curve, q_curve, factor)
         time_taken = time.perf_counter() - start
-        print("Workload complete in {time_taken:4f} seconds.")
+        print(f"Workload complete in {time_taken:4f} seconds.")
 
         res_dict = {
             "Curve Number": curve_num,
             "Approx Factor": factor,
             "Time Taken": time_taken,
         }
-
+        exit()
         results.append(res_dict)
 
         df = pd.DataFrame(results)
