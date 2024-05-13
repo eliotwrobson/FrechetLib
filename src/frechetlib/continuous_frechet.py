@@ -141,10 +141,10 @@ def frechet_c_approx(
     should_simplify = True
 
     while ratio > approx_ratio:
-        print("outer", ratio, approx_ratio)
+        # print("outer", ratio, approx_ratio)
 
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            print("inner", upper_bound_dist, radius)
+            # print("inner", upper_bound_dist, radius)
             radius /= 2.0
             P, p_indices = simplify_polygon_radius(P_orig, radius)
             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
