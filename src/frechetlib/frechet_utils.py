@@ -335,6 +335,7 @@ def from_curve_indices(
 
     if use_offsets:
         assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
+        print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
 
     if i_is_vert and j_is_vert:
@@ -799,6 +800,8 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     p_events, q_events_2 = prm_2
 
     print("PRM endings", q_events_1[-1], q_events_2[-1])
+    print(q_events_1.shape)
+    print(q_events_2.shape)
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     idx_1 = 0

@@ -186,7 +186,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-@njit
+# @njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:
@@ -241,6 +241,7 @@ def frechet_c_compute(
 
     factor = 4.0
     while True:
+        print("**** Exact computation inner loop starting ****")
         # Vectorized sums
         Pz = (lower_bound - Pl) / factor
         Qz = (lower_bound - Ql) / factor
@@ -257,13 +258,22 @@ def frechet_c_compute(
         morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None, False)
         morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None, False)
 
+        # NOTE I think the flipping here is a little bit messed up. This is probably where
+        # the bug is happening.
         morphing_P.make_monotone()
         morphing_Q.make_monotone()
-        morphing_Q.flip()
+        # morphing_Q.flip()
+
+        print("Mid morphing end PRM", mid_morphing.get_prm())
+        print("P morphing end PRM", morphing_P.get_prm())
+        # print("Q morphing end PRM", morphing_Q.get_prm())
 
         # Do the combination
+        print("About to combine in inner loop")
         first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
         first_morphing.make_monotone()
+        print("First combined morphing end PRM", first_morphing.get_prm())
+        print("Q morphing end PRM", morphing_Q.get_prm())
         combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
 
         # Try shooting for the opt?
@@ -272,7 +282,7 @@ def frechet_c_compute(
 
         # TODO Triple check these are the correct offsets
         _, morphing_offsets_P = morphing_P.extract_vertex_radii()
-        _, morphing_offsets_Q = morphing_Q.extract_vertex_radii()
+        morphing_offsets_Q, _ = morphing_Q.extract_vertex_radii()
 
         morphing_with_offsets = rf.retractable_ve_frechet(
             mid_morphing.P,
