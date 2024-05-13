@@ -8,6 +8,7 @@ from frechetlib.continuous_frechet import frechet_c_approx, frechet_c_compute
 
 ZIP_HASH = "ad5a1d8585769e36bda87a018573831d145af75e8303a063f3de64ed35ed1da9"
 ZIP_URL = "http://sarielhp.org/misc/blog/24/05/10/data_e.zip"
+WEIRD_CURVE_NUMS = frozenset((4, 5))
 
 
 def main() -> None:
@@ -23,28 +24,31 @@ def main() -> None:
     p_curve = np.genfromtxt(data_archive.open("data/test/001_p.plt"), delimiter=",")
     q_curve = np.genfromtxt(data_archive.open("data/test/001_q.plt"), delimiter=",")
     print("Starting warmup.")
-    # frechet_c_approx(p_curve, q_curve, 10.0)
     frechet_c_compute(p_curve, q_curve)
     print("Warmup done.")
 
     curve_numbers = list(range(1, 9))
     # TODO see what's going on with the lower factor (1.001). This isn't
     # getting stuck in Sariel's code, so something weird may be happening.
-    factors = [1.009, 1.1, 4.0]
+    factors = [4.0, 1.1, 1.009]
 
     # TODO add exact computation and raw VE computation workloads.
     results = []
     for curve_num in curve_numbers:
-        try:
+        p_curve_file = data_archive.open(f"data/test/00{curve_num}_p.plt")
+        q_curve_file = data_archive.open(f"data/test/00{curve_num}_q.plt")
+
+        if curve_num not in WEIRD_CURVE_NUMS:
+            p_curve = np.genfromtxt(p_curve_file, delimiter=",")
+            q_curve = np.genfromtxt(q_curve_file, delimiter=",")
+        else:
+            # Parse the geolife curves differently for reasons
             p_curve = np.genfromtxt(
-                data_archive.open(f"data/test/00{curve_num}_p.plt"), delimiter=","
+                p_curve_file, delimiter=",", skip_header=6, usecols=(0, 1)
             )
             q_curve = np.genfromtxt(
-                data_archive.open(f"data/test/00{curve_num}_q.plt"), delimiter=","
+                q_curve_file, delimiter=",", skip_header=6, usecols=(0, 1)
             )
-        except Exception:
-            print(f"Could not read curve file {curve_num}, skipping.")
-            continue
 
         # Run with approx factors first
         for factor in factors:
@@ -64,6 +68,9 @@ def main() -> None:
             results.append(res_dict)
 
         # Then, run exact
+        if curve_num == 4:
+            # Skip number 4 for this because my machine runs out of memory lol
+            continue
         print(f"Starting workload {curve_num} exact")
         start = time.perf_counter()
         morphing = frechet_c_compute(p_curve, q_curve)
@@ -77,8 +84,8 @@ def main() -> None:
             "Distance": morphing.dist,
         }
 
+        # NOTE this doesn't run a lot of the time because I run out of memory
         # Finally, run the really slow ve-r
-        # NOTE this doesn't run because I run out of memory
         # print(f"Starting workload {curve_num} ve-r")
         # start = time.perf_counter()
         # morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)

@@ -178,7 +178,7 @@ def frechet_c_approx(
         ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
         # NOTE This should advance the inner loop on the next iteration.
         should_simplify = True
-        print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
+        # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
 
     if output_morphing is None:
         raise Exception("Output morphing not set!")
@@ -186,7 +186,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-# @njit
+@njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:
