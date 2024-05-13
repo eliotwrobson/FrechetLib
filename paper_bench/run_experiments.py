@@ -5,7 +5,6 @@ import numpy as np
 import pandas as pd
 import pooch
 from frechetlib.continuous_frechet import frechet_c_approx, frechet_c_compute
-from frechetlib.retractable_frechet import retractable_ve_frechet
 
 ZIP_HASH = "ad5a1d8585769e36bda87a018573831d145af75e8303a063f3de64ed35ed1da9"
 ZIP_URL = "http://sarielhp.org/misc/blog/24/05/10/data_e.zip"
@@ -20,6 +19,7 @@ def main() -> None:
     data_archive = zipfile.ZipFile(curve_data_zip, "r")
     # Hardcoded warmups to make the jit compilation happen
     print("Reading dummy data files.")
+    # TODO add a frechet c compute test with these curves after running with Sariel's code
     p_curve = np.genfromtxt(data_archive.open("data/test/001_p.plt"), delimiter=",")
     q_curve = np.genfromtxt(data_archive.open("data/test/001_q.plt"), delimiter=",")
     print("Starting warmup.")
@@ -78,18 +78,19 @@ def main() -> None:
         }
 
         # Finally, run the really slow ve-r
-        print(f"Starting workload {curve_num} ve-r")
-        start = time.perf_counter()
-        morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
-        time_taken = time.perf_counter() - start
-        print(f"Workload complete in {time_taken:4f} seconds.")
+        # NOTE this doesn't run because I run out of memory
+        # print(f"Starting workload {curve_num} ve-r")
+        # start = time.perf_counter()
+        # morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
+        # time_taken = time.perf_counter() - start
+        # print(f"Workload complete in {time_taken:4f} seconds.")
 
-        res_dict = {
-            "Curve Number": curve_num,
-            "Algorithm": "VER",
-            "Time Taken": time_taken,
-            "Distance": morphing.dist,
-        }
+        # res_dict = {
+        #     "Curve Number": curve_num,
+        #     "Algorithm": "VER",
+        #     "Time Taken": time_taken,
+        #     "Distance": morphing.dist,
+        # }
 
         results.append(res_dict)
 
