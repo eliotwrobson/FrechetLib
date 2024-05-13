@@ -798,6 +798,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
+    print("PRM endings", q_events_1[-1], q_events_2[-1])
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
     idx_1 = 0

@@ -23,7 +23,8 @@ def main() -> None:
     p_curve = np.genfromtxt(data_archive.open("data/test/001_p.plt"), delimiter=",")
     q_curve = np.genfromtxt(data_archive.open("data/test/001_q.plt"), delimiter=",")
     print("Starting warmup.")
-    ratio, morphing = frechet_c_approx(p_curve, q_curve, 10.0)
+    frechet_c_approx(p_curve, q_curve, 10.0)
+    frechet_c_compute(p_curve, q_curve)
     print("Warmup done.")
 
     curve_numbers = list(range(1, 9))
