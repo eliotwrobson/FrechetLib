@@ -7,8 +7,8 @@ import pooch
 from frechetlib.continuous_frechet import frechet_c_approx, frechet_c_compute
 from frechetlib.retractable_frechet import retractable_ve_frechet
 
-# NOTE change this to true to run the slow benchmarks
-SKIP_MEMORY_INTENSIVE_BENCHMARKS = True
+# NOTE change this to True to skip the slow benchmarks
+SKIP_MEMORY_INTENSIVE_BENCHMARKS = False
 
 
 ZIP_HASH = "ad5a1d8585769e36bda87a018573831d145af75e8303a063f3de64ed35ed1da9"
@@ -32,7 +32,7 @@ def main() -> None:
     frechet_c_compute(p_curve, q_curve)
     print("Warmup done.")
 
-    curve_numbers = list(range(8, 9))
+    curve_numbers = list(range(1, 9))
     # TODO see what's going on with the lower factor (1.001). This isn't
     # getting stuck in Sariel's code, so something weird may be happening.
     factors = [4.0, 1.1, 1.009]
