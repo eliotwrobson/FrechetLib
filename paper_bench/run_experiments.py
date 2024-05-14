@@ -5,6 +5,11 @@ import numpy as np
 import pandas as pd
 import pooch
 from frechetlib.continuous_frechet import frechet_c_approx, frechet_c_compute
+from frechetlib.retractable_frechet import retractable_ve_frechet
+
+# NOTE change this to true to run the slow benchmarks
+SKIP_MEMORY_INTENSIVE_BENCHMARKS = True
+
 
 ZIP_HASH = "ad5a1d8585769e36bda87a018573831d145af75e8303a063f3de64ed35ed1da9"
 ZIP_URL = "http://sarielhp.org/misc/blog/24/05/10/data_e.zip"
@@ -27,7 +32,7 @@ def main() -> None:
     frechet_c_compute(p_curve, q_curve)
     print("Warmup done.")
 
-    curve_numbers = list(range(1, 9))
+    curve_numbers = list(range(8, 9))
     # TODO see what's going on with the lower factor (1.001). This isn't
     # getting stuck in Sariel's code, so something weird may be happening.
     factors = [4.0, 1.1, 1.009]
@@ -68,7 +73,7 @@ def main() -> None:
             results.append(res_dict)
 
         # Then, run exact
-        if curve_num == 4:
+        if SKIP_MEMORY_INTENSIVE_BENCHMARKS and curve_num == 4:
             # Skip number 4 for this because my machine runs out of memory lol
             continue
         print(f"Starting workload {curve_num} exact")
@@ -84,20 +89,23 @@ def main() -> None:
             "Distance": morphing.dist,
         }
 
+        if SKIP_MEMORY_INTENSIVE_BENCHMARKS:
+            continue
+
         # NOTE this doesn't run a lot of the time because I run out of memory
         # Finally, run the really slow ve-r
-        # print(f"Starting workload {curve_num} ve-r")
-        # start = time.perf_counter()
-        # morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
-        # time_taken = time.perf_counter() - start
-        # print(f"Workload complete in {time_taken:4f} seconds.")
+        print(f"Starting workload {curve_num} ve-r")
+        start = time.perf_counter()
+        morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
+        time_taken = time.perf_counter() - start
+        print(f"Workload complete in {time_taken:4f} seconds.")
 
-        # res_dict = {
-        #     "Curve Number": curve_num,
-        #     "Algorithm": "VER",
-        #     "Time Taken": time_taken,
-        #     "Distance": morphing.dist,
-        # }
+        res_dict = {
+            "Curve Number": curve_num,
+            "Algorithm": "VER",
+            "Time Taken": time_taken,
+            "Distance": morphing.dist,
+        }
 
         results.append(res_dict)
 
