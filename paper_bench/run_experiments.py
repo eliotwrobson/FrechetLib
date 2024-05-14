@@ -35,7 +35,7 @@ def main() -> None:
     curve_numbers = list(range(1, 9))
     # TODO see what's going on with the lower factor (1.001). This isn't
     # getting stuck in Sariel's code, so something weird may be happening.
-    factors = [4.0, 1.1, 1.009]
+    factors = [4.0, 1.1, 1.01]
 
     # TODO add exact computation and raw VE computation workloads.
     results = []
