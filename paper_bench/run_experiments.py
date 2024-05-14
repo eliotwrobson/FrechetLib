@@ -76,6 +76,7 @@ def main() -> None:
         if SKIP_MEMORY_INTENSIVE_BENCHMARKS and curve_num == 4:
             # Skip number 4 for this because my machine runs out of memory lol
             continue
+
         print(f"Starting workload {curve_num} exact")
         start = time.perf_counter()
         morphing = frechet_c_compute(p_curve, q_curve)
@@ -89,7 +90,8 @@ def main() -> None:
             "Distance": morphing.dist,
         }
 
-        if SKIP_MEMORY_INTENSIVE_BENCHMARKS:
+        # Always skip number 4 here because it's way too huge.
+        if SKIP_MEMORY_INTENSIVE_BENCHMARKS or curve_num == 4:
             continue
 
         # NOTE this doesn't run a lot of the time because I run out of memory
