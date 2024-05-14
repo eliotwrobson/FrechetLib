@@ -32,6 +32,20 @@ print("Approximated Frechet distance: ", morphing.dist)
 print("Time taken (s): ", end - start)
 ```
 
+## Benchmarks
+
+To run the standard benchmarks, you first need to have [`poetry`](https://python-poetry.org/) installed.
+After cloning the repo, run the command 
+```sh
+poetry install --with dev
+```
+That will install the package from source in a virtual environment with the dev dependencies.
+To start the benchmarks, run
+```sh
+poetry run python paper_bench/run_experiments.py
+```
+This will then execute the benchmarks and put the results in `benchmark_results.csv`.
+
 ## API
 
 The package API is currently minimal and undocumented for now. See the test cases for usage
