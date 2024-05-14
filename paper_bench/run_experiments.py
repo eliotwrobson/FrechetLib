@@ -90,6 +90,8 @@ def main() -> None:
             "Distance": morphing.dist,
         }
 
+        results.append(res_dict)
+
         # Always skip number 4 here because it's way too huge.
         if SKIP_MEMORY_INTENSIVE_BENCHMARKS or curve_num == 4:
             continue
