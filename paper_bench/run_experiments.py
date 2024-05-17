@@ -1,6 +1,7 @@
 import time
 import zipfile
 
+import Fred
 import numpy as np
 import pandas as pd
 import pooch
@@ -35,7 +36,7 @@ def main() -> None:
     curve_numbers = list(range(1, 9))
     # TODO see what's going on with the lower factor (1.001). This isn't
     # getting stuck in Sariel's code, so something weird may be happening.
-    factors = [4.0, 1.1, 1.01]
+    factors = [4.0, 1.1]  # , 1.01]
 
     # TODO add exact computation and raw VE computation workloads.
     results = []
@@ -72,46 +73,68 @@ def main() -> None:
 
             results.append(res_dict)
 
-        # Then, run exact
-        if SKIP_MEMORY_INTENSIVE_BENCHMARKS and curve_num == 4:
-            # Skip number 4 for this because my machine runs out of memory lol
-            continue
+        # Run other algo
+        fred_curve_p = Fred.frechet_approximate_minimum_link_simplification(
+            Fred.Curve(p_curve), 500
+        )
+        fred_curve_q = Fred.frechet_approximate_minimum_link_simplification(
+            Fred.Curve(q_curve), 500
+        )
 
-        print(f"Starting workload {curve_num} exact")
+        print(f"Starting workload {curve_num} fred exact")
         start = time.perf_counter()
-        morphing = frechet_c_compute(p_curve, q_curve)
+        distance = Fred.continuous_frechet(fred_curve_p, fred_curve_q).value
         time_taken = time.perf_counter() - start
         print(f"Workload complete in {time_taken:4f} seconds.")
 
         res_dict = {
             "Curve Number": curve_num,
-            "Algorithm": "Exact",
+            "Algorithm": "Fred Exact",
             "Time Taken": time_taken,
-            "Distance": morphing.dist,
+            "Distance": distance,
         }
 
         results.append(res_dict)
+
+        break
+
+        # Then, run exact
+        if not (SKIP_MEMORY_INTENSIVE_BENCHMARKS and curve_num == 4):
+            # Skip number 4 for this because my machine runs out of memory lol
+
+            print(f"Starting workload {curve_num} exact")
+            start = time.perf_counter()
+            morphing = frechet_c_compute(p_curve, q_curve)
+            time_taken = time.perf_counter() - start
+            print(f"Workload complete in {time_taken:4f} seconds.")
+
+            res_dict = {
+                "Curve Number": curve_num,
+                "Algorithm": "Exact",
+                "Time Taken": time_taken,
+                "Distance": morphing.dist,
+            }
+
+            results.append(res_dict)
 
         # Always skip number 4 here because it's way too huge.
-        if SKIP_MEMORY_INTENSIVE_BENCHMARKS or curve_num == 4:
-            continue
+        if not (SKIP_MEMORY_INTENSIVE_BENCHMARKS or curve_num == 4):
+            # NOTE this doesn't run a lot of the time because I run out of memory
+            # Finally, run the really slow ve-r
+            print(f"Starting workload {curve_num} ve-r")
+            start = time.perf_counter()
+            morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
+            time_taken = time.perf_counter() - start
+            print(f"Workload complete in {time_taken:4f} seconds.")
 
-        # NOTE this doesn't run a lot of the time because I run out of memory
-        # Finally, run the really slow ve-r
-        print(f"Starting workload {curve_num} ve-r")
-        start = time.perf_counter()
-        morphing = retractable_ve_frechet(p_curve, q_curve, None, None, False)
-        time_taken = time.perf_counter() - start
-        print(f"Workload complete in {time_taken:4f} seconds.")
+            res_dict = {
+                "Curve Number": curve_num,
+                "Algorithm": "VER",
+                "Time Taken": time_taken,
+                "Distance": morphing.dist,
+            }
 
-        res_dict = {
-            "Curve Number": curve_num,
-            "Algorithm": "VER",
-            "Time Taken": time_taken,
-            "Distance": morphing.dist,
-        }
-
-        results.append(res_dict)
+            results.append(res_dict)
 
     # Export test data to CSV file.
     df = pd.DataFrame(results)
