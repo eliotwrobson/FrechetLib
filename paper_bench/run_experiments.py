@@ -74,15 +74,17 @@ def main() -> None:
             results.append(res_dict)
 
         # Run other algo
-        fred_curve_p = Fred.frechet_approximate_minimum_link_simplification(
-            Fred.Curve(p_curve), 500
-        )
-        fred_curve_q = Fred.frechet_approximate_minimum_link_simplification(
-            Fred.Curve(q_curve), 500
-        )
+        fred_curve_p_full = Fred.Curve(p_curve)
+        fred_curve_q_full = Fred.Curve(q_curve)
 
         print(f"Starting workload {curve_num} fred exact")
         start = time.perf_counter()
+        fred_curve_p = Fred.frechet_approximate_minimum_link_simplification(
+            fred_curve_p_full, 2_000
+        )
+        fred_curve_q = Fred.frechet_approximate_minimum_link_simplification(
+            fred_curve_q_full, 2_000
+        )
         distance = Fred.continuous_frechet(fred_curve_p, fred_curve_q).value
         time_taken = time.perf_counter() - start
         print(f"Workload complete in {time_taken:4f} seconds.")
