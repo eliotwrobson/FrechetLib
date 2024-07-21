@@ -1,7 +1,7 @@
 import frechetlib.continuous_frechet as cf
-import frechetlib.data as fld
 import frechetlib.retractable_frechet as rf
 import numpy as np
+from conftest import get_test_curve
 
 
 def test_frechet_c_compute() -> None:
@@ -13,10 +13,10 @@ def test_frechet_c_compute() -> None:
     assert np.isclose(output.dist, 0.14142135623730956)
 
 
-def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> None:
+def test_frechet_c_compute_real() -> None:
     # Testing with curve number 5
-    P_curve = frechet_downloader.get_curve("05/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("05/poly_b.txt")
+    P_curve = get_test_curve("05/poly_a.txt")
+    Q_curve = get_test_curve("05/poly_b.txt")
 
     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
     assert np.isclose(output_appx.dist, 0.7134913516143259)
@@ -25,8 +25,8 @@ def test_frechet_c_compute_real(frechet_downloader: fld.FrechetDownloader) -> No
     assert np.isclose(output_exact.dist, 0.712928554361795, atol=0.0005)
 
     # Testing with curve number 6
-    P_curve = frechet_downloader.get_curve("06/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("06/poly_b.txt")
+    P_curve = get_test_curve("06/poly_a.txt")
+    Q_curve = get_test_curve("06/poly_b.txt")
 
     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
     assert np.isclose(output_appx.dist, 0.9228858795210783)
