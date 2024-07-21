@@ -79,12 +79,8 @@ def main() -> None:
 
         print(f"Starting workload {curve_num} fred exact")
         start = time.perf_counter()
-        fred_curve_p = Fred.frechet_approximate_minimum_link_simplification(
-            fred_curve_p_full, 2_000
-        )
-        fred_curve_q = Fred.frechet_approximate_minimum_link_simplification(
-            fred_curve_q_full, 2_000
-        )
+        fred_curve_p = Fred.frechet_minimum_error_simplification(fred_curve_p_full, 50)
+        fred_curve_q = Fred.frechet_minimum_error_simplification(fred_curve_q_full, 50)
         distance = Fred.continuous_frechet(fred_curve_p, fred_curve_q).value
         time_taken = time.perf_counter() - start
         print(f"Workload complete in {time_taken:4f} seconds.")

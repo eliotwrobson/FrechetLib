@@ -50,7 +50,7 @@ disallow_untyped_defs = true
 exclude = "examples"
 
 [[tool.mypy.overrides]]
-module = ["numba.*", "pooch.*", "scipy.*"]
+module = ["numba.*", "pooch.*", "scipy.*", "Fred.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
