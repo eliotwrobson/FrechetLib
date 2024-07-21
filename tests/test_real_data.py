@@ -1,15 +1,15 @@
 import frechetlib.continuous_frechet as cf
-import frechetlib.data as fld
 import frechetlib.discrete_frechet as df
 import frechetlib.retractable_frechet as rf
 import numpy as np
+from conftest import get_test_curve
 
 # TODO a lot of these test cases are very similar, try using a fixture to parameterize.
 
 
-def test_curve_1(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("01/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("01/poly_b.txt")
+def test_curve_1() -> None:
+    P_curve = get_test_curve("01/poly_a.txt")
+    Q_curve = get_test_curve("01/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -19,9 +19,9 @@ def test_curve_1(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(retractable_morphing.dist, 1.35)
 
 
-def test_curve_2(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("02/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("02/poly_b.txt")
+def test_curve_2() -> None:
+    P_curve = get_test_curve("02/poly_a.txt")
+    Q_curve = get_test_curve("02/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -31,9 +31,9 @@ def test_curve_2(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(retractable_morphing.dist, 1.0)
 
 
-def test_curve_3(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("03/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("03/poly_b.txt")
+def test_curve_3() -> None:
+    P_curve = get_test_curve("03/poly_a.txt")
+    Q_curve = get_test_curve("03/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -43,9 +43,9 @@ def test_curve_3(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(retractable_morphing.dist, 0.7)
 
 
-def test_curve_4(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("04/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("04/poly_b.txt")
+def test_curve_4() -> None:
+    P_curve = get_test_curve("04/poly_a.txt")
+    Q_curve = get_test_curve("04/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -55,9 +55,9 @@ def test_curve_4(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(retractable_morphing.dist, 1.1)
 
 
-def test_curve_5(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("05/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("05/poly_b.txt")
+def test_curve_5() -> None:
+    P_curve = get_test_curve("05/poly_a.txt")
+    Q_curve = get_test_curve("05/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -71,9 +71,9 @@ def test_curve_5(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(approx_morphing.dist, 0.712928554361795, atol=0.0004)
 
 
-def test_curve_6(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("06/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("06/poly_b.txt")
+def test_curve_6() -> None:
+    P_curve = get_test_curve("06/poly_a.txt")
+    Q_curve = get_test_curve("06/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -87,9 +87,9 @@ def test_curve_6(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(approx_morphing.dist, 0.9212672396766863)
 
 
-def test_curve_7(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("07/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("07/poly_b.txt")
+def test_curve_7() -> None:
+    P_curve = get_test_curve("07/poly_a.txt")
+    Q_curve = get_test_curve("07/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -103,9 +103,9 @@ def test_curve_7(frechet_downloader: fld.FrechetDownloader) -> None:
     assert np.isclose(approx_morphing.dist, 5.30754180388624)
 
 
-def test_curve_10(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("10/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("10/poly_b.txt")
+def test_curve_10() -> None:
+    P_curve = get_test_curve("10/poly_a.txt")
+    Q_curve = get_test_curve("10/poly_b.txt")
     dist_discrete, _ = df.discrete_frechet(P_curve, Q_curve)
     retractable_morphing = rf.retractable_ve_frechet(
         P_curve, Q_curve, None, None, False
@@ -120,17 +120,17 @@ def test_curve_10(frechet_downloader: fld.FrechetDownloader) -> None:
     # assert np.isclose(approx_morphing.dist, 0.9486832980505139)
 
 
-def test_curve_11(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("11/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("11/poly_b.txt")
+def test_curve_11() -> None:
+    P_curve = get_test_curve("11/poly_a.txt")
+    Q_curve = get_test_curve("11/poly_b.txt")
     res, morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
 
     assert np.isclose(morphing.dist, 16.35198236364533)
 
 
-def test_curve_12(frechet_downloader: fld.FrechetDownloader) -> None:
-    P_curve = frechet_downloader.get_curve("12/poly_a.txt")
-    Q_curve = frechet_downloader.get_curve("12/poly_b.txt")
+def test_curve_12() -> None:
+    P_curve = get_test_curve("12/poly_a.txt")
+    Q_curve = get_test_curve("12/poly_b.txt")
     dist, _ = df.discrete_retractable_frechet(P_curve, Q_curve)
 
     assert np.isclose(dist, 0.0002966043155438105)

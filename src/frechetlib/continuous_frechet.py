@@ -49,7 +49,7 @@ def frechet_mono_via_refinement(
     return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
 
 
-@njit
+@njit(cache=True)
 def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[int]]:
     curr = P[0]
     indices = [0]
@@ -186,7 +186,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-@njit
+@njit(cache=True)
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:

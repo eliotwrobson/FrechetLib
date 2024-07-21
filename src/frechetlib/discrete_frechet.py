@@ -17,7 +17,7 @@ def discrete_frechet(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     return _discrete_frechet(n_p, n_q, norms)
 
 
-@njit
+@njit(cache=True)
 def _discrete_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
     """
     From:
@@ -68,7 +68,7 @@ def _discrete_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT
     return ca[n_p - 1, n_q - 1], morphing
 
 
-@njit
+@njit(cache=True)
 def discrete_retractable_frechet(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     """
     Combines above reference implementation with ideas from:

@@ -25,12 +25,12 @@ Curve = npt.NDArray[np.float64]
 tuple_type = typeof((0.0, 0.0))
 
 
-@njit
+@njit(cache=True)
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p + t * (q - p)
 
 
-@njit
+@njit(cache=True)
 def line_point_distance(
     p1: np.ndarray, p2: np.ndarray, q: np.ndarray
 ) -> tuple[float, float, np.ndarray]:
@@ -211,12 +211,12 @@ class EID:
         )
 
 
-@njit
+@njit(cache=True)
 def eid_get_coefficient_i(event: EID) -> float:
     return event.t_i
 
 
-@njit
+@njit(cache=True)
 def eid_get_coefficient_j(event: EID) -> float:
     return event.t_j
 
@@ -387,7 +387,7 @@ def from_curve_indices(
     return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
-@njit
+@njit(cache=True)
 def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
     res = 0.0
 
@@ -721,7 +721,7 @@ def _print_event_list(morphing: Morphing) -> None:
         )
 
 
-@njit
+@njit(cache=True)
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     n = P.shape[0]
     prefix_lens = np.empty(n)
@@ -737,27 +737,27 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     return prefix_lens
 
 
-@njit
+@njit(cache=True)
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
 
 
-@njit
+@njit(cache=True)
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
-@njit
+@njit(cache=True)
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-@njit
+@njit(cache=True)
 def coefficient_from_prefix_lens(
     distance_along_curve: float, p_lens: np.ndarray, idx: int
 ) -> float:
@@ -775,7 +775,7 @@ def coefficient_from_prefix_lens(
     return t
 
 
-@njit
+@njit(cache=True)
 def assert_monotone_top(prm: PRM) -> None:
     """
     Asserts monotonicity of the top of the PRM.
@@ -794,7 +794,7 @@ def assert_monotone_top(prm: PRM) -> None:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
-@njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]))
+@njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]), cache=True)
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
@@ -976,7 +976,7 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-@njit
+@njit(cache=True)
 def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     assert P.shape[0] == r.shape[0]
 
@@ -1007,7 +1007,7 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     return P_simplified
 
 
-@njit
+@njit(cache=True)
 def frechet_dist_upper_bound(
     P: np.ndarray,
     Q: np.ndarray,
@@ -1031,7 +1031,7 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
-@njit
+@njit(cache=True)
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
 ) -> float:
