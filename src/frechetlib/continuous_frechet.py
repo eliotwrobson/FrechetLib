@@ -186,7 +186,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-@njit(cache=True)
+@njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:
