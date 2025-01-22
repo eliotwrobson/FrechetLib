@@ -4,27 +4,20 @@
 import heapq as hq
 import typing as t
 
-import numba.typed as nbt
 import numpy as np
-from numba import (  # type: ignore[attr-defined]
-    boolean,
-    float64,
-    njit,
-    optional,
-)
 
 import frechetlib.frechet_utils as fu
 
 
-@njit(
-    fu.Morphing.class_type.instance_type(  # type: ignore[attr-defined]
-        float64[:, :],
-        float64[:, :],
-        optional(float64[:]),
-        optional(float64[:]),
-        boolean,
-    )
-)
+# @njit(
+#     fu.Morphing.class_type.instance_type(  # type: ignore[attr-defined]
+#         float64[:, :],
+#         float64[:, :],
+#         optional(float64[:]),
+#         optional(float64[:]),
+#         boolean,
+#     )
+# )
 def retractable_ve_frechet(
     P: np.ndarray,
     Q: np.ndarray,
@@ -77,7 +70,7 @@ def retractable_ve_frechet(
             seen[next_node] = curr_event
             hq.heappush(work_queue, next_tuple)
 
-    morphing = nbt.List([last_event])
+    morphing = [last_event]
 
     res = last_event.dist
     while last_event in seen:

@@ -5,7 +5,6 @@ import heapq
 
 import numpy as np
 import scipy
-from numba import njit  # type: ignore[attr-defined]
 
 _DiscreteReturnT = tuple[np.float64, list[tuple[int, int]]]
 
@@ -17,7 +16,7 @@ def discrete_frechet(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     return _discrete_frechet(n_p, n_q, norms)
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def _discrete_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT:
     """
     From:
@@ -68,7 +67,7 @@ def _discrete_frechet(n_p: int, n_q: int, norms: np.ndarray) -> _DiscreteReturnT
     return ca[n_p - 1, n_q - 1], morphing
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def discrete_retractable_frechet(p: np.ndarray, q: np.ndarray) -> _DiscreteReturnT:
     """
     Combines above reference implementation with ideas from:

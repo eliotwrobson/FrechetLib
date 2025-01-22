@@ -2,35 +2,23 @@ from __future__ import annotations
 
 import typing as t
 
-import numba.typed as nbt
 import numpy as np
-import numpy.typing as npt
-from numba import (  # type: ignore[attr-defined]
-    boolean,
-    float64,
-    int64,
-    njit,
-    optional,
-    typeof,
-    types,
-)
-from numba.experimental import jitclass
 from typing_extensions import Self
 
 PRM = t.List[t.Tuple[float, float]]
-Curve = npt.NDArray[np.float64]
+Curve = np.ndarray  # npt.NDArray[np.float64]
 
 
 # NOTE used for inner type of PRMs with numba
-tuple_type = typeof((0.0, 0.0))
+# tuple_type = typeof((0.0, 0.0))
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
     return p + t * (q - p)
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def line_point_distance(
     p1: np.ndarray, p2: np.ndarray, q: np.ndarray
 ) -> tuple[float, float, np.ndarray]:
@@ -66,7 +54,7 @@ def line_point_distance(
     return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
 
 
-@jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore
+# @jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore
 class EID:
     i: int
     i_is_vert: bool
@@ -211,17 +199,17 @@ class EID:
         )
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def eid_get_coefficient_i(event: EID) -> float:
     return event.t_i
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def eid_get_coefficient_j(event: EID) -> float:
     return event.t_j
 
 
-@njit
+# @njit
 def from_coefficients(
     i: int,
     j: int,
@@ -287,18 +275,18 @@ def from_coefficients(
 
 # Using this stupid type signature
 # https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
-@njit(
-    types.Tuple((float64, EID.class_type.instance_type))(  # type: ignore
-        int64,
-        boolean,
-        int64,
-        boolean,
-        float64[:, :],
-        float64[:, :],
-        optional(float64[:]),
-        optional(float64[:]),
-    )
-)
+# @njit(
+#     types.Tuple((float64, EID.class_type.instance_type))(  # type: ignore
+#         int64,
+#         boolean,
+#         int64,
+#         boolean,
+#         float64[:, :],
+#         float64[:, :],
+#         optional(float64[:]),
+#         optional(float64[:]),
+#     )
+# )
 def from_curve_indices(
     i: int,
     i_is_vert: bool,
@@ -387,8 +375,8 @@ def from_curve_indices(
     return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
-@njit(cache=True)
-def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
+# @njit(cache=True)
+def get_frechet_dist_from_morphing_list(morphing_list) -> float:
     res = 0.0
 
     for event in morphing_list:
@@ -399,26 +387,26 @@ def get_frechet_dist_from_morphing_list(morphing_list: types.ListType) -> float:
 
 # I think this is needed at the global scope because numba has issues
 # https://github.com/numba/numba/issues/7291
-eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
+# eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
 
 
 # https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
-@jitclass(
-    [
-        ("morphing_list", types.ListType(EID.class_type.instance_type)),  # type: ignore
-        ("P", float64[:, :]),
-        ("Q", float64[:, :]),
-    ]
-)
+# @jitclass(
+#     [
+#         ("morphing_list", types.ListType(EID.class_type.instance_type)),  # type: ignore
+#         ("P", float64[:, :]),
+#         ("Q", float64[:, :]),
+#     ]
+# )
 class Morphing:
-    morphing_list: types.ListType
+    morphing_list: t.List[EID]
     P: np.ndarray
     Q: np.ndarray
     dist: float
 
     def __init__(
         self,
-        morphing_list_: types.ListType,
+        morphing_list_: t.List[EID],
         P_: np.ndarray,
         Q_: np.ndarray,
         dist_: float,
@@ -438,7 +426,7 @@ class Morphing:
         self.P, self.Q = self.Q, self.P
 
     def copy(self) -> Morphing:
-        new_morphing = nbt.List.empty_list(eid_type, len(self.morphing_list))
+        new_morphing = []
 
         for event in self.morphing_list:
             new_morphing.append(event.copy())
@@ -721,7 +709,7 @@ def _print_event_list(morphing: Morphing) -> None:
         )
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     n = P.shape[0]
     prefix_lens = np.empty(n)
@@ -737,27 +725,27 @@ def get_prefix_lens(P: np.ndarray) -> np.ndarray:
     return prefix_lens
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> float:
     t = (val - p[d]) / (q[d] - p[d])
     return p * (1.0 - t) + q * t
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def coefficient_from_prefix_lens(
     distance_along_curve: float, p_lens: np.ndarray, idx: int
 ) -> float:
@@ -775,7 +763,7 @@ def coefficient_from_prefix_lens(
     return t
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def assert_monotone_top(prm: PRM) -> None:
     """
     Asserts monotonicity of the top of the PRM.
@@ -794,7 +782,7 @@ def assert_monotone_top(prm: PRM) -> None:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
-@njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]), cache=True)
+# @njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]), cache=True)
 def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
@@ -810,7 +798,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     len_1 = q_events_1.shape[0]
     len_2 = q_events_2.shape[0]
 
-    new_prm = nbt.List.empty_list(tuple_type)
+    new_prm = []
 
     # P = morphing_2.P
     # Q = morphing_2.Q = morphing_1.P
@@ -885,7 +873,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
     return new_prm
 
 
-@njit
+# @njit
 def morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
@@ -911,11 +899,11 @@ def morphing_combine(
     return event_sequence_from_prm(new_prm, P, R)
 
 
-@njit(
-    Morphing.class_type.instance_type(  # type: ignore[attr-defined]
-        types.ListType(tuple_type), float64[:, :], float64[:, :]
-    )
-)
+# @njit(
+#     Morphing.class_type.instance_type(  # type: ignore[attr-defined]
+#         types.ListType(tuple_type), float64[:, :], float64[:, :]
+#     )
+# )
 def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     p_lens = get_prefix_lens(P)
     q_lens = get_prefix_lens(Q)
@@ -927,7 +915,7 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     q_num_pts = q_lens.shape[0]
 
     max_dist = 0.0
-    new_event_sequence = nbt.List.empty_list(eid_type)
+    new_event_sequence = []
 
     for i in range(len(prm) - 1):
         # print(i)
@@ -976,7 +964,7 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     assert P.shape[0] == r.shape[0]
 
@@ -1007,7 +995,7 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
     return P_simplified
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def frechet_dist_upper_bound(
     P: np.ndarray,
     Q: np.ndarray,
@@ -1031,7 +1019,7 @@ def frechet_dist_upper_bound(
     return w_a + w_b + w
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def frechet_width_approx(
     P: np.ndarray, idx_range: tuple[int, int] | None = None
 ) -> float:
@@ -1074,7 +1062,7 @@ def frechet_width_approx(
 
 # TODO have to write test cases for this
 # and possibly also add control on number of points to add
-@njit
+# @njit
 def add_points_to_make_monotone(
     morphing: Morphing,
 ) -> tuple[np.ndarray, np.ndarray]:

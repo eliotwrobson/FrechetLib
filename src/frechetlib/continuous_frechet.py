@@ -1,12 +1,10 @@
-import numba.typed as nbt
 import numpy as np
-from numba import njit  # type: ignore[attr-defined]
 
 import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 
 
-@njit
+# @njit
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
 ) -> tuple[fu.Morphing, bool]:
@@ -49,7 +47,7 @@ def frechet_mono_via_refinement(
     return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
 
 
-@njit(cache=True)
+# @njit(cache=True)
 def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[int]]:
     curr = P[0]
     indices = [0]
@@ -71,7 +69,7 @@ def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[i
     return new_P, indices
 
 
-@njit
+# @njit
 def frechet_c_mono_approx_subcurve(
     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
 ) -> fu.Morphing:
@@ -83,7 +81,7 @@ def frechet_c_mono_approx_subcurve(
     specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
     """
 
-    res = nbt.List.empty_list(fu.eid_type)
+    res = []
     width = 0.0
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
@@ -112,7 +110,7 @@ def frechet_c_mono_approx_subcurve(
     return fu.Morphing(res, P, P_subcurve, width)
 
 
-@njit
+# @njit
 def frechet_c_approx(
     P: np.ndarray, Q: np.ndarray, approx_ratio: float
 ) -> tuple[float, fu.Morphing]:
@@ -186,7 +184,7 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-@njit
+# @njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:
