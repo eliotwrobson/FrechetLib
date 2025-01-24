@@ -204,6 +204,15 @@ cdef class Morphing:
     def get_dist(self) -> float:
         return self.dist
 
+    def get_morphing_list(self) -> t.List[EID]:
+        return self.morphing_list
+
+    def get_P(self) -> np.ndarray:
+        return self.P
+
+    def get_Q(self) -> np.ndarray:
+        return self.Q
+
     def flip(self) -> None:
         """
         Flips P and Q in this morphing.

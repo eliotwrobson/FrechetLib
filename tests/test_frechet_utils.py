@@ -162,7 +162,7 @@ def test_event_sequence_from_prm() -> None:
     )
 
     morphing_from_prm = fu.event_sequence_from_prm(prm_tuples, P, Q)
-    assert 13 == len(morphing_from_prm.morphing_list)
+    assert 13 == len(morphing_from_prm.get_morphing_list())
 
     assert np.allclose(expected_prm, morphing_from_prm.get_prm())
 
@@ -287,17 +287,17 @@ def test_morphing_combine_manual() -> None:
 
     first_combined = fu.morphing_combine(middle_morphing, P_self_morphing)
 
-    assert np.isclose(first_combined.dist, 0.14142135623730956)
+    assert np.isclose(first_combined.get_dist(), 0.14142135623730956)
 
     first_combined.make_monotone()
 
-    assert np.isclose(first_combined.dist, 0.14142135623730956)
+    assert np.isclose(first_combined.get_dist(), 0.14142135623730956)
 
     Q_self_morphing.flip()
 
     final_combined = fu.morphing_combine(Q_self_morphing, first_combined)
 
-    assert np.isclose(final_combined.dist, 0.14142135623730956)
+    assert np.isclose(final_combined.get_dist(), 0.14142135623730956)
 
 
 def test_morphing_make_monotone_nontrivial() -> None:
@@ -305,17 +305,17 @@ def test_morphing_make_monotone_nontrivial() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
     ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
-    assert np.isclose(ve_morphing.dist, 0.0)
+    assert np.isclose(ve_morphing.get_dist(), 0.0)
     monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
-    assert np.isclose(monotone_morphing.dist, 0.28284271247461906)
+    assert np.isclose(monotone_morphing.get_dist(), 0.28284271247461906)
 
     new_P, new_Q = fu.add_points_to_make_monotone(ve_morphing)
 
     # Compute new ve frechet distance for curves
     ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
 
-    assert np.isclose(ve_morphing.dist, 0.14142135623730948)
+    assert np.isclose(ve_morphing.get_dist(), 0.14142135623730948)
 
     # Make monotone
     monotone_morphing_2 = ve_morphing.copy()
@@ -351,12 +351,12 @@ def test_morphing_combine() -> None:
 
     # Magic numbers I got by running the same data through
     # Sariel's code
-    assert np.isclose(morphing_1.dist, 0.7071067811865475)
-    assert np.isclose(morphing_2.dist, 2.82842712474619)
+    assert np.isclose(morphing_1.get_dist(), 0.7071067811865475)
+    assert np.isclose(morphing_2.get_dist(), 2.82842712474619)
 
-    assert np.isclose(res.dist, 3.047950130825634)
-    assert np.allclose(res.P, P)
-    assert np.allclose(res.Q, R)
+    assert np.isclose(res.get_dist(), 3.047950130825634)
+    assert np.allclose(res.get_P(), P)
+    assert np.allclose(res.get_Q(), R)
 
 
 def check_morphing_witness(morphing: fu.Morphing) -> None:
@@ -364,11 +364,11 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
     Test helper function to ensure morphing is valid + correctly
     witnessess the given distance.
     """
-    target_dist = morphing.dist
+    target_dist = morphing.get_dist()
     prev_event = None
     saw_witness = False
 
-    morphing_iter = iter(morphing.morphing_list)
+    morphing_iter = iter(morphing.get_morphing_list())
     # Skip first iteration because first two events are treated identical
     next(morphing_iter)
 
@@ -397,11 +397,11 @@ def test_morphing_flip() -> None:
     orig_morphing = morphing.copy()
     morphing.flip()
 
-    assert np.allclose(P, morphing.Q)
-    assert np.allclose(Q, morphing.P)
+    assert np.allclose(P, morphing.get_Q())
+    assert np.allclose(Q, morphing.get_P())
 
     for orig_event, new_event in zip(
-        orig_morphing.morphing_list, morphing.morphing_list
+        orig_morphing.get_morphing_list(), morphing.get_morphing_list()
     ):
         assert orig_event.get_i() == new_event.get_j()
         assert orig_event.get_j() == new_event.get_i()
@@ -478,11 +478,13 @@ def test_morphing_copy() -> None:
     other_morphing = morphing.copy()
 
     assert other_morphing is not morphing
-    assert np.array_equal(other_morphing.P, morphing.P)
-    assert np.array_equal(other_morphing.Q, morphing.Q)
+    assert np.array_equal(other_morphing.get_P(), morphing.get_P())
+    assert np.array_equal(other_morphing.get_Q(), morphing.get_Q())
     assert other_morphing.get_dist() == morphing.get_dist()
 
-    for event_1, event_2 in zip(morphing.morphing_list, other_morphing.morphing_list):
+    for event_1, event_2 in zip(
+        morphing.get_morphing_list(), other_morphing.get_morphing_list()
+    ):
         assert event_1 == event_2
         assert event_1 is not event_2
 
