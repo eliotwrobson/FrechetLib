@@ -16,3 +16,10 @@ cdef class EID:
     # Parameters for the points on each curve.
     cdef float t_i
     cdef float t_j
+
+cdef class Morphing:
+    #TODO figure out how to get this to work
+    cdef object morphing_list
+    cdef np.ndarray P
+    cdef np.ndarray Q
+    cdef float dist

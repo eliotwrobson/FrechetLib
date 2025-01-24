@@ -5,7 +5,10 @@ import typing as t
 import numpy as np
 from typing_extensions import Self
 cimport libc.stdio
-# Start of EID class
+
+
+
+########################### End of EID class definition ###########################
 
 cdef class EID:
     # i: int
@@ -178,253 +181,10 @@ cdef class EID:
             and bool(np.isclose(self.t_j, other.get_t_j()))
         )
 
-# End of EID class
+########################### End of EID class definition ###########################
 
-
-# @njit(cache=True)
-def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p + t * (q - p)
-
-
-# @njit(cache=True)
-def line_point_distance(
-    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
-) -> tuple[float, float, np.ndarray]:
-    """
-    Based on: https://stackoverflow.com/a/1501725/2923069
-
-    Computes the point on the segment p1-p2 closest to q.
-    Returns the distance between the point and the segment,
-    the parameter t from p1 to p2 witnessing the point on the
-    segment, and the witness point itself.
-
-    """
-    # Return minimum distance between line segment p1-p2 and point q
-
-    q_diff = q - p1
-    p_diff = p2 - p1
-
-    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
-    if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
-    # We find projection of point q onto the line.
-    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
-    # We clamp t from [0,1] to handle points outside the segment vw.
-    t = np.dot(q_diff, p_diff) / l2
-
-    if t <= 0.0:
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    elif t >= 1.0:
-        return float(np.linalg.norm(q - p2)), 1.0, p2
-
-    point_on_segment = convex_comb(p1, p2, t)
-    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
-
-
-
-
-# @njit(cache=True)
-def eid_get_coefficient_i(event: EID) -> float:
-    return event.t_i
-
-
-# @njit(cache=True)
-def eid_get_coefficient_j(event: EID) -> float:
-    return event.t_j
-
-
-# @njit
-def from_coefficients(
-    i: int,
-    j: int,
-    t_p: float,
-    t_q: float,
-    P: np.ndarray,
-    Q: np.ndarray,
-) -> EID:
-    """
-    Create a new EID from coefficients. This shouldn't be
-    used in a VE-Frechet algorithm, since this allows for
-    edge-edge matchings.
-    """
-
-    if not 0 <= i < P.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape:'
-            f"{P.shape[0]}, {P.shape[1]}."
-        )
-
-    if not 0 <= j < Q.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape:'
-            f"{Q.shape[0]}, {Q.shape[1]}."
-        )
-
-    i_is_vert = False
-
-    # Use this to avoid issues with floating point error
-    if np.isclose(t_p, 0.0):
-        p_i = P[i]
-        i_is_vert = True
-    elif np.isclose(t_p, 1.0):
-        assert i + 1 < P.shape[0]
-        i += 1
-        t_p = 0.0
-        p_i = P[i]
-        i_is_vert = True
-    else:
-        assert i + 1 < P.shape[0]
-        p_i = convex_comb(P[i], P[i + 1], t_p)
-
-    j_is_vert = False
-
-    # Same as above, now for Q
-    if np.isclose(t_q, 0.0):
-        p_j = Q[j]
-        j_is_vert = True
-    elif np.isclose(t_q, 1.0):
-        assert j + 1 < Q.shape[0]
-        j += 1
-        t_q = 0.0
-        p_j = Q[j]
-        j_is_vert = True
-    else:
-        assert j + 1 < Q.shape[0]
-        p_j = convex_comb(Q[j], Q[j + 1], t_q)
-
-    dist = float(np.linalg.norm(p_i - p_j))
-
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
-
-
-# Using this stupid type signature
-# https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
-# @njit(
-#     types.Tuple((float64, EID.class_type.instance_type))(  # type: ignore
-#         int64,
-#         boolean,
-#         int64,
-#         boolean,
-#         float64[:, :],
-#         float64[:, :],
-#         optional(float64[:]),
-#         optional(float64[:]),
-#     )
-# )
-def from_curve_indices(
-    i: int,
-    i_is_vert: bool,
-    j: int,
-    j_is_vert: bool,
-    P: np.ndarray,
-    Q: np.ndarray,
-    P_offs: t.Optional[np.ndarray],
-    Q_offs: t.Optional[np.ndarray],
-) -> t.Tuple[float, EID]:
-    # These values will get overwritten later
-    # TODO I think some of the logic below can be refactored to reduce
-    # the number of cases
-    dist = 0.0
-    heap_key = 0.0
-    t_i = 0.0
-    t_j = 0.0
-    p_i = P[i]
-    p_j = Q[j]
-
-    if not 0 <= i < P.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape:'
-            f"{P.shape[0]}, {P.shape[1]}."
-        )
-
-    if not 0 <= j < Q.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape:'
-            f"{Q.shape[0]}, {Q.shape[1]}."
-        )
-
-    use_offsets = P_offs is not None and Q_offs is not None
-
-    if use_offsets:
-        assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
-        # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
-        assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
-
-    if i_is_vert and j_is_vert:
-        dist = float(np.linalg.norm(P[i] - Q[j]))
-
-        if use_offsets:
-            heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-        else:
-            heap_key = dist
-
-    elif i_is_vert:
-        if j == Q.shape[0] - 1:
-            dist = float(np.linalg.norm(P[i] - Q[j]))
-
-            if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-        else:
-            dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
-
-            if use_offsets:
-                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
-            else:
-                heap_key = dist
-
-    elif j_is_vert:
-        if i == P.shape[0] - 1:
-            dist = float(np.linalg.norm(P[i] - Q[j]))
-
-            if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-        else:
-            dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
-
-            if use_offsets:
-                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-    else:
-        raise Exception
-
-    assert 0.0 <= t_i <= 1.0
-    assert 0.0 <= t_j <= 1.0
-
-    # TODO figure out how to use offsets as the key.
-    return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
-
-
-# @njit(cache=True)
-def get_frechet_dist_from_morphing_list(morphing_list) -> float:
-    res = 0.0
-
-    for event in morphing_list:
-        res = max(res, event.get_dist())
-
-    return res
-
-
-# I think this is needed at the global scope because numba has issues
-# https://github.com/numba/numba/issues/7291
-# eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
-
-
-# https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
-# @jitclass(
-#     [
-#         ("morphing_list", types.ListType(EID.class_type.instance_type)),  # type: ignore
-#         ("P", float64[:, :]),
-#         ("Q", float64[:, :]),
-#     ]
-# )
-class Morphing:
-    morphing_list: t.List[EID]
+cdef class Morphing:
+    #morphing_list: t.List[EID]
     P: np.ndarray
     Q: np.ndarray
     dist: float
@@ -722,6 +482,253 @@ class Morphing:
                 Q_leash_lens[event.j] = max(Q_leash_lens[event.j], event.dist)  # type: ignore
 
         return P_leash_lens, Q_leash_lens
+
+########################### End of Morphing class definition ###########################
+
+
+# @njit(cache=True)
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p + t * (q - p)
+
+
+# @njit(cache=True)
+def line_point_distance(
+    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
+) -> tuple[float, float, np.ndarray]:
+    """
+    Based on: https://stackoverflow.com/a/1501725/2923069
+
+    Computes the point on the segment p1-p2 closest to q.
+    Returns the distance between the point and the segment,
+    the parameter t from p1 to p2 witnessing the point on the
+    segment, and the witness point itself.
+
+    """
+    # Return minimum distance between line segment p1-p2 and point q
+
+    q_diff = q - p1
+    p_diff = p2 - p1
+
+    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
+    if np.isclose(l2, 0.0):  # p1 == p2 case
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
+    # We find projection of point q onto the line.
+    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
+    # We clamp t from [0,1] to handle points outside the segment vw.
+    t = np.dot(q_diff, p_diff) / l2
+
+    if t <= 0.0:
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    elif t >= 1.0:
+        return float(np.linalg.norm(q - p2)), 1.0, p2
+
+    point_on_segment = convex_comb(p1, p2, t)
+    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
+
+
+
+
+# @njit(cache=True)
+def eid_get_coefficient_i(event: EID) -> float:
+    return event.t_i
+
+
+# @njit(cache=True)
+def eid_get_coefficient_j(event: EID) -> float:
+    return event.t_j
+
+
+# @njit
+def from_coefficients(
+    i: int,
+    j: int,
+    t_p: float,
+    t_q: float,
+    P: np.ndarray,
+    Q: np.ndarray,
+) -> EID:
+    """
+    Create a new EID from coefficients. This shouldn't be
+    used in a VE-Frechet algorithm, since this allows for
+    edge-edge matchings.
+    """
+
+    if not 0 <= i < P.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{i}" on a curve with shape:'
+            f"{P.shape[0]}, {P.shape[1]}."
+        )
+
+    if not 0 <= j < Q.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{j}" on a curve with shape:'
+            f"{Q.shape[0]}, {Q.shape[1]}."
+        )
+
+    i_is_vert = False
+
+    # Use this to avoid issues with floating point error
+    if np.isclose(t_p, 0.0):
+        p_i = P[i]
+        i_is_vert = True
+    elif np.isclose(t_p, 1.0):
+        assert i + 1 < P.shape[0]
+        i += 1
+        t_p = 0.0
+        p_i = P[i]
+        i_is_vert = True
+    else:
+        assert i + 1 < P.shape[0]
+        p_i = convex_comb(P[i], P[i + 1], t_p)
+
+    j_is_vert = False
+
+    # Same as above, now for Q
+    if np.isclose(t_q, 0.0):
+        p_j = Q[j]
+        j_is_vert = True
+    elif np.isclose(t_q, 1.0):
+        assert j + 1 < Q.shape[0]
+        j += 1
+        t_q = 0.0
+        p_j = Q[j]
+        j_is_vert = True
+    else:
+        assert j + 1 < Q.shape[0]
+        p_j = convex_comb(Q[j], Q[j + 1], t_q)
+
+    dist = float(np.linalg.norm(p_i - p_j))
+
+    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
+
+
+# Using this stupid type signature
+# https://stackoverflow.com/questions/65112893/numba-jit-function-signature-for-function-returning-jitclass
+# @njit(
+#     types.Tuple((float64, EID.class_type.instance_type))(  # type: ignore
+#         int64,
+#         boolean,
+#         int64,
+#         boolean,
+#         float64[:, :],
+#         float64[:, :],
+#         optional(float64[:]),
+#         optional(float64[:]),
+#     )
+# )
+def from_curve_indices(
+    i: int,
+    i_is_vert: bool,
+    j: int,
+    j_is_vert: bool,
+    P: np.ndarray,
+    Q: np.ndarray,
+    P_offs: t.Optional[np.ndarray],
+    Q_offs: t.Optional[np.ndarray],
+) -> t.Tuple[float, EID]:
+    # These values will get overwritten later
+    # TODO I think some of the logic below can be refactored to reduce
+    # the number of cases
+    dist = 0.0
+    heap_key = 0.0
+    t_i = 0.0
+    t_j = 0.0
+    p_i = P[i]
+    p_j = Q[j]
+
+    if not 0 <= i < P.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{i}" on a curve with shape:'
+            f"{P.shape[0]}, {P.shape[1]}."
+        )
+
+    if not 0 <= j < Q.shape[0]:
+        raise ValueError(
+            f'Cannot create event with index "{j}" on a curve with shape:'
+            f"{Q.shape[0]}, {Q.shape[1]}."
+        )
+
+    use_offsets = P_offs is not None and Q_offs is not None
+
+    if use_offsets:
+        assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
+        # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
+        assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
+
+    if i_is_vert and j_is_vert:
+        dist = float(np.linalg.norm(P[i] - Q[j]))
+
+        if use_offsets:
+            heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+        else:
+            heap_key = dist
+
+    elif i_is_vert:
+        if j == Q.shape[0] - 1:
+            dist = float(np.linalg.norm(P[i] - Q[j]))
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+            else:
+                heap_key = dist
+        else:
+            dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
+            else:
+                heap_key = dist
+
+    elif j_is_vert:
+        if i == P.shape[0] - 1:
+            dist = float(np.linalg.norm(P[i] - Q[j]))
+
+            if use_offsets:
+                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+            else:
+                heap_key = dist
+        else:
+            dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
+
+            if use_offsets:
+                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
+            else:
+                heap_key = dist
+    else:
+        raise Exception
+
+    assert 0.0 <= t_i <= 1.0
+    assert 0.0 <= t_j <= 1.0
+
+    # TODO figure out how to use offsets as the key.
+    return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
+
+
+# @njit(cache=True)
+def get_frechet_dist_from_morphing_list(morphing_list) -> float:
+    res = 0.0
+
+    for event in morphing_list:
+        res = max(res, event.get_dist())
+
+    return res
+
+
+# I think this is needed at the global scope because numba has issues
+# https://github.com/numba/numba/issues/7291
+# eid_type = typeof(EID(0, True, 0, True, np.empty(0), np.empty(0), 0.0, 0.0, 0.0))
+
+
+# https://numba.discourse.group/t/how-do-i-create-a-jitclass-that-takes-a-list-of-jitclass-objects/366
+# @jitclass(
+#     [
+#         ("morphing_list", types.ListType(EID.class_type.instance_type)),  # type: ignore
+#         ("P", float64[:, :]),
+#         ("Q", float64[:, :]),
+#     ]
+# )
+
 
 
 def _print_event_list(morphing: Morphing) -> None:
