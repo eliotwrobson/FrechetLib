@@ -373,11 +373,14 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
     next(morphing_iter)
 
     for event in morphing_iter:
-        saw_witness = saw_witness or np.isclose(target_dist, event.dist)
+        saw_witness = saw_witness or np.isclose(target_dist, event.get_dist())
 
         if prev_event is not None:
             # Asserts that consecutive events are contiguous
-            assert (event.i - prev_event.i, event.j - prev_event.j) in {
+            assert (
+                event.get_i() - prev_event.get_i(),
+                event.get_j() - prev_event.get_j(),
+            ) in {
                 (0, 1),
                 (1, 0),
                 (1, 1),
@@ -400,8 +403,8 @@ def test_morphing_flip() -> None:
     for orig_event, new_event in zip(
         orig_morphing.morphing_list, morphing.morphing_list
     ):
-        assert orig_event.i == new_event.j
-        assert orig_event.j == new_event.i
+        assert orig_event.get_i() == new_event.get_j()
+        assert orig_event.get_j() == new_event.get_i()
 
 
 @pytest.mark.parametrize(
@@ -466,7 +469,7 @@ def test_eid_copy() -> None:
     event_copy = event.copy()
 
     assert event == event_copy
-    assert event.dist == event_copy.dist
+    assert event.get_dist() == event_copy.get_dist()
     assert event is not event_copy
 
 
@@ -477,7 +480,7 @@ def test_morphing_copy() -> None:
     assert other_morphing is not morphing
     assert np.array_equal(other_morphing.P, morphing.P)
     assert np.array_equal(other_morphing.Q, morphing.Q)
-    assert other_morphing.dist == morphing.dist
+    assert other_morphing.get_dist() == morphing.get_dist()
 
     for event_1, event_2 in zip(morphing.morphing_list, other_morphing.morphing_list):
         assert event_1 == event_2
@@ -501,7 +504,7 @@ def test_morphing_make_monotone() -> None:
     assert other_morphing.is_monotone()
     assert len(other_morphing) == len(non_monotone_morphing)
     check_morphing_witness(other_morphing)
-    assert other_morphing.dist >= non_monotone_morphing.dist
+    assert other_morphing.get_dist() >= non_monotone_morphing.get_dist()
 
 
 def test_add_points_to_make_monotone() -> None:

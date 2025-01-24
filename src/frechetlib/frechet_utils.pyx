@@ -4,7 +4,7 @@ import typing as t
 
 import numpy as np
 from typing_extensions import Self
-
+cimport libc.stdio
 # Start of EID class
 
 cdef class EID:
@@ -49,6 +49,34 @@ cdef class EID:
 
         assert 0.0 <= t_i <= 1.0
         assert 0.0 <= t_j <= 1.0
+
+    # TODO get rid of these getter functions later
+    def get_dist(self):
+        return self.dist
+
+    def get_i(self):
+        return self.i
+
+    def get_j(self):
+        return self.j
+
+    def get_i_is_vert(self):
+        return self.i_is_vert
+
+    def get_j_is_vert(self):
+        return self.j_is_vert
+
+    def get_t_i(self):
+        return self.t_i
+
+    def get_t_j(self):
+        return self.t_j
+
+    def get_p_i(self):
+        return self.p_i
+
+    def get_p_j(self):
+        return self.p_j
 
     def copy(self) -> EID:
         return EID(
@@ -121,7 +149,7 @@ cdef class EID:
         # This function is mainly used to schedule events for heap insertion.
         # TODO when this project gets refactored, get rid of this function and
         # just manually compute the key used in the heap.
-        return self.dist < other.dist
+        return self.dist < other.get_dist()
 
     def __hash__(self) -> int:
         return hash(
@@ -140,14 +168,14 @@ cdef class EID:
             return False
 
         return (
-            (self.i == other.i)
-            and (self.j == other.j)
-            and (self.i_is_vert == other.i_is_vert)
-            and (self.j_is_vert == other.j_is_vert)
-            and bool(np.allclose(self.p_i, other.p_i))
-            and bool(np.allclose(self.p_j, other.p_j))
-            and bool(np.isclose(self.t_i, other.t_i))
-            and bool(np.isclose(self.t_j, other.t_j))
+            (self.i == other.get_i())
+            and (self.j == other.get_j())
+            and (self.i_is_vert == other.get_i_is_vert())
+            and (self.j_is_vert == other.get_j_is_vert())
+            and bool(np.allclose(self.p_i, other.get_p_i()))
+            and bool(np.allclose(self.p_j, other.get_p_j()))
+            and bool(np.isclose(self.t_i, other.get_t_i()))
+            and bool(np.isclose(self.t_j, other.get_t_j()))
         )
 
 # End of EID class
@@ -377,7 +405,7 @@ def get_frechet_dist_from_morphing_list(morphing_list) -> float:
     res = 0.0
 
     for event in morphing_list:
-        res = max(res, event.dist)
+        res = max(res, event.get_dist())
 
     return res
 
@@ -413,6 +441,9 @@ class Morphing:
         self.Q = Q_
         self.dist = dist_
 
+    def get_dist(self) -> float:
+        return self.dist
+
     def flip(self) -> None:
         """
         Flips P and Q in this morphing.
@@ -440,7 +471,7 @@ class Morphing:
             next_event = self.morphing_list[k + 1]
 
             # First, assert monotonicity on the "P" side.
-            if event.i > next_event.i:
+            if event.get_i() > next_event.get_i():
                 # print("Case 1")
                 # print(
                 #     event.i,
@@ -462,7 +493,7 @@ class Morphing:
 
             # TODO change checks to account for floating point issues.
             # Make it so that make_monotone gets rid of the need for this
-            if event.i == next_event.i and event.t_i > next_event.t_i * 1.001:
+            if event.get_i() == next_event.get_i() and event.get_t_i() > next_event.get_t_i() * 1.001:
                 # print("Case 2", event.t_i, next_event.t_i)
                 # print(event.i_is_vert, next_event.i_is_vert)
                 # print(
@@ -484,7 +515,7 @@ class Morphing:
                 return False
 
             # Next, assert monotonicity on the "Q" side.
-            if event.j > next_event.j:
+            if event.get_j() > next_event.get_j():
                 # print("Case 3")
                 # print(
                 #     event.i,
@@ -505,7 +536,7 @@ class Morphing:
                 return False
 
             # TODO change checks to account for floating point issues.
-            if event.j == next_event.j and event.t_j > next_event.t_j * 1.001:
+            if event.get_j() == next_event.get_j() and event.get_t_j() > next_event.get_t_j() * 1.001:
                 # print("Case 4", event.t_j, next_event.t_j)
                 # print(
                 #     event.i,
@@ -549,71 +580,71 @@ class Morphing:
             event = morphing[k]
 
             # print(event.dist)
-            if event.i_is_vert and event.j_is_vert:
+            if event.get_i_is_vert() and event.get_j_is_vert():
                 k += 1
-                longest_dist = max(longest_dist, event.dist)
+                longest_dist = max(longest_dist, event.get_dist())
                 continue
 
-            elif not event.i_is_vert:
+            elif not event.get_i_is_vert():
                 new_k = k
-                best_t = event.t_i
+                best_t = event.get_t_i()
 
                 while (
                     new_k < n - 1
-                    and morphing[new_k + 1].i_is_vert == event.i_is_vert
-                    and morphing[new_k + 1].i == event.i
+                    and morphing[new_k + 1].get_i_is_vert() == event.get_i_is_vert()
+                    and morphing[new_k + 1].get_i() == event.get_i()
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
 
-                    best_t = max(best_t, new_event.t_i)
+                    best_t = max(best_t, new_event.get_t_i())
                     # TODO might be the wrong condition??
 
-                    if best_t > new_event.t_i:
+                    if best_t > new_event.get_t_i():
                         new_err = morphing[new_k].reassign_parameter_i(best_t, self.P)
                         err = max(err, new_err)
 
-                    longest_dist = max(longest_dist, morphing[new_k].dist)
+                    longest_dist = max(longest_dist, morphing[new_k].get_dist())
 
                     new_k += 1
 
                 new_event = morphing[new_k]
 
-                if best_t > new_event.t_i:
+                if best_t > new_event.get_t_i():
                     new_err = new_event.reassign_parameter_i(best_t, self.P)
                     err = max(err, new_err)
 
-                longest_dist = max(longest_dist, new_event.dist)
+                longest_dist = max(longest_dist, new_event.get_dist())
                 k = new_k + 1
 
             # TODO might be able to simplify this?
-            elif not event.j_is_vert:
+            elif not event.get_j_is_vert():
                 new_k = k
-                best_t = event.t_j
+                best_t = event.get_t_j()
 
                 while (
                     new_k < n - 1
-                    and morphing[new_k + 1].j_is_vert == event.j_is_vert
-                    and morphing[new_k + 1].j == event.j
+                    and morphing[new_k + 1].get_j_is_vert() == event.get_j_is_vert()
+                    and morphing[new_k + 1].get_j() == event.get_j()
                 ):
                     new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
-                    best_t = max(best_t, new_event.t_j)
+                    best_t = max(best_t, new_event.get_t_j())
 
                     # TODO might be the wrong condition??
-                    if best_t > new_event.t_j:
+                    if best_t > new_event.get_t_j():
                         new_err = new_event.reassign_parameter_j(best_t, self.Q)
                         err = max(err, new_err)
 
-                    longest_dist = max(longest_dist, new_event.dist)
+                    longest_dist = max(longest_dist, new_event.get_dist())
 
                     new_k += 1
 
                 new_event = morphing[new_k]  # .copy(morphing_obj.P, morphing_obj.Q)
 
-                if best_t > new_event.t_j:
+                if best_t > new_event.get_t_j():
                     new_err = new_event.reassign_parameter_j(best_t, self.Q)
                     err = max(err, new_err)
 
-                longest_dist = max(longest_dist, new_event.dist)
+                longest_dist = max(longest_dist, new_event.get_dist())
                 k = new_k + 1
 
         self.dist = longest_dist
@@ -644,30 +675,30 @@ class Morphing:
         # print(n_p, n_q)
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
-            assert 0 <= event.i < n_p
-            assert 0 <= event.j < n_q
+            assert 0 <= event.get_i() < n_p
+            assert 0 <= event.get_j() < n_q
 
             # Add event to P event list
             # TODO check that this equality condition still gives you the
             # correct answer
-            if event.i_is_vert or event.i + 1 >= n_p:
-                p_events[k] = p_lens[event.i]
+            if event.get_i_is_vert() or event.get_i() + 1 >= n_p:
+                p_events[k] = p_lens[event.get_i()]
             else:
-                curr_len = p_lens[event.i]
-                assert event.i + 1 < n_p
-                next_len = p_lens[event.i + 1]
-                p_events[k] = curr_len + event.t_i * (next_len - curr_len)
+                curr_len = p_lens[event.get_i()]
+                assert event.get_i() + 1 < n_p
+                next_len = p_lens[event.get_i() + 1]
+                p_events[k] = curr_len + event.get_t_i() * (next_len - curr_len)
 
             # Add event to Q event list
-            if event.j_is_vert or event.j + 1 >= n_q:
-                q_events[k] = q_lens[event.j]
+            if event.get_j_is_vert() or event.get_j() + 1 >= n_q:
+                q_events[k] = q_lens[event.get_j()]
             else:
-                curr_len = q_lens[event.j]
-                assert event.j + 1 < n_q
-                next_len = q_lens[event.j + 1]
+                curr_len = q_lens[event.get_j()]
+                assert event.get_j() + 1 < n_q
+                next_len = q_lens[event.get_j() + 1]
 
                 # TODO switch this with convex combination helper function
-                q_events[k] = curr_len + event.t_j * (next_len - curr_len)
+                q_events[k] = curr_len + event.get_t_j() * (next_len - curr_len)
 
             # print(p_events[k], q_events[k])
             # print()
@@ -730,15 +761,15 @@ def eval_pl_func_on_dim(p: np.ndarray, q: np.ndarray, val: float, d: int) -> flo
 
 # @njit(cache=True)
 def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
-    assert p.shape == q.shape
+    #assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 0)[1]
 
 
 # @njit(cache=True)
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
-    print(p.shape, q.shape)
-    assert p.shape == q.shape
+    #TODO bring back this assert?
+    #assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
@@ -935,14 +966,14 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         # print(t_p, t_q)
         new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
 
-        max_dist = max(max_dist, new_event.dist)
+        max_dist = max(max_dist, new_event.get_dist())
         new_event_sequence.append(new_event)
     # print("end event sequence")
     _, final_event = from_curve_indices(
         p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
     )
     # print("actually done")
-    max_dist = max(max_dist, final_event.dist)
+    max_dist = max(max_dist, final_event.get_dist())
     new_event_sequence.append(final_event)
 
     return Morphing(new_event_sequence, P, Q, max_dist)
@@ -1078,26 +1109,26 @@ def add_points_to_make_monotone(
     k = 0
     while k < len(morphing_list):
         # Vertex-vertex event, can skip
-        if morphing_list[k].i_is_vert:
-            new_P.append(P[morphing_list[k].i])
+        if morphing_list[k].get_i_is_vert():
+            new_P.append(P[morphing_list[k].get_i()])
             old_k = k
             while (
                 k < len(morphing_list)
-                and morphing_list[old_k].i == morphing_list[k].i
-                and morphing_list[k].i_is_vert
+                and morphing_list[old_k].get_i() == morphing_list[k].get_i()
+                and morphing_list[k].get_i_is_vert()
             ):
                 k += 1
             continue
 
-        loc = morphing_list[k].i
+        loc = morphing_list[k].get_i()
         events = []
 
         # [old_k,k) is the indices of points that are on the same segment
         # So increase new_k to get the max window where this is the case
         while (
             k < len(morphing_list)
-            and not morphing_list[k].i_is_vert
-            and morphing_list[k].i == loc
+            and not morphing_list[k].get_i_is_vert()
+            and morphing_list[k].get_i() == loc
         ):
             events.append(morphing_list[k])
             k += 1
@@ -1105,7 +1136,7 @@ def add_points_to_make_monotone(
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
-            monotone = monotone and (events[j].t_i <= events[j + 1].t_i)
+            monotone = monotone and (events[j].get_t_i() <= events[j + 1].get_t_i())
 
         # TODO double check this is the right thing to do
         if monotone:
@@ -1115,42 +1146,42 @@ def add_points_to_make_monotone(
 
         if not monotone:
             # NOTE Use i because we know we're not at the vertex from case checked above
-            new_P.append((P[events[0].i] + events[0].p_i) / 2.0)
+            new_P.append((P[events[0].get_i()] + events[0].get_p_i()) / 2.0)
 
         for j in range(len(events)):
-            new_P.append(events[j].p_i)
+            new_P.append(events[j].get_p_i())
 
             if not monotone and j < len(events) - 1:
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
-                new_P.append((events[j].p_i + events[j + 1].p_i) / 2.0)
+                new_P.append((events[j].get_p_i() + events[j + 1].get_p_i()) / 2.0)
 
-        if not monotone and events[-1].i + 1 < P.shape[0]:
-            new_P.append((P[events[-1].i + 1] + events[-1].p_i) / 2.0)
+        if not monotone and events[-1].get_i() + 1 < P.shape[0]:
+            new_P.append((P[events[-1].get_i() + 1] + events[-1].get_p_i()) / 2.0)
 
     # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
     k = 0
     while k < len(morphing_list):
-        if morphing_list[k].j_is_vert:
-            new_Q.append(Q[morphing_list[k].j])
+        if morphing_list[k].get_j_is_vert():
+            new_Q.append(Q[morphing_list[k].get_j()])
             old_k = k
             while (
                 k < len(morphing_list)
-                and morphing_list[old_k].j == morphing_list[k].j
-                and morphing_list[k].j_is_vert
+                and morphing_list[old_k].get_j() == morphing_list[k].get_j()
+                and morphing_list[k].get_j_is_vert()
             ):
                 k += 1
             continue
 
-        loc = morphing_list[k].j
+        loc = morphing_list[k].get_j()
         events = []
 
         # [old_k,k) is the indices of points that are on the same segment
         # So increase new_k to get the max window where this is the case
         while (
             k < len(morphing_list)
-            and not morphing_list[k].j_is_vert
-            and morphing_list[k].j == loc
+            and not morphing_list[k].get_j_is_vert()
+            and morphing_list[k].get_j() == loc
         ):
             events.append(morphing_list[k])
             k += 1
@@ -1158,7 +1189,7 @@ def add_points_to_make_monotone(
         # Next, check if the offsets are monotone as-given
         monotone = True
         for j in range(len(events) - 1):
-            monotone = monotone and (events[j].t_j <= events[j + 1].t_j)
+            monotone = monotone and (events[j].get_t_j() <= events[j + 1].get_t_j())
 
         if monotone:
             continue
@@ -1167,17 +1198,17 @@ def add_points_to_make_monotone(
 
         if not monotone:
             # NOTE Use j because we know we're not at the vertex from case checked above
-            new_Q.append((Q[events[0].j] + events[0].p_j) / 2.0)
+            new_Q.append((Q[events[0].get_j()] + events[0].get_p_j()) / 2.0)
 
         for j in range(len(events)):
-            new_Q.append(events[j].p_j)
+            new_Q.append(events[j].get_p_j())
 
             if not monotone and j < len(events) - 1:
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
-                new_Q.append((events[j].p_j + events[j + 1].p_j) / 2.0)
+                new_Q.append((events[j].get_p_j() + events[j + 1].get_p_j()) / 2.0)
 
-        if not monotone and events[-1].j + 1 < Q.shape[0]:
-            new_Q.append((Q[events[-1].j + 1] + events[-1].p_j) / 2.0)
+        if not monotone and events[-1].get_j() + 1 < Q.shape[0]:
+            new_Q.append((Q[events[-1].get_j() + 1] + events[-1].get_p_j()) / 2.0)
 
     # Finally, assemble into output arrays
     new_P_final = np.empty((len(new_P), new_P[0].shape[0]))

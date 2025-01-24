@@ -41,14 +41,14 @@ def retractable_ve_frechet(
     while work_queue:
         curr_cost, curr_event = hq.heappop(work_queue)
 
-        if curr_event.i == n_p - 1 and curr_event.j == n_q - 1:
+        if curr_event.get_i() == n_p - 1 and curr_event.get_j() == n_q - 1:
             last_event = curr_event
             break
 
         for di, i_vert, dj, j_vert in diffs:
             # Start with bounds creation and checking
-            i = curr_event.i + di
-            j = curr_event.j + dj
+            i = curr_event.get_i() + di
+            j = curr_event.get_j() + dj
 
             if i >= n_p or j >= n_q:
                 continue
@@ -72,14 +72,14 @@ def retractable_ve_frechet(
 
     morphing = [last_event]
 
-    res = last_event.dist
+    res = last_event.get_dist()
     while last_event in seen:
         last_event = seen[last_event]
 
         if summed:
-            res += last_event.dist
+            res += last_event.get_dist()
         else:
-            res = max(res, last_event.dist)
+            res = max(res, last_event.get_dist())
 
         morphing.append(last_event)
 
