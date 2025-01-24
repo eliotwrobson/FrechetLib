@@ -39,8 +39,12 @@ pandas-stubs = "^2.2.1.240316"
 fred-frechet = "^1.14.5"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", "setuptools", "cython", "numpy"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.build]
+script = "build_package.py"
+generate-setup-file = false
 
 [tool.mypy]
 python_version = "3.10"

@@ -5,74 +5,26 @@ import typing as t
 import numpy as np
 from typing_extensions import Self
 
-PRM = t.List[t.Tuple[float, float]]
-Curve = np.ndarray  # npt.NDArray[np.float64]
+# Start of EID class
 
+cdef class EID:
+    # i: int
+    # i_is_vert: bool
+    # j: int
+    # j_is_vert: bool
 
-# NOTE used for inner type of PRMs with numba
-# tuple_type = typeof((0.0, 0.0))
+    # # Computed distance between the points
+    # dist: float
 
+    # # Points on edges if not a vertex. Can be adjusted.
+    # p_i: np.ndarray
+    # p_j: np.ndarray
 
-# @njit(cache=True)
-def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
-    return p + t * (q - p)
+    # # Parameters for the points on each curve.
+    # t_i: float
+    # t_j: float
 
-
-# @njit(cache=True)
-def line_point_distance(
-    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
-) -> tuple[float, float, np.ndarray]:
-    """
-    Based on: https://stackoverflow.com/a/1501725/2923069
-
-    Computes the point on the segment p1-p2 closest to q.
-    Returns the distance between the point and the segment,
-    the parameter t from p1 to p2 witnessing the point on the
-    segment, and the witness point itself.
-
-    """
-    # Return minimum distance between line segment p1-p2 and point q
-
-    q_diff = q - p1
-    p_diff = p2 - p1
-
-    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
-    if np.isclose(l2, 0.0):  # p1 == p2 case
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
-    # We find projection of point q onto the line.
-    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
-    # We clamp t from [0,1] to handle points outside the segment vw.
-    t = np.dot(q_diff, p_diff) / l2
-
-    if t <= 0.0:
-        return float(np.linalg.norm(q_diff)), 0.0, p1
-    elif t >= 1.0:
-        return float(np.linalg.norm(q - p2)), 1.0, p2
-
-    point_on_segment = convex_comb(p1, p2, t)
-    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
-
-
-# @jitclass([("p_i", float64[:]), ("p_j", float64[:])])  # type: ignore
-class EID:
-    i: int
-    i_is_vert: bool
-    j: int
-    j_is_vert: bool
-
-    # Computed distance between the points
-    dist: float
-
-    # Points on edges if not a vertex. Can be adjusted.
-    p_i: np.ndarray
-    p_j: np.ndarray
-
-    # Parameters for the points on each curve.
-    t_i: float
-    t_j: float
-
-    def __init__(
+    def __cinit__(
         self,
         i: int,
         i_is_vert: bool,
@@ -197,6 +149,51 @@ class EID:
             and bool(np.isclose(self.t_i, other.t_i))
             and bool(np.isclose(self.t_j, other.t_j))
         )
+
+# End of EID class
+
+
+# @njit(cache=True)
+def convex_comb(p: np.ndarray, q: np.ndarray, t: float) -> np.ndarray:
+    return p + t * (q - p)
+
+
+# @njit(cache=True)
+def line_point_distance(
+    p1: np.ndarray, p2: np.ndarray, q: np.ndarray
+) -> tuple[float, float, np.ndarray]:
+    """
+    Based on: https://stackoverflow.com/a/1501725/2923069
+
+    Computes the point on the segment p1-p2 closest to q.
+    Returns the distance between the point and the segment,
+    the parameter t from p1 to p2 witnessing the point on the
+    segment, and the witness point itself.
+
+    """
+    # Return minimum distance between line segment p1-p2 and point q
+
+    q_diff = q - p1
+    p_diff = p2 - p1
+
+    l2 = np.linalg.norm(p_diff) ** 2  # i.e. |p2-p1|^2
+    if np.isclose(l2, 0.0):  # p1 == p2 case
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    # Consider the line extending the segment, parameterized as v + t (p2 - p1).
+    # We find projection of point q onto the line.
+    # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
+    # We clamp t from [0,1] to handle points outside the segment vw.
+    t = np.dot(q_diff, p_diff) / l2
+
+    if t <= 0.0:
+        return float(np.linalg.norm(q_diff)), 0.0, p1
+    elif t >= 1.0:
+        return float(np.linalg.norm(q - p2)), 1.0, p2
+
+    point_on_segment = convex_comb(p1, p2, t)
+    return float(np.linalg.norm(q - point_on_segment)), t, point_on_segment
+
+
 
 
 # @njit(cache=True)
@@ -740,6 +737,7 @@ def eval_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
 
 # @njit(cache=True)
 def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
+    print(p.shape, q.shape)
     assert p.shape == q.shape
     assert p.shape[0] == q.shape[0] == 2
     return eval_pl_func_on_dim(p, q, val, 1)[0]
@@ -840,6 +838,7 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
         # TODO Check for floating point errors
         elif q_event_1 < q_event_2:
             # print("case5")
+            print(prm_2[:, idx_2 - 1].shape, prm_2[:, idx_2].shape)
             new_p = eval_inv_pl_func(prm_2[:, idx_2 - 1], prm_2[:, idx_2], q_event_1)
             # Enforcing monotonicity in the case of floating point error
             new_p = max(prm_2[:, idx_2 - 1][0], new_p)
