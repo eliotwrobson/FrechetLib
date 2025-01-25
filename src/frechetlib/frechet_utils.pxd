@@ -31,6 +31,10 @@ cdef class EID:
         cnp.ndarray[FLOAT_t, ndim=2] Q
     )
 
+    cpdef flip(self)
+
+    cpdef EID copy(self)
+
 
 cdef class Morphing:
     #TODO figure out how to get this to work
@@ -38,3 +42,11 @@ cdef class Morphing:
     cdef cnp.ndarray P
     cdef cnp.ndarray Q
     cdef float dist
+
+    cpdef flip(self)
+
+    cpdef Morphing copy(self)
+
+    cpdef bint is_monotone(self)
+
+    cpdef FLOAT_t make_monotone(self)

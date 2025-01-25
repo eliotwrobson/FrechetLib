@@ -83,7 +83,7 @@ cdef class EID:
     def get_p_j(self):
         return self.p_j
 
-    def copy(self) -> EID:
+    cpdef EID copy(self):
         return EID(
             self.i,
             self.i_is_vert,
@@ -152,7 +152,7 @@ cdef class EID:
         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
         return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
 
-    def flip(self) -> None:
+    cpdef flip(self):
         self.i, self.j = self.j, self.i
         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
         self.p_i, self.p_j = self.p_j, self.p_i
@@ -223,7 +223,7 @@ cdef class Morphing:
     def get_Q(self) -> np.ndarray:
         return self.Q
 
-    def flip(self) -> None:
+    cpdef flip(self):
         """
         Flips P and Q in this morphing.
         """
@@ -232,7 +232,7 @@ cdef class Morphing:
 
         self.P, self.Q = self.Q, self.P
 
-    def copy(self) -> Morphing:
+    cpdef Morphing copy(self):
         new_morphing = []
 
         for event in self.morphing_list:
@@ -240,7 +240,7 @@ cdef class Morphing:
 
         return Morphing(new_morphing, self.P, self.Q, self.dist)
 
-    def is_monotone(self) -> bool:
+    cpdef bint is_monotone(self):
         """
         Returns True if this morphing is monotone, False otherwise.
         """
@@ -337,7 +337,7 @@ cdef class Morphing:
 
         return True
 
-    def make_monotone(self) -> float:
+    cpdef FLOAT_t make_monotone(self):
         """
         Modifies this morphing to be monotone in-place.
         Based on:
