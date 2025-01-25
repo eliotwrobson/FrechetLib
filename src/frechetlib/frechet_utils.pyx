@@ -5,7 +5,9 @@ import typing as t
 import numpy as np
 from typing_extensions import Self
 cimport libc.stdio
+cimport numpy as cnp
 
+#ctypedef cnp.float64_t FLOAT_t
 
 
 ########################### End of EID class definition ###########################
@@ -94,7 +96,11 @@ cdef class EID:
             self.dist,
         )
 
-    def reassign_parameter_i(self, new_t: float, P: np.ndarray) -> float:
+    cpdef float reassign_parameter_i(
+        self,
+        float new_t,
+        cnp.ndarray[FLOAT_t, ndim=2] P
+    ):
         """
         Reassign the point and parameter from the curve P.
         Returns the error incurred by the reassignment.
@@ -118,7 +124,11 @@ cdef class EID:
         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
         return abs(old_t - new_t) * float(np.linalg.norm(P[self.i] - P[self.i + 1]))
 
-    def reassign_parameter_j(self, new_t: float, Q: np.ndarray) -> float:
+    cpdef float reassign_parameter_j(
+        self,
+        float new_t,
+        cnp.ndarray[FLOAT_t, ndim=2] Q
+    ):
         """
         Reassign the point and parameter from the curve Q.
         Returns the error incurred by the reassignment.
