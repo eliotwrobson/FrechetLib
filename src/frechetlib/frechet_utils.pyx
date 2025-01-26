@@ -6,190 +6,191 @@ import numpy as np
 from typing_extensions import Self
 cimport libc.stdio
 cimport numpy as cnp
+from .geometry_utils cimport EID
 
 #ctypedef cnp.float64_t FLOAT_t
 
 
 ########################### End of EID class definition ###########################
 
-cdef class EID:
-    # i: int
-    # i_is_vert: bool
-    # j: int
-    # j_is_vert: bool
+# cdef class EID:
+#     # i: int
+#     # i_is_vert: bool
+#     # j: int
+#     # j_is_vert: bool
 
-    # # Computed distance between the points
-    # dist: float
+#     # # Computed distance between the points
+#     # dist: float
 
-    # # Points on edges if not a vertex. Can be adjusted.
-    # p_i: np.ndarray
-    # p_j: np.ndarray
+#     # # Points on edges if not a vertex. Can be adjusted.
+#     # p_i: np.ndarray
+#     # p_j: np.ndarray
 
-    # # Parameters for the points on each curve.
-    # t_i: float
-    # t_j: float
+#     # # Parameters for the points on each curve.
+#     # t_i: float
+#     # t_j: float
 
-    def __cinit__(
-        self,
-        i: int,
-        i_is_vert: bool,
-        j: int,
-        j_is_vert: bool,
-        p_i: np.ndarray,
-        p_j: np.ndarray,
-        t_i: float,
-        t_j: float,
-        dist: float,
-    ) -> None:
-        self.i = i
-        self.i_is_vert = i_is_vert
-        self.j = j
-        self.j_is_vert = j_is_vert
-        self.p_i = p_i
-        self.p_j = p_j
-        self.t_i = t_i
-        self.t_j = t_j
+#     def __cinit__(
+#         self,
+#         i: int,
+#         i_is_vert: bool,
+#         j: int,
+#         j_is_vert: bool,
+#         p_i: np.ndarray,
+#         p_j: np.ndarray,
+#         t_i: float,
+#         t_j: float,
+#         dist: float,
+#     ) -> None:
+#         self.i = i
+#         self.i_is_vert = i_is_vert
+#         self.j = j
+#         self.j_is_vert = j_is_vert
+#         self.p_i = p_i
+#         self.p_j = p_j
+#         self.t_i = t_i
+#         self.t_j = t_j
 
-        self.dist = dist
+#         self.dist = dist
 
-        assert 0.0 <= t_i <= 1.0
-        assert 0.0 <= t_j <= 1.0
+#         assert 0.0 <= t_i <= 1.0
+#         assert 0.0 <= t_j <= 1.0
 
-    # TODO get rid of these getter functions later
-    def get_dist(self):
-        return self.dist
+#     # TODO get rid of these getter functions later
+#     def get_dist(self):
+#         return self.dist
 
-    def get_i(self):
-        return self.i
+#     def get_i(self):
+#         return self.i
 
-    def get_j(self):
-        return self.j
+#     def get_j(self):
+#         return self.j
 
-    def get_i_is_vert(self):
-        return self.i_is_vert
+#     def get_i_is_vert(self):
+#         return self.i_is_vert
 
-    def get_j_is_vert(self):
-        return self.j_is_vert
+#     def get_j_is_vert(self):
+#         return self.j_is_vert
 
-    def get_t_i(self):
-        return self.t_i
+#     def get_t_i(self):
+#         return self.t_i
 
-    def get_t_j(self):
-        return self.t_j
+#     def get_t_j(self):
+#         return self.t_j
 
-    def get_p_i(self):
-        return self.p_i
+#     def get_p_i(self):
+#         return self.p_i
 
-    def get_p_j(self):
-        return self.p_j
+#     def get_p_j(self):
+#         return self.p_j
 
-    cpdef EID copy(self):
-        return EID(
-            self.i,
-            self.i_is_vert,
-            self.j,
-            self.j_is_vert,
-            self.p_i,
-            self.p_j,
-            self.t_i,
-            self.t_j,
-            self.dist,
-        )
+#     cpdef EID copy(self):
+#         return EID(
+#             self.i,
+#             self.i_is_vert,
+#             self.j,
+#             self.j_is_vert,
+#             self.p_i,
+#             self.p_j,
+#             self.t_i,
+#             self.t_j,
+#             self.dist,
+#         )
 
-    cpdef float reassign_parameter_i(
-        self,
-        float new_t,
-        cnp.ndarray[FLOAT_t, ndim=2] P
-    ):
-        """
-        Reassign the point and parameter from the curve P.
-        Returns the error incurred by the reassignment.
-        """
-        assert 0.0 <= new_t <= 1.0
-        old_t = self.t_i
+#     cpdef float reassign_parameter_i(
+#         self,
+#         float new_t,
+#         cnp.ndarray[FLOAT_t, ndim=2] P
+#     ):
+#         """
+#         Reassign the point and parameter from the curve P.
+#         Returns the error incurred by the reassignment.
+#         """
+#         assert 0.0 <= new_t <= 1.0
+#         old_t = self.t_i
 
-        if np.isclose(0.0, new_t):
-            self.t_i = 0.0
-            self.p_i = P[self.i]
-        elif np.isclose(1.0, new_t):
-            self.t_i = 1.0
-            self.p_i = P[self.i + 1]
-            # TODO maybe change the number based on index?
-            # I don't think the convention matters.
-        else:
-            # Case where 0.0 < new_t < 1.0
-            self.t_i = new_t
-            self.p_i = convex_comb(P[self.i], P[self.i + 1], self.t_i)
+#         if np.isclose(0.0, new_t):
+#             self.t_i = 0.0
+#             self.p_i = P[self.i]
+#         elif np.isclose(1.0, new_t):
+#             self.t_i = 1.0
+#             self.p_i = P[self.i + 1]
+#             # TODO maybe change the number based on index?
+#             # I don't think the convention matters.
+#         else:
+#             # Case where 0.0 < new_t < 1.0
+#             self.t_i = new_t
+#             self.p_i = convex_comb(P[self.i], P[self.i + 1], self.t_i)
 
-        self.dist = float(np.linalg.norm(self.p_i - self.p_j))
-        return abs(old_t - new_t) * float(np.linalg.norm(P[self.i] - P[self.i + 1]))
+#         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
+#         return abs(old_t - new_t) * float(np.linalg.norm(P[self.i] - P[self.i + 1]))
 
-    cpdef float reassign_parameter_j(
-        self,
-        float new_t,
-        cnp.ndarray[FLOAT_t, ndim=2] Q
-    ):
-        """
-        Reassign the point and parameter from the curve Q.
-        Returns the error incurred by the reassignment.
-        """
-        assert 0.0 <= new_t <= 1.0
-        old_t = self.t_j
+#     cpdef float reassign_parameter_j(
+#         self,
+#         float new_t,
+#         cnp.ndarray[FLOAT_t, ndim=2] Q
+#     ):
+#         """
+#         Reassign the point and parameter from the curve Q.
+#         Returns the error incurred by the reassignment.
+#         """
+#         assert 0.0 <= new_t <= 1.0
+#         old_t = self.t_j
 
-        if np.isclose(0.0, new_t):
-            self.t_j = 0.0
-            self.p_j = Q[self.j]
-        elif np.isclose(1.0, new_t):
-            self.t_j = 1.0
-            self.p_j = Q[self.j + 1]
-            # TODO maybe change the number based on index?
-            # I don't think the convention matters.
-        else:
-            # Case where 0.0 < new_t < 1.0
-            self.t_j = new_t
-            self.p_j = convex_comb(Q[self.j], Q[self.j + 1], self.t_j)
+#         if np.isclose(0.0, new_t):
+#             self.t_j = 0.0
+#             self.p_j = Q[self.j]
+#         elif np.isclose(1.0, new_t):
+#             self.t_j = 1.0
+#             self.p_j = Q[self.j + 1]
+#             # TODO maybe change the number based on index?
+#             # I don't think the convention matters.
+#         else:
+#             # Case where 0.0 < new_t < 1.0
+#             self.t_j = new_t
+#             self.p_j = convex_comb(Q[self.j], Q[self.j + 1], self.t_j)
 
-        self.dist = float(np.linalg.norm(self.p_i - self.p_j))
-        return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+#         self.dist = float(np.linalg.norm(self.p_i - self.p_j))
+#         return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
 
-    cpdef flip(self):
-        self.i, self.j = self.j, self.i
-        self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
-        self.p_i, self.p_j = self.p_j, self.p_i
-        self.t_i, self.t_j = self.t_j, self.t_i
+#     cpdef flip(self):
+#         self.i, self.j = self.j, self.i
+#         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
+#         self.p_i, self.p_j = self.p_j, self.p_i
+#         self.t_i, self.t_j = self.t_j, self.t_i
 
-    def __lt__(self, other: Self) -> bool:
-        # This function is mainly used to schedule events for heap insertion.
-        # TODO when this project gets refactored, get rid of this function and
-        # just manually compute the key used in the heap.
-        return self.dist < other.get_dist()
+#     def __lt__(self, other: Self) -> bool:
+#         # This function is mainly used to schedule events for heap insertion.
+#         # TODO when this project gets refactored, get rid of this function and
+#         # just manually compute the key used in the heap.
+#         return self.dist < other.get_dist()
 
-    def __hash__(self) -> int:
-        return hash(
-            (
-                self.i,
-                self.i_is_vert,
-                self.j,
-                self.j_is_vert,
-                self.t_i,
-                self.t_j,
-            )
-        )
+#     def __hash__(self) -> int:
+#         return hash(
+#             (
+#                 self.i,
+#                 self.i_is_vert,
+#                 self.j,
+#                 self.j_is_vert,
+#                 self.t_i,
+#                 self.t_j,
+#             )
+#         )
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, EID):
-            return False
+#     def __eq__(self, other: object) -> bool:
+#         if not isinstance(other, EID):
+#             return False
 
-        return (
-            (self.i == other.get_i())
-            and (self.j == other.get_j())
-            and (self.i_is_vert == other.get_i_is_vert())
-            and (self.j_is_vert == other.get_j_is_vert())
-            and bool(np.allclose(self.p_i, other.get_p_i()))
-            and bool(np.allclose(self.p_j, other.get_p_j()))
-            and bool(np.isclose(self.t_i, other.get_t_i()))
-            and bool(np.isclose(self.t_j, other.get_t_j()))
-        )
+#         return (
+#             (self.i == other.get_i())
+#             and (self.j == other.get_j())
+#             and (self.i_is_vert == other.get_i_is_vert())
+#             and (self.j_is_vert == other.get_j_is_vert())
+#             and bool(np.allclose(self.p_i, other.get_p_i()))
+#             and bool(np.allclose(self.p_j, other.get_p_j()))
+#             and bool(np.isclose(self.t_i, other.get_t_i()))
+#             and bool(np.isclose(self.t_j, other.get_t_j()))
+#         )
 
 ########################### End of EID class definition ###########################
 

@@ -55,3 +55,15 @@ def test_convex_comb() -> None:
     q = np.array([1.0, 1.0])
     res = gu.LinePointDistance(p1, p2, q)
     assert 0.0 <= res.get_t() <= 1.0
+
+
+def test_eid_copy() -> None:
+    # Contents here are not really important for this test
+    P = np.array([[0.0, 1.0], [1.0, 0.0], [2.0, 2.0]])
+    Q = np.array([[0.0, 1.0], [1.0, 0.0], [3.0, 3.0]])
+    _, event = gu.from_curve_indices(2, True, 2, False, P, Q, None, None)
+    event_copy = event.copy()
+
+    assert event == event_copy
+    assert event.get_dist() == event_copy.get_dist()
+    assert event is not event_copy

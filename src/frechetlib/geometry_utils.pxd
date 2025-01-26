@@ -16,6 +16,8 @@ cdef class Point:
 
     cpdef inline double dot_product(self, Point q)
 
+    cpdef inline bint is_close(self, Point q)
+
 @cython.final
 cdef class LinePointDistance:
     cdef double distance
@@ -29,3 +31,36 @@ cdef class LinePointDistance:
     cpdef double get_t(self)
 
     cpdef Point get_p(self)
+
+cdef class EID:
+    cdef int i
+    cdef bint i_is_vert
+    cdef int j
+    cdef bint j_is_vert
+
+    # Computed distance between the points
+    cdef float dist
+
+    # Points on edges if not a vertex. Can be adjusted.
+    cdef Point p_i
+    cdef Point p_j
+
+    # Parameters for the points on each curve.
+    cdef float t_i
+    cdef float t_j
+
+    # cpdef float reassign_parameter_i(
+    #     self,
+    #     float new_t,
+    #     np.ndarray[np.float64_t, ndim=2] P
+    # )
+
+    # cpdef float reassign_parameter_j(
+    #     self,
+    #     float new_t,
+    #     np.ndarray[np.float64_t, ndim=2] Q
+    # )
+
+    cpdef flip(self)
+
+    cpdef EID copy(self)
