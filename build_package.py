@@ -23,6 +23,15 @@ def build_cython_extensions() -> None:
             language="c++",
             extra_compile_args=["-O3"],
             include_dirs=[np.get_include()],
+            define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
+        ),
+        Extension(
+            "frechetlib.geometry_utils",
+            ["src/frechetlib/geometry_utils" + ext],
+            language="c++",
+            extra_compile_args=["-O3"],
+            include_dirs=[np.get_include()],
+            define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
         ),
     ]
 
