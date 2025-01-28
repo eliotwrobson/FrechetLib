@@ -1,3 +1,4 @@
+import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 import numpy as np
 import utils as u
@@ -70,7 +71,6 @@ def test_morphing_flip() -> None:
         assert orig_event.get_j() == new_event.get_i()
 
 
-'''
 def test_prm_combination_basic() -> None:
     prm_1 = np.array(
         [
@@ -188,6 +188,36 @@ def test_event_sequence_from_prm() -> None:
     assert 13 == len(morphing_from_prm.get_morphing_list())
 
     assert np.allclose(expected_prm, morphing_from_prm.get_prm())
+
+
+def test_morphing_make_monotone_nontrivial() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+    assert np.isclose(ve_morphing.get_dist(), 0.0)
+    monotone_morphing = ve_morphing.copy()
+    monotone_morphing.make_monotone()
+    assert np.isclose(monotone_morphing.get_dist(), 0.28284271247461906)
+
+    new_P, new_Q = fu.add_points_to_make_monotone(ve_morphing)
+
+    # Compute new ve frechet distance for curves
+    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
+
+    assert np.isclose(ve_morphing.get_dist(), 0.14142135623730948)
+
+    # Make monotone
+    monotone_morphing_2 = ve_morphing.copy()
+    monotone_morphing_2.make_monotone()
+
+    # TODO this fails because, on th 6th point, the first curve has
+    # to double back on itself, which causes the algo to take forever
+    # to converge.
+    # assert np.isclose(monotone_morphing_2.dist, 0.14142135623730948)
+
+
+'''
 
 
 def test_morphing_combine_manual() -> None:
@@ -321,33 +351,6 @@ def test_morphing_combine_manual() -> None:
     final_combined = fu.morphing_combine(Q_self_morphing, first_combined)
 
     assert np.isclose(final_combined.get_dist(), 0.14142135623730956)
-
-
-def test_morphing_make_monotone_nontrivial() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-
-    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
-    assert np.isclose(ve_morphing.get_dist(), 0.0)
-    monotone_morphing = ve_morphing.copy()
-    monotone_morphing.make_monotone()
-    assert np.isclose(monotone_morphing.get_dist(), 0.28284271247461906)
-
-    new_P, new_Q = fu.add_points_to_make_monotone(ve_morphing)
-
-    # Compute new ve frechet distance for curves
-    ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
-
-    assert np.isclose(ve_morphing.get_dist(), 0.14142135623730948)
-
-    # Make monotone
-    monotone_morphing_2 = ve_morphing.copy()
-    monotone_morphing_2.make_monotone()
-
-    # TODO this fails because, on th 6th point, the first curve has
-    # to double back on itself, which causes the algo to take forever
-    # to converge.
-    # assert np.isclose(monotone_morphing_2.dist, 0.14142135623730948)
 
 
 def test_frechet_dist_upper_bound() -> None:

@@ -64,3 +64,23 @@ cdef class EID:
     cpdef flip(self)
 
     cpdef EID copy(self)
+
+@cython.final
+cdef class EIDFromCurveIndices:
+    cdef double heap_key
+    cdef EID event
+
+    cpdef double get_heap_key(self)
+
+    cpdef EID get_event(self)
+
+cpdef EIDFromCurveIndices from_curve_indices(
+    int i,
+    bint i_is_vert,
+    int j,
+    bint j_is_vert,
+    np.ndarray P,
+    np.ndarray Q,
+    np.ndarray P_offs,
+    np.ndarray Q_offs,
+)

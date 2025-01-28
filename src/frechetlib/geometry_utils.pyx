@@ -292,16 +292,43 @@ cdef class EID:
             and bool(double_equals(self.t_j, other.get_t_j()))
         )
 
-def from_curve_indices(
-    i: int,
-    i_is_vert: bool,
-    j: int,
-    j_is_vert: bool,
-    P: np.ndarray,
-    Q: np.ndarray,
-    P_offs: t.Optional[np.ndarray],
-    Q_offs: t.Optional[np.ndarray],
-) -> t.Tuple[float, EID]:
+@cython.final
+cdef class EIDFromCurveIndices:
+    def __cinit__(
+        self,
+        heap_key: double,
+        event: EID,
+    ) -> None:
+        self.heap_key = heap_key
+        self.event = event
+
+    cpdef double get_heap_key(self):
+        return self.heap_key
+
+    cpdef EID get_event(self):
+        return self.event
+
+cpdef EIDFromCurveIndices from_curve_indices(
+    int i,
+    bint i_is_vert: bool,
+    int j,
+    bint j_is_vert: bool,
+    np.ndarray P,
+    np.ndarray Q,
+    np.ndarray P_offs,
+    np.ndarray Q_offs,
+):
+
+# cpdef from_curve_indices(
+#     i: int,
+#     i_is_vert: bool,
+#     j: int,
+#     j_is_vert: bool,
+#     P: np.ndarray,
+#     Q: np.ndarray,
+#     P_offs: t.Optional[np.ndarray],
+#     Q_offs: t.Optional[np.ndarray],
+# ) -> t.Tuple[float, EID]:
     # These values will get overwritten later
     # TODO I think some of the logic below can be refactored to reduce
     # the number of cases
@@ -391,7 +418,7 @@ def from_curve_indices(
     assert 0.0 <= t_j <= 1.0
 
     # TODO figure out how to use offsets as the key.
-    return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
+    return EIDFromCurveIndices(heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist))
 
 
 #### Start of functions mainly used for testing ####

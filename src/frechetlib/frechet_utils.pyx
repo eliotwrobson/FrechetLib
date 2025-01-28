@@ -6,7 +6,7 @@ import numpy as np
 from typing_extensions import Self
 cimport libc.stdio
 cimport numpy as cnp
-from .geometry_utils cimport EID
+from .geometry_utils cimport EID, Point, from_curve_indices
 
 #ctypedef cnp.float64_t FLOAT_t
 
@@ -621,7 +621,7 @@ def from_coefficients(
 
     dist = float(np.linalg.norm(p_i - p_j))
 
-    return EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_p, t_q, dist)
+    return EID(i, i_is_vert, j, j_is_vert, Point(p_i), Point(p_j), t_p, t_q, dist)
 
 
 # Using this stupid type signature
@@ -638,92 +638,92 @@ def from_coefficients(
 #         optional(float64[:]),
 #     )
 # )
-def from_curve_indices(
-    i: int,
-    i_is_vert: bool,
-    j: int,
-    j_is_vert: bool,
-    P: np.ndarray,
-    Q: np.ndarray,
-    P_offs: t.Optional[np.ndarray],
-    Q_offs: t.Optional[np.ndarray],
-) -> t.Tuple[float, EID]:
-    # These values will get overwritten later
-    # TODO I think some of the logic below can be refactored to reduce
-    # the number of cases
-    dist = 0.0
-    heap_key = 0.0
-    t_i = 0.0
-    t_j = 0.0
-    p_i = P[i]
-    p_j = Q[j]
+# def from_curve_indices(
+#     i: int,
+#     i_is_vert: bool,
+#     j: int,
+#     j_is_vert: bool,
+#     P: np.ndarray,
+#     Q: np.ndarray,
+#     P_offs: t.Optional[np.ndarray],
+#     Q_offs: t.Optional[np.ndarray],
+# ) -> t.Tuple[float, EID]:
+#     # These values will get overwritten later
+#     # TODO I think some of the logic below can be refactored to reduce
+#     # the number of cases
+#     dist = 0.0
+#     heap_key = 0.0
+#     t_i = 0.0
+#     t_j = 0.0
+#     p_i = P[i]
+#     p_j = Q[j]
 
-    if not 0 <= i < P.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape:'
-            f"{P.shape[0]}, {P.shape[1]}."
-        )
+#     if not 0 <= i < P.shape[0]:
+#         raise ValueError(
+#             f'Cannot create event with index "{i}" on a curve with shape:'
+#             f"{P.shape[0]}, {P.shape[1]}."
+#         )
 
-    if not 0 <= j < Q.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape:'
-            f"{Q.shape[0]}, {Q.shape[1]}."
-        )
+#     if not 0 <= j < Q.shape[0]:
+#         raise ValueError(
+#             f'Cannot create event with index "{j}" on a curve with shape:'
+#             f"{Q.shape[0]}, {Q.shape[1]}."
+#         )
 
-    use_offsets = P_offs is not None and Q_offs is not None
+#     use_offsets = P_offs is not None and Q_offs is not None
 
-    if use_offsets:
-        assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
-        # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
-        assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
+#     if use_offsets:
+#         assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
+#         # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
+#         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
 
-    if i_is_vert and j_is_vert:
-        dist = float(np.linalg.norm(P[i] - Q[j]))
+#     if i_is_vert and j_is_vert:
+#         dist = float(np.linalg.norm(P[i] - Q[j]))
 
-        if use_offsets:
-            heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-        else:
-            heap_key = dist
+#         if use_offsets:
+#             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+#         else:
+#             heap_key = dist
 
-    elif i_is_vert:
-        if j == Q.shape[0] - 1:
-            dist = float(np.linalg.norm(P[i] - Q[j]))
+#     elif i_is_vert:
+#         if j == Q.shape[0] - 1:
+#             dist = float(np.linalg.norm(P[i] - Q[j]))
 
-            if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-        else:
-            dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
+#             if use_offsets:
+#                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+#             else:
+#                 heap_key = dist
+#         else:
+#             dist, t_j, p_j = line_point_distance(Q[j], Q[j + 1], P[i])
 
-            if use_offsets:
-                heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
-            else:
-                heap_key = dist
+#             if use_offsets:
+#                 heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
+#             else:
+#                 heap_key = dist
 
-    elif j_is_vert:
-        if i == P.shape[0] - 1:
-            dist = float(np.linalg.norm(P[i] - Q[j]))
+#     elif j_is_vert:
+#         if i == P.shape[0] - 1:
+#             dist = float(np.linalg.norm(P[i] - Q[j]))
 
-            if use_offsets:
-                heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-        else:
-            dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
+#             if use_offsets:
+#                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
+#             else:
+#                 heap_key = dist
+#         else:
+#             dist, t_i, p_i = line_point_distance(P[i], P[i + 1], Q[j])
 
-            if use_offsets:
-                heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
-            else:
-                heap_key = dist
-    else:
-        raise Exception
+#             if use_offsets:
+#                 heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
+#             else:
+#                 heap_key = dist
+#     else:
+#         raise Exception
 
-    assert 0.0 <= t_i <= 1.0
-    assert 0.0 <= t_j <= 1.0
+#     assert 0.0 <= t_i <= 1.0
+#     assert 0.0 <= t_j <= 1.0
 
-    # TODO figure out how to use offsets as the key.
-    return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
+#     # TODO figure out how to use offsets as the key.
+#     return heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist)
 
 
 # @njit(cache=True)
@@ -997,9 +997,9 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         max_dist = max(max_dist, new_event.get_dist())
         new_event_sequence.append(new_event)
     # print("end event sequence")
-    _, final_event = from_curve_indices(
+    final_event = from_curve_indices(
         p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
-    )
+    ).get_event()
     # print("actually done")
     max_dist = max(max_dist, final_event.get_dist())
     new_event_sequence.append(final_event)

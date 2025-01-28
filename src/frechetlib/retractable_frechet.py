@@ -26,9 +26,15 @@ def retractable_ve_frechet(
     Q_offs: t.Optional[np.ndarray],
     summed: bool,
 ) -> fu.Morphing:
-    _, start_node = gu.from_curve_indices(0, True, 0, True, P, Q, P_offs, Q_offs)
-    start_tuple_1 = gu.from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
-    start_tuple_2 = gu.from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
+    start_node = gu.from_curve_indices(
+        0, True, 0, True, P, Q, P_offs, Q_offs
+    ).get_event()
+
+    first_event = gu.from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
+    start_tuple_1 = (first_event.get_heap_key(), first_event.get_event())
+
+    second_event = gu.from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
+    start_tuple_2 = (second_event.get_heap_key(), second_event.get_event())
     work_queue = [start_tuple_1, start_tuple_2]
 
     seen = {start_tuple_1[1]: start_node, start_tuple_2[1]: start_node}
@@ -54,9 +60,11 @@ def retractable_ve_frechet(
             if i >= n_p or j >= n_q:
                 continue
 
-            next_cost, next_node = gu.from_curve_indices(
+            next_event = gu.from_curve_indices(
                 i, i_vert, j, j_vert, P, Q, P_offs, Q_offs
             )
+
+            next_cost, next_node = next_event.get_heap_key(), next_event.get_event()
 
             # NOTE in the bottleneck Frechet case, we always take the
             # local optimum, but in the summed case, we need to add
