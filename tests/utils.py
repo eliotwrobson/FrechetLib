@@ -1,4 +1,5 @@
 import frechetlib.frechet_utils as fu
+import frechetlib.geometry_utils as gu
 import numpy as np
 
 
@@ -27,13 +28,13 @@ def get_basic_morphing() -> fu.Morphing:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing_list = [
-        fu.from_curve_indices(0, True, 0, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 0, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 1, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 2, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 3, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 4, True, P, Q, None, None)[1],
-        fu.from_curve_indices(1, True, 4, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, True, 0, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 0, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 1, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 2, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 3, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 4, True, P, Q, None, None)[1],
+        gu.from_curve_indices(1, True, 4, True, P, Q, None, None)[1],
     ]
 
     dist = fu.get_frechet_dist_from_morphing_list(morphing_list)
@@ -44,11 +45,11 @@ def get_basic_morphing_monotone() -> fu.Morphing:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [1.0, 1.0]])
     morphing_list = [
-        fu.from_curve_indices(0, True, 0, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 0, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 1, True, P, Q, None, None)[1],
-        fu.from_curve_indices(0, False, 2, True, P, Q, None, None)[1],
-        fu.from_curve_indices(1, True, 2, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, True, 0, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 0, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 1, True, P, Q, None, None)[1],
+        gu.from_curve_indices(0, False, 2, True, P, Q, None, None)[1],
+        gu.from_curve_indices(1, True, 2, True, P, Q, None, None)[1],
     ]
 
     dist = fu.get_frechet_dist_from_morphing_list(morphing_list)

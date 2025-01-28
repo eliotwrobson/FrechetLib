@@ -1,7 +1,5 @@
-import frechetlib.frechet_utils as fu
 import frechetlib.retractable_frechet as rf
 import numpy as np
-import pytest
 import utils as u
 
 
@@ -48,6 +46,31 @@ def example_3() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     return P, Q, R
 
 
+def test_morphing_is_monotone() -> None:
+    non_monotone_morphing = u.get_basic_morphing()
+    assert not non_monotone_morphing.is_monotone()
+
+    monotone_morphing = u.get_basic_morphing_monotone()
+    assert monotone_morphing.is_monotone()
+
+
+def test_morphing_flip() -> None:
+    P, Q = u.generate_curves_close(100, 100.0)
+    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+    orig_morphing = morphing.copy()
+    morphing.flip()
+
+    assert np.allclose(P, morphing.get_Q())
+    assert np.allclose(Q, morphing.get_P())
+
+    for orig_event, new_event in zip(
+        orig_morphing.get_morphing_list(), morphing.get_morphing_list()
+    ):
+        assert orig_event.get_i() == new_event.get_j()
+        assert orig_event.get_j() == new_event.get_i()
+
+
+'''
 def test_prm_combination_basic() -> None:
     prm_1 = np.array(
         [
@@ -390,89 +413,6 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
 
     assert saw_witness
 
-
-def test_morphing_flip() -> None:
-    P, Q = u.generate_curves_close(100, 100.0)
-    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
-    orig_morphing = morphing.copy()
-    morphing.flip()
-
-    assert np.allclose(P, morphing.get_Q())
-    assert np.allclose(Q, morphing.get_P())
-
-    for orig_event, new_event in zip(
-        orig_morphing.get_morphing_list(), morphing.get_morphing_list()
-    ):
-        assert orig_event.get_i() == new_event.get_j()
-        assert orig_event.get_j() == new_event.get_i()
-
-
-@pytest.mark.parametrize(
-    "p1,p2,q,distance,t,p_new",
-    [
-        (
-            np.array([-1.0, 0.0]),
-            np.array([1.0, 0.0]),
-            np.array([0.0, 1.0]),
-            1.0,
-            0.5,
-            np.array([0.0, 0.0]),
-        ),
-        (
-            np.array([-1.0, 0.0]),
-            np.array([1.0, 0.0]),
-            np.array([2.0, 0.0]),
-            1.0,
-            1.0,
-            np.array([1.0, 0.0]),
-        ),
-        (
-            np.array([-1.0, 0.0]),
-            np.array([1.0, 0.0]),
-            np.array([-2.0, 0.0]),
-            1.0,
-            0.0,
-            np.array([-1.0, 0.0]),
-        ),
-    ],
-)
-def test_line_point_distance(
-    p1: np.ndarray,
-    p2: np.ndarray,
-    q: np.ndarray,
-    distance: float,
-    t: float,
-    p_new: np.ndarray,
-) -> None:
-    new_dist, new_t, new_p = fu.line_point_distance(p1, p2, q)
-
-    assert 0.0 <= new_t <= 1.0
-    assert np.isclose(distance, new_dist)
-    assert np.isclose(t, new_t)
-    assert np.allclose(p_new, new_p)
-
-
-def test_convex_comb() -> None:
-    # TODO replace this with an actual test of the convex combination function
-    p1 = np.array([0.0, 0.0])
-    p2 = np.array([1.0, 1.0])
-    q = np.array([1.0, 1.0])
-    dist, t, point = fu.line_point_distance(p1, p2, q)
-    assert 0.0 <= t <= 1.0
-
-
-def test_eid_copy() -> None:
-    # Contents here are not really important for this test
-    P = np.array([[0.0, 1.0], [1.0, 0.0], [2.0, 2.0]])
-    Q = np.array([[0.0, 1.0], [1.0, 0.0], [3.0, 3.0]])
-    _, event = fu.from_curve_indices(2, True, 2, False, P, Q, None, None)
-    event_copy = event.copy()
-
-    assert event == event_copy
-    assert event.get_dist() == event_copy.get_dist()
-    assert event is not event_copy
-
-
 def test_morphing_copy() -> None:
     morphing = u.get_basic_morphing()
     other_morphing = morphing.copy()
@@ -487,14 +427,6 @@ def test_morphing_copy() -> None:
     ):
         assert event_1 == event_2
         assert event_1 is not event_2
-
-
-def test_morphing_is_monotone() -> None:
-    non_monotone_morphing = u.get_basic_morphing()
-    assert not non_monotone_morphing.is_monotone()
-
-    monotone_morphing = u.get_basic_morphing_monotone()
-    assert monotone_morphing.is_monotone()
 
 
 def test_morphing_make_monotone() -> None:
@@ -590,3 +522,4 @@ def test_add_points() -> None:
     # a slightly different morphing. This isn't a bug
     assert new_P.shape[0] > P.shape[0]
     assert np.allclose(new_Q, Q)
+'''

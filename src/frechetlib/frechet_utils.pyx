@@ -208,6 +208,7 @@ cdef class Morphing:
         dist_: float,
     ):
         self.morphing_list = morphing_list_
+
         self.P = P_
         self.Q = Q_
         self.dist = dist_

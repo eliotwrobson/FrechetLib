@@ -7,6 +7,7 @@ import typing as t
 import numpy as np
 
 import frechetlib.frechet_utils as fu
+import frechetlib.geometry_utils as gu
 
 
 # @njit(
@@ -25,9 +26,9 @@ def retractable_ve_frechet(
     Q_offs: t.Optional[np.ndarray],
     summed: bool,
 ) -> fu.Morphing:
-    _, start_node = fu.from_curve_indices(0, True, 0, True, P, Q, P_offs, Q_offs)
-    start_tuple_1 = fu.from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
-    start_tuple_2 = fu.from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
+    _, start_node = gu.from_curve_indices(0, True, 0, True, P, Q, P_offs, Q_offs)
+    start_tuple_1 = gu.from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
+    start_tuple_2 = gu.from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
     work_queue = [start_tuple_1, start_tuple_2]
 
     seen = {start_tuple_1[1]: start_node, start_tuple_2[1]: start_node}
@@ -53,7 +54,7 @@ def retractable_ve_frechet(
             if i >= n_p or j >= n_q:
                 continue
 
-            next_cost, next_node = fu.from_curve_indices(
+            next_cost, next_node = gu.from_curve_indices(
                 i, i_vert, j, j_vert, P, Q, P_offs, Q_offs
             )
 

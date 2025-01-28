@@ -1,4 +1,5 @@
 cimport numpy as cnp
+from libcpp.vector cimport vector as cvector
 
 ctypedef cnp.float64_t FLOAT_t
 

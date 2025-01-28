@@ -364,7 +364,7 @@ def from_curve_indices(
 
     elif j_is_vert:
         if i == P.shape[0] - 1:
-            dist = Point(P[i]).point_difference(Point(Q[j])).norm()
+            dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
             #float(np.linalg.norm(P[i] - Q[j]))
 
             if use_offsets:
