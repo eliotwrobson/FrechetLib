@@ -17,3 +17,13 @@ cdef class Morphing:
     cpdef bint is_monotone(self)
 
     cpdef FLOAT_t make_monotone(self)
+
+cdef class NewCurves:
+    cdef cnp.ndarray P
+    cdef cnp.ndarray Q
+
+    cpdef cnp.ndarray get_P(self)
+
+    cpdef cnp.ndarray get_Q(self)
+
+cpdef NewCurves add_points_to_make_monotone(Morphing morphing)

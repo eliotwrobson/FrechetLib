@@ -1117,13 +1117,18 @@ def frechet_width_approx(
 
     return leash
 
+cdef class NewCurves:
+    def __cinit__(self, P: np.ndarray, Q: np.ndarray):
+        self.P = P
+        self.Q = Q
 
-# TODO have to write test cases for this
-# and possibly also add control on number of points to add
-# @njit
-def add_points_to_make_monotone(
-    morphing: Morphing,
-) -> tuple[np.ndarray, np.ndarray]:
+    cpdef cnp.ndarray get_P(self):
+        return self.P
+
+    cpdef cnp.ndarray get_Q(self):
+        return self.Q
+
+cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
     # TODO add intermediate vertices here
     # Doing the same here:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L626
@@ -1134,7 +1139,7 @@ def add_points_to_make_monotone(
     # print(len(morphing_list))
     # First, add points to P
     new_P = []
-    k = 0
+    cdef int k = 0
     while k < len(morphing_list):
         # Vertex-vertex event, can skip
         if morphing_list[k].get_i_is_vert():
@@ -1248,7 +1253,8 @@ def add_points_to_make_monotone(
     for k in range(len(new_Q)):
         new_Q_final[k] = new_Q[k].get_coords()
 
-    return new_P_final, new_Q_final
+    return NewCurves(new_P_final, new_Q_final)
+    #return new_P_final, new_Q_final
 
 
 # @njit
