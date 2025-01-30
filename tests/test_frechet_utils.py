@@ -2,6 +2,7 @@ import numpy as np
 import utils as u
 
 import frechetlib.frechet_utils as fu
+import frechetlib.geometry_utils as gu
 import frechetlib.retractable_frechet as rf
 
 
@@ -366,28 +367,62 @@ def check_morphing_witness(morphing: fu.Morphing) -> None:
     assert saw_witness
 
 
-"""
+def test_morphing_combine() -> None:
+    P, Q, R = example_3()
+
+    morphing_1 = rf.retractable_ve_frechet(P, Q, None, None, False)
+    morphing_2 = rf.retractable_ve_frechet(Q, R, None, None, False)
+
+    # Apparently these need to be monotone for this to work
+    morphing_1.make_monotone()
+    morphing_2.make_monotone()
+
+    res = fu.morphing_combine(morphing_2, morphing_1)
+
+    # Magic numbers I got by running the same data through
+    # Sariel's code
+    assert np.isclose(morphing_1.get_dist(), 0.7071067811865475)
+    assert np.isclose(morphing_2.get_dist(), 2.82842712474619)
+
+    assert np.isclose(res.get_dist(), 3.047950130825634)
+    assert np.allclose(res.get_P(), P)
+    assert np.allclose(res.get_Q(), R)
 
 
 def test_morphing_combine_manual() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
+    def make_eid(
+        i: int,
+        i_is_vert: bool,
+        j: int,
+        j_is_vert: bool,
+        p_i: np.ndarray,
+        p_j: np.ndarray,
+        t_i: float,
+        t_j: float,
+        dist: float,
+    ) -> gu.EID:
+        return gu.EID(
+            i, i_is_vert, j, j_is_vert, gu.Point(p_i), gu.Point(p_j), t_i, t_j, dist
+        )
+
     # Morphing P with itself
     P_self_morphing_list = [
-        fu.EID(0, True, 0, True, P[0], P[0], 0.0, 0.0, 0.0),
-        fu.EID(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0),
+        make_eid(0, True, 0, True, P[0], P[0], 0.0, 0.0, 0.0),
+        make_eid(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0),
     ]
 
     P_self_morphing = fu.Morphing(P_self_morphing_list, P, P, 0.0)
 
     # Morphing Q with itself
     Q_self_morphing_list = [
-        fu.EID(0, True, 0, True, Q[0], Q[0], 0.0, 0.0, 0.0),
-        fu.EID(1, True, 1, True, Q[1], Q[1], 0.0, 0.0, 0.0),
-        fu.EID(2, True, 2, True, Q[2], Q[2], 0.0, 0.0, 0.0),
-        fu.EID(3, True, 3, True, Q[3], Q[3], 0.0, 0.0, 0.0),
-        fu.EID(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0),
+        make_eid(0, True, 0, True, Q[0], Q[0], 0.0, 0.0, 0.0),
+        make_eid(1, True, 1, True, Q[1], Q[1], 0.0, 0.0, 0.0),
+        make_eid(2, True, 2, True, Q[2], Q[2], 0.0, 0.0, 0.0),
+        make_eid(3, True, 3, True, Q[3], Q[3], 0.0, 0.0, 0.0),
+        make_eid(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0),
     ]
 
     Q_self_morphing = fu.Morphing(Q_self_morphing_list, Q, Q, 0.0)
@@ -411,31 +446,31 @@ def test_morphing_combine_manual() -> None:
     # NOTE last value (heap key) probably doesn't matter
     middle_morphing_list = [
         # 1
-        fu.EID(0, True, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
+        make_eid(0, True, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
         # 2
-        fu.EID(0, False, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
+        make_eid(0, False, 0, True, P_refined[0], P_refined[0], 0.0, 0.0, 0.0),
         # 3
-        fu.EID(1, True, 0, False, P_refined[1], P_refined[1], 0.0, 0.3, 0.0),
+        make_eid(1, True, 0, False, P_refined[1], P_refined[1], 0.0, 0.3, 0.0),
         # 4
-        fu.EID(2, True, 0, False, P_refined[2], P_refined[2], 0.0, 0.6, 0.0),
+        make_eid(2, True, 0, False, P_refined[2], P_refined[2], 0.0, 0.6, 0.0),
         # 5, only one witnessing a difference
-        fu.EID(2, False, 1, True, P_refined[3], P_refined[4], 1.0, 0.0, dist),
+        make_eid(2, False, 1, True, P_refined[3], P_refined[4], 1.0, 0.0, dist),
         # 6, flips backwards
-        fu.EID(2, False, 2, True, P_refined[3], P_refined[2], 1.0, 0.0, dist),
+        make_eid(2, False, 2, True, P_refined[3], P_refined[2], 1.0, 0.0, dist),
         # 7
-        fu.EID(3, True, 2, False, P_refined[3], P_refined[3], 0.0, 0.25, 0.0),
+        make_eid(3, True, 2, False, P_refined[3], P_refined[3], 0.0, 0.25, 0.0),
         # 8
-        fu.EID(4, True, 2, False, P_refined[4], P_refined[4], 0.0, 0.5, 0.0),
+        make_eid(4, True, 2, False, P_refined[4], P_refined[4], 0.0, 0.5, 0.0),
         # 9
-        fu.EID(5, True, 2, False, P_refined[5], P_refined[5], 0.0, 0.75, 0.0),
+        make_eid(5, True, 2, False, P_refined[5], P_refined[5], 0.0, 0.75, 0.0),
         # 10
-        fu.EID(6, True, 2, False, P_refined[6], P_refined[6], 0.0, 1.0, 0.0),
+        make_eid(6, True, 2, False, P_refined[6], P_refined[6], 0.0, 1.0, 0.0),
         # 11
-        fu.EID(6, False, 3, True, P_refined[6], P_refined[6], 0.0, 0.0, 0.0),
+        make_eid(6, False, 3, True, P_refined[6], P_refined[6], 0.0, 0.0, 0.0),
         # 12
-        fu.EID(7, True, 3, False, P_refined[7], P_refined[7], 0.0, 0.5, 0.0),
+        make_eid(7, True, 3, False, P_refined[7], P_refined[7], 0.0, 0.5, 0.0),
         # 13
-        fu.EID(8, True, 4, True, P_refined[8], P_refined[8], 0.0, 0.0, 0.0),
+        make_eid(8, True, 4, True, P_refined[8], P_refined[8], 0.0, 0.0, 0.0),
     ]
 
     middle_morphing = fu.Morphing(middle_morphing_list, P_refined, Q, dist)
@@ -502,6 +537,9 @@ def test_morphing_combine_manual() -> None:
     assert np.isclose(final_combined.get_dist(), 0.14142135623730956)
 
 
+"""
+
+
 def test_frechet_dist_upper_bound() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
@@ -510,30 +548,5 @@ def test_frechet_dist_upper_bound() -> None:
     assert np.isclose(fu.frechet_width_approx(P), 0.0)
     assert np.isclose(fu.frechet_width_approx(Q), 0.28284271247461906)
     assert np.isclose(res, 0.28284271247461906)
-
-
-def test_morphing_combine() -> None:
-    P, Q, R = example_3()
-
-    morphing_1 = rf.retractable_ve_frechet(P, Q, None, None, False)
-    morphing_2 = rf.retractable_ve_frechet(Q, R, None, None, False)
-
-    # Apparently these need to be monotone for this to work
-    morphing_1.make_monotone()
-    morphing_2.make_monotone()
-
-    res = fu.morphing_combine(morphing_2, morphing_1)
-
-    # Magic numbers I got by running the same data through
-    # Sariel's code
-    assert np.isclose(morphing_1.get_dist(), 0.7071067811865475)
-    assert np.isclose(morphing_2.get_dist(), 2.82842712474619)
-
-    assert np.isclose(res.get_dist(), 3.047950130825634)
-    assert np.allclose(res.get_P(), P)
-    assert np.allclose(res.get_Q(), R)
-
-
-
 
 """

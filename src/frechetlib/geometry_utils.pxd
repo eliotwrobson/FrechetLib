@@ -6,8 +6,6 @@ cimport cython
 cdef class Point:
     cdef cvector[double] coords
 
-    #def __cinit__(self, cvector[float] coords)
-
     cpdef inline Point convex_comb(self, Point q, double t)
 
     cpdef inline Point point_difference(self, Point q)
