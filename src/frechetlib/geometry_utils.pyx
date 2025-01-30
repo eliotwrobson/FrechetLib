@@ -15,6 +15,9 @@ cdef class Point:
         for entry in coords:
             self.coords.push_back(entry)
 
+    def get_coords(self):
+        return list(self.coords)
+
     cpdef inline Point convex_comb(self, Point q, double t):
         cdef cvector[double] new_coords
 
@@ -32,9 +35,6 @@ cdef class Point:
             new_coords.push_back(self.coords[i] - q.coords[i])
 
         return Point(new_coords)
-
-    def get_coords(self):
-        return list(self.coords)
 
     cpdef inline double get_norm(self):
         cdef double norm = 0.0
@@ -238,7 +238,7 @@ cdef class EID:
             self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
 
         self.dist = self.p_i.compute_distance(self.p_j)
-        return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+        return abs(old_t - new_t) * Point(P[self.i]).compute_distance(Point(P[self.i + 1]))
 
     cpdef float reassign_parameter_j(
         self,
@@ -266,7 +266,7 @@ cdef class EID:
             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
 
         self.dist = self.p_i.compute_distance(self.p_j)
-        return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
+        return abs(old_t - new_t) * Point(Q[self.i]).compute_distance(Point(Q[self.i + 1]))
 
     cpdef flip(self):
         self.i, self.j = self.j, self.i
@@ -374,7 +374,7 @@ cpdef EIDFromCurveIndices from_curve_indices(
         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
 
     if i_is_vert and j_is_vert:
-        dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
+        dist = Point(P[i]).compute_distance(Point(Q[j]))
 
         if use_offsets:
             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
@@ -383,7 +383,7 @@ cpdef EIDFromCurveIndices from_curve_indices(
 
     elif i_is_vert:
         if j == Q.shape[0] - 1:
-            dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
+            dist = Point(P[i]).compute_distance(Point(Q[j]))
 
             if use_offsets:
                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
@@ -406,7 +406,7 @@ cpdef EIDFromCurveIndices from_curve_indices(
 
     elif j_is_vert:
         if i == P.shape[0] - 1:
-            dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
+            dist = Point(P[i]).compute_distance(Point(Q[j]))
             #float(np.linalg.norm(P[i] - Q[j]))
 
             if use_offsets:
