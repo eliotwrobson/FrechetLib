@@ -12,6 +12,8 @@ cdef class Point:
 
     cpdef inline double get_norm(self)
 
+    cpdef inline double compute_distance(self, Point q)
+
     cpdef inline double dot_product(self, Point q)
 
     cpdef inline bint is_close(self, Point q)

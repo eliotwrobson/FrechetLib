@@ -7,8 +7,6 @@ cdef bint double_equals(double a, double b, double epsilon = 1e-10):
 
 @cython.final
 cdef class Point:
-    #cdef cvector[float] coords
-
     def __cinit__(self, double[:] coords):
         for entry in coords:
             self.coords.push_back(entry)
@@ -46,6 +44,15 @@ cdef class Point:
 
         return norm ** 0.5
 
+    cpdef inline double compute_distance(self, Point q):
+        cdef double dist = 0.0
+        cdef int i
+
+        for i in range(len(self.coords)):
+            dist += (self.coords[i] - q.coords[i]) ** 2
+
+        return dist ** 0.5
+
     cpdef inline double dot_product(self, Point q):
         cdef double dot = 0.0
         cdef int i
@@ -74,7 +81,6 @@ cdef class Point:
 
 @cython.final
 cdef class LinePointDistance:
-
     def __cinit__(self, p1: np.ndarray, p2: np.ndarray, q: np.ndarray):
         self.compute(Point(p1), Point(p2), Point(q))
 
@@ -85,9 +91,9 @@ cdef class LinePointDistance:
         cdef Point q_diff = q.point_difference(p1)
         cdef Point p_diff = p2.point_difference(p1)
 
-        cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2
+        cdef double l2 = p1.compute_distance(p2) ** 2  # i.e. |p2-p1|^2
         if double_equals(l2, 0.0):  # p1 == p2 case
-            self.distance = q.point_difference(p1).get_norm()
+            self.distance = q.compute_distance(p1)
             self.t = 0.0
             self.p = p1
             return
@@ -99,19 +105,19 @@ cdef class LinePointDistance:
         t = q_diff.dot_product(p_diff) / l2
 
         if t <= 0.0:
-            self.distance = q.point_difference(p1).get_norm()
+            self.distance = q.compute_distance(p1)
             self.t = 0.0
             self.p = p1
             return
         elif t >= 1.0:
-            self.distance = q.point_difference(p2).get_norm()
+            self.distance = q.compute_distance(p2)
             self.t = 1.0
             self.p = p2
             return
         else:
             self.p = p1.convex_comb(p2, t)
             self.t = t
-            self.distance = q.point_difference(self.p).get_norm()
+            self.distance = q.compute_distance(self.p)
 
     cpdef double get_distance(self):
         return self.distance
@@ -231,7 +237,7 @@ cdef class EID:
             self.t_i = new_t
             self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
 
-        self.dist = self.p_i.point_difference(self.p_j).get_norm()
+        self.dist = self.p_i.compute_distance(self.p_j)
         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
 
     cpdef float reassign_parameter_j(
@@ -259,7 +265,7 @@ cdef class EID:
             self.t_j = new_t
             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
 
-        self.dist = self.p_i.point_difference(self.p_j).get_norm()
+        self.dist = self.p_i.compute_distance(self.p_j)
         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
 
     cpdef flip(self):
