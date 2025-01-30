@@ -1138,7 +1138,7 @@ def add_points_to_make_monotone(
     while k < len(morphing_list):
         # Vertex-vertex event, can skip
         if morphing_list[k].get_i_is_vert():
-            new_P.append(P[morphing_list[k].get_i()])
+            new_P.append(Point(P[morphing_list[k].get_i()]))
             old_k = k
             while (
                 k < len(morphing_list)
@@ -1174,24 +1174,24 @@ def add_points_to_make_monotone(
 
         if not monotone:
             # NOTE Use i because we know we're not at the vertex from case checked above
-            new_P.append((P[events[0].get_i()] + events[0].get_p_i()) / 2.0)
+            new_P.append((Point(P[events[0].get_i()]).get_avg(events[0].get_p_i())))
 
         for j in range(len(events)):
             new_P.append(events[j].get_p_i())
 
             if not monotone and j < len(events) - 1:
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
-                new_P.append((events[j].get_p_i() + events[j + 1].get_p_i()) / 2.0)
+                new_P.append(events[j].get_p_i().get_avg(events[j + 1].get_p_i()))
 
         if not monotone and events[-1].get_i() + 1 < P.shape[0]:
-            new_P.append((P[events[-1].get_i() + 1] + events[-1].get_p_i()) / 2.0)
+            new_P.append(Point(P[events[-1].get_i() + 1]).get_avg(events[-1].get_p_i()))
 
     # # Next, add points to Q, same as above but hard to share logic
     new_Q = []
     k = 0
     while k < len(morphing_list):
         if morphing_list[k].get_j_is_vert():
-            new_Q.append(Q[morphing_list[k].get_j()])
+            new_Q.append(Point(Q[morphing_list[k].get_j()]))
             old_k = k
             while (
                 k < len(morphing_list)
@@ -1226,27 +1226,27 @@ def add_points_to_make_monotone(
 
         if not monotone:
             # NOTE Use j because we know we're not at the vertex from case checked above
-            new_Q.append((Q[events[0].get_j()] + events[0].get_p_j()) / 2.0)
+            new_Q.append(Point(Q[events[0].get_j()]).get_avg(events[0].get_p_j()))
 
         for j in range(len(events)):
             new_Q.append(events[j].get_p_j())
 
             if not monotone and j < len(events) - 1:
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
-                new_Q.append((events[j].get_p_j() + events[j + 1].get_p_j()) / 2.0)
+                new_Q.append(events[j].get_p_j().get_avg(events[j + 1].get_p_j()))
 
         if not monotone and events[-1].get_j() + 1 < Q.shape[0]:
-            new_Q.append((Q[events[-1].get_j() + 1] + events[-1].get_p_j()) / 2.0)
+            new_Q.append(Point(Q[events[-1].get_j() + 1]).get_avg(events[-1].get_p_j()))
 
     # Finally, assemble into output arrays
-    new_P_final = np.empty((len(new_P), new_P[0].shape[0]))
-    new_Q_final = np.empty((len(new_Q), new_Q[0].shape[0]))
+    new_P_final = np.empty((len(new_P), len(new_P[0].get_coords())))
+    new_Q_final = np.empty((len(new_Q), len(new_Q[0].get_coords())))
 
     for k in range(len(new_P)):
-        new_P_final[k] = new_P[k]
+        new_P_final[k] = new_P[k].get_coords()
 
     for k in range(len(new_Q)):
-        new_Q_final[k] = new_Q[k]
+        new_Q_final[k] = new_Q[k].get_coords()
 
     return new_P_final, new_Q_final
 

@@ -18,6 +18,8 @@ cdef class Point:
 
     cpdef inline bint is_close(self, Point q)
 
+    cpdef inline Point get_avg(self, Point q)
+
 @cython.final
 cdef class LinePointDistance:
     cdef double distance
@@ -49,17 +51,17 @@ cdef class EID:
     cdef float t_i
     cdef float t_j
 
-    # cpdef float reassign_parameter_i(
-    #     self,
-    #     float new_t,
-    #     np.ndarray[np.float64_t, ndim=2] P
-    # )
+    cpdef float reassign_parameter_i(
+        self,
+        float new_t,
+        np.ndarray[np.float64_t, ndim=2] P
+    )
 
-    # cpdef float reassign_parameter_j(
-    #     self,
-    #     float new_t,
-    #     np.ndarray[np.float64_t, ndim=2] Q
-    # )
+    cpdef float reassign_parameter_j(
+        self,
+        float new_t,
+        np.ndarray[np.float64_t, ndim=2] Q
+    )
 
     cpdef flip(self)
 

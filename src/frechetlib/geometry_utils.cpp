@@ -10,17 +10,17 @@
             ]
         ],
         "depends": [
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include\\numpy\\arrayobject.h",
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include\\numpy\\arrayscalars.h",
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include\\numpy\\ndarrayobject.h",
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include\\numpy\\ndarraytypes.h",
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include\\numpy\\ufuncobject.h"
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayobject.h",
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include/numpy/arrayscalars.h",
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarrayobject.h",
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include/numpy/ndarraytypes.h",
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include/numpy/ufuncobject.h"
         ],
         "extra_compile_args": [
             "-O3"
         ],
         "include_dirs": [
-            "C:\\Users\\eliot\\AppData\\Local\\Temp\\tmpaoic83o3\\.venv\\Lib\\site-packages\\numpy\\_core\\include"
+            "/tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/_core/include"
         ],
         "language": "c++",
         "name": "frechetlib.geometry_utils",
@@ -1550,7 +1550,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "src\\\\frechetlib\\\\geometry_utils.pyx",
+  "src/frechetlib/geometry_utils.pyx",
   "<stringsource>",
   "__init__.cython-30.pxd",
   "type.pxd",
@@ -1699,7 +1699,7 @@ typedef struct {
 
 /* #### Code section: numeric_typedefs ### */
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":787
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":787
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1708,7 +1708,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":788
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":788
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1717,7 +1717,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":789
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":789
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1726,7 +1726,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":790
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":790
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1735,7 +1735,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":794
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":794
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1744,7 +1744,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":795
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":795
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1753,7 +1753,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":796
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":796
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1762,7 +1762,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":797
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":797
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1771,7 +1771,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":801
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":801
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1780,7 +1780,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":802
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":802
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1789,7 +1789,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":809
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":809
  * ctypedef double complex complex128_t
  * 
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1798,7 +1798,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":810
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":810
  * 
  * ctypedef npy_longlong   longlong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1807,7 +1807,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":812
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":812
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1816,7 +1816,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":813
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":813
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1825,7 +1825,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":815
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":815
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1834,7 +1834,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":816
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":816
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1843,7 +1843,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":817
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":817
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1900,7 +1900,7 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1113
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1113
  * 
  * # Iterator API added in v1.6
  * ctypedef int (*NpyIter_IterNextFunc)(NpyIter* it) noexcept nogil             # <<<<<<<<<<<<<<
@@ -1909,7 +1909,7 @@ struct __pyx_memoryviewslice_obj;
  */
 typedef int (*__pyx_t_5numpy_NpyIter_IterNextFunc)(NpyIter *);
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1114
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1114
  * # Iterator API added in v1.6
  * ctypedef int (*NpyIter_IterNextFunc)(NpyIter* it) noexcept nogil
  * ctypedef void (*NpyIter_GetMultiIndexFunc)(NpyIter* it, npy_intp* outcoords) noexcept nogil             # <<<<<<<<<<<<<<
@@ -1922,7 +1922,7 @@ struct __pyx_opt_args_10frechetlib_14geometry_utils_double_equals;
 /* "frechetlib/geometry_utils.pyx":5
  * cimport cython
  * 
- * cdef  bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
+ * cdef bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
  *   return abs(a - b) < epsilon
  * 
  */
@@ -1945,7 +1945,7 @@ struct __pyx_obj_10frechetlib_14geometry_utils_Point {
 };
 
 
-/* "frechetlib/geometry_utils.pxd":22
+/* "frechetlib/geometry_utils.pxd":24
  * 
  * @cython.final
  * cdef class LinePointDistance:             # <<<<<<<<<<<<<<
@@ -1961,7 +1961,7 @@ struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance {
 };
 
 
-/* "frechetlib/geometry_utils.pxd":35
+/* "frechetlib/geometry_utils.pxd":37
  *     cpdef Point get_p(self)
  * 
  * cdef class EID:             # <<<<<<<<<<<<<<
@@ -1983,7 +1983,7 @@ struct __pyx_obj_10frechetlib_14geometry_utils_EID {
 };
 
 
-/* "frechetlib/geometry_utils.pxd":69
+/* "frechetlib/geometry_utils.pxd":71
  * 
  * @cython.final
  * cdef class EIDFromCurveIndices:             # <<<<<<<<<<<<<<
@@ -2089,6 +2089,7 @@ struct __pyx_vtabstruct_10frechetlib_14geometry_utils_Point {
   double (*get_norm)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
   double (*dot_product)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
   int (*is_close)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
+  struct __pyx_obj_10frechetlib_14geometry_utils_Point *(*get_avg)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
 };
 static struct __pyx_vtabstruct_10frechetlib_14geometry_utils_Point *__pyx_vtabptr_10frechetlib_14geometry_utils_Point;
 static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, double, int __pyx_skip_dispatch);
@@ -2096,9 +2097,10 @@ static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx
 static CYTHON_INLINE double __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
 static CYTHON_INLINE double __pyx_f_10frechetlib_14geometry_utils_5Point_dot_product(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
 static CYTHON_INLINE int __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
+static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_5Point_get_avg(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch);
 
 
-/* "frechetlib/geometry_utils.pyx":67
+/* "frechetlib/geometry_utils.pyx":76
  * 
  * @cython.final
  * cdef class LinePointDistance:             # <<<<<<<<<<<<<<
@@ -2119,7 +2121,7 @@ static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(st
 static struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *, int __pyx_skip_dispatch);
 
 
-/* "frechetlib/geometry_utils.pyx":116
+/* "frechetlib/geometry_utils.pyx":125
  *         return self.p
  * 
  * cdef class EID:             # <<<<<<<<<<<<<<
@@ -2128,13 +2130,15 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetli
  */
 
 struct __pyx_vtabstruct_10frechetlib_14geometry_utils_EID {
+  float (*reassign_parameter_i)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, float, PyArrayObject *, int __pyx_skip_dispatch);
+  float (*reassign_parameter_j)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, float, PyArrayObject *, int __pyx_skip_dispatch);
   PyObject *(*flip)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, int __pyx_skip_dispatch);
   struct __pyx_obj_10frechetlib_14geometry_utils_EID *(*copy)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, int __pyx_skip_dispatch);
 };
 static struct __pyx_vtabstruct_10frechetlib_14geometry_utils_EID *__pyx_vtabptr_10frechetlib_14geometry_utils_EID;
 
 
-/* "frechetlib/geometry_utils.pyx":296
+/* "frechetlib/geometry_utils.pyx":305
  * 
  * @cython.final
  * cdef class EIDFromCurveIndices:             # <<<<<<<<<<<<<<
@@ -2792,6 +2796,27 @@ static CYTHON_INLINE int __Pyx_HasAttr(PyObject *, PyObject *);
   #define __PYX_STD_MOVE_IF_SUPPORTED(x) x
 #endif
 
+/* IsLittleEndian.proto */
+static CYTHON_INLINE int __Pyx_Is_Little_Endian(void);
+
+/* BufferFormatCheck.proto */
+static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const char* ts);
+static void __Pyx_BufFmt_Init(__Pyx_BufFmt_Context* ctx,
+                              __Pyx_BufFmt_StackElem* stack,
+                              __Pyx_TypeInfo* type);
+
+/* BufferGetAndValidate.proto */
+#define __Pyx_GetBufferAndValidate(buf, obj, dtype, flags, nd, cast, stack)\
+    ((obj == Py_None || obj == NULL) ?\
+    (__Pyx_ZeroBuffer(buf), 0) :\
+    __Pyx__GetBufferAndValidate(buf, obj, dtype, flags, nd, cast, stack))
+static int  __Pyx__GetBufferAndValidate(Py_buffer* buf, PyObject* obj,
+    __Pyx_TypeInfo* dtype, int flags, int nd, int cast, __Pyx_BufFmt_StackElem* stack);
+static void __Pyx_ZeroBuffer(Py_buffer* buf);
+static CYTHON_INLINE void __Pyx_SafeReleaseBuffer(Py_buffer* info);
+static Py_ssize_t __Pyx_minusones[] = { -1, -1, -1, -1, -1, -1, -1, -1 };
+static Py_ssize_t __Pyx_zeros[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
 /* PyObject_GenericGetAttrNoDict.proto */
 #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GenericGetAttrNoDict(PyObject* obj, PyObject* attr_name);
@@ -3068,15 +3093,6 @@ static int __pyx_slices_overlap(__Pyx_memviewslice *slice1,
                                 __Pyx_memviewslice *slice2,
                                 int ndim, size_t itemsize);
 
-/* IsLittleEndian.proto */
-static CYTHON_INLINE int __Pyx_Is_Little_Endian(void);
-
-/* BufferFormatCheck.proto */
-static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const char* ts);
-static void __Pyx_BufFmt_Init(__Pyx_BufFmt_Context* ctx,
-                              __Pyx_BufFmt_StackElem* stack,
-                              __Pyx_TypeInfo* type);
-
 /* TypeInfoCompare.proto */
 static int __pyx_typeinfo_cmp(__Pyx_TypeInfo *a, __Pyx_TypeInfo *b);
 
@@ -3315,10 +3331,10 @@ static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_intp(npy_intp value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_intp(npy_intp value);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
@@ -3386,11 +3402,14 @@ static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx
 static CYTHON_INLINE double __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static CYTHON_INLINE double __pyx_f_10frechetlib_14geometry_utils_5Point_dot_product(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static CYTHON_INLINE int __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
+static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_5Point_get_avg(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_compute(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_p1, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_p2, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q); /* proto*/
 static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_14geometry_utils_3EID_copy(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static float __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_i(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_P, int __pyx_skip_dispatch); /* proto*/
+static float __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_j(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_Q, int __pyx_skip_dispatch); /* proto*/
 static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static double __pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_heap_key(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
 static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_event(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch); /* proto*/
@@ -3469,6 +3488,7 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 /* #### Code section: typeinfo ### */
+static __Pyx_TypeInfo __Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t = { "float64_t", NULL, sizeof(__pyx_t_5numpy_float64_t), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "frechetlib.geometry_utils"
@@ -3509,7 +3529,7 @@ static const char __pyx_k_p1[] = "p1";
 static const char __pyx_k_p2[] = "p2";
 static const char __pyx_k_EID[] = "EID";
 static const char __pyx_k__11[] = ", ";
-static const char __pyx_k__61[] = "?";
+static const char __pyx_k__66[] = "?";
 static const char __pyx_k_abc[] = "abc";
 static const char __pyx_k_and[] = " and ";
 static const char __pyx_k_got[] = " (got ";
@@ -3550,6 +3570,7 @@ static const char __pyx_k_get_j[] = "get_j";
 static const char __pyx_k_get_p[] = "get_p";
 static const char __pyx_k_get_t[] = "get_t";
 static const char __pyx_k_index[] = "index";
+static const char __pyx_k_new_t[] = "new_t";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
@@ -3568,6 +3589,7 @@ static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_fortran[] = "fortran";
+static const char __pyx_k_get_avg[] = "get_avg";
 static const char __pyx_k_get_p_i[] = "get_p_i";
 static const char __pyx_k_get_p_j[] = "get_p_j";
 static const char __pyx_k_get_t_i[] = "get_t_i";
@@ -3620,6 +3642,7 @@ static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "<stringsource>";
 static const char __pyx_k_version_info[] = "version_info";
+static const char __pyx_k_Point_get_avg[] = "Point.get_avg";
 static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_get_i_is_vert[] = "get_i_is_vert";
 static const char __pyx_k_get_j_is_vert[] = "get_j_is_vert";
@@ -3647,6 +3670,8 @@ static const char __pyx_k_from_curve_indices[] = "from_curve_indices";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_EIDFromCurveIndices[] = "EIDFromCurveIndices";
 static const char __pyx_k_EID___reduce_cython[] = "EID.__reduce_cython__";
+static const char __pyx_k_reassign_parameter_i[] = "reassign_parameter_i";
+static const char __pyx_k_reassign_parameter_j[] = "reassign_parameter_j";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_EID___setstate_cython[] = "EID.__setstate_cython__";
 static const char __pyx_k_Invalid_shape_in_axis[] = "Invalid shape in axis ";
@@ -3661,6 +3686,8 @@ static const char __pyx_k_LinePointDistance_get_t[] = "LinePointDistance.get_t";
 static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
 static const char __pyx_k_Point___setstate_cython[] = "Point.__setstate_cython__";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
+static const char __pyx_k_EID_reassign_parameter_i[] = "EID.reassign_parameter_i";
+static const char __pyx_k_EID_reassign_parameter_j[] = "EID.reassign_parameter_j";
 static const char __pyx_k_Dimension_d_is_not_direct[] = "Dimension %d is not direct";
 static const char __pyx_k_frechetlib_geometry_utils[] = "frechetlib.geometry_utils";
 static const char __pyx_k_Index_out_of_bounds_axis_d[] = "Index out of bounds (axis %d)";
@@ -3692,7 +3719,7 @@ static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing ex
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static const char __pyx_k_numpy__core_multiarray_failed_to[] = "numpy._core.multiarray failed to import";
 static const char __pyx_k_numpy__core_umath_failed_to_impo[] = "numpy._core.umath failed to import";
-static const char __pyx_k_src_frechetlib_geometry_utils_py[] = "src\\frechetlib\\geometry_utils.pyx";
+static const char __pyx_k_src_frechetlib_geometry_utils_py[] = "src/frechetlib/geometry_utils.pyx";
 static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
 /* #### Code section: decls ### */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
@@ -3744,8 +3771,9 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_8get_coords(struc
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_10get_norm(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_12dot_product(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_14is_close(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_16__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_18__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_16get_avg(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance___cinit__(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, PyArrayObject *__pyx_v_p1, PyArrayObject *__pyx_v_p2, PyArrayObject *__pyx_v_q); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_2get_distance(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_4get_t(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self); /* proto */
@@ -3763,12 +3791,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_14get_t_j(struct __
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_16get_p_i(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_18get_p_j(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_20copy(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other); /* proto */
-static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_30__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_32__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22reassign_parameter_i(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_P); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24reassign_parameter_j(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_Q); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_26flip(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__lt__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other); /* proto */
+static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_30__hash__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_32__eq__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices___cinit__(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self, PyObject *__pyx_v_heap_key, struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_event); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_2get_heap_key(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_4get_event(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self); /* proto */
@@ -3902,6 +3932,8 @@ typedef struct {
   PyObject *__pyx_n_s_EID_get_p_j;
   PyObject *__pyx_n_s_EID_get_t_i;
   PyObject *__pyx_n_s_EID_get_t_j;
+  PyObject *__pyx_n_s_EID_reassign_parameter_i;
+  PyObject *__pyx_n_s_EID_reassign_parameter_j;
   PyObject *__pyx_n_s_Ellipsis;
   PyObject *__pyx_kp_s_Empty_shape_tuple_for_cython_arr;
   PyObject *__pyx_n_s_ImportError;
@@ -3930,6 +3962,7 @@ typedef struct {
   PyObject *__pyx_n_s_Point___setstate_cython;
   PyObject *__pyx_n_s_Point_convex_comb;
   PyObject *__pyx_n_s_Point_dot_product;
+  PyObject *__pyx_n_s_Point_get_avg;
   PyObject *__pyx_n_s_Point_get_coords;
   PyObject *__pyx_n_s_Point_get_norm;
   PyObject *__pyx_n_s_Point_is_close;
@@ -3946,7 +3979,7 @@ typedef struct {
   PyObject *__pyx_kp_u__2;
   PyObject *__pyx_n_s__3;
   PyObject *__pyx_kp_u__6;
-  PyObject *__pyx_n_s__61;
+  PyObject *__pyx_n_s__66;
   PyObject *__pyx_kp_u__7;
   PyObject *__pyx_n_s_abc;
   PyObject *__pyx_n_s_allocate_buffer;
@@ -3986,6 +4019,7 @@ typedef struct {
   PyObject *__pyx_n_s_frechetlib_geometry_utils;
   PyObject *__pyx_n_s_from_curve_indices;
   PyObject *__pyx_kp_u_gc;
+  PyObject *__pyx_n_s_get_avg;
   PyObject *__pyx_n_s_get_coords;
   PyObject *__pyx_n_s_get_dist;
   PyObject *__pyx_n_s_get_distance;
@@ -4026,6 +4060,7 @@ typedef struct {
   PyObject *__pyx_n_s_name_2;
   PyObject *__pyx_n_s_ndim;
   PyObject *__pyx_n_s_new;
+  PyObject *__pyx_n_s_new_t;
   PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
   PyObject *__pyx_kp_s_np_ndarray;
   PyObject *__pyx_kp_s_numpy__core_multiarray_failed_to;
@@ -4049,6 +4084,8 @@ typedef struct {
   PyObject *__pyx_n_s_pyx_vtable;
   PyObject *__pyx_n_s_q;
   PyObject *__pyx_n_s_range;
+  PyObject *__pyx_n_s_reassign_parameter_i;
+  PyObject *__pyx_n_s_reassign_parameter_j;
   PyObject *__pyx_n_s_reduce;
   PyObject *__pyx_n_s_reduce_cython;
   PyObject *__pyx_n_s_reduce_ex;
@@ -4104,9 +4141,11 @@ typedef struct {
   PyObject *__pyx_tuple__23;
   PyObject *__pyx_tuple__25;
   PyObject *__pyx_tuple__27;
-  PyObject *__pyx_tuple__33;
-  PyObject *__pyx_tuple__57;
-  PyObject *__pyx_tuple__59;
+  PyObject *__pyx_tuple__34;
+  PyObject *__pyx_tuple__51;
+  PyObject *__pyx_tuple__53;
+  PyObject *__pyx_tuple__62;
+  PyObject *__pyx_tuple__64;
   PyObject *__pyx_codeobj__22;
   PyObject *__pyx_codeobj__24;
   PyObject *__pyx_codeobj__26;
@@ -4115,7 +4154,7 @@ typedef struct {
   PyObject *__pyx_codeobj__30;
   PyObject *__pyx_codeobj__31;
   PyObject *__pyx_codeobj__32;
-  PyObject *__pyx_codeobj__34;
+  PyObject *__pyx_codeobj__33;
   PyObject *__pyx_codeobj__35;
   PyObject *__pyx_codeobj__36;
   PyObject *__pyx_codeobj__37;
@@ -4132,14 +4171,17 @@ typedef struct {
   PyObject *__pyx_codeobj__48;
   PyObject *__pyx_codeobj__49;
   PyObject *__pyx_codeobj__50;
-  PyObject *__pyx_codeobj__51;
   PyObject *__pyx_codeobj__52;
-  PyObject *__pyx_codeobj__53;
   PyObject *__pyx_codeobj__54;
   PyObject *__pyx_codeobj__55;
   PyObject *__pyx_codeobj__56;
+  PyObject *__pyx_codeobj__57;
   PyObject *__pyx_codeobj__58;
+  PyObject *__pyx_codeobj__59;
   PyObject *__pyx_codeobj__60;
+  PyObject *__pyx_codeobj__61;
+  PyObject *__pyx_codeobj__63;
+  PyObject *__pyx_codeobj__65;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -4245,6 +4287,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_EID_get_p_j);
   Py_CLEAR(clear_module_state->__pyx_n_s_EID_get_t_i);
   Py_CLEAR(clear_module_state->__pyx_n_s_EID_get_t_j);
+  Py_CLEAR(clear_module_state->__pyx_n_s_EID_reassign_parameter_i);
+  Py_CLEAR(clear_module_state->__pyx_n_s_EID_reassign_parameter_j);
   Py_CLEAR(clear_module_state->__pyx_n_s_Ellipsis);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Empty_shape_tuple_for_cython_arr);
   Py_CLEAR(clear_module_state->__pyx_n_s_ImportError);
@@ -4273,6 +4317,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Point___setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Point_convex_comb);
   Py_CLEAR(clear_module_state->__pyx_n_s_Point_dot_product);
+  Py_CLEAR(clear_module_state->__pyx_n_s_Point_get_avg);
   Py_CLEAR(clear_module_state->__pyx_n_s_Point_get_coords);
   Py_CLEAR(clear_module_state->__pyx_n_s_Point_get_norm);
   Py_CLEAR(clear_module_state->__pyx_n_s_Point_is_close);
@@ -4289,7 +4334,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_kp_u__2);
   Py_CLEAR(clear_module_state->__pyx_n_s__3);
   Py_CLEAR(clear_module_state->__pyx_kp_u__6);
-  Py_CLEAR(clear_module_state->__pyx_n_s__61);
+  Py_CLEAR(clear_module_state->__pyx_n_s__66);
   Py_CLEAR(clear_module_state->__pyx_kp_u__7);
   Py_CLEAR(clear_module_state->__pyx_n_s_abc);
   Py_CLEAR(clear_module_state->__pyx_n_s_allocate_buffer);
@@ -4329,6 +4374,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_frechetlib_geometry_utils);
   Py_CLEAR(clear_module_state->__pyx_n_s_from_curve_indices);
   Py_CLEAR(clear_module_state->__pyx_kp_u_gc);
+  Py_CLEAR(clear_module_state->__pyx_n_s_get_avg);
   Py_CLEAR(clear_module_state->__pyx_n_s_get_coords);
   Py_CLEAR(clear_module_state->__pyx_n_s_get_dist);
   Py_CLEAR(clear_module_state->__pyx_n_s_get_distance);
@@ -4369,6 +4415,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_name_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_ndim);
   Py_CLEAR(clear_module_state->__pyx_n_s_new);
+  Py_CLEAR(clear_module_state->__pyx_n_s_new_t);
   Py_CLEAR(clear_module_state->__pyx_kp_s_no_default___reduce___due_to_non);
   Py_CLEAR(clear_module_state->__pyx_kp_s_np_ndarray);
   Py_CLEAR(clear_module_state->__pyx_kp_s_numpy__core_multiarray_failed_to);
@@ -4392,6 +4439,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_pyx_vtable);
   Py_CLEAR(clear_module_state->__pyx_n_s_q);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
+  Py_CLEAR(clear_module_state->__pyx_n_s_reassign_parameter_i);
+  Py_CLEAR(clear_module_state->__pyx_n_s_reassign_parameter_j);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce_ex);
@@ -4447,9 +4496,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_tuple__23);
   Py_CLEAR(clear_module_state->__pyx_tuple__25);
   Py_CLEAR(clear_module_state->__pyx_tuple__27);
-  Py_CLEAR(clear_module_state->__pyx_tuple__33);
-  Py_CLEAR(clear_module_state->__pyx_tuple__57);
-  Py_CLEAR(clear_module_state->__pyx_tuple__59);
+  Py_CLEAR(clear_module_state->__pyx_tuple__34);
+  Py_CLEAR(clear_module_state->__pyx_tuple__51);
+  Py_CLEAR(clear_module_state->__pyx_tuple__53);
+  Py_CLEAR(clear_module_state->__pyx_tuple__62);
+  Py_CLEAR(clear_module_state->__pyx_tuple__64);
   Py_CLEAR(clear_module_state->__pyx_codeobj__22);
   Py_CLEAR(clear_module_state->__pyx_codeobj__24);
   Py_CLEAR(clear_module_state->__pyx_codeobj__26);
@@ -4458,7 +4509,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__30);
   Py_CLEAR(clear_module_state->__pyx_codeobj__31);
   Py_CLEAR(clear_module_state->__pyx_codeobj__32);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__34);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__33);
   Py_CLEAR(clear_module_state->__pyx_codeobj__35);
   Py_CLEAR(clear_module_state->__pyx_codeobj__36);
   Py_CLEAR(clear_module_state->__pyx_codeobj__37);
@@ -4475,14 +4526,17 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_codeobj__48);
   Py_CLEAR(clear_module_state->__pyx_codeobj__49);
   Py_CLEAR(clear_module_state->__pyx_codeobj__50);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__51);
   Py_CLEAR(clear_module_state->__pyx_codeobj__52);
-  Py_CLEAR(clear_module_state->__pyx_codeobj__53);
   Py_CLEAR(clear_module_state->__pyx_codeobj__54);
   Py_CLEAR(clear_module_state->__pyx_codeobj__55);
   Py_CLEAR(clear_module_state->__pyx_codeobj__56);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__57);
   Py_CLEAR(clear_module_state->__pyx_codeobj__58);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__59);
   Py_CLEAR(clear_module_state->__pyx_codeobj__60);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__61);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__63);
+  Py_CLEAR(clear_module_state->__pyx_codeobj__65);
   return 0;
 }
 #endif
@@ -4566,6 +4620,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_EID_get_p_j);
   Py_VISIT(traverse_module_state->__pyx_n_s_EID_get_t_i);
   Py_VISIT(traverse_module_state->__pyx_n_s_EID_get_t_j);
+  Py_VISIT(traverse_module_state->__pyx_n_s_EID_reassign_parameter_i);
+  Py_VISIT(traverse_module_state->__pyx_n_s_EID_reassign_parameter_j);
   Py_VISIT(traverse_module_state->__pyx_n_s_Ellipsis);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Empty_shape_tuple_for_cython_arr);
   Py_VISIT(traverse_module_state->__pyx_n_s_ImportError);
@@ -4594,6 +4650,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Point___setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Point_convex_comb);
   Py_VISIT(traverse_module_state->__pyx_n_s_Point_dot_product);
+  Py_VISIT(traverse_module_state->__pyx_n_s_Point_get_avg);
   Py_VISIT(traverse_module_state->__pyx_n_s_Point_get_coords);
   Py_VISIT(traverse_module_state->__pyx_n_s_Point_get_norm);
   Py_VISIT(traverse_module_state->__pyx_n_s_Point_is_close);
@@ -4610,7 +4667,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_kp_u__2);
   Py_VISIT(traverse_module_state->__pyx_n_s__3);
   Py_VISIT(traverse_module_state->__pyx_kp_u__6);
-  Py_VISIT(traverse_module_state->__pyx_n_s__61);
+  Py_VISIT(traverse_module_state->__pyx_n_s__66);
   Py_VISIT(traverse_module_state->__pyx_kp_u__7);
   Py_VISIT(traverse_module_state->__pyx_n_s_abc);
   Py_VISIT(traverse_module_state->__pyx_n_s_allocate_buffer);
@@ -4650,6 +4707,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_frechetlib_geometry_utils);
   Py_VISIT(traverse_module_state->__pyx_n_s_from_curve_indices);
   Py_VISIT(traverse_module_state->__pyx_kp_u_gc);
+  Py_VISIT(traverse_module_state->__pyx_n_s_get_avg);
   Py_VISIT(traverse_module_state->__pyx_n_s_get_coords);
   Py_VISIT(traverse_module_state->__pyx_n_s_get_dist);
   Py_VISIT(traverse_module_state->__pyx_n_s_get_distance);
@@ -4690,6 +4748,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_name_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_ndim);
   Py_VISIT(traverse_module_state->__pyx_n_s_new);
+  Py_VISIT(traverse_module_state->__pyx_n_s_new_t);
   Py_VISIT(traverse_module_state->__pyx_kp_s_no_default___reduce___due_to_non);
   Py_VISIT(traverse_module_state->__pyx_kp_s_np_ndarray);
   Py_VISIT(traverse_module_state->__pyx_kp_s_numpy__core_multiarray_failed_to);
@@ -4713,6 +4772,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_pyx_vtable);
   Py_VISIT(traverse_module_state->__pyx_n_s_q);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
+  Py_VISIT(traverse_module_state->__pyx_n_s_reassign_parameter_i);
+  Py_VISIT(traverse_module_state->__pyx_n_s_reassign_parameter_j);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce_ex);
@@ -4768,9 +4829,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_tuple__23);
   Py_VISIT(traverse_module_state->__pyx_tuple__25);
   Py_VISIT(traverse_module_state->__pyx_tuple__27);
-  Py_VISIT(traverse_module_state->__pyx_tuple__33);
-  Py_VISIT(traverse_module_state->__pyx_tuple__57);
-  Py_VISIT(traverse_module_state->__pyx_tuple__59);
+  Py_VISIT(traverse_module_state->__pyx_tuple__34);
+  Py_VISIT(traverse_module_state->__pyx_tuple__51);
+  Py_VISIT(traverse_module_state->__pyx_tuple__53);
+  Py_VISIT(traverse_module_state->__pyx_tuple__62);
+  Py_VISIT(traverse_module_state->__pyx_tuple__64);
   Py_VISIT(traverse_module_state->__pyx_codeobj__22);
   Py_VISIT(traverse_module_state->__pyx_codeobj__24);
   Py_VISIT(traverse_module_state->__pyx_codeobj__26);
@@ -4779,7 +4842,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__30);
   Py_VISIT(traverse_module_state->__pyx_codeobj__31);
   Py_VISIT(traverse_module_state->__pyx_codeobj__32);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__34);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__33);
   Py_VISIT(traverse_module_state->__pyx_codeobj__35);
   Py_VISIT(traverse_module_state->__pyx_codeobj__36);
   Py_VISIT(traverse_module_state->__pyx_codeobj__37);
@@ -4796,14 +4859,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_codeobj__48);
   Py_VISIT(traverse_module_state->__pyx_codeobj__49);
   Py_VISIT(traverse_module_state->__pyx_codeobj__50);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__51);
   Py_VISIT(traverse_module_state->__pyx_codeobj__52);
-  Py_VISIT(traverse_module_state->__pyx_codeobj__53);
   Py_VISIT(traverse_module_state->__pyx_codeobj__54);
   Py_VISIT(traverse_module_state->__pyx_codeobj__55);
   Py_VISIT(traverse_module_state->__pyx_codeobj__56);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__57);
   Py_VISIT(traverse_module_state->__pyx_codeobj__58);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__59);
   Py_VISIT(traverse_module_state->__pyx_codeobj__60);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__61);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__63);
+  Py_VISIT(traverse_module_state->__pyx_codeobj__65);
   return 0;
 }
 #endif
@@ -4923,6 +4989,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_EID_get_p_j __pyx_mstate_global->__pyx_n_s_EID_get_p_j
 #define __pyx_n_s_EID_get_t_i __pyx_mstate_global->__pyx_n_s_EID_get_t_i
 #define __pyx_n_s_EID_get_t_j __pyx_mstate_global->__pyx_n_s_EID_get_t_j
+#define __pyx_n_s_EID_reassign_parameter_i __pyx_mstate_global->__pyx_n_s_EID_reassign_parameter_i
+#define __pyx_n_s_EID_reassign_parameter_j __pyx_mstate_global->__pyx_n_s_EID_reassign_parameter_j
 #define __pyx_n_s_Ellipsis __pyx_mstate_global->__pyx_n_s_Ellipsis
 #define __pyx_kp_s_Empty_shape_tuple_for_cython_arr __pyx_mstate_global->__pyx_kp_s_Empty_shape_tuple_for_cython_arr
 #define __pyx_n_s_ImportError __pyx_mstate_global->__pyx_n_s_ImportError
@@ -4951,6 +5019,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Point___setstate_cython __pyx_mstate_global->__pyx_n_s_Point___setstate_cython
 #define __pyx_n_s_Point_convex_comb __pyx_mstate_global->__pyx_n_s_Point_convex_comb
 #define __pyx_n_s_Point_dot_product __pyx_mstate_global->__pyx_n_s_Point_dot_product
+#define __pyx_n_s_Point_get_avg __pyx_mstate_global->__pyx_n_s_Point_get_avg
 #define __pyx_n_s_Point_get_coords __pyx_mstate_global->__pyx_n_s_Point_get_coords
 #define __pyx_n_s_Point_get_norm __pyx_mstate_global->__pyx_n_s_Point_get_norm
 #define __pyx_n_s_Point_is_close __pyx_mstate_global->__pyx_n_s_Point_is_close
@@ -4967,7 +5036,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_kp_u__2 __pyx_mstate_global->__pyx_kp_u__2
 #define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
 #define __pyx_kp_u__6 __pyx_mstate_global->__pyx_kp_u__6
-#define __pyx_n_s__61 __pyx_mstate_global->__pyx_n_s__61
+#define __pyx_n_s__66 __pyx_mstate_global->__pyx_n_s__66
 #define __pyx_kp_u__7 __pyx_mstate_global->__pyx_kp_u__7
 #define __pyx_n_s_abc __pyx_mstate_global->__pyx_n_s_abc
 #define __pyx_n_s_allocate_buffer __pyx_mstate_global->__pyx_n_s_allocate_buffer
@@ -5007,6 +5076,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_frechetlib_geometry_utils __pyx_mstate_global->__pyx_n_s_frechetlib_geometry_utils
 #define __pyx_n_s_from_curve_indices __pyx_mstate_global->__pyx_n_s_from_curve_indices
 #define __pyx_kp_u_gc __pyx_mstate_global->__pyx_kp_u_gc
+#define __pyx_n_s_get_avg __pyx_mstate_global->__pyx_n_s_get_avg
 #define __pyx_n_s_get_coords __pyx_mstate_global->__pyx_n_s_get_coords
 #define __pyx_n_s_get_dist __pyx_mstate_global->__pyx_n_s_get_dist
 #define __pyx_n_s_get_distance __pyx_mstate_global->__pyx_n_s_get_distance
@@ -5047,6 +5117,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_name_2 __pyx_mstate_global->__pyx_n_s_name_2
 #define __pyx_n_s_ndim __pyx_mstate_global->__pyx_n_s_ndim
 #define __pyx_n_s_new __pyx_mstate_global->__pyx_n_s_new
+#define __pyx_n_s_new_t __pyx_mstate_global->__pyx_n_s_new_t
 #define __pyx_kp_s_no_default___reduce___due_to_non __pyx_mstate_global->__pyx_kp_s_no_default___reduce___due_to_non
 #define __pyx_kp_s_np_ndarray __pyx_mstate_global->__pyx_kp_s_np_ndarray
 #define __pyx_kp_s_numpy__core_multiarray_failed_to __pyx_mstate_global->__pyx_kp_s_numpy__core_multiarray_failed_to
@@ -5070,6 +5141,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_pyx_vtable __pyx_mstate_global->__pyx_n_s_pyx_vtable
 #define __pyx_n_s_q __pyx_mstate_global->__pyx_n_s_q
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
+#define __pyx_n_s_reassign_parameter_i __pyx_mstate_global->__pyx_n_s_reassign_parameter_i
+#define __pyx_n_s_reassign_parameter_j __pyx_mstate_global->__pyx_n_s_reassign_parameter_j
 #define __pyx_n_s_reduce __pyx_mstate_global->__pyx_n_s_reduce
 #define __pyx_n_s_reduce_cython __pyx_mstate_global->__pyx_n_s_reduce_cython
 #define __pyx_n_s_reduce_ex __pyx_mstate_global->__pyx_n_s_reduce_ex
@@ -5125,9 +5198,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_tuple__23 __pyx_mstate_global->__pyx_tuple__23
 #define __pyx_tuple__25 __pyx_mstate_global->__pyx_tuple__25
 #define __pyx_tuple__27 __pyx_mstate_global->__pyx_tuple__27
-#define __pyx_tuple__33 __pyx_mstate_global->__pyx_tuple__33
-#define __pyx_tuple__57 __pyx_mstate_global->__pyx_tuple__57
-#define __pyx_tuple__59 __pyx_mstate_global->__pyx_tuple__59
+#define __pyx_tuple__34 __pyx_mstate_global->__pyx_tuple__34
+#define __pyx_tuple__51 __pyx_mstate_global->__pyx_tuple__51
+#define __pyx_tuple__53 __pyx_mstate_global->__pyx_tuple__53
+#define __pyx_tuple__62 __pyx_mstate_global->__pyx_tuple__62
+#define __pyx_tuple__64 __pyx_mstate_global->__pyx_tuple__64
 #define __pyx_codeobj__22 __pyx_mstate_global->__pyx_codeobj__22
 #define __pyx_codeobj__24 __pyx_mstate_global->__pyx_codeobj__24
 #define __pyx_codeobj__26 __pyx_mstate_global->__pyx_codeobj__26
@@ -5136,7 +5211,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__30 __pyx_mstate_global->__pyx_codeobj__30
 #define __pyx_codeobj__31 __pyx_mstate_global->__pyx_codeobj__31
 #define __pyx_codeobj__32 __pyx_mstate_global->__pyx_codeobj__32
-#define __pyx_codeobj__34 __pyx_mstate_global->__pyx_codeobj__34
+#define __pyx_codeobj__33 __pyx_mstate_global->__pyx_codeobj__33
 #define __pyx_codeobj__35 __pyx_mstate_global->__pyx_codeobj__35
 #define __pyx_codeobj__36 __pyx_mstate_global->__pyx_codeobj__36
 #define __pyx_codeobj__37 __pyx_mstate_global->__pyx_codeobj__37
@@ -5153,14 +5228,17 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__48 __pyx_mstate_global->__pyx_codeobj__48
 #define __pyx_codeobj__49 __pyx_mstate_global->__pyx_codeobj__49
 #define __pyx_codeobj__50 __pyx_mstate_global->__pyx_codeobj__50
-#define __pyx_codeobj__51 __pyx_mstate_global->__pyx_codeobj__51
 #define __pyx_codeobj__52 __pyx_mstate_global->__pyx_codeobj__52
-#define __pyx_codeobj__53 __pyx_mstate_global->__pyx_codeobj__53
 #define __pyx_codeobj__54 __pyx_mstate_global->__pyx_codeobj__54
 #define __pyx_codeobj__55 __pyx_mstate_global->__pyx_codeobj__55
 #define __pyx_codeobj__56 __pyx_mstate_global->__pyx_codeobj__56
+#define __pyx_codeobj__57 __pyx_mstate_global->__pyx_codeobj__57
 #define __pyx_codeobj__58 __pyx_mstate_global->__pyx_codeobj__58
+#define __pyx_codeobj__59 __pyx_mstate_global->__pyx_codeobj__59
 #define __pyx_codeobj__60 __pyx_mstate_global->__pyx_codeobj__60
+#define __pyx_codeobj__61 __pyx_mstate_global->__pyx_codeobj__61
+#define __pyx_codeobj__63 __pyx_mstate_global->__pyx_codeobj__63
+#define __pyx_codeobj__65 __pyx_mstate_global->__pyx_codeobj__65
 /* #### Code section: module_code ### */
 
 /* "vector.from_py":45
@@ -19080,7 +19158,7 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":287
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":287
  * 
  *         @property
  *         cdef inline npy_intp itemsize(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19091,7 +19169,7 @@ static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *__
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":288
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":288
  *         @property
  *         cdef inline npy_intp itemsize(self) noexcept nogil:
  *             return PyDataType_ELSIZE(self)             # <<<<<<<<<<<<<<
@@ -19101,7 +19179,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   __pyx_r = PyDataType_ELSIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":287
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":287
  * 
  *         @property
  *         cdef inline npy_intp itemsize(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19114,7 +19192,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":291
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":291
  * 
  *         @property
  *         cdef inline npy_intp alignment(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19125,7 +19203,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":292
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":292
  *         @property
  *         cdef inline npy_intp alignment(self) noexcept nogil:
  *             return PyDataType_ALIGNMENT(self)             # <<<<<<<<<<<<<<
@@ -19135,7 +19213,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   __pyx_r = PyDataType_ALIGNMENT(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":291
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":291
  * 
  *         @property
  *         cdef inline npy_intp alignment(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19148,7 +19226,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":297
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":297
  *         # for this using PyDataType_HASFIELDS.
  *         @property
  *         cdef inline object fields(self):             # <<<<<<<<<<<<<<
@@ -19162,7 +19240,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("fields", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":298
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":298
  *         @property
  *         cdef inline object fields(self):
  *             return <object>PyDataType_FIELDS(self)             # <<<<<<<<<<<<<<
@@ -19175,7 +19253,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   __pyx_r = ((PyObject *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":297
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":297
  *         # for this using PyDataType_HASFIELDS.
  *         @property
  *         cdef inline object fields(self):             # <<<<<<<<<<<<<<
@@ -19190,7 +19268,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":301
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":301
  * 
  *         @property
  *         cdef inline tuple names(self):             # <<<<<<<<<<<<<<
@@ -19204,7 +19282,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("names", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":302
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":302
  *         @property
  *         cdef inline tuple names(self):
  *             return <tuple>PyDataType_NAMES(self)             # <<<<<<<<<<<<<<
@@ -19217,7 +19295,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   __pyx_r = ((PyObject*)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":301
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":301
  * 
  *         @property
  *         cdef inline tuple names(self):             # <<<<<<<<<<<<<<
@@ -19232,7 +19310,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":308
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":308
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property
  *         cdef inline PyArray_ArrayDescr* subarray(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19243,7 +19321,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
 static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarray(PyArray_Descr *__pyx_v_self) {
   PyArray_ArrayDescr *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":309
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":309
  *         @property
  *         cdef inline PyArray_ArrayDescr* subarray(self) noexcept nogil:
  *             return PyDataType_SUBARRAY(self)             # <<<<<<<<<<<<<<
@@ -19253,7 +19331,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   __pyx_r = PyDataType_SUBARRAY(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":308
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":308
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property
  *         cdef inline PyArray_ArrayDescr* subarray(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19266,7 +19344,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":312
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":312
  * 
  *         @property
  *         cdef inline npy_uint64 flags(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19277,7 +19355,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
 static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr *__pyx_v_self) {
   npy_uint64 __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":314
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":314
  *         cdef inline npy_uint64 flags(self) noexcept nogil:
  *             """The data types flags."""
  *             return PyDataType_FLAGS(self)             # <<<<<<<<<<<<<<
@@ -19287,7 +19365,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   __pyx_r = PyDataType_FLAGS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":312
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":312
  * 
  *         @property
  *         cdef inline npy_uint64 flags(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19300,7 +19378,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":324
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":324
  * 
  *         @property
  *         cdef inline int numiter(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19311,7 +19389,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":326
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":326
  *         cdef inline int numiter(self) noexcept nogil:
  *             """The number of arrays that need to be broadcast to the same shape."""
  *             return PyArray_MultiIter_NUMITER(self)             # <<<<<<<<<<<<<<
@@ -19321,7 +19399,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   __pyx_r = PyArray_MultiIter_NUMITER(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":324
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":324
  * 
  *         @property
  *         cdef inline int numiter(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19334,7 +19412,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":329
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":329
  * 
  *         @property
  *         cdef inline npy_intp size(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19345,7 +19423,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":331
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":331
  *         cdef inline npy_intp size(self) noexcept nogil:
  *             """The total broadcasted size."""
  *             return PyArray_MultiIter_SIZE(self)             # <<<<<<<<<<<<<<
@@ -19355,7 +19433,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":329
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":329
  * 
  *         @property
  *         cdef inline npy_intp size(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19368,7 +19446,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":334
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
  * 
  *         @property
  *         cdef inline npy_intp index(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19379,7 +19457,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":336
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":336
  *         cdef inline npy_intp index(self) noexcept nogil:
  *             """The current (1-d) index into the broadcasted result."""
  *             return PyArray_MultiIter_INDEX(self)             # <<<<<<<<<<<<<<
@@ -19389,7 +19467,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   __pyx_r = PyArray_MultiIter_INDEX(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":334
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":334
  * 
  *         @property
  *         cdef inline npy_intp index(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19402,7 +19480,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":339
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":339
  * 
  *         @property
  *         cdef inline int nd(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19413,7 +19491,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":341
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":341
  *         cdef inline int nd(self) noexcept nogil:
  *             """The number of dimensions in the broadcasted result."""
  *             return PyArray_MultiIter_NDIM(self)             # <<<<<<<<<<<<<<
@@ -19423,7 +19501,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   __pyx_r = PyArray_MultiIter_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":339
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":339
  * 
  *         @property
  *         cdef inline int nd(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19436,7 +19514,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":344
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":344
  * 
  *         @property
  *         cdef inline npy_intp* dimensions(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19447,7 +19525,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":346
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":346
  *         cdef inline npy_intp* dimensions(self) noexcept nogil:
  *             """The shape of the broadcasted result."""
  *             return PyArray_MultiIter_DIMS(self)             # <<<<<<<<<<<<<<
@@ -19457,7 +19535,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   __pyx_r = PyArray_MultiIter_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":344
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":344
  * 
  *         @property
  *         cdef inline npy_intp* dimensions(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19470,7 +19548,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":349
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":349
  * 
  *         @property
  *         cdef inline void** iters(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19481,7 +19559,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
 static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiIterObject *__pyx_v_self) {
   void **__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":352
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":352
  *             """An array of iterator objects that holds the iterators for the arrays to be broadcast together.
  *             On return, the iterators are adjusted for broadcasting."""
  *             return PyArray_MultiIter_ITERS(self)             # <<<<<<<<<<<<<<
@@ -19491,7 +19569,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_ITERS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":349
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":349
  * 
  *         @property
  *         cdef inline void** iters(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19504,7 +19582,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":367
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":367
  * 
  *         @property
  *         cdef inline PyObject* base(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19515,7 +19593,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject *__pyx_v_self) {
   PyObject *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":370
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":370
  *             """Returns a borrowed reference to the object owning the data/memory.
  *             """
  *             return PyArray_BASE(self)             # <<<<<<<<<<<<<<
@@ -19525,7 +19603,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   __pyx_r = PyArray_BASE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":367
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":367
  * 
  *         @property
  *         cdef inline PyObject* base(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19538,7 +19616,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":373
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":373
  * 
  *         @property
  *         cdef inline dtype descr(self):             # <<<<<<<<<<<<<<
@@ -19552,7 +19630,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   PyArray_Descr *__pyx_t_1;
   __Pyx_RefNannySetupContext("descr", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":376
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":376
  *             """Returns an owned reference to the dtype of the array.
  *             """
  *             return <dtype>PyArray_DESCR(self)             # <<<<<<<<<<<<<<
@@ -19565,7 +19643,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   __pyx_r = ((PyArray_Descr *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":373
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":373
  * 
  *         @property
  *         cdef inline dtype descr(self):             # <<<<<<<<<<<<<<
@@ -19580,7 +19658,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":379
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":379
  * 
  *         @property
  *         cdef inline int ndim(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19591,7 +19669,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
 static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":382
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":382
  *             """Returns the number of dimensions in the array.
  *             """
  *             return PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -19601,7 +19679,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   __pyx_r = PyArray_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":379
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":379
  * 
  *         @property
  *         cdef inline int ndim(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19614,7 +19692,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":385
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":385
  * 
  *         @property
  *         cdef inline npy_intp *shape(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19625,7 +19703,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":390
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":390
  *             Can return NULL for 0-dimensional arrays.
  *             """
  *             return PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -19635,7 +19713,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   __pyx_r = PyArray_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":385
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":385
  * 
  *         @property
  *         cdef inline npy_intp *shape(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19648,7 +19726,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":393
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":393
  * 
  *         @property
  *         cdef inline npy_intp *strides(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19659,7 +19737,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":397
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":397
  *             The number of elements matches the number of dimensions of the array (ndim).
  *             """
  *             return PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -19669,7 +19747,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   __pyx_r = PyArray_STRIDES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":393
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":393
  * 
  *         @property
  *         cdef inline npy_intp *strides(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19682,7 +19760,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":400
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":400
  * 
  *         @property
  *         cdef inline npy_intp size(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19693,7 +19771,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":403
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":403
  *             """Returns the total size (in number of elements) of the array.
  *             """
  *             return PyArray_SIZE(self)             # <<<<<<<<<<<<<<
@@ -19703,7 +19781,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   __pyx_r = PyArray_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":400
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":400
  * 
  *         @property
  *         cdef inline npy_intp size(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19716,7 +19794,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":406
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":406
  * 
  *         @property
  *         cdef inline char* data(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19727,7 +19805,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self) {
   char *__pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":412
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":412
  *             of `PyArray_DATA()` instead, which returns a 'void*'.
  *             """
  *             return PyArray_BYTES(self)             # <<<<<<<<<<<<<<
@@ -19737,7 +19815,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   __pyx_r = PyArray_BYTES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":406
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":406
  * 
  *         @property
  *         cdef inline char* data(self) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -19750,7 +19828,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":824
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":824
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -19767,7 +19845,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":825
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":825
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -19781,7 +19859,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":824
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":824
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -19800,7 +19878,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":827
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":827
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -19817,7 +19895,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":828
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":828
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -19831,7 +19909,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":827
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":827
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -19850,7 +19928,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":830
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":830
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -19867,7 +19945,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":831
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":831
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -19881,7 +19959,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":830
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":830
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -19900,7 +19978,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":833
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":833
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -19917,7 +19995,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":834
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":834
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -19931,7 +20009,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":833
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":833
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -19950,7 +20028,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":836
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":836
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -19967,7 +20045,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":837
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":837
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -19981,7 +20059,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":836
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":836
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -20000,7 +20078,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":839
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":839
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -20015,7 +20093,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   PyObject *__pyx_t_2;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":840
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":840
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -20025,7 +20103,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = PyDataType_HASSUBARRAY(__pyx_v_d);
   if (__pyx_t_1) {
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":841
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":841
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -20038,7 +20116,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_t_2);
     goto __pyx_L0;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":840
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":840
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -20047,7 +20125,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":843
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":843
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -20061,7 +20139,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":839
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":839
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -20076,7 +20154,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1027
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1027
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -20090,7 +20168,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1028
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1028
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -20099,7 +20177,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1029
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1029
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -20108,7 +20186,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   __pyx_t_1 = PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(2, 1029, __pyx_L1_error)
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1027
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1027
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -20123,7 +20201,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __pyx_L0:;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1031
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -20138,7 +20216,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1032
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1032
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -20147,7 +20225,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1033
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1033
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -20157,7 +20235,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = (__pyx_v_base == NULL);
   if (__pyx_t_1) {
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1034
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1034
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -20168,7 +20246,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1033
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1033
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -20177,7 +20255,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1035
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1035
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -20189,7 +20267,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1031
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -20204,7 +20282,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1039
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1039
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -20228,7 +20306,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1040
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20244,7 +20322,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1041
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1041
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -20253,7 +20331,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1041, __pyx_L3_error)
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1040
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20267,7 +20345,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1042
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1042
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -20282,7 +20360,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1043
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1043
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy._core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -20297,7 +20375,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1040
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1040
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20313,7 +20391,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1039
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1039
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -20336,7 +20414,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1045
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1045
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -20360,7 +20438,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1046
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1046
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20376,7 +20454,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1047
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1047
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -20385,7 +20463,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1047, __pyx_L3_error)
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1046
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1046
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20399,7 +20477,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1048
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1048
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -20414,7 +20492,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1049
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1049
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -20429,7 +20507,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1046
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1046
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20445,7 +20523,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1045
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1045
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -20468,7 +20546,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1051
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1051
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -20492,7 +20570,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 1);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1052
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1052
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20508,7 +20586,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1053
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1053
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -20517,7 +20595,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 1053, __pyx_L3_error)
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1052
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1052
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20531,7 +20609,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1054
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1054
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -20546,7 +20624,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1055
+      /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1055
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -20561,7 +20639,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1052
+    /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1052
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -20577,7 +20655,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1051
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1051
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -20600,7 +20678,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1058
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1058
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -20611,7 +20689,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1070
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1070
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -20621,7 +20699,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1058
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1058
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -20634,7 +20712,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1073
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1073
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -20645,7 +20723,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
 static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1085
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1085
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -20655,7 +20733,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1073
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1073
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -20668,7 +20746,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1088
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1088
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20679,7 +20757,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1095
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1095
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -20689,7 +20767,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1088
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1088
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20702,7 +20780,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1098
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1098
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20713,7 +20791,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1102
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1102
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -20723,7 +20801,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1098
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1098
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20736,7 +20814,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1105
+/* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1105
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20747,7 +20825,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1109
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1109
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -20757,7 +20835,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1105
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1105
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -20773,7 +20851,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
 /* "frechetlib/geometry_utils.pyx":5
  * cimport cython
  * 
- * cdef  bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
+ * cdef bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
  *   return abs(a - b) < epsilon
  * 
  */
@@ -20789,7 +20867,7 @@ static int __pyx_f_10frechetlib_14geometry_utils_double_equals(double __pyx_v_a,
 
   /* "frechetlib/geometry_utils.pyx":6
  * 
- * cdef  bint double_equals(double a, double b, double epsilon = 1e-10):
+ * cdef bint double_equals(double a, double b, double epsilon = 1e-10):
  *   return abs(a - b) < epsilon             # <<<<<<<<<<<<<<
  * 
  * @cython.final
@@ -20800,7 +20878,7 @@ static int __pyx_f_10frechetlib_14geometry_utils_double_equals(double __pyx_v_a,
   /* "frechetlib/geometry_utils.pyx":5
  * cimport cython
  * 
- * cdef  bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
+ * cdef bint double_equals(double a, double b, double epsilon = 1e-10):             # <<<<<<<<<<<<<<
  *   return abs(a - b) < epsilon
  * 
  */
@@ -22126,7 +22204,7 @@ static CYTHON_INLINE int __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(s
  * 
  *         return res             # <<<<<<<<<<<<<<
  * 
- * @cython.final
+ *     cpdef inline Point get_avg(self, Point q):
  */
   __pyx_r = __pyx_v_res;
   goto __pyx_L0;
@@ -22278,6 +22356,230 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_14is_close(struct
   return __pyx_r;
 }
 
+/* "frechetlib/geometry_utils.pyx":66
+ *         return res
+ * 
+ *     cpdef inline Point get_avg(self, Point q):             # <<<<<<<<<<<<<<
+ *         cdef cvector[double] new_coords
+ * 
+ */
+
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_17get_avg(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static CYTHON_INLINE struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetlib_14geometry_utils_5Point_get_avg(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  std::vector<double>  __pyx_v_new_coords;
+  int __pyx_v_i;
+  struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_avg", 1);
+
+  /* "frechetlib/geometry_utils.pyx":70
+ * 
+ *         cdef int i
+ *         for i in range(len(self.coords)):             # <<<<<<<<<<<<<<
+ *             new_coords.push_back((self.coords[i] + q.coords[i])/2.0)
+ * 
+ */
+  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v_self->coords); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = __pyx_t_2;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
+
+    /* "frechetlib/geometry_utils.pyx":71
+ *         cdef int i
+ *         for i in range(len(self.coords)):
+ *             new_coords.push_back((self.coords[i] + q.coords[i])/2.0)             # <<<<<<<<<<<<<<
+ * 
+ *         return Point(new_coords)
+ */
+    try {
+      __pyx_v_new_coords.push_back((((__pyx_v_self->coords[__pyx_v_i]) + (__pyx_v_q->coords[__pyx_v_i])) / 2.0));
+    } catch(...) {
+      __Pyx_CppExn2PyErr();
+      __PYX_ERR(0, 71, __pyx_L1_error)
+    }
+  }
+
+  /* "frechetlib/geometry_utils.pyx":73
+ *             new_coords.push_back((self.coords[i] + q.coords[i])/2.0)
+ * 
+ *         return Point(new_coords)             # <<<<<<<<<<<<<<
+ * 
+ * @cython.final
+ */
+  __Pyx_XDECREF((PyObject *)__pyx_r);
+  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v_new_coords); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_5);
+  __pyx_t_5 = 0;
+  goto __pyx_L0;
+
+  /* "frechetlib/geometry_utils.pyx":66
+ *         return res
+ * 
+ *     cpdef inline Point get_avg(self, Point q):             # <<<<<<<<<<<<<<
+ *         cdef cvector[double] new_coords
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("frechetlib.geometry_utils.Point.get_avg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF((PyObject *)__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_17get_avg(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_5Point_17get_avg = {"get_avg", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_17get_avg, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_17get_avg(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[1] = {0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_avg (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_MACROS
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_q,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_q)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 66, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_avg") < 0)) __PYX_ERR(0, 66, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 1)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+    }
+    __pyx_v_q = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)values[0]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_avg", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 66, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_AddTraceback("frechetlib.geometry_utils.Point.get_avg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_q), __pyx_ptype_10frechetlib_14geometry_utils_Point, 1, "q", 0))) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_5Point_16get_avg(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_v_self), __pyx_v_q);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_16get_avg(struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_q) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_avg", 1);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_get_avg(__pyx_v_self, __pyx_v_q, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("frechetlib.geometry_utils.Point.get_avg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
@@ -22285,15 +22587,15 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_14is_close(struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_17__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_19__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_5Point_17__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_17__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_17__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_5Point_19__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_19__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_19__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -22318,14 +22620,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_5Point_16__reduce_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_5Point_18__reduce_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_16__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_18__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -22365,15 +22667,15 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_16__reduce_cython
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_19__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_21__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_5Point_19__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_19__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_19__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_5Point_21__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_21__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_5Point_21__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -22447,7 +22749,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_5Point_18__setstate_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_5Point_20__setstate_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -22460,7 +22762,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_18__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_20__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -22492,7 +22794,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_5Point_18__setstate_cyth
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":69
+/* "frechetlib/geometry_utils.pyx":78
  * cdef class LinePointDistance:
  * 
  *     def __cinit__(self, p1: np.ndarray, p2: np.ndarray, q: np.ndarray):             # <<<<<<<<<<<<<<
@@ -22542,7 +22844,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_17LinePointDistance_1__cinit__
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -22550,9 +22852,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_17LinePointDistance_1__cinit__
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(0, 78, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -22560,14 +22862,14 @@ static int __pyx_pw_10frechetlib_14geometry_utils_17LinePointDistance_1__cinit__
           (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 78, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(0, 78, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 69, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -22582,7 +22884,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_17LinePointDistance_1__cinit__
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 69, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 78, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22596,9 +22898,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_17LinePointDistance_1__cinit__
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p1), __pyx_ptype_5numpy_ndarray, 0, "p1", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p2), __pyx_ptype_5numpy_ndarray, 0, "p2", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_q), __pyx_ptype_5numpy_ndarray, 0, "q", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p1), __pyx_ptype_5numpy_ndarray, 0, "p1", 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p2), __pyx_ptype_5numpy_ndarray, 0, "p2", 0))) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_q), __pyx_ptype_5numpy_ndarray, 0, "q", 0))) __PYX_ERR(0, 78, __pyx_L1_error)
   __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance___cinit__(((struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *)__pyx_v_self), __pyx_v_p1, __pyx_v_p2, __pyx_v_q);
 
   /* function exit code */
@@ -22627,25 +22929,25 @@ static int __pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance___cinit__(
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":70
+  /* "frechetlib/geometry_utils.pyx":79
  * 
  *     def __cinit__(self, p1: np.ndarray, p2: np.ndarray, q: np.ndarray):
  *         self.compute(Point(p1), Point(p2), Point(q))             # <<<<<<<<<<<<<<
  * 
  *     cdef inline void compute(self, Point p1, Point p2, Point q):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_q)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_q)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_compute(__pyx_v_self, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_3)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_compute(__pyx_v_self, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_3)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":69
+  /* "frechetlib/geometry_utils.pyx":78
  * cdef class LinePointDistance:
  * 
  *     def __cinit__(self, p1: np.ndarray, p2: np.ndarray, q: np.ndarray):             # <<<<<<<<<<<<<<
@@ -22667,7 +22969,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance___cinit__(
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":72
+/* "frechetlib/geometry_utils.pyx":81
  *         self.compute(Point(p1), Point(p2), Point(q))
  * 
  *     cdef inline void compute(self, Point p1, Point p2, Point q):             # <<<<<<<<<<<<<<
@@ -22690,67 +22992,67 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute", 1);
 
-  /* "frechetlib/geometry_utils.pyx":76
+  /* "frechetlib/geometry_utils.pyx":85
  *         #cdef Point point_p2 = Point(p2)
  * 
  *         cdef Point q_diff = q.point_difference(p1)             # <<<<<<<<<<<<<<
  *         cdef Point p_diff = p2.point_difference(p1)
  * 
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_q_diff = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":77
+  /* "frechetlib/geometry_utils.pyx":86
  * 
  *         cdef Point q_diff = q.point_difference(p1)
  *         cdef Point p_diff = p2.point_difference(p1)             # <<<<<<<<<<<<<<
  * 
  *         cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_p2, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_p2, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_p_diff = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":79
+  /* "frechetlib/geometry_utils.pyx":88
  *         cdef Point p_diff = p2.point_difference(p1)
  * 
  *         cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2             # <<<<<<<<<<<<<<
  *         if double_equals(l2, 0.0):  # p1 == p2 case
  *             self.distance = q.point_difference(p1).get_norm()
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_p1, __pyx_v_p2, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_p1, __pyx_v_p2, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_l2 = pow(__pyx_t_2, 2.0);
 
-  /* "frechetlib/geometry_utils.pyx":80
+  /* "frechetlib/geometry_utils.pyx":89
  * 
  *         cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2
  *         if double_equals(l2, 0.0):  # p1 == p2 case             # <<<<<<<<<<<<<<
  *             self.distance = q.point_difference(p1).get_norm()
  *             self.t = 0.0
  */
-  __pyx_t_3 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_l2, 0.0, NULL); if (unlikely(__pyx_t_3 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_l2, 0.0, NULL); if (unlikely(__pyx_t_3 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "frechetlib/geometry_utils.pyx":81
+    /* "frechetlib/geometry_utils.pyx":90
  *         cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2
  *         if double_equals(l2, 0.0):  # p1 == p2 case
  *             self.distance = q.point_difference(p1).get_norm()             # <<<<<<<<<<<<<<
  *             self.t = 0.0
  *             self.p = p1
  */
-    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->distance = __pyx_t_2;
 
-    /* "frechetlib/geometry_utils.pyx":82
+    /* "frechetlib/geometry_utils.pyx":91
  *         if double_equals(l2, 0.0):  # p1 == p2 case
  *             self.distance = q.point_difference(p1).get_norm()
  *             self.t = 0.0             # <<<<<<<<<<<<<<
@@ -22759,7 +23061,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     __pyx_v_self->t = 0.0;
 
-    /* "frechetlib/geometry_utils.pyx":83
+    /* "frechetlib/geometry_utils.pyx":92
  *             self.distance = q.point_difference(p1).get_norm()
  *             self.t = 0.0
  *             self.p = p1             # <<<<<<<<<<<<<<
@@ -22772,7 +23074,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
     __Pyx_DECREF((PyObject *)__pyx_v_self->p);
     __pyx_v_self->p = __pyx_v_p1;
 
-    /* "frechetlib/geometry_utils.pyx":84
+    /* "frechetlib/geometry_utils.pyx":93
  *             self.t = 0.0
  *             self.p = p1
  *             return             # <<<<<<<<<<<<<<
@@ -22781,7 +23083,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     goto __pyx_L0;
 
-    /* "frechetlib/geometry_utils.pyx":80
+    /* "frechetlib/geometry_utils.pyx":89
  * 
  *         cdef double l2 = p1.point_difference(p2).get_norm() ** 2  # i.e. |p2-p1|^2
  *         if double_equals(l2, 0.0):  # p1 == p2 case             # <<<<<<<<<<<<<<
@@ -22790,21 +23092,21 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":90
+  /* "frechetlib/geometry_utils.pyx":99
  *         # It falls where t = [(q-p1) . (p2-p1)] / |p2-p1|^2
  *         # We clamp t from [0,1] to handle points outside the segment vw.
  *         t = q_diff.dot_product(p_diff) / l2             # <<<<<<<<<<<<<<
  * 
  *         if t <= 0.0:
  */
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_dot_product(__pyx_v_q_diff, __pyx_v_p_diff, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_dot_product(__pyx_v_q_diff, __pyx_v_p_diff, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 99, __pyx_L1_error)
   if (unlikely(__pyx_v_l2 == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 90, __pyx_L1_error)
+    __PYX_ERR(0, 99, __pyx_L1_error)
   }
   __pyx_v_t = (__pyx_t_2 / __pyx_v_l2);
 
-  /* "frechetlib/geometry_utils.pyx":92
+  /* "frechetlib/geometry_utils.pyx":101
  *         t = q_diff.dot_product(p_diff) / l2
  * 
  *         if t <= 0.0:             # <<<<<<<<<<<<<<
@@ -22814,20 +23116,20 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
   __pyx_t_3 = (__pyx_v_t <= 0.0);
   if (__pyx_t_3) {
 
-    /* "frechetlib/geometry_utils.pyx":93
+    /* "frechetlib/geometry_utils.pyx":102
  * 
  *         if t <= 0.0:
  *             self.distance = q.point_difference(p1).get_norm()             # <<<<<<<<<<<<<<
  *             self.t = 0.0
  *             self.p = p1
  */
-    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p1, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->distance = __pyx_t_2;
 
-    /* "frechetlib/geometry_utils.pyx":94
+    /* "frechetlib/geometry_utils.pyx":103
  *         if t <= 0.0:
  *             self.distance = q.point_difference(p1).get_norm()
  *             self.t = 0.0             # <<<<<<<<<<<<<<
@@ -22836,7 +23138,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     __pyx_v_self->t = 0.0;
 
-    /* "frechetlib/geometry_utils.pyx":95
+    /* "frechetlib/geometry_utils.pyx":104
  *             self.distance = q.point_difference(p1).get_norm()
  *             self.t = 0.0
  *             self.p = p1             # <<<<<<<<<<<<<<
@@ -22849,7 +23151,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
     __Pyx_DECREF((PyObject *)__pyx_v_self->p);
     __pyx_v_self->p = __pyx_v_p1;
 
-    /* "frechetlib/geometry_utils.pyx":96
+    /* "frechetlib/geometry_utils.pyx":105
  *             self.t = 0.0
  *             self.p = p1
  *             return             # <<<<<<<<<<<<<<
@@ -22858,7 +23160,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     goto __pyx_L0;
 
-    /* "frechetlib/geometry_utils.pyx":92
+    /* "frechetlib/geometry_utils.pyx":101
  *         t = q_diff.dot_product(p_diff) / l2
  * 
  *         if t <= 0.0:             # <<<<<<<<<<<<<<
@@ -22867,7 +23169,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":97
+  /* "frechetlib/geometry_utils.pyx":106
  *             self.p = p1
  *             return
  *         elif t >= 1.0:             # <<<<<<<<<<<<<<
@@ -22877,20 +23179,20 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
   __pyx_t_3 = (__pyx_v_t >= 1.0);
   if (__pyx_t_3) {
 
-    /* "frechetlib/geometry_utils.pyx":98
+    /* "frechetlib/geometry_utils.pyx":107
  *             return
  *         elif t >= 1.0:
  *             self.distance = q.point_difference(p2).get_norm()             # <<<<<<<<<<<<<<
  *             self.t = 1.0
  *             self.p = p2
  */
-    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p2, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, __pyx_v_p2, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->distance = __pyx_t_2;
 
-    /* "frechetlib/geometry_utils.pyx":99
+    /* "frechetlib/geometry_utils.pyx":108
  *         elif t >= 1.0:
  *             self.distance = q.point_difference(p2).get_norm()
  *             self.t = 1.0             # <<<<<<<<<<<<<<
@@ -22899,7 +23201,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     __pyx_v_self->t = 1.0;
 
-    /* "frechetlib/geometry_utils.pyx":100
+    /* "frechetlib/geometry_utils.pyx":109
  *             self.distance = q.point_difference(p2).get_norm()
  *             self.t = 1.0
  *             self.p = p2             # <<<<<<<<<<<<<<
@@ -22912,7 +23214,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
     __Pyx_DECREF((PyObject *)__pyx_v_self->p);
     __pyx_v_self->p = __pyx_v_p2;
 
-    /* "frechetlib/geometry_utils.pyx":101
+    /* "frechetlib/geometry_utils.pyx":110
  *             self.t = 1.0
  *             self.p = p2
  *             return             # <<<<<<<<<<<<<<
@@ -22921,7 +23223,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     goto __pyx_L0;
 
-    /* "frechetlib/geometry_utils.pyx":97
+    /* "frechetlib/geometry_utils.pyx":106
  *             self.p = p1
  *             return
  *         elif t >= 1.0:             # <<<<<<<<<<<<<<
@@ -22930,7 +23232,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":103
+  /* "frechetlib/geometry_utils.pyx":112
  *             return
  *         else:
  *             self.p = p1.convex_comb(p2, t)             # <<<<<<<<<<<<<<
@@ -22938,7 +23240,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  *             self.distance = q.point_difference(self.p).get_norm()
  */
   /*else*/ {
-    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(__pyx_v_p1, __pyx_v_p2, __pyx_v_t, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(__pyx_v_p1, __pyx_v_p2, __pyx_v_t, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
     __Pyx_GOTREF((PyObject *)__pyx_v_self->p);
@@ -22946,7 +23248,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
     __pyx_v_self->p = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "frechetlib/geometry_utils.pyx":104
+    /* "frechetlib/geometry_utils.pyx":113
  *         else:
  *             self.p = p1.convex_comb(p2, t)
  *             self.t = t             # <<<<<<<<<<<<<<
@@ -22955,7 +23257,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     __pyx_v_self->t = __pyx_v_t;
 
-    /* "frechetlib/geometry_utils.pyx":105
+    /* "frechetlib/geometry_utils.pyx":114
  *             self.p = p1.convex_comb(p2, t)
  *             self.t = t
  *             self.distance = q.point_difference(self.p).get_norm()             # <<<<<<<<<<<<<<
@@ -22964,15 +23266,15 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
  */
     __pyx_t_1 = ((PyObject *)__pyx_v_self->p);
     __Pyx_INCREF(__pyx_t_1);
-    __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_q, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_self->distance = __pyx_t_2;
   }
 
-  /* "frechetlib/geometry_utils.pyx":72
+  /* "frechetlib/geometry_utils.pyx":81
  *         self.compute(Point(p1), Point(p2), Point(q))
  * 
  *     cdef inline void compute(self, Point p1, Point p2, Point q):             # <<<<<<<<<<<<<<
@@ -22992,7 +23294,7 @@ static CYTHON_INLINE void __pyx_f_10frechetlib_14geometry_utils_17LinePointDista
   __Pyx_RefNannyFinishContext();
 }
 
-/* "frechetlib/geometry_utils.pyx":107
+/* "frechetlib/geometry_utils.pyx":116
  *             self.distance = q.point_difference(self.p).get_norm()
  * 
  *     cpdef double get_distance(self):             # <<<<<<<<<<<<<<
@@ -23010,7 +23312,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
 
-  /* "frechetlib/geometry_utils.pyx":108
+  /* "frechetlib/geometry_utils.pyx":117
  * 
  *     cpdef double get_distance(self):
  *         return self.distance             # <<<<<<<<<<<<<<
@@ -23020,7 +23322,7 @@ static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_dist
   __pyx_r = __pyx_v_self->distance;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":107
+  /* "frechetlib/geometry_utils.pyx":116
  *             self.distance = q.point_difference(self.p).get_norm()
  * 
  *     cpdef double get_distance(self):             # <<<<<<<<<<<<<<
@@ -23084,8 +23386,8 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_2get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_distance", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -23102,7 +23404,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_2get
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":110
+/* "frechetlib/geometry_utils.pyx":119
  *         return self.distance
  * 
  *     cpdef double get_t(self):             # <<<<<<<<<<<<<<
@@ -23120,7 +23422,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
 
-  /* "frechetlib/geometry_utils.pyx":111
+  /* "frechetlib/geometry_utils.pyx":120
  * 
  *     cpdef double get_t(self):
  *         return self.t             # <<<<<<<<<<<<<<
@@ -23130,7 +23432,7 @@ static double __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(st
   __pyx_r = __pyx_v_self->t;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":110
+  /* "frechetlib/geometry_utils.pyx":119
  *         return self.distance
  * 
  *     cpdef double get_t(self):             # <<<<<<<<<<<<<<
@@ -23194,8 +23496,8 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_4get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_t", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 110, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -23212,7 +23514,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_4get
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":113
+/* "frechetlib/geometry_utils.pyx":122
  *         return self.t
  * 
  *     cpdef Point get_p(self):             # <<<<<<<<<<<<<<
@@ -23232,7 +23534,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetli
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_p", 1);
 
-  /* "frechetlib/geometry_utils.pyx":114
+  /* "frechetlib/geometry_utils.pyx":123
  * 
  *     cpdef Point get_p(self):
  *         return self.p             # <<<<<<<<<<<<<<
@@ -23244,7 +23546,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_Point *__pyx_f_10frechetli
   __pyx_r = __pyx_v_self->p;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":113
+  /* "frechetlib/geometry_utils.pyx":122
  *         return self.t
  * 
  *     cpdef Point get_p(self):             # <<<<<<<<<<<<<<
@@ -23309,7 +23611,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_6get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_p", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -23540,7 +23842,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_17LinePointDistance_10__
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":133
+/* "frechetlib/geometry_utils.pyx":142
  *     # t_j: float
  * 
  *     def __cinit__(             # <<<<<<<<<<<<<<
@@ -23608,7 +23910,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -23616,9 +23918,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 1); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 1); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -23626,9 +23928,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 2); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 2); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -23636,9 +23938,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 3); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 3); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -23646,9 +23948,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 4); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 4); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -23656,9 +23958,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 5); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 5); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -23666,9 +23968,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 6); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 6); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -23676,9 +23978,9 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 7); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 7); __PYX_ERR(0, 142, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
@@ -23686,14 +23988,14 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
           (void)__Pyx_Arg_NewRef_VARARGS(values[8]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 8); __PYX_ERR(0, 133, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, 8); __PYX_ERR(0, 142, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 133, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 142, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 9)) {
       goto __pyx_L5_argtuple_error;
@@ -23714,13 +24016,13 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
     __pyx_v_j_is_vert = values[3];
     __pyx_v_p_i = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)values[4]);
     __pyx_v_p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)values[5]);
-    __pyx_v_t_i = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_t_i == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L3_error)
-    __pyx_v_t_j = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_t_j == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L3_error)
-    __pyx_v_dist = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_dist == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L3_error)
+    __pyx_v_t_i = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_t_i == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 150, __pyx_L3_error)
+    __pyx_v_t_j = __pyx_PyFloat_AsDouble(values[7]); if (unlikely((__pyx_v_t_j == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L3_error)
+    __pyx_v_dist = __pyx_PyFloat_AsDouble(values[8]); if (unlikely((__pyx_v_dist == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, __pyx_nargs); __PYX_ERR(0, 133, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 9, 9, __pyx_nargs); __PYX_ERR(0, 142, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -23734,10 +24036,10 @@ static int __pyx_pw_10frechetlib_14geometry_utils_3EID_1__cinit__(PyObject *__py
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), (&PyInt_Type), 0, "i", 1))) __PYX_ERR(0, 135, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_j), (&PyInt_Type), 0, "j", 1))) __PYX_ERR(0, 137, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p_i), __pyx_ptype_10frechetlib_14geometry_utils_Point, 0, "p_i", 0))) __PYX_ERR(0, 139, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p_j), __pyx_ptype_10frechetlib_14geometry_utils_Point, 0, "p_j", 0))) __PYX_ERR(0, 140, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_i), (&PyInt_Type), 0, "i", 1))) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_j), (&PyInt_Type), 0, "j", 1))) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p_i), __pyx_ptype_10frechetlib_14geometry_utils_Point, 0, "p_i", 0))) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p_j), __pyx_ptype_10frechetlib_14geometry_utils_Point, 0, "p_j", 0))) __PYX_ERR(0, 149, __pyx_L1_error)
   __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), __pyx_v_i, __pyx_v_i_is_vert, __pyx_v_j, __pyx_v_j_is_vert, __pyx_v_p_i, __pyx_v_p_j, __pyx_v_t_i, __pyx_v_t_j, __pyx_v_dist);
 
   /* function exit code */
@@ -23765,47 +24067,47 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":145
+  /* "frechetlib/geometry_utils.pyx":154
  *         dist: float,
  *     ) -> None:
  *         self.i = i             # <<<<<<<<<<<<<<
  *         self.i_is_vert = i_is_vert
  *         self.j = j
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_i); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_i); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
   __pyx_v_self->i = __pyx_t_1;
 
-  /* "frechetlib/geometry_utils.pyx":146
+  /* "frechetlib/geometry_utils.pyx":155
  *     ) -> None:
  *         self.i = i
  *         self.i_is_vert = i_is_vert             # <<<<<<<<<<<<<<
  *         self.j = j
  *         self.j_is_vert = j_is_vert
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_i_is_vert); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_i_is_vert); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
   __pyx_v_self->i_is_vert = __pyx_t_2;
 
-  /* "frechetlib/geometry_utils.pyx":147
+  /* "frechetlib/geometry_utils.pyx":156
  *         self.i = i
  *         self.i_is_vert = i_is_vert
  *         self.j = j             # <<<<<<<<<<<<<<
  *         self.j_is_vert = j_is_vert
  *         self.p_i = p_i
  */
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_j); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_j); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
   __pyx_v_self->j = __pyx_t_1;
 
-  /* "frechetlib/geometry_utils.pyx":148
+  /* "frechetlib/geometry_utils.pyx":157
  *         self.i_is_vert = i_is_vert
  *         self.j = j
  *         self.j_is_vert = j_is_vert             # <<<<<<<<<<<<<<
  *         self.p_i = p_i
  *         self.p_j = p_j
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_j_is_vert); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_j_is_vert); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
   __pyx_v_self->j_is_vert = __pyx_t_2;
 
-  /* "frechetlib/geometry_utils.pyx":149
+  /* "frechetlib/geometry_utils.pyx":158
  *         self.j = j
  *         self.j_is_vert = j_is_vert
  *         self.p_i = p_i             # <<<<<<<<<<<<<<
@@ -23818,7 +24120,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
   __Pyx_DECREF((PyObject *)__pyx_v_self->p_i);
   __pyx_v_self->p_i = __pyx_v_p_i;
 
-  /* "frechetlib/geometry_utils.pyx":150
+  /* "frechetlib/geometry_utils.pyx":159
  *         self.j_is_vert = j_is_vert
  *         self.p_i = p_i
  *         self.p_j = p_j             # <<<<<<<<<<<<<<
@@ -23831,7 +24133,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
   __Pyx_DECREF((PyObject *)__pyx_v_self->p_j);
   __pyx_v_self->p_j = __pyx_v_p_j;
 
-  /* "frechetlib/geometry_utils.pyx":151
+  /* "frechetlib/geometry_utils.pyx":160
  *         self.p_i = p_i
  *         self.p_j = p_j
  *         self.t_i = t_i             # <<<<<<<<<<<<<<
@@ -23840,7 +24142,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
  */
   __pyx_v_self->t_i = __pyx_v_t_i;
 
-  /* "frechetlib/geometry_utils.pyx":152
+  /* "frechetlib/geometry_utils.pyx":161
  *         self.p_j = p_j
  *         self.t_i = t_i
  *         self.t_j = t_j             # <<<<<<<<<<<<<<
@@ -23849,7 +24151,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
  */
   __pyx_v_self->t_j = __pyx_v_t_j;
 
-  /* "frechetlib/geometry_utils.pyx":154
+  /* "frechetlib/geometry_utils.pyx":163
  *         self.t_j = t_j
  * 
  *         self.dist = dist             # <<<<<<<<<<<<<<
@@ -23858,7 +24160,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
  */
   __pyx_v_self->dist = __pyx_v_dist;
 
-  /* "frechetlib/geometry_utils.pyx":156
+  /* "frechetlib/geometry_utils.pyx":165
  *         self.dist = dist
  * 
  *         assert 0.0 <= t_i <= 1.0             # <<<<<<<<<<<<<<
@@ -23873,14 +24175,14 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
     }
     if (unlikely(!__pyx_t_2)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 156, __pyx_L1_error)
+      __PYX_ERR(0, 165, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 156, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 165, __pyx_L1_error)
   #endif
 
-  /* "frechetlib/geometry_utils.pyx":157
+  /* "frechetlib/geometry_utils.pyx":166
  * 
  *         assert 0.0 <= t_i <= 1.0
  *         assert 0.0 <= t_j <= 1.0             # <<<<<<<<<<<<<<
@@ -23895,14 +24197,14 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
     }
     if (unlikely(!__pyx_t_2)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 157, __pyx_L1_error)
+      __PYX_ERR(0, 166, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 157, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 166, __pyx_L1_error)
   #endif
 
-  /* "frechetlib/geometry_utils.pyx":133
+  /* "frechetlib/geometry_utils.pyx":142
  *     # t_j: float
  * 
  *     def __cinit__(             # <<<<<<<<<<<<<<
@@ -23921,7 +24223,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_3EID___cinit__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":160
+/* "frechetlib/geometry_utils.pyx":169
  * 
  *     # TODO get rid of these getter functions later
  *     def get_dist(self):             # <<<<<<<<<<<<<<
@@ -23979,7 +24281,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_2get_dist(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_dist", 1);
 
-  /* "frechetlib/geometry_utils.pyx":161
+  /* "frechetlib/geometry_utils.pyx":170
  *     # TODO get rid of these getter functions later
  *     def get_dist(self):
  *         return self.dist             # <<<<<<<<<<<<<<
@@ -23987,13 +24289,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_2get_dist(struct __
  *     def get_i(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":160
+  /* "frechetlib/geometry_utils.pyx":169
  * 
  *     # TODO get rid of these getter functions later
  *     def get_dist(self):             # <<<<<<<<<<<<<<
@@ -24012,7 +24314,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_2get_dist(struct __
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":163
+/* "frechetlib/geometry_utils.pyx":172
  *         return self.dist
  * 
  *     def get_i(self):             # <<<<<<<<<<<<<<
@@ -24070,7 +24372,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_4get_i(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_i", 1);
 
-  /* "frechetlib/geometry_utils.pyx":164
+  /* "frechetlib/geometry_utils.pyx":173
  * 
  *     def get_i(self):
  *         return self.i             # <<<<<<<<<<<<<<
@@ -24078,13 +24380,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_4get_i(struct __pyx
  *     def get_j(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":163
+  /* "frechetlib/geometry_utils.pyx":172
  *         return self.dist
  * 
  *     def get_i(self):             # <<<<<<<<<<<<<<
@@ -24103,7 +24405,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_4get_i(struct __pyx
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":166
+/* "frechetlib/geometry_utils.pyx":175
  *         return self.i
  * 
  *     def get_j(self):             # <<<<<<<<<<<<<<
@@ -24161,7 +24463,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_6get_j(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_j", 1);
 
-  /* "frechetlib/geometry_utils.pyx":167
+  /* "frechetlib/geometry_utils.pyx":176
  * 
  *     def get_j(self):
  *         return self.j             # <<<<<<<<<<<<<<
@@ -24169,13 +24471,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_6get_j(struct __pyx
  *     def get_i_is_vert(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":166
+  /* "frechetlib/geometry_utils.pyx":175
  *         return self.i
  * 
  *     def get_j(self):             # <<<<<<<<<<<<<<
@@ -24194,7 +24496,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_6get_j(struct __pyx
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":169
+/* "frechetlib/geometry_utils.pyx":178
  *         return self.j
  * 
  *     def get_i_is_vert(self):             # <<<<<<<<<<<<<<
@@ -24252,7 +24554,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_8get_i_is_vert(stru
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_i_is_vert", 1);
 
-  /* "frechetlib/geometry_utils.pyx":170
+  /* "frechetlib/geometry_utils.pyx":179
  * 
  *     def get_i_is_vert(self):
  *         return self.i_is_vert             # <<<<<<<<<<<<<<
@@ -24260,13 +24562,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_8get_i_is_vert(stru
  *     def get_j_is_vert(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":169
+  /* "frechetlib/geometry_utils.pyx":178
  *         return self.j
  * 
  *     def get_i_is_vert(self):             # <<<<<<<<<<<<<<
@@ -24285,7 +24587,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_8get_i_is_vert(stru
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":172
+/* "frechetlib/geometry_utils.pyx":181
  *         return self.i_is_vert
  * 
  *     def get_j_is_vert(self):             # <<<<<<<<<<<<<<
@@ -24343,7 +24645,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_10get_j_is_vert(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_j_is_vert", 1);
 
-  /* "frechetlib/geometry_utils.pyx":173
+  /* "frechetlib/geometry_utils.pyx":182
  * 
  *     def get_j_is_vert(self):
  *         return self.j_is_vert             # <<<<<<<<<<<<<<
@@ -24351,13 +24653,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_10get_j_is_vert(str
  *     def get_t_i(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":172
+  /* "frechetlib/geometry_utils.pyx":181
  *         return self.i_is_vert
  * 
  *     def get_j_is_vert(self):             # <<<<<<<<<<<<<<
@@ -24376,7 +24678,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_10get_j_is_vert(str
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":175
+/* "frechetlib/geometry_utils.pyx":184
  *         return self.j_is_vert
  * 
  *     def get_t_i(self):             # <<<<<<<<<<<<<<
@@ -24434,7 +24736,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_12get_t_i(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_t_i", 1);
 
-  /* "frechetlib/geometry_utils.pyx":176
+  /* "frechetlib/geometry_utils.pyx":185
  * 
  *     def get_t_i(self):
  *         return self.t_i             # <<<<<<<<<<<<<<
@@ -24442,13 +24744,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_12get_t_i(struct __
  *     def get_t_j(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":175
+  /* "frechetlib/geometry_utils.pyx":184
  *         return self.j_is_vert
  * 
  *     def get_t_i(self):             # <<<<<<<<<<<<<<
@@ -24467,7 +24769,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_12get_t_i(struct __
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":178
+/* "frechetlib/geometry_utils.pyx":187
  *         return self.t_i
  * 
  *     def get_t_j(self):             # <<<<<<<<<<<<<<
@@ -24525,7 +24827,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_14get_t_j(struct __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_t_j", 1);
 
-  /* "frechetlib/geometry_utils.pyx":179
+  /* "frechetlib/geometry_utils.pyx":188
  * 
  *     def get_t_j(self):
  *         return self.t_j             # <<<<<<<<<<<<<<
@@ -24533,13 +24835,13 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_14get_t_j(struct __
  *     def get_p_i(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":178
+  /* "frechetlib/geometry_utils.pyx":187
  *         return self.t_i
  * 
  *     def get_t_j(self):             # <<<<<<<<<<<<<<
@@ -24558,7 +24860,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_14get_t_j(struct __
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":181
+/* "frechetlib/geometry_utils.pyx":190
  *         return self.t_j
  * 
  *     def get_p_i(self):             # <<<<<<<<<<<<<<
@@ -24612,7 +24914,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_16get_p_i(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_p_i", 1);
 
-  /* "frechetlib/geometry_utils.pyx":182
+  /* "frechetlib/geometry_utils.pyx":191
  * 
  *     def get_p_i(self):
  *         return self.p_i             # <<<<<<<<<<<<<<
@@ -24624,7 +24926,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_16get_p_i(struct __
   __pyx_r = ((PyObject *)__pyx_v_self->p_i);
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":181
+  /* "frechetlib/geometry_utils.pyx":190
  *         return self.t_j
  * 
  *     def get_p_i(self):             # <<<<<<<<<<<<<<
@@ -24639,7 +24941,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_16get_p_i(struct __
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":184
+/* "frechetlib/geometry_utils.pyx":193
  *         return self.p_i
  * 
  *     def get_p_j(self):             # <<<<<<<<<<<<<<
@@ -24693,7 +24995,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_18get_p_j(struct __
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_p_j", 1);
 
-  /* "frechetlib/geometry_utils.pyx":185
+  /* "frechetlib/geometry_utils.pyx":194
  * 
  *     def get_p_j(self):
  *         return self.p_j             # <<<<<<<<<<<<<<
@@ -24705,7 +25007,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_18get_p_j(struct __
   __pyx_r = ((PyObject *)__pyx_v_self->p_j);
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":184
+  /* "frechetlib/geometry_utils.pyx":193
  *         return self.p_i
  * 
  *     def get_p_j(self):             # <<<<<<<<<<<<<<
@@ -24720,7 +25022,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_18get_p_j(struct __
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":187
+/* "frechetlib/geometry_utils.pyx":196
  *         return self.p_j
  * 
  *     cpdef EID copy(self):             # <<<<<<<<<<<<<<
@@ -24760,7 +25062,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10frechetlib_14geometry_utils_3EID_21copy)) {
         __Pyx_XDECREF((PyObject *)__pyx_r);
@@ -24783,11 +25085,11 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_10frechetlib_14geometry_utils_EID))))) __PYX_ERR(0, 187, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_10frechetlib_14geometry_utils_EID))))) __PYX_ERR(0, 196, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -24806,7 +25108,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
     #endif
   }
 
-  /* "frechetlib/geometry_utils.pyx":188
+  /* "frechetlib/geometry_utils.pyx":197
  * 
  *     cpdef EID copy(self):
  *         return EID(             # <<<<<<<<<<<<<<
@@ -24815,105 +25117,105 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
  */
   __Pyx_XDECREF((PyObject *)__pyx_r);
 
-  /* "frechetlib/geometry_utils.pyx":189
+  /* "frechetlib/geometry_utils.pyx":198
  *     cpdef EID copy(self):
  *         return EID(
  *             self.i,             # <<<<<<<<<<<<<<
  *             self.i_is_vert,
  *             self.j,
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "frechetlib/geometry_utils.pyx":190
+  /* "frechetlib/geometry_utils.pyx":199
  *         return EID(
  *             self.i,
  *             self.i_is_vert,             # <<<<<<<<<<<<<<
  *             self.j,
  *             self.j_is_vert,
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "frechetlib/geometry_utils.pyx":191
+  /* "frechetlib/geometry_utils.pyx":200
  *             self.i,
  *             self.i_is_vert,
  *             self.j,             # <<<<<<<<<<<<<<
  *             self.j_is_vert,
  *             self.p_i,
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "frechetlib/geometry_utils.pyx":192
+  /* "frechetlib/geometry_utils.pyx":201
  *             self.i_is_vert,
  *             self.j,
  *             self.j_is_vert,             # <<<<<<<<<<<<<<
  *             self.p_i,
  *             self.p_j,
  */
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "frechetlib/geometry_utils.pyx":195
+  /* "frechetlib/geometry_utils.pyx":204
  *             self.p_i,
  *             self.p_j,
  *             self.t_i,             # <<<<<<<<<<<<<<
  *             self.t_j,
  *             self.dist,
  */
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
 
-  /* "frechetlib/geometry_utils.pyx":196
+  /* "frechetlib/geometry_utils.pyx":205
  *             self.p_j,
  *             self.t_i,
  *             self.t_j,             # <<<<<<<<<<<<<<
  *             self.dist,
  *         )
  */
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
 
-  /* "frechetlib/geometry_utils.pyx":197
+  /* "frechetlib/geometry_utils.pyx":206
  *             self.t_i,
  *             self.t_j,
  *             self.dist,             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
 
-  /* "frechetlib/geometry_utils.pyx":188
+  /* "frechetlib/geometry_utils.pyx":197
  * 
  *     cpdef EID copy(self):
  *         return EID(             # <<<<<<<<<<<<<<
  *             self.i,
  *             self.i_is_vert,
  */
-  __pyx_t_9 = PyTuple_New(9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 3, __pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 3, __pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_self->p_i);
   __Pyx_GIVEREF((PyObject *)__pyx_v_self->p_i);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 4, ((PyObject *)__pyx_v_self->p_i))) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 4, ((PyObject *)__pyx_v_self->p_i))) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_self->p_j);
   __Pyx_GIVEREF((PyObject *)__pyx_v_self->p_j);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 5, ((PyObject *)__pyx_v_self->p_j))) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 5, ((PyObject *)__pyx_v_self->p_j))) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 6, __pyx_t_6)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 6, __pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 7, __pyx_t_7)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 7, __pyx_t_7)) __PYX_ERR(0, 197, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 8, __pyx_t_8)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_9, 8, __pyx_t_8)) __PYX_ERR(0, 197, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -24921,14 +25223,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
   __pyx_t_6 = 0;
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID), __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID), __pyx_t_9, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_r = ((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_t_8);
   __pyx_t_8 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":187
+  /* "frechetlib/geometry_utils.pyx":196
  *         return self.p_j
  * 
  *     cpdef EID copy(self):             # <<<<<<<<<<<<<<
@@ -25004,7 +25306,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_20copy(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("copy", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_3EID_copy(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_3EID_copy(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25021,15 +25323,1029 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_20copy(struct __pyx
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":256
- *     #     return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+/* "frechetlib/geometry_utils.pyx":209
+ *         )
+ * 
+ *     cpdef float reassign_parameter_i(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static float __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_i(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_P, int __pyx_skip_dispatch) {
+  double __pyx_v_old_t;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_P;
+  __Pyx_Buffer __pyx_pybuffer_P;
+  float __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  unsigned int __pyx_t_6;
+  float __pyx_t_7;
+  int __pyx_t_8;
+  long __pyx_t_9;
+  double __pyx_t_10;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("reassign_parameter_i", 1);
+  __pyx_pybuffer_P.pybuffer.buf = NULL;
+  __pyx_pybuffer_P.refcount = 0;
+  __pyx_pybuffernd_P.data = NULL;
+  __pyx_pybuffernd_P.rcbuffer = &__pyx_pybuffer_P;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_P.rcbuffer->pybuffer, (PyObject*)__pyx_v_P, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_P.diminfo[0].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_P.diminfo[0].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_P.diminfo[1].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_P.diminfo[1].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[1];
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_reassign_parameter_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i)) {
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_new_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
+        __pyx_t_6 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+          if (likely(__pyx_t_5)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+            __Pyx_INCREF(__pyx_t_5);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_4, function);
+            __pyx_t_6 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[3] = {__pyx_t_5, __pyx_t_3, ((PyObject *)__pyx_v_P)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 2+__pyx_t_6);
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        }
+        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_7;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "frechetlib/geometry_utils.pyx":218
+ *         Returns the error incurred by the reassignment.
+ *         """
+ *         assert 0.0 <= new_t <= 1.0             # <<<<<<<<<<<<<<
+ *         cdef double old_t = self.t_i
+ * 
+ */
+  #ifndef CYTHON_WITHOUT_ASSERTIONS
+  if (unlikely(__pyx_assertions_enabled())) {
+    __pyx_t_8 = (0.0 <= __pyx_v_new_t);
+    if (__pyx_t_8) {
+      __pyx_t_8 = (__pyx_v_new_t <= 1.0);
+    }
+    if (unlikely(!__pyx_t_8)) {
+      __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
+      __PYX_ERR(0, 218, __pyx_L1_error)
+    }
+  }
+  #else
+  if ((1)); else __PYX_ERR(0, 218, __pyx_L1_error)
+  #endif
+
+  /* "frechetlib/geometry_utils.pyx":219
+ *         """
+ *         assert 0.0 <= new_t <= 1.0
+ *         cdef double old_t = self.t_i             # <<<<<<<<<<<<<<
+ * 
+ *         if double_equals(0.0, new_t):
+ */
+  __pyx_t_7 = __pyx_v_self->t_i;
+  __pyx_v_old_t = __pyx_t_7;
+
+  /* "frechetlib/geometry_utils.pyx":221
+ *         cdef double old_t = self.t_i
+ * 
+ *         if double_equals(0.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_i = 0.0
+ *             self.p_i = Point(P[self.i])
+ */
+  __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_double_equals(0.0, __pyx_v_new_t, NULL); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 221, __pyx_L1_error)
+  if (__pyx_t_8) {
+
+    /* "frechetlib/geometry_utils.pyx":222
+ * 
+ *         if double_equals(0.0, new_t):
+ *             self.t_i = 0.0             # <<<<<<<<<<<<<<
+ *             self.p_i = Point(P[self.i])
+ *         elif double_equals(1.0, new_t):
+ */
+    __pyx_v_self->t_i = 0.0;
+
+    /* "frechetlib/geometry_utils.pyx":223
+ *         if double_equals(0.0, new_t):
+ *             self.t_i = 0.0
+ *             self.p_i = Point(P[self.i])             # <<<<<<<<<<<<<<
+ *         elif double_equals(1.0, new_t):
+ *             self.t_i = 1.0
+ */
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_self->i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GIVEREF(__pyx_t_2);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_i);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_i);
+    __pyx_v_self->p_i = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "frechetlib/geometry_utils.pyx":221
+ *         cdef double old_t = self.t_i
+ * 
+ *         if double_equals(0.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_i = 0.0
+ *             self.p_i = Point(P[self.i])
+ */
+    goto __pyx_L3;
+  }
+
+  /* "frechetlib/geometry_utils.pyx":224
+ *             self.t_i = 0.0
+ *             self.p_i = Point(P[self.i])
+ *         elif double_equals(1.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_i = 1.0
+ *             self.p_i = Point(P[self.i + 1])
+ */
+  __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_double_equals(1.0, __pyx_v_new_t, NULL); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (__pyx_t_8) {
+
+    /* "frechetlib/geometry_utils.pyx":225
+ *             self.p_i = Point(P[self.i])
+ *         elif double_equals(1.0, new_t):
+ *             self.t_i = 1.0             # <<<<<<<<<<<<<<
+ *             self.p_i = Point(P[self.i + 1])
+ *             # TODO maybe change the number based on index?
+ */
+    __pyx_v_self->t_i = 1.0;
+
+    /* "frechetlib/geometry_utils.pyx":226
+ *         elif double_equals(1.0, new_t):
+ *             self.t_i = 1.0
+ *             self.p_i = Point(P[self.i + 1])             # <<<<<<<<<<<<<<
+ *             # TODO maybe change the number based on index?
+ *             # I don't think the convention matters.
+ */
+    __pyx_t_9 = (__pyx_v_self->i + 1);
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GIVEREF(__pyx_t_1);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_i);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_i);
+    __pyx_v_self->p_i = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "frechetlib/geometry_utils.pyx":224
+ *             self.t_i = 0.0
+ *             self.p_i = Point(P[self.i])
+ *         elif double_equals(1.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_i = 1.0
+ *             self.p_i = Point(P[self.i + 1])
+ */
+    goto __pyx_L3;
+  }
+
+  /* "frechetlib/geometry_utils.pyx":231
+ *         else:
+ *             # Case where 0.0 < new_t < 1.0
+ *             self.t_i = new_t             # <<<<<<<<<<<<<<
+ *             self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
+ * 
+ */
+  /*else*/ {
+    __pyx_v_self->t_i = __pyx_v_new_t;
+
+    /* "frechetlib/geometry_utils.pyx":232
+ *             # Case where 0.0 < new_t < 1.0
+ *             self.t_i = new_t
+ *             self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)             # <<<<<<<<<<<<<<
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()
+ */
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_self->i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_9 = (__pyx_v_self->i + 1);
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), __pyx_v_self->t_i, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GIVEREF(__pyx_t_1);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_i);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_i);
+    __pyx_v_self->p_i = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
+    __pyx_t_1 = 0;
+  }
+  __pyx_L3:;
+
+  /* "frechetlib/geometry_utils.pyx":234
+ *             self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()             # <<<<<<<<<<<<<<
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+ * 
+ */
+  __pyx_t_1 = ((PyObject *)__pyx_v_self->p_j);
+  __Pyx_INCREF(__pyx_t_1);
+  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_self->p_i, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 234, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_self->dist = __pyx_t_10;
+
+  /* "frechetlib/geometry_utils.pyx":235
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef float reassign_parameter_j(
+ */
+  __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_self->i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_9 = (__pyx_v_self->i + 1);
+  __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_10 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = (fabs((__pyx_v_old_t - __pyx_v_new_t)) * __pyx_t_10);
+  goto __pyx_L0;
+
+  /* "frechetlib/geometry_utils.pyx":209
+ *         )
+ * 
+ *     cpdef float reassign_parameter_i(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_P.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_i", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_P.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10frechetlib_14geometry_utils_3EID_22reassign_parameter_i, "\n        Reassign the point and parameter from the curve P.\n        Returns the error incurred by the reassignment.\n        ");
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i = {"reassign_parameter_i", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10frechetlib_14geometry_utils_3EID_22reassign_parameter_i};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  float __pyx_v_new_t;
+  PyArrayObject *__pyx_v_P = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("reassign_parameter_i (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_MACROS
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_new_t,&__pyx_n_s_P,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_new_t)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_P)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("reassign_parameter_i", 1, 2, 2, 1); __PYX_ERR(0, 209, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "reassign_parameter_i") < 0)) __PYX_ERR(0, 209, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 2)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+    }
+    __pyx_v_new_t = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_new_t == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 211, __pyx_L3_error)
+    __pyx_v_P = ((PyArrayObject *)values[1]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("reassign_parameter_i", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 209, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_i", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_P), __pyx_ptype_5numpy_ndarray, 1, "P", 0))) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_22reassign_parameter_i(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), __pyx_v_new_t, __pyx_v_P);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22reassign_parameter_i(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_P) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_P;
+  __Pyx_Buffer __pyx_pybuffer_P;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("reassign_parameter_i", 1);
+  __pyx_pybuffer_P.pybuffer.buf = NULL;
+  __pyx_pybuffer_P.refcount = 0;
+  __pyx_pybuffernd_P.data = NULL;
+  __pyx_pybuffernd_P.rcbuffer = &__pyx_pybuffer_P;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_P.rcbuffer->pybuffer, (PyObject*)__pyx_v_P, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 209, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_P.diminfo[0].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_P.diminfo[0].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_P.diminfo[1].strides = __pyx_pybuffernd_P.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_P.diminfo[1].shape = __pyx_pybuffernd_P.rcbuffer->pybuffer.shape[1];
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_i(__pyx_v_self, __pyx_v_new_t, ((PyArrayObject *)__pyx_v_P), 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_P.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_i", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_P.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "frechetlib/geometry_utils.pyx":237
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+ * 
+ *     cpdef float reassign_parameter_j(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static float __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_j(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_Q, int __pyx_skip_dispatch) {
+  double __pyx_v_old_t;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Q;
+  __Pyx_Buffer __pyx_pybuffer_Q;
+  float __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  unsigned int __pyx_t_6;
+  float __pyx_t_7;
+  int __pyx_t_8;
+  long __pyx_t_9;
+  double __pyx_t_10;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("reassign_parameter_j", 1);
+  __pyx_pybuffer_Q.pybuffer.buf = NULL;
+  __pyx_pybuffer_Q.refcount = 0;
+  __pyx_pybuffernd_Q.data = NULL;
+  __pyx_pybuffernd_Q.rcbuffer = &__pyx_pybuffer_Q;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Q.rcbuffer->pybuffer, (PyObject*)__pyx_v_Q, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_Q.diminfo[0].strides = __pyx_pybuffernd_Q.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Q.diminfo[0].shape = __pyx_pybuffernd_Q.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Q.diminfo[1].strides = __pyx_pybuffernd_Q.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Q.diminfo[1].shape = __pyx_pybuffernd_Q.rcbuffer->pybuffer.shape[1];
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || __Pyx_PyType_HasFeature(Py_TYPE(((PyObject *)__pyx_v_self)), (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_reassign_parameter_j); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j)) {
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_new_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
+        __pyx_t_6 = 0;
+        #if CYTHON_UNPACK_METHODS
+        if (unlikely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+          if (likely(__pyx_t_5)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+            __Pyx_INCREF(__pyx_t_5);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_4, function);
+            __pyx_t_6 = 1;
+          }
+        }
+        #endif
+        {
+          PyObject *__pyx_callargs[3] = {__pyx_t_5, __pyx_t_3, ((PyObject *)__pyx_v_Q)};
+          __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 2+__pyx_t_6);
+          __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        }
+        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_r = __pyx_t_7;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_typedict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "frechetlib/geometry_utils.pyx":246
+ *         Returns the error incurred by the reassignment.
+ *         """
+ *         assert 0.0 <= new_t <= 1.0             # <<<<<<<<<<<<<<
+ *         cdef double old_t = self.t_j
+ * 
+ */
+  #ifndef CYTHON_WITHOUT_ASSERTIONS
+  if (unlikely(__pyx_assertions_enabled())) {
+    __pyx_t_8 = (0.0 <= __pyx_v_new_t);
+    if (__pyx_t_8) {
+      __pyx_t_8 = (__pyx_v_new_t <= 1.0);
+    }
+    if (unlikely(!__pyx_t_8)) {
+      __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
+      __PYX_ERR(0, 246, __pyx_L1_error)
+    }
+  }
+  #else
+  if ((1)); else __PYX_ERR(0, 246, __pyx_L1_error)
+  #endif
+
+  /* "frechetlib/geometry_utils.pyx":247
+ *         """
+ *         assert 0.0 <= new_t <= 1.0
+ *         cdef double old_t = self.t_j             # <<<<<<<<<<<<<<
+ * 
+ *         if double_equals(0.0, new_t):
+ */
+  __pyx_t_7 = __pyx_v_self->t_j;
+  __pyx_v_old_t = __pyx_t_7;
+
+  /* "frechetlib/geometry_utils.pyx":249
+ *         cdef double old_t = self.t_j
+ * 
+ *         if double_equals(0.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_j = 0.0
+ *             self.p_j = Point(Q[self.j])
+ */
+  __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_double_equals(0.0, __pyx_v_new_t, NULL); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (__pyx_t_8) {
+
+    /* "frechetlib/geometry_utils.pyx":250
+ * 
+ *         if double_equals(0.0, new_t):
+ *             self.t_j = 0.0             # <<<<<<<<<<<<<<
+ *             self.p_j = Point(Q[self.j])
+ *         elif double_equals(1.0, new_t):
+ */
+    __pyx_v_self->t_j = 0.0;
+
+    /* "frechetlib/geometry_utils.pyx":251
+ *         if double_equals(0.0, new_t):
+ *             self.t_j = 0.0
+ *             self.p_j = Point(Q[self.j])             # <<<<<<<<<<<<<<
+ *         elif double_equals(1.0, new_t):
+ *             self.t_j = 1.0
+ */
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_self->j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_GIVEREF(__pyx_t_2);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_j);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_j);
+    __pyx_v_self->p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "frechetlib/geometry_utils.pyx":249
+ *         cdef double old_t = self.t_j
+ * 
+ *         if double_equals(0.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_j = 0.0
+ *             self.p_j = Point(Q[self.j])
+ */
+    goto __pyx_L3;
+  }
+
+  /* "frechetlib/geometry_utils.pyx":252
+ *             self.t_j = 0.0
+ *             self.p_j = Point(Q[self.j])
+ *         elif double_equals(1.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_j = 1.0
+ *             self.p_j = Point(Q[self.j + 1])
+ */
+  __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_double_equals(1.0, __pyx_v_new_t, NULL); if (unlikely(__pyx_t_8 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L1_error)
+  if (__pyx_t_8) {
+
+    /* "frechetlib/geometry_utils.pyx":253
+ *             self.p_j = Point(Q[self.j])
+ *         elif double_equals(1.0, new_t):
+ *             self.t_j = 1.0             # <<<<<<<<<<<<<<
+ *             self.p_j = Point(Q[self.j + 1])
+ *             # TODO maybe change the number based on index?
+ */
+    __pyx_v_self->t_j = 1.0;
+
+    /* "frechetlib/geometry_utils.pyx":254
+ *         elif double_equals(1.0, new_t):
+ *             self.t_j = 1.0
+ *             self.p_j = Point(Q[self.j + 1])             # <<<<<<<<<<<<<<
+ *             # TODO maybe change the number based on index?
+ *             # I don't think the convention matters.
+ */
+    __pyx_t_9 = (__pyx_v_self->j + 1);
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_GIVEREF(__pyx_t_1);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_j);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_j);
+    __pyx_v_self->p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
+    __pyx_t_1 = 0;
+
+    /* "frechetlib/geometry_utils.pyx":252
+ *             self.t_j = 0.0
+ *             self.p_j = Point(Q[self.j])
+ *         elif double_equals(1.0, new_t):             # <<<<<<<<<<<<<<
+ *             self.t_j = 1.0
+ *             self.p_j = Point(Q[self.j + 1])
+ */
+    goto __pyx_L3;
+  }
+
+  /* "frechetlib/geometry_utils.pyx":259
+ *         else:
+ *             # Case where 0.0 < new_t < 1.0
+ *             self.t_j = new_t             # <<<<<<<<<<<<<<
+ *             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
+ * 
+ */
+  /*else*/ {
+    __pyx_v_self->t_j = __pyx_v_new_t;
+
+    /* "frechetlib/geometry_utils.pyx":260
+ *             # Case where 0.0 < new_t < 1.0
+ *             self.t_j = new_t
+ *             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)             # <<<<<<<<<<<<<<
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()
+ */
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_self->j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_9 = (__pyx_v_self->j + 1);
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), __pyx_v_self->t_j, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_GIVEREF(__pyx_t_1);
+    __Pyx_GOTREF((PyObject *)__pyx_v_self->p_j);
+    __Pyx_DECREF((PyObject *)__pyx_v_self->p_j);
+    __pyx_v_self->p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
+    __pyx_t_1 = 0;
+  }
+  __pyx_L3:;
+
+  /* "frechetlib/geometry_utils.pyx":262
+ *             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()             # <<<<<<<<<<<<<<
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
+ * 
+ */
+  __pyx_t_1 = ((PyObject *)__pyx_v_self->p_j);
+  __Pyx_INCREF(__pyx_t_1);
+  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(__pyx_v_self->p_i, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_10 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 262, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_self->dist = __pyx_t_10;
+
+  /* "frechetlib/geometry_utils.pyx":263
+ * 
+ *         self.dist = self.p_i.point_difference(self.p_j).get_norm()
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef flip(self):
+ */
+  __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_self->i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_9 = (__pyx_v_self->i + 1);
+  __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_10 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 263, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = (fabs((__pyx_v_old_t - __pyx_v_new_t)) * __pyx_t_10);
+  goto __pyx_L0;
+
+  /* "frechetlib/geometry_utils.pyx":237
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+ * 
+ *     cpdef float reassign_parameter_j(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Q.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_j", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Q.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+PyDoc_STRVAR(__pyx_doc_10frechetlib_14geometry_utils_3EID_24reassign_parameter_j, "\n        Reassign the point and parameter from the curve Q.\n        Returns the error incurred by the reassignment.\n        ");
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j = {"reassign_parameter_j", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j, __Pyx_METH_FASTCALL|METH_KEYWORDS, __pyx_doc_10frechetlib_14geometry_utils_3EID_24reassign_parameter_j};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j(PyObject *__pyx_v_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  float __pyx_v_new_t;
+  PyArrayObject *__pyx_v_Q = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("reassign_parameter_j (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_MACROS
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_new_t,&__pyx_n_s_Q,0};
+    if (__pyx_kwds) {
+      Py_ssize_t kw_args;
+      switch (__pyx_nargs) {
+        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
+      switch (__pyx_nargs) {
+        case  0:
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_new_t)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L3_error)
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_Q)) != 0)) {
+          (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
+          kw_args--;
+        }
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("reassign_parameter_j", 1, 2, 2, 1); __PYX_ERR(0, 237, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t kwd_pos_args = __pyx_nargs;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "reassign_parameter_j") < 0)) __PYX_ERR(0, 237, __pyx_L3_error)
+      }
+    } else if (unlikely(__pyx_nargs != 2)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
+      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+    }
+    __pyx_v_new_t = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_new_t == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 239, __pyx_L3_error)
+    __pyx_v_Q = ((PyArrayObject *)values[1]);
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("reassign_parameter_j", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 237, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_j", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q), __pyx_ptype_5numpy_ndarray, 1, "Q", 0))) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_24reassign_parameter_j(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), __pyx_v_new_t, __pyx_v_Q);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  {
+    Py_ssize_t __pyx_temp;
+    for (__pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+      __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
+    }
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24reassign_parameter_j(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, float __pyx_v_new_t, PyArrayObject *__pyx_v_Q) {
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_Q;
+  __Pyx_Buffer __pyx_pybuffer_Q;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("reassign_parameter_j", 1);
+  __pyx_pybuffer_Q.pybuffer.buf = NULL;
+  __pyx_pybuffer_Q.refcount = 0;
+  __pyx_pybuffernd_Q.data = NULL;
+  __pyx_pybuffernd_Q.rcbuffer = &__pyx_pybuffer_Q;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_Q.rcbuffer->pybuffer, (PyObject*)__pyx_v_Q, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 237, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_Q.diminfo[0].strides = __pyx_pybuffernd_Q.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_Q.diminfo[0].shape = __pyx_pybuffernd_Q.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_Q.diminfo[1].strides = __pyx_pybuffernd_Q.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_Q.diminfo[1].shape = __pyx_pybuffernd_Q.rcbuffer->pybuffer.shape[1];
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_j(__pyx_v_self, __pyx_v_new_t, ((PyArrayObject *)__pyx_v_Q), 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Q.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
+  __Pyx_AddTraceback("frechetlib.geometry_utils.EID.reassign_parameter_j", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  goto __pyx_L2;
+  __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_Q.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "frechetlib/geometry_utils.pyx":265
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
  * 
  *     cpdef flip(self):             # <<<<<<<<<<<<<<
  *         self.i, self.j = self.j, self.i
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
  */
 
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23flip(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_27flip(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25065,9 +26381,9 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_flip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_flip); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10frechetlib_14geometry_utils_3EID_23flip)) {
+      if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_10frechetlib_14geometry_utils_3EID_27flip)) {
         __Pyx_XDECREF(__pyx_r);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
@@ -25088,7 +26404,7 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
           PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
@@ -25110,7 +26426,7 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
     #endif
   }
 
-  /* "frechetlib/geometry_utils.pyx":257
+  /* "frechetlib/geometry_utils.pyx":266
  * 
  *     cpdef flip(self):
  *         self.i, self.j = self.j, self.i             # <<<<<<<<<<<<<<
@@ -25122,7 +26438,7 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
   __pyx_v_self->i = __pyx_t_6;
   __pyx_v_self->j = __pyx_t_7;
 
-  /* "frechetlib/geometry_utils.pyx":258
+  /* "frechetlib/geometry_utils.pyx":267
  *     cpdef flip(self):
  *         self.i, self.j = self.j, self.i
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert             # <<<<<<<<<<<<<<
@@ -25134,7 +26450,7 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
   __pyx_v_self->i_is_vert = __pyx_t_8;
   __pyx_v_self->j_is_vert = __pyx_t_9;
 
-  /* "frechetlib/geometry_utils.pyx":259
+  /* "frechetlib/geometry_utils.pyx":268
  *         self.i, self.j = self.j, self.i
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
  *         self.p_i, self.p_j = self.p_j, self.p_i             # <<<<<<<<<<<<<<
@@ -25148,7 +26464,7 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
   __pyx_v_self->p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_11);
   __pyx_t_11 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":260
+  /* "frechetlib/geometry_utils.pyx":269
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
  *         self.p_i, self.p_j = self.p_j, self.p_i
  *         self.t_i, self.t_j = self.t_j, self.t_i             # <<<<<<<<<<<<<<
@@ -25160,8 +26476,8 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
   __pyx_v_self->t_i = __pyx_t_12;
   __pyx_v_self->t_j = __pyx_t_13;
 
-  /* "frechetlib/geometry_utils.pyx":256
- *     #     return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+  /* "frechetlib/geometry_utils.pyx":265
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
  * 
  *     cpdef flip(self):             # <<<<<<<<<<<<<<
  *         self.i, self.j = self.j, self.i
@@ -25185,15 +26501,15 @@ static PyObject *__pyx_f_10frechetlib_14geometry_utils_3EID_flip(struct __pyx_ob
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23flip(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_27flip(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_23flip = {"flip", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_23flip, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_23flip(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_27flip = {"flip", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_27flip, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_27flip(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -25218,14 +26534,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("flip", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "flip", 0))) return NULL;
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_26flip(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_26flip(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25234,7 +26550,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(struct __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("flip", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_3EID_flip(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_3EID_flip(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25251,7 +26567,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(struct __pyx
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":262
+/* "frechetlib/geometry_utils.pyx":271
  *         self.t_i, self.t_j = self.t_j, self.t_i
  * 
  *     def __lt__(self, other: Self) -> bool:             # <<<<<<<<<<<<<<
@@ -25260,21 +26576,21 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_22flip(struct __pyx
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_25__lt__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_25__lt__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_29__lt__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_29__lt__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__lt__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), ((PyObject *)__pyx_v_other));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_28__lt__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), ((PyObject *)__pyx_v_other));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__lt__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25287,7 +26603,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__lt__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":266
+  /* "frechetlib/geometry_utils.pyx":275
  *         # TODO when this project gets refactored, get rid of this function and
  *         # just manually compute the key used in the heap.
  *         return self.dist < other.get_dist()             # <<<<<<<<<<<<<<
@@ -25295,9 +26611,9 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __p
  *     def __hash__(self) -> int:
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_dist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_dist); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -25317,18 +26633,18 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 275, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":262
+  /* "frechetlib/geometry_utils.pyx":271
  *         self.t_i, self.t_j = self.t_j, self.t_i
  * 
  *     def __lt__(self, other: Self) -> bool:             # <<<<<<<<<<<<<<
@@ -25350,7 +26666,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __p
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":268
+/* "frechetlib/geometry_utils.pyx":277
  *         return self.dist < other.get_dist()
  * 
  *     def __hash__(self) -> int:             # <<<<<<<<<<<<<<
@@ -25359,21 +26675,21 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_24__lt__(struct __p
  */
 
 /* Python wrapper */
-static Py_hash_t __pyx_pw_10frechetlib_14geometry_utils_3EID_27__hash__(PyObject *__pyx_v_self); /*proto*/
-static Py_hash_t __pyx_pw_10frechetlib_14geometry_utils_3EID_27__hash__(PyObject *__pyx_v_self) {
+static Py_hash_t __pyx_pw_10frechetlib_14geometry_utils_3EID_31__hash__(PyObject *__pyx_v_self); /*proto*/
+static Py_hash_t __pyx_pw_10frechetlib_14geometry_utils_3EID_31__hash__(PyObject *__pyx_v_self) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   Py_hash_t __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__hash__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_30__hash__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
+static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_30__hash__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
   Py_hash_t __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -25389,87 +26705,87 @@ static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__hash__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":271
+  /* "frechetlib/geometry_utils.pyx":280
  *         return hash(
  *             (
  *                 self.i,             # <<<<<<<<<<<<<<
  *                 self.i_is_vert,
  *                 self.j,
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "frechetlib/geometry_utils.pyx":272
+  /* "frechetlib/geometry_utils.pyx":281
  *             (
  *                 self.i,
  *                 self.i_is_vert,             # <<<<<<<<<<<<<<
  *                 self.j,
  *                 self.j_is_vert,
  */
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 281, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "frechetlib/geometry_utils.pyx":273
+  /* "frechetlib/geometry_utils.pyx":282
  *                 self.i,
  *                 self.i_is_vert,
  *                 self.j,             # <<<<<<<<<<<<<<
  *                 self.j_is_vert,
  *                 self.t_i,
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "frechetlib/geometry_utils.pyx":274
+  /* "frechetlib/geometry_utils.pyx":283
  *                 self.i_is_vert,
  *                 self.j,
  *                 self.j_is_vert,             # <<<<<<<<<<<<<<
  *                 self.t_i,
  *                 self.t_j,
  */
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "frechetlib/geometry_utils.pyx":275
+  /* "frechetlib/geometry_utils.pyx":284
  *                 self.j,
  *                 self.j_is_vert,
  *                 self.t_i,             # <<<<<<<<<<<<<<
  *                 self.t_j,
  *             )
  */
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->t_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "frechetlib/geometry_utils.pyx":276
+  /* "frechetlib/geometry_utils.pyx":285
  *                 self.j_is_vert,
  *                 self.t_i,
  *                 self.t_j,             # <<<<<<<<<<<<<<
  *             )
  *         )
  */
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->t_j); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
 
-  /* "frechetlib/geometry_utils.pyx":271
+  /* "frechetlib/geometry_utils.pyx":280
  *         return hash(
  *             (
  *                 self.i,             # <<<<<<<<<<<<<<
  *                 self.i_is_vert,
  *                 self.j,
  */
-  __pyx_t_7 = PyTuple_New(6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_2)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_2)) __PYX_ERR(0, 280, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 3, __pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 3, __pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 4, __pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 4, __pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_6);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 5, __pyx_t_6)) __PYX_ERR(0, 271, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 5, __pyx_t_6)) __PYX_ERR(0, 280, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -25477,19 +26793,19 @@ static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct _
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":269
+  /* "frechetlib/geometry_utils.pyx":278
  * 
  *     def __hash__(self) -> int:
  *         return hash(             # <<<<<<<<<<<<<<
  *             (
  *                 self.i,
  */
-  __pyx_t_8 = PyObject_Hash(__pyx_t_7); if (unlikely(__pyx_t_8 == ((Py_hash_t)-1))) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_8 = PyObject_Hash(__pyx_t_7); if (unlikely(__pyx_t_8 == ((Py_hash_t)-1))) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_r = __pyx_t_8;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":268
+  /* "frechetlib/geometry_utils.pyx":277
  *         return self.dist < other.get_dist()
  * 
  *     def __hash__(self) -> int:             # <<<<<<<<<<<<<<
@@ -25514,7 +26830,7 @@ static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct _
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":280
+/* "frechetlib/geometry_utils.pyx":289
  *         )
  * 
  *     def __eq__(self, other: object) -> bool:             # <<<<<<<<<<<<<<
@@ -25523,21 +26839,21 @@ static Py_hash_t __pyx_pf_10frechetlib_14geometry_utils_3EID_26__hash__(struct _
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_29__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_29__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_33__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other); /*proto*/
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_33__eq__(PyObject *__pyx_v_self, PyObject *__pyx_v_other) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__eq__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), ((PyObject *)__pyx_v_other));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_32__eq__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), ((PyObject *)__pyx_v_other));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_32__eq__(struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, PyObject *__pyx_v_other) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -25554,7 +26870,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__eq__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":281
+  /* "frechetlib/geometry_utils.pyx":290
  * 
  *     def __eq__(self, other: object) -> bool:
  *         if not isinstance(other, EID):             # <<<<<<<<<<<<<<
@@ -25565,7 +26881,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
   __pyx_t_2 = (!__pyx_t_1);
   if (__pyx_t_2) {
 
-    /* "frechetlib/geometry_utils.pyx":282
+    /* "frechetlib/geometry_utils.pyx":291
  *     def __eq__(self, other: object) -> bool:
  *         if not isinstance(other, EID):
  *             return False             # <<<<<<<<<<<<<<
@@ -25577,7 +26893,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     __pyx_r = Py_False;
     goto __pyx_L0;
 
-    /* "frechetlib/geometry_utils.pyx":281
+    /* "frechetlib/geometry_utils.pyx":290
  * 
  *     def __eq__(self, other: object) -> bool:
  *         if not isinstance(other, EID):             # <<<<<<<<<<<<<<
@@ -25586,7 +26902,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":284
+  /* "frechetlib/geometry_utils.pyx":293
  *             return False
  * 
  *         return (             # <<<<<<<<<<<<<<
@@ -25595,16 +26911,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "frechetlib/geometry_utils.pyx":285
+  /* "frechetlib/geometry_utils.pyx":294
  * 
  *         return (
  *             (self.i == other.get_i())             # <<<<<<<<<<<<<<
  *             and (self.j == other.get_j())
  *             and (self.i_is_vert == other.get_i_is_vert())
  */
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -25624,14 +26940,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 285, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __pyx_t_6 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 285, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 294, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
@@ -25641,16 +26957,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":286
+  /* "frechetlib/geometry_utils.pyx":295
  *         return (
  *             (self.i == other.get_i())
  *             and (self.j == other.get_j())             # <<<<<<<<<<<<<<
  *             and (self.i_is_vert == other.get_i_is_vert())
  *             and (self.j_is_vert == other.get_j_is_vert())
  */
-  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_self->j); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_j); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_j); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -25670,14 +26986,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_6, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_6, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 295, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -25687,16 +27003,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":287
+  /* "frechetlib/geometry_utils.pyx":296
  *             (self.i == other.get_i())
  *             and (self.j == other.get_j())
  *             and (self.i_is_vert == other.get_i_is_vert())             # <<<<<<<<<<<<<<
  *             and (self.j_is_vert == other.get_j_is_vert())
  *             and bool(self.p_i.is_close(other.get_p_i()))
  */
-  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong(__pyx_v_self->i_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_i_is_vert); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_i_is_vert); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -25716,14 +27032,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __pyx_t_6 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 296, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   } else {
@@ -25733,16 +27049,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":288
+  /* "frechetlib/geometry_utils.pyx":297
  *             and (self.j == other.get_j())
  *             and (self.i_is_vert == other.get_i_is_vert())
  *             and (self.j_is_vert == other.get_j_is_vert())             # <<<<<<<<<<<<<<
  *             and bool(self.p_i.is_close(other.get_p_i()))
  *             and bool(self.p_j.is_close(other.get_p_j()))
  */
-  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyBool_FromLong(__pyx_v_self->j_is_vert); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_j_is_vert); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -25762,14 +27078,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_7, NULL};
     __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_6, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_4 = PyObject_RichCompare(__pyx_t_6, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 288, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 297, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -25779,14 +27095,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":289
+  /* "frechetlib/geometry_utils.pyx":298
  *             and (self.i_is_vert == other.get_i_is_vert())
  *             and (self.j_is_vert == other.get_j_is_vert())
  *             and bool(self.p_i.is_close(other.get_p_i()))             # <<<<<<<<<<<<<<
  *             and bool(self.p_j.is_close(other.get_p_j()))
  *             and bool(double_equals(self.t_i, other.get_t_i()))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_p_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_p_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_8 = 0;
@@ -25806,16 +27122,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_6, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_10frechetlib_14geometry_utils_Point))))) __PYX_ERR(0, 289, __pyx_L1_error)
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(__pyx_v_self->p_i, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 289, __pyx_L1_error)
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_10frechetlib_14geometry_utils_Point))))) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(__pyx_v_self->p_i, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 298, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -25825,14 +27141,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":290
+  /* "frechetlib/geometry_utils.pyx":299
  *             and (self.j_is_vert == other.get_j_is_vert())
  *             and bool(self.p_i.is_close(other.get_p_i()))
  *             and bool(self.p_j.is_close(other.get_p_j()))             # <<<<<<<<<<<<<<
  *             and bool(double_equals(self.t_i, other.get_t_i()))
  *             and bool(double_equals(self.t_j, other.get_t_j()))
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_p_j); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_p_j); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_8 = 0;
@@ -25852,16 +27168,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_6, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 290, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_10frechetlib_14geometry_utils_Point))))) __PYX_ERR(0, 290, __pyx_L1_error)
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(__pyx_v_self->p_j, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 290, __pyx_L1_error)
+  if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_10frechetlib_14geometry_utils_Point))))) __PYX_ERR(0, 299, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_5Point_is_close(__pyx_v_self->p_j, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_4), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 299, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -25871,14 +27187,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":291
+  /* "frechetlib/geometry_utils.pyx":300
  *             and bool(self.p_i.is_close(other.get_p_i()))
  *             and bool(self.p_j.is_close(other.get_p_j()))
  *             and bool(double_equals(self.t_i, other.get_t_i()))             # <<<<<<<<<<<<<<
  *             and bool(double_equals(self.t_j, other.get_t_j()))
  *         )
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_t_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_t_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_8 = 0;
@@ -25898,16 +27214,16 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_6, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_self->t_i, __pyx_t_9, NULL); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 291, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_self->t_i, __pyx_t_9, NULL); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 291, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 300, __pyx_L1_error)
   if (__pyx_t_2) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -25917,14 +27233,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     goto __pyx_L4_bool_binop_done;
   }
 
-  /* "frechetlib/geometry_utils.pyx":292
+  /* "frechetlib/geometry_utils.pyx":301
  *             and bool(self.p_j.is_close(other.get_p_j()))
  *             and bool(double_equals(self.t_i, other.get_t_i()))
  *             and bool(double_equals(self.t_j, other.get_t_j()))             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_t_j); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_get_t_j); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_8 = 0;
@@ -25944,14 +27260,14 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
     PyObject *__pyx_callargs[2] = {__pyx_t_6, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_self->t_j, __pyx_t_9, NULL); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 292, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_10frechetlib_14geometry_utils_double_equals(__pyx_v_self->t_j, __pyx_t_9, NULL); if (unlikely(__pyx_t_2 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyBool_FromLong((!(!__pyx_t_2))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_t_4);
   __pyx_t_3 = __pyx_t_4;
@@ -25961,7 +27277,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":280
+  /* "frechetlib/geometry_utils.pyx":289
  *         )
  * 
  *     def __eq__(self, other: object) -> bool:             # <<<<<<<<<<<<<<
@@ -25991,15 +27307,15 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_28__eq__(struct __p
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_31__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_35__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_31__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_31__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_31__reduce_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_35__reduce_cython__ = {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_35__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_35__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -26024,14 +27340,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_30__reduce_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_34__reduce_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_30__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_34__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -26071,15 +27387,15 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_30__reduce_cython__
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_33__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_37__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_33__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_33__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_33__setstate_cython__(PyObject *__pyx_v_self, 
+static PyMethodDef __pyx_mdef_10frechetlib_14geometry_utils_3EID_37__setstate_cython__ = {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_37__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10frechetlib_14geometry_utils_3EID_37__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -26153,7 +27469,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_32__setstate_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_3EID_36__setstate_cython__(((struct __pyx_obj_10frechetlib_14geometry_utils_EID *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -26166,7 +27482,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_32__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_36__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -26198,7 +27514,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_3EID_32__setstate_cython
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":297
+/* "frechetlib/geometry_utils.pyx":306
  * @cython.final
  * cdef class EIDFromCurveIndices:
  *     def __cinit__(             # <<<<<<<<<<<<<<
@@ -26245,7 +27561,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_19EIDFromCurveIndices_1__cinit
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -26253,14 +27569,14 @@ static int __pyx_pw_10frechetlib_14geometry_utils_19EIDFromCurveIndices_1__cinit
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 297, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 306, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(0, 297, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(0, 306, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 297, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 306, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
@@ -26273,7 +27589,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_19EIDFromCurveIndices_1__cinit
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 297, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 306, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -26287,7 +27603,7 @@ static int __pyx_pw_10frechetlib_14geometry_utils_19EIDFromCurveIndices_1__cinit
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_event), __pyx_ptype_10frechetlib_14geometry_utils_EID, 0, "event", 0))) __PYX_ERR(0, 300, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_event), __pyx_ptype_10frechetlib_14geometry_utils_EID, 0, "event", 0))) __PYX_ERR(0, 309, __pyx_L1_error)
   __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices___cinit__(((struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *)__pyx_v_self), __pyx_v_heap_key, __pyx_v_event);
 
   /* function exit code */
@@ -26314,17 +27630,17 @@ static int __pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices___cinit_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 1);
 
-  /* "frechetlib/geometry_utils.pyx":302
+  /* "frechetlib/geometry_utils.pyx":311
  *         event: EID,
  *     ) -> None:
  *         self.heap_key = heap_key             # <<<<<<<<<<<<<<
  *         self.event = event
  * 
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_heap_key); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_heap_key); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L1_error)
   __pyx_v_self->heap_key = __pyx_t_1;
 
-  /* "frechetlib/geometry_utils.pyx":303
+  /* "frechetlib/geometry_utils.pyx":312
  *     ) -> None:
  *         self.heap_key = heap_key
  *         self.event = event             # <<<<<<<<<<<<<<
@@ -26337,7 +27653,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices___cinit_
   __Pyx_DECREF((PyObject *)__pyx_v_self->event);
   __pyx_v_self->event = __pyx_v_event;
 
-  /* "frechetlib/geometry_utils.pyx":297
+  /* "frechetlib/geometry_utils.pyx":306
  * @cython.final
  * cdef class EIDFromCurveIndices:
  *     def __cinit__(             # <<<<<<<<<<<<<<
@@ -26356,7 +27672,7 @@ static int __pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices___cinit_
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":305
+/* "frechetlib/geometry_utils.pyx":314
  *         self.event = event
  * 
  *     cpdef double get_heap_key(self):             # <<<<<<<<<<<<<<
@@ -26374,7 +27690,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 static double __pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_heap_key(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx_v_self, CYTHON_UNUSED int __pyx_skip_dispatch) {
   double __pyx_r;
 
-  /* "frechetlib/geometry_utils.pyx":306
+  /* "frechetlib/geometry_utils.pyx":315
  * 
  *     cpdef double get_heap_key(self):
  *         return self.heap_key             # <<<<<<<<<<<<<<
@@ -26384,7 +27700,7 @@ static double __pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_he
   __pyx_r = __pyx_v_self->heap_key;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":305
+  /* "frechetlib/geometry_utils.pyx":314
  *         self.event = event
  * 
  *     cpdef double get_heap_key(self):             # <<<<<<<<<<<<<<
@@ -26448,8 +27764,8 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_2g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_heap_key", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_heap_key(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 305, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_heap_key(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -26466,7 +27782,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_2g
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":308
+/* "frechetlib/geometry_utils.pyx":317
  *         return self.heap_key
  * 
  *     cpdef EID get_event(self):             # <<<<<<<<<<<<<<
@@ -26486,7 +27802,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_event", 1);
 
-  /* "frechetlib/geometry_utils.pyx":309
+  /* "frechetlib/geometry_utils.pyx":318
  * 
  *     cpdef EID get_event(self):
  *         return self.event             # <<<<<<<<<<<<<<
@@ -26498,7 +27814,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EID *__pyx_f_10frechetlib_
   __pyx_r = __pyx_v_self->event;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":308
+  /* "frechetlib/geometry_utils.pyx":317
  *         return self.heap_key
  * 
  *     cpdef EID get_event(self):             # <<<<<<<<<<<<<<
@@ -26563,7 +27879,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_4g
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_event", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_event(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_event(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -26794,7 +28110,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_19EIDFromCurveIndices_8_
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":311
+/* "frechetlib/geometry_utils.pyx":320
  *         return self.event
  * 
  * cpdef EIDFromCurveIndices from_curve_indices(             # <<<<<<<<<<<<<<
@@ -26839,7 +28155,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_curve_indices", 1);
 
-  /* "frechetlib/geometry_utils.pyx":335
+  /* "frechetlib/geometry_utils.pyx":344
  *     # TODO I think some of the logic below can be refactored to reduce
  *     # the number of cases
  *     dist = 0.0             # <<<<<<<<<<<<<<
@@ -26848,7 +28164,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   __pyx_v_dist = 0.0;
 
-  /* "frechetlib/geometry_utils.pyx":336
+  /* "frechetlib/geometry_utils.pyx":345
  *     # the number of cases
  *     dist = 0.0
  *     heap_key = 0.0             # <<<<<<<<<<<<<<
@@ -26858,7 +28174,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __Pyx_INCREF(__pyx_float_0_0);
   __pyx_v_heap_key = __pyx_float_0_0;
 
-  /* "frechetlib/geometry_utils.pyx":337
+  /* "frechetlib/geometry_utils.pyx":346
  *     dist = 0.0
  *     heap_key = 0.0
  *     t_i = 0.0             # <<<<<<<<<<<<<<
@@ -26867,7 +28183,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   __pyx_v_t_i = 0.0;
 
-  /* "frechetlib/geometry_utils.pyx":338
+  /* "frechetlib/geometry_utils.pyx":347
  *     heap_key = 0.0
  *     t_i = 0.0
  *     t_j = 0.0             # <<<<<<<<<<<<<<
@@ -26876,37 +28192,37 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   __pyx_v_t_j = 0.0;
 
-  /* "frechetlib/geometry_utils.pyx":339
+  /* "frechetlib/geometry_utils.pyx":348
  *     t_i = 0.0
  *     t_j = 0.0
  *     p_i = Point(P[i])             # <<<<<<<<<<<<<<
  *     p_j = Point(Q[j])
  * 
  */
-  __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 339, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 348, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_p_i = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":340
+  /* "frechetlib/geometry_utils.pyx":349
  *     t_j = 0.0
  *     p_i = Point(P[i])
  *     p_j = Point(Q[j])             # <<<<<<<<<<<<<<
  * 
  *     if not 0 <= i < P.shape[0]:
  */
-  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 340, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 340, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_p_j = ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":342
+  /* "frechetlib/geometry_utils.pyx":351
  *     p_j = Point(Q[j])
  * 
  *     if not 0 <= i < P.shape[0]:             # <<<<<<<<<<<<<<
@@ -26920,14 +28236,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_t_4 = (!__pyx_t_3);
   if (unlikely(__pyx_t_4)) {
 
-    /* "frechetlib/geometry_utils.pyx":344
+    /* "frechetlib/geometry_utils.pyx":353
  *     if not 0 <= i < P.shape[0]:
  *         raise ValueError(
  *             f'Cannot create event with index "{i}" on a curve with shape:'             # <<<<<<<<<<<<<<
  *             f"{P.shape[0]}, {P.shape[1]}."
  *         )
  */
-    __pyx_t_1 = PyTuple_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -26935,7 +28251,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_5 += 32;
     __Pyx_GIVEREF(__pyx_kp_u_Cannot_create_event_with_index);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Cannot_create_event_with_index);
-    __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_i, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_i, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
@@ -26946,16 +28262,16 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __Pyx_GIVEREF(__pyx_kp_u_on_a_curve_with_shape);
     PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_on_a_curve_with_shape);
 
-    /* "frechetlib/geometry_utils.pyx":345
+    /* "frechetlib/geometry_utils.pyx":354
  *         raise ValueError(
  *             f'Cannot create event with index "{i}" on a curve with shape:'
  *             f"{P.shape[0]}, {P.shape[1]}."             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_6;
@@ -26967,9 +28283,9 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__11);
     PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u__11);
-    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_6;
@@ -26982,32 +28298,32 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __Pyx_GIVEREF(__pyx_kp_u__2);
     PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u__2);
 
-    /* "frechetlib/geometry_utils.pyx":344
+    /* "frechetlib/geometry_utils.pyx":353
  *     if not 0 <= i < P.shape[0]:
  *         raise ValueError(
  *             f'Cannot create event with index "{i}" on a curve with shape:'             # <<<<<<<<<<<<<<
  *             f"{P.shape[0]}, {P.shape[1]}."
  *         )
  */
-    __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_1, 7, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 344, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_1, 7, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 353, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "frechetlib/geometry_utils.pyx":343
+    /* "frechetlib/geometry_utils.pyx":352
  * 
  *     if not 0 <= i < P.shape[0]:
  *         raise ValueError(             # <<<<<<<<<<<<<<
  *             f'Cannot create event with index "{i}" on a curve with shape:'
  *             f"{P.shape[0]}, {P.shape[1]}."
  */
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 343, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 343, __pyx_L1_error)
+    __PYX_ERR(0, 352, __pyx_L1_error)
 
-    /* "frechetlib/geometry_utils.pyx":342
+    /* "frechetlib/geometry_utils.pyx":351
  *     p_j = Point(Q[j])
  * 
  *     if not 0 <= i < P.shape[0]:             # <<<<<<<<<<<<<<
@@ -27016,7 +28332,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":348
+  /* "frechetlib/geometry_utils.pyx":357
  *         )
  * 
  *     if not 0 <= j < Q.shape[0]:             # <<<<<<<<<<<<<<
@@ -27030,14 +28346,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_t_3 = (!__pyx_t_4);
   if (unlikely(__pyx_t_3)) {
 
-    /* "frechetlib/geometry_utils.pyx":350
+    /* "frechetlib/geometry_utils.pyx":359
  *     if not 0 <= j < Q.shape[0]:
  *         raise ValueError(
  *             f'Cannot create event with index "{j}" on a curve with shape:'             # <<<<<<<<<<<<<<
  *             f"{Q.shape[0]}, {Q.shape[1]}."
  *         )
  */
-    __pyx_t_1 = PyTuple_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 359, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -27045,7 +28361,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_5 += 32;
     __Pyx_GIVEREF(__pyx_kp_u_Cannot_create_event_with_index);
     PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_Cannot_create_event_with_index);
-    __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_j, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_j, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 359, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2);
     __Pyx_GIVEREF(__pyx_t_2);
@@ -27056,16 +28372,16 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __Pyx_GIVEREF(__pyx_kp_u_on_a_curve_with_shape);
     PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_on_a_curve_with_shape);
 
-    /* "frechetlib/geometry_utils.pyx":351
+    /* "frechetlib/geometry_utils.pyx":360
  *         raise ValueError(
  *             f'Cannot create event with index "{j}" on a curve with shape:'
  *             f"{Q.shape[0]}, {Q.shape[1]}."             # <<<<<<<<<<<<<<
  *         )
  * 
  */
-    __pyx_t_2 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_2, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 360, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_6;
@@ -27077,9 +28393,9 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__11);
     PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u__11);
-    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_npy_intp((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[1])); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 360, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 351, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_empty_unicode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 360, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_6;
@@ -27092,32 +28408,32 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __Pyx_GIVEREF(__pyx_kp_u__2);
     PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u__2);
 
-    /* "frechetlib/geometry_utils.pyx":350
+    /* "frechetlib/geometry_utils.pyx":359
  *     if not 0 <= j < Q.shape[0]:
  *         raise ValueError(
  *             f'Cannot create event with index "{j}" on a curve with shape:'             # <<<<<<<<<<<<<<
  *             f"{Q.shape[0]}, {Q.shape[1]}."
  *         )
  */
-    __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_1, 7, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 350, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_1, 7, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 359, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "frechetlib/geometry_utils.pyx":349
+    /* "frechetlib/geometry_utils.pyx":358
  * 
  *     if not 0 <= j < Q.shape[0]:
  *         raise ValueError(             # <<<<<<<<<<<<<<
  *             f'Cannot create event with index "{j}" on a curve with shape:'
  *             f"{Q.shape[0]}, {Q.shape[1]}."
  */
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 358, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 349, __pyx_L1_error)
+    __PYX_ERR(0, 358, __pyx_L1_error)
 
-    /* "frechetlib/geometry_utils.pyx":348
+    /* "frechetlib/geometry_utils.pyx":357
  *         )
  * 
  *     if not 0 <= j < Q.shape[0]:             # <<<<<<<<<<<<<<
@@ -27126,7 +28442,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":354
+  /* "frechetlib/geometry_utils.pyx":363
  *         )
  * 
  *     use_offsets = P_offs is not None and Q_offs is not None             # <<<<<<<<<<<<<<
@@ -27136,14 +28452,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_t_3 = (((PyObject *)__pyx_v_P_offs) != Py_None);
   if (__pyx_t_3) {
   } else {
-    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_1 = __pyx_t_2;
     __pyx_t_2 = 0;
     goto __pyx_L5_bool_binop_done;
   }
   __pyx_t_3 = (((PyObject *)__pyx_v_Q_offs) != Py_None);
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 354, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 363, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -27151,17 +28467,17 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_v_use_offsets = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":356
+  /* "frechetlib/geometry_utils.pyx":365
  *     use_offsets = P_offs is not None and Q_offs is not None
  * 
  *     if use_offsets:             # <<<<<<<<<<<<<<
  *         assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
  *         # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
  */
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 356, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 365, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "frechetlib/geometry_utils.pyx":357
+    /* "frechetlib/geometry_utils.pyx":366
  * 
  *     if use_offsets:
  *         assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]             # <<<<<<<<<<<<<<
@@ -27173,14 +28489,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
       __pyx_t_3 = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[0]) == (__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P_offs)[0]));
       if (unlikely(!__pyx_t_3)) {
         __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-        __PYX_ERR(0, 357, __pyx_L1_error)
+        __PYX_ERR(0, 366, __pyx_L1_error)
       }
     }
     #else
-    if ((1)); else __PYX_ERR(0, 357, __pyx_L1_error)
+    if ((1)); else __PYX_ERR(0, 366, __pyx_L1_error)
     #endif
 
-    /* "frechetlib/geometry_utils.pyx":359
+    /* "frechetlib/geometry_utils.pyx":368
  *         assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
  *         # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
  *         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]             # <<<<<<<<<<<<<<
@@ -27192,14 +28508,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
       __pyx_t_3 = ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[0]) == (__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q_offs)[0]));
       if (unlikely(!__pyx_t_3)) {
         __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-        __PYX_ERR(0, 359, __pyx_L1_error)
+        __PYX_ERR(0, 368, __pyx_L1_error)
       }
     }
     #else
-    if ((1)); else __PYX_ERR(0, 359, __pyx_L1_error)
+    if ((1)); else __PYX_ERR(0, 368, __pyx_L1_error)
     #endif
 
-    /* "frechetlib/geometry_utils.pyx":356
+    /* "frechetlib/geometry_utils.pyx":365
  *     use_offsets = P_offs is not None and Q_offs is not None
  * 
  *     if use_offsets:             # <<<<<<<<<<<<<<
@@ -27208,7 +28524,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   }
 
-  /* "frechetlib/geometry_utils.pyx":361
+  /* "frechetlib/geometry_utils.pyx":370
  *         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
  * 
  *     if i_is_vert and j_is_vert:             # <<<<<<<<<<<<<<
@@ -27224,66 +28540,66 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_L9_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "frechetlib/geometry_utils.pyx":362
+    /* "frechetlib/geometry_utils.pyx":371
  * 
  *     if i_is_vert and j_is_vert:
  *         dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()             # <<<<<<<<<<<<<<
  * 
  *         if use_offsets:
  */
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_7), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_7), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 362, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 371, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_dist = __pyx_t_8;
 
-    /* "frechetlib/geometry_utils.pyx":364
+    /* "frechetlib/geometry_utils.pyx":373
  *         dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
  * 
  *         if use_offsets:             # <<<<<<<<<<<<<<
  *             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *         else:
  */
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 373, __pyx_L1_error)
     if (__pyx_t_3) {
 
-      /* "frechetlib/geometry_utils.pyx":365
+      /* "frechetlib/geometry_utils.pyx":374
  * 
  *         if use_offsets:
  *             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]             # <<<<<<<<<<<<<<
  *         else:
  *             heap_key = dist
  */
-      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Subtract(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "frechetlib/geometry_utils.pyx":364
+      /* "frechetlib/geometry_utils.pyx":373
  *         dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
  * 
  *         if use_offsets:             # <<<<<<<<<<<<<<
@@ -27293,7 +28609,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
       goto __pyx_L11;
     }
 
-    /* "frechetlib/geometry_utils.pyx":367
+    /* "frechetlib/geometry_utils.pyx":376
  *             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *         else:
  *             heap_key = dist             # <<<<<<<<<<<<<<
@@ -27301,14 +28617,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *     elif i_is_vert:
  */
     /*else*/ {
-      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
+      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
       __pyx_t_1 = 0;
     }
     __pyx_L11:;
 
-    /* "frechetlib/geometry_utils.pyx":361
+    /* "frechetlib/geometry_utils.pyx":370
  *         assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
  * 
  *     if i_is_vert and j_is_vert:             # <<<<<<<<<<<<<<
@@ -27318,7 +28634,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     goto __pyx_L8;
   }
 
-  /* "frechetlib/geometry_utils.pyx":369
+  /* "frechetlib/geometry_utils.pyx":378
  *             heap_key = dist
  * 
  *     elif i_is_vert:             # <<<<<<<<<<<<<<
@@ -27327,7 +28643,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   if (__pyx_v_i_is_vert) {
 
-    /* "frechetlib/geometry_utils.pyx":370
+    /* "frechetlib/geometry_utils.pyx":379
  * 
  *     elif i_is_vert:
  *         if j == Q.shape[0] - 1:             # <<<<<<<<<<<<<<
@@ -27337,66 +28653,66 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_3 = (__pyx_v_j == ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_Q)[0]) - 1));
     if (__pyx_t_3) {
 
-      /* "frechetlib/geometry_utils.pyx":371
+      /* "frechetlib/geometry_utils.pyx":380
  *     elif i_is_vert:
  *         if j == Q.shape[0] - 1:
  *             dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()             # <<<<<<<<<<<<<<
  * 
  *             if use_offsets:
  */
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_7), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_7), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_v_dist = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":373
+      /* "frechetlib/geometry_utils.pyx":382
  *             dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *             else:
  */
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 373, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 382, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "frechetlib/geometry_utils.pyx":374
+        /* "frechetlib/geometry_utils.pyx":383
  * 
  *             if use_offsets:
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]             # <<<<<<<<<<<<<<
  *             else:
  *                 heap_key = dist
  */
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 374, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_7 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 374, __pyx_L1_error)
+        __pyx_t_7 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 374, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyNumber_Subtract(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 374, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Subtract(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 383, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "frechetlib/geometry_utils.pyx":373
+        /* "frechetlib/geometry_utils.pyx":382
  *             dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
@@ -27406,7 +28722,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         goto __pyx_L13;
       }
 
-      /* "frechetlib/geometry_utils.pyx":376
+      /* "frechetlib/geometry_utils.pyx":385
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *             else:
  *                 heap_key = dist             # <<<<<<<<<<<<<<
@@ -27414,14 +28730,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *             dist_obj = LinePointDistance(Q[j], Q[j + 1], P[i])
  */
       /*else*/ {
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 376, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 385, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
         __pyx_t_1 = 0;
       }
       __pyx_L13:;
 
-      /* "frechetlib/geometry_utils.pyx":370
+      /* "frechetlib/geometry_utils.pyx":379
  * 
  *     elif i_is_vert:
  *         if j == Q.shape[0] - 1:             # <<<<<<<<<<<<<<
@@ -27431,7 +28747,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
       goto __pyx_L12;
     }
 
-    /* "frechetlib/geometry_utils.pyx":378
+    /* "frechetlib/geometry_utils.pyx":387
  *                 heap_key = dist
  *         else:
  *             dist_obj = LinePointDistance(Q[j], Q[j + 1], P[i])             # <<<<<<<<<<<<<<
@@ -27439,94 +28755,94 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *             t_j = dist_obj.get_t()
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_9 = (__pyx_v_j + 1);
-      __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_1);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1)) __PYX_ERR(0, 378, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1)) __PYX_ERR(0, 387, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_2);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2)) __PYX_ERR(0, 378, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2)) __PYX_ERR(0, 387, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_7);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error);
       __pyx_t_1 = 0;
       __pyx_t_2 = 0;
       __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance), __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance), __pyx_t_10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_v_dist_obj = ((struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *)__pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "frechetlib/geometry_utils.pyx":379
+      /* "frechetlib/geometry_utils.pyx":388
  *         else:
  *             dist_obj = LinePointDistance(Q[j], Q[j + 1], P[i])
  *             dist = dist_obj.get_distance()             # <<<<<<<<<<<<<<
  *             t_j = dist_obj.get_t()
  *             p_j = dist_obj.get_p()
  */
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 379, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 388, __pyx_L1_error)
       __pyx_v_dist = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":380
+      /* "frechetlib/geometry_utils.pyx":389
  *             dist_obj = LinePointDistance(Q[j], Q[j + 1], P[i])
  *             dist = dist_obj.get_distance()
  *             t_j = dist_obj.get_t()             # <<<<<<<<<<<<<<
  *             p_j = dist_obj.get_p()
  * 
  */
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 380, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 389, __pyx_L1_error)
       __pyx_v_t_j = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":381
+      /* "frechetlib/geometry_utils.pyx":390
  *             dist = dist_obj.get_distance()
  *             t_j = dist_obj.get_t()
  *             p_j = dist_obj.get_p()             # <<<<<<<<<<<<<<
  * 
  *             #dist, t_j, p_j = LinePointDistance(Q[j], Q[j + 1], P[i])
  */
-      __pyx_t_7 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_dist_obj, 0)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
+      __pyx_t_7 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_dist_obj, 0)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 390, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_p_j, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "frechetlib/geometry_utils.pyx":387
+      /* "frechetlib/geometry_utils.pyx":396
  *             #line_point_distance(Q[j], Q[j + 1], P[i])
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
  *                 heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
  *             else:
  */
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 387, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 396, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "frechetlib/geometry_utils.pyx":388
+        /* "frechetlib/geometry_utils.pyx":397
  * 
  *             if use_offsets:
  *                 heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]             # <<<<<<<<<<<<<<
  *             else:
  *                 heap_key = dist
  */
-        __pyx_t_7 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_7 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_2 = PyNumber_Subtract(__pyx_t_7, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_2 = PyNumber_Subtract(__pyx_t_7, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_9 = (__pyx_v_j + 1);
-        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = PyObject_RichCompare(__pyx_t_10, __pyx_t_7, Py_GT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 388, __pyx_L1_error)
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_11 = PyObject_RichCompare(__pyx_t_10, __pyx_t_7, Py_GT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 397, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         if (__pyx_t_3) {
           __Pyx_INCREF(__pyx_t_10);
@@ -27537,14 +28853,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         }
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 388, __pyx_L1_error)
+        __pyx_t_10 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "frechetlib/geometry_utils.pyx":387
+        /* "frechetlib/geometry_utils.pyx":396
  *             #line_point_distance(Q[j], Q[j + 1], P[i])
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
@@ -27554,7 +28870,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         goto __pyx_L14;
       }
 
-      /* "frechetlib/geometry_utils.pyx":390
+      /* "frechetlib/geometry_utils.pyx":399
  *                 heap_key = dist - P_offs[i] - max(Q_offs[j], Q_offs[j + 1])  # type: ignore[index]
  *             else:
  *                 heap_key = dist             # <<<<<<<<<<<<<<
@@ -27562,7 +28878,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *     elif j_is_vert:
  */
       /*else*/ {
-        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 390, __pyx_L1_error)
+        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 399, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_10);
         __pyx_t_10 = 0;
@@ -27571,7 +28887,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     }
     __pyx_L12:;
 
-    /* "frechetlib/geometry_utils.pyx":369
+    /* "frechetlib/geometry_utils.pyx":378
  *             heap_key = dist
  * 
  *     elif i_is_vert:             # <<<<<<<<<<<<<<
@@ -27581,7 +28897,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     goto __pyx_L8;
   }
 
-  /* "frechetlib/geometry_utils.pyx":392
+  /* "frechetlib/geometry_utils.pyx":401
  *                 heap_key = dist
  * 
  *     elif j_is_vert:             # <<<<<<<<<<<<<<
@@ -27590,7 +28906,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   if (likely(__pyx_v_j_is_vert)) {
 
-    /* "frechetlib/geometry_utils.pyx":393
+    /* "frechetlib/geometry_utils.pyx":402
  * 
  *     elif j_is_vert:
  *         if i == P.shape[0] - 1:             # <<<<<<<<<<<<<<
@@ -27600,66 +28916,66 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     __pyx_t_3 = (__pyx_v_i == ((__pyx_f_5numpy_7ndarray_5shape_shape(__pyx_v_P)[0]) - 1));
     if (__pyx_t_3) {
 
-      /* "frechetlib/geometry_utils.pyx":394
+      /* "frechetlib/geometry_utils.pyx":403
  *     elif j_is_vert:
  *         if i == P.shape[0] - 1:
  *             dist = Point(P[i]).point_difference(Point(Q[j])).get_norm()             # <<<<<<<<<<<<<<
  *             #float(np.linalg.norm(P[i] - Q[j]))
  * 
  */
-      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      __pyx_t_10 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_10 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_point_difference(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), 0)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_10), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 394, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_5Point_get_norm(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_10), 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 403, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_v_dist = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":397
+      /* "frechetlib/geometry_utils.pyx":406
  *             #float(np.linalg.norm(P[i] - Q[j]))
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *             else:
  */
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 406, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "frechetlib/geometry_utils.pyx":398
+        /* "frechetlib/geometry_utils.pyx":407
  * 
  *             if use_offsets:
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]             # <<<<<<<<<<<<<<
  *             else:
  *                 heap_key = dist
  */
-        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 407, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyNumber_Subtract(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Subtract(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 407, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 407, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_10 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
+        __pyx_t_10 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "frechetlib/geometry_utils.pyx":397
+        /* "frechetlib/geometry_utils.pyx":406
  *             #float(np.linalg.norm(P[i] - Q[j]))
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
@@ -27669,7 +28985,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         goto __pyx_L16;
       }
 
-      /* "frechetlib/geometry_utils.pyx":400
+      /* "frechetlib/geometry_utils.pyx":409
  *                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
  *             else:
  *                 heap_key = dist             # <<<<<<<<<<<<<<
@@ -27677,14 +28993,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *             dist_obj = LinePointDistance(P[i], P[i + 1], Q[j])
  */
       /*else*/ {
-        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 400, __pyx_L1_error)
+        __pyx_t_10 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 409, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_10);
         __pyx_t_10 = 0;
       }
       __pyx_L16:;
 
-      /* "frechetlib/geometry_utils.pyx":393
+      /* "frechetlib/geometry_utils.pyx":402
  * 
  *     elif j_is_vert:
  *         if i == P.shape[0] - 1:             # <<<<<<<<<<<<<<
@@ -27694,7 +29010,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
       goto __pyx_L15;
     }
 
-    /* "frechetlib/geometry_utils.pyx":402
+    /* "frechetlib/geometry_utils.pyx":411
  *                 heap_key = dist
  *         else:
  *             dist_obj = LinePointDistance(P[i], P[i + 1], Q[j])             # <<<<<<<<<<<<<<
@@ -27702,88 +29018,88 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *             t_i = dist_obj.get_t()
  */
     /*else*/ {
-      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_9 = (__pyx_v_i + 1);
-      __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 411, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 411, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_10);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_2);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_2)) __PYX_ERR(0, 402, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_2)) __PYX_ERR(0, 411, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_1);
-      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error);
+      if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error);
       __pyx_t_10 = 0;
       __pyx_t_2 = 0;
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance), __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_v_dist_obj = ((struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *)__pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "frechetlib/geometry_utils.pyx":403
+      /* "frechetlib/geometry_utils.pyx":412
  *         else:
  *             dist_obj = LinePointDistance(P[i], P[i + 1], Q[j])
  *             dist = dist_obj.get_distance()             # <<<<<<<<<<<<<<
  *             t_i = dist_obj.get_t()
  *             p_i = dist_obj.get_p()
  */
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 403, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_distance(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 412, __pyx_L1_error)
       __pyx_v_dist = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":404
+      /* "frechetlib/geometry_utils.pyx":413
  *             dist_obj = LinePointDistance(P[i], P[i + 1], Q[j])
  *             dist = dist_obj.get_distance()
  *             t_i = dist_obj.get_t()             # <<<<<<<<<<<<<<
  *             p_i = dist_obj.get_p()
  * 
  */
-      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 404, __pyx_L1_error)
+      __pyx_t_8 = __pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t(__pyx_v_dist_obj, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 413, __pyx_L1_error)
       __pyx_v_t_i = __pyx_t_8;
 
-      /* "frechetlib/geometry_utils.pyx":405
+      /* "frechetlib/geometry_utils.pyx":414
  *             dist = dist_obj.get_distance()
  *             t_i = dist_obj.get_t()
  *             p_i = dist_obj.get_p()             # <<<<<<<<<<<<<<
  * 
  *             #dist, t_i, p_i = LinePointDistance(P[i], P[i + 1], Q[j])
  */
-      __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_dist_obj, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 405, __pyx_L1_error)
+      __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p(__pyx_v_dist_obj, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 414, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF_SET(__pyx_v_p_i, ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "frechetlib/geometry_utils.pyx":410
+      /* "frechetlib/geometry_utils.pyx":419
  *             #line_point_distance(P[i], P[i + 1], Q[j])
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
  *                 heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
  *             else:
  */
-      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 410, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_use_offsets); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 419, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "frechetlib/geometry_utils.pyx":411
+        /* "frechetlib/geometry_utils.pyx":420
  * 
  *             if use_offsets:
  *                 heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]             # <<<<<<<<<<<<<<
  *             else:
  *                 heap_key = dist
  */
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_9 = (__pyx_v_i + 1);
-        __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_t_9, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_P_offs), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = PyObject_RichCompare(__pyx_t_7, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 411, __pyx_L1_error)
-        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_11 = PyObject_RichCompare(__pyx_t_7, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 420, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         if (__pyx_t_3) {
           __Pyx_INCREF(__pyx_t_7);
@@ -27794,20 +29110,20 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = PyNumber_Subtract(__pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_7 = PyNumber_Subtract(__pyx_t_1, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_Q_offs), __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = PyNumber_Subtract(__pyx_t_7, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Subtract(__pyx_t_7, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 420, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "frechetlib/geometry_utils.pyx":410
+        /* "frechetlib/geometry_utils.pyx":419
  *             #line_point_distance(P[i], P[i + 1], Q[j])
  * 
  *             if use_offsets:             # <<<<<<<<<<<<<<
@@ -27817,7 +29133,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
         goto __pyx_L17;
       }
 
-      /* "frechetlib/geometry_utils.pyx":413
+      /* "frechetlib/geometry_utils.pyx":422
  *                 heap_key = dist - max(P_offs[i], P_offs[i + 1]) - Q_offs[j]  # type: ignore[index]
  *             else:
  *                 heap_key = dist             # <<<<<<<<<<<<<<
@@ -27825,7 +29141,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  *         raise Exception
  */
       /*else*/ {
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 413, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF_SET(__pyx_v_heap_key, __pyx_t_1);
         __pyx_t_1 = 0;
@@ -27834,7 +29150,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     }
     __pyx_L15:;
 
-    /* "frechetlib/geometry_utils.pyx":392
+    /* "frechetlib/geometry_utils.pyx":401
  *                 heap_key = dist
  * 
  *     elif j_is_vert:             # <<<<<<<<<<<<<<
@@ -27844,7 +29160,7 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     goto __pyx_L8;
   }
 
-  /* "frechetlib/geometry_utils.pyx":415
+  /* "frechetlib/geometry_utils.pyx":424
  *                 heap_key = dist
  *     else:
  *         raise Exception             # <<<<<<<<<<<<<<
@@ -27853,11 +29169,11 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  */
   /*else*/ {
     __Pyx_Raise(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), 0, 0, 0);
-    __PYX_ERR(0, 415, __pyx_L1_error)
+    __PYX_ERR(0, 424, __pyx_L1_error)
   }
   __pyx_L8:;
 
-  /* "frechetlib/geometry_utils.pyx":417
+  /* "frechetlib/geometry_utils.pyx":426
  *         raise Exception
  * 
  *     assert 0.0 <= t_i <= 1.0             # <<<<<<<<<<<<<<
@@ -27872,14 +29188,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     }
     if (unlikely(!__pyx_t_3)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 417, __pyx_L1_error)
+      __PYX_ERR(0, 426, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 417, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 426, __pyx_L1_error)
   #endif
 
-  /* "frechetlib/geometry_utils.pyx":418
+  /* "frechetlib/geometry_utils.pyx":427
  * 
  *     assert 0.0 <= t_i <= 1.0
  *     assert 0.0 <= t_j <= 1.0             # <<<<<<<<<<<<<<
@@ -27894,14 +29210,14 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
     }
     if (unlikely(!__pyx_t_3)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(0, 418, __pyx_L1_error)
+      __PYX_ERR(0, 427, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(0, 418, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(0, 427, __pyx_L1_error)
   #endif
 
-  /* "frechetlib/geometry_utils.pyx":421
+  /* "frechetlib/geometry_utils.pyx":430
  * 
  *     # TODO figure out how to use offsets as the key.
  *     return EIDFromCurveIndices(heap_key, EID(i, i_is_vert, j, j_is_vert, p_i, p_j, t_i, t_j, dist))             # <<<<<<<<<<<<<<
@@ -27909,42 +29225,42 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
  * 
  */
   __Pyx_XDECREF((PyObject *)__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_v_i_is_vert); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_v_i_is_vert); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_j_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_j_is_vert); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_t_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_11 = PyFloat_FromDouble(__pyx_v_t_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = PyFloat_FromDouble(__pyx_v_t_j); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_12 = PyFloat_FromDouble(__pyx_v_t_j); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_13 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_13 = PyFloat_FromDouble(__pyx_v_dist); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_14 = PyTuple_New(9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(9); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_10);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_10)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_10)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 2, __pyx_t_7)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 2, __pyx_t_7)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 3, __pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 3, __pyx_t_2)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_p_i);
   __Pyx_GIVEREF((PyObject *)__pyx_v_p_i);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 4, ((PyObject *)__pyx_v_p_i))) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 4, ((PyObject *)__pyx_v_p_i))) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_p_j);
   __Pyx_GIVEREF((PyObject *)__pyx_v_p_j);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 5, ((PyObject *)__pyx_v_p_j))) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 5, ((PyObject *)__pyx_v_p_j))) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_11);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 6, __pyx_t_11)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 6, __pyx_t_11)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_12);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 7, __pyx_t_12)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 7, __pyx_t_12)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_13);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 8, __pyx_t_13)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 8, __pyx_t_13)) __PYX_ERR(0, 430, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_10 = 0;
   __pyx_t_7 = 0;
@@ -27952,25 +29268,25 @@ static struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *__pyx
   __pyx_t_11 = 0;
   __pyx_t_12 = 0;
   __pyx_t_13 = 0;
-  __pyx_t_13 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID), __pyx_t_14, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID), __pyx_t_14, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_INCREF(__pyx_v_heap_key);
   __Pyx_GIVEREF(__pyx_v_heap_key);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_v_heap_key)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_v_heap_key)) __PYX_ERR(0, 430, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_13);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_13)) __PYX_ERR(0, 421, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_13)) __PYX_ERR(0, 430, __pyx_L1_error);
   __pyx_t_13 = 0;
-  __pyx_t_13 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices), __pyx_t_14, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 421, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices), __pyx_t_14, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 430, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __pyx_r = ((struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *)__pyx_t_13);
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":311
+  /* "frechetlib/geometry_utils.pyx":320
  *         return self.event
  * 
  * cpdef EIDFromCurveIndices from_curve_indices(             # <<<<<<<<<<<<<<
@@ -28075,7 +29391,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28083,9 +29399,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 1); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 1); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -28093,9 +29409,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 2); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 2); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -28103,9 +29419,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 3); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 3); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -28113,9 +29429,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[4]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 4); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 4); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
@@ -28123,9 +29439,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[5]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 5); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 5); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -28133,9 +29449,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[6]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 6); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 6); __PYX_ERR(0, 320, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
@@ -28143,14 +29459,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[7]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 311, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 320, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 7); __PYX_ERR(0, 311, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, 7); __PYX_ERR(0, 320, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_curve_indices") < 0)) __PYX_ERR(0, 311, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "from_curve_indices") < 0)) __PYX_ERR(0, 320, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 8)) {
       goto __pyx_L5_argtuple_error;
@@ -28164,10 +29480,10 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[6] = __Pyx_Arg_FASTCALL(__pyx_args, 6);
       values[7] = __Pyx_Arg_FASTCALL(__pyx_args, 7);
     }
-    __pyx_v_i = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_i == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 312, __pyx_L3_error)
-    __pyx_v_i_is_vert = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_i_is_vert == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 313, __pyx_L3_error)
-    __pyx_v_j = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_j == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 314, __pyx_L3_error)
-    __pyx_v_j_is_vert = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_j_is_vert == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 315, __pyx_L3_error)
+    __pyx_v_i = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_i == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 321, __pyx_L3_error)
+    __pyx_v_i_is_vert = __Pyx_PyObject_IsTrue(values[1]); if (unlikely((__pyx_v_i_is_vert == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 322, __pyx_L3_error)
+    __pyx_v_j = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_j == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 323, __pyx_L3_error)
+    __pyx_v_j_is_vert = __Pyx_PyObject_IsTrue(values[3]); if (unlikely((__pyx_v_j_is_vert == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 324, __pyx_L3_error)
     __pyx_v_P = ((PyArrayObject *)values[4]);
     __pyx_v_Q = ((PyArrayObject *)values[5]);
     __pyx_v_P_offs = ((PyArrayObject *)values[6]);
@@ -28175,7 +29491,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, __pyx_nargs); __PYX_ERR(0, 311, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("from_curve_indices", 1, 8, 8, __pyx_nargs); __PYX_ERR(0, 320, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28189,10 +29505,10 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_P), __pyx_ptype_5numpy_ndarray, 1, "P", 0))) __PYX_ERR(0, 316, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q), __pyx_ptype_5numpy_ndarray, 1, "Q", 0))) __PYX_ERR(0, 317, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_P_offs), __pyx_ptype_5numpy_ndarray, 1, "P_offs", 0))) __PYX_ERR(0, 318, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q_offs), __pyx_ptype_5numpy_ndarray, 1, "Q_offs", 0))) __PYX_ERR(0, 319, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_P), __pyx_ptype_5numpy_ndarray, 1, "P", 0))) __PYX_ERR(0, 325, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q), __pyx_ptype_5numpy_ndarray, 1, "Q", 0))) __PYX_ERR(0, 326, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_P_offs), __pyx_ptype_5numpy_ndarray, 1, "P_offs", 0))) __PYX_ERR(0, 327, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_Q_offs), __pyx_ptype_5numpy_ndarray, 1, "Q_offs", 0))) __PYX_ERR(0, 328, __pyx_L1_error)
   __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_from_curve_indices(__pyx_self, __pyx_v_i, __pyx_v_i_is_vert, __pyx_v_j, __pyx_v_j_is_vert, __pyx_v_P, __pyx_v_Q, __pyx_v_P_offs, __pyx_v_Q_offs);
 
   /* function exit code */
@@ -28219,7 +29535,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_from_curve_indices(CYTHO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("from_curve_indices", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_from_curve_indices(__pyx_v_i, __pyx_v_i_is_vert, __pyx_v_j, __pyx_v_j_is_vert, __pyx_v_P, __pyx_v_Q, __pyx_v_P_offs, __pyx_v_Q_offs, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_from_curve_indices(__pyx_v_i, __pyx_v_i_is_vert, __pyx_v_j, __pyx_v_j_is_vert, __pyx_v_P, __pyx_v_Q, __pyx_v_P_offs, __pyx_v_Q_offs, 0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -28236,7 +29552,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_from_curve_indices(CYTHO
   return __pyx_r;
 }
 
-/* "frechetlib/geometry_utils.pyx":426
+/* "frechetlib/geometry_utils.pyx":435
  * #### Start of functions mainly used for testing ####
  * 
  * def convex_comb(p: np.ndarray, q: np.ndarray, t: float):             # <<<<<<<<<<<<<<
@@ -28303,7 +29619,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 426, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -28311,9 +29627,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 426, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, 1); __PYX_ERR(0, 426, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, 1); __PYX_ERR(0, 435, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -28321,14 +29637,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
           (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 426, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, 2); __PYX_ERR(0, 426, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, 2); __PYX_ERR(0, 435, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "convex_comb") < 0)) __PYX_ERR(0, 426, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "convex_comb") < 0)) __PYX_ERR(0, 435, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -28339,11 +29655,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     }
     __pyx_v_p = ((PyArrayObject *)values[0]);
     __pyx_v_q = ((PyArrayObject *)values[1]);
-    __pyx_v_t = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_t == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 426, __pyx_L3_error)
+    __pyx_v_t = __pyx_PyFloat_AsDouble(values[2]); if (unlikely((__pyx_v_t == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 435, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 426, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("convex_comb", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 435, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -28357,8 +29673,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p), __pyx_ptype_5numpy_ndarray, 0, "p", 0))) __PYX_ERR(0, 426, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_q), __pyx_ptype_5numpy_ndarray, 0, "q", 0))) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_p), __pyx_ptype_5numpy_ndarray, 0, "p", 0))) __PYX_ERR(0, 435, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_q), __pyx_ptype_5numpy_ndarray, 0, "q", 0))) __PYX_ERR(0, 435, __pyx_L1_error)
   __pyx_r = __pyx_pf_10frechetlib_14geometry_utils_2convex_comb(__pyx_self, __pyx_v_p, __pyx_v_q, __pyx_v_t);
 
   /* function exit code */
@@ -28389,22 +29705,22 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_2convex_comb(CYTHON_UNUS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("convex_comb", 1);
 
-  /* "frechetlib/geometry_utils.pyx":427
+  /* "frechetlib/geometry_utils.pyx":436
  * 
  * def convex_comb(p: np.ndarray, q: np.ndarray, t: float):
  *     return Point(p).convex_comb(Point(q), t).get_coords()             # <<<<<<<<<<<<<<
  *     #return p + t * (q - p)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_p)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_q)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point), ((PyObject *)__pyx_v_q)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_3), __pyx_v_t, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_4 = ((PyObject *)__pyx_f_10frechetlib_14geometry_utils_5Point_convex_comb(((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_2), ((struct __pyx_obj_10frechetlib_14geometry_utils_Point *)__pyx_t_3), __pyx_v_t, 0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_get_coords); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 427, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_get_coords); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -28425,7 +29741,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_2convex_comb(CYTHON_UNUS
     PyObject *__pyx_callargs[2] = {__pyx_t_4, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 427, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
@@ -28433,7 +29749,7 @@ static PyObject *__pyx_pf_10frechetlib_14geometry_utils_2convex_comb(CYTHON_UNUS
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "frechetlib/geometry_utils.pyx":426
+  /* "frechetlib/geometry_utils.pyx":435
  * #### Start of functions mainly used for testing ####
  * 
  * def convex_comb(p: np.ndarray, q: np.ndarray, t: float):             # <<<<<<<<<<<<<<
@@ -28491,8 +29807,8 @@ static void __pyx_tp_dealloc_10frechetlib_14geometry_utils_Point(PyObject *o) {
 
 static PyMethodDef __pyx_methods_10frechetlib_14geometry_utils_Point[] = {
   {"get_coords", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_9get_coords, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_17__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_19__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_19__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_5Point_21__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
@@ -28832,14 +30148,14 @@ static int __pyx_tp_clear_10frechetlib_14geometry_utils_EID(PyObject *o) {
 static PyObject *__pyx_tp_richcompare_10frechetlib_14geometry_utils_EID(PyObject *o1, PyObject *o2, int op) {
   switch (op) {
     case Py_EQ: {
-      return __pyx_pw_10frechetlib_14geometry_utils_3EID_29__eq__(o1, o2);
+      return __pyx_pw_10frechetlib_14geometry_utils_3EID_33__eq__(o1, o2);
     }
     case Py_LT: {
-      return __pyx_pw_10frechetlib_14geometry_utils_3EID_25__lt__(o1, o2);
+      return __pyx_pw_10frechetlib_14geometry_utils_3EID_29__lt__(o1, o2);
     }
     case Py_NE: {
       PyObject *ret;
-      ret = __pyx_pw_10frechetlib_14geometry_utils_3EID_29__eq__(o1, o2);
+      ret = __pyx_pw_10frechetlib_14geometry_utils_3EID_33__eq__(o1, o2);
       if (likely(ret && ret != Py_NotImplemented)) {
         int b = __Pyx_PyObject_IsTrue(ret);
         Py_DECREF(ret);
@@ -28865,14 +30181,14 @@ static PyMethodDef __pyx_methods_10frechetlib_14geometry_utils_EID[] = {
   {"get_t_j", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_15get_t_j, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {"get_p_i", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_17get_p_i, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {"get_p_j", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_19get_p_j, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_31__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_33__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_35__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10frechetlib_14geometry_utils_3EID_37__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
 static PyType_Slot __pyx_type_10frechetlib_14geometry_utils_EID_slots[] = {
   {Py_tp_dealloc, (void *)__pyx_tp_dealloc_10frechetlib_14geometry_utils_EID},
-  {Py_tp_hash, (void *)__pyx_pw_10frechetlib_14geometry_utils_3EID_27__hash__},
+  {Py_tp_hash, (void *)__pyx_pw_10frechetlib_14geometry_utils_3EID_31__hash__},
   {Py_tp_traverse, (void *)__pyx_tp_traverse_10frechetlib_14geometry_utils_EID},
   {Py_tp_clear, (void *)__pyx_tp_clear_10frechetlib_14geometry_utils_EID},
   {Py_tp_richcompare, (void *)__pyx_tp_richcompare_10frechetlib_14geometry_utils_EID},
@@ -28913,7 +30229,7 @@ static PyTypeObject __pyx_type_10frechetlib_14geometry_utils_EID = {
   0, /*tp_as_number*/
   0, /*tp_as_sequence*/
   0, /*tp_as_mapping*/
-  __pyx_pw_10frechetlib_14geometry_utils_3EID_27__hash__, /*tp_hash*/
+  __pyx_pw_10frechetlib_14geometry_utils_3EID_31__hash__, /*tp_hash*/
   0, /*tp_call*/
   0, /*tp_str*/
   0, /*tp_getattro*/
@@ -30142,6 +31458,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_EID_get_p_j, __pyx_k_EID_get_p_j, sizeof(__pyx_k_EID_get_p_j), 0, 0, 1, 1},
     {&__pyx_n_s_EID_get_t_i, __pyx_k_EID_get_t_i, sizeof(__pyx_k_EID_get_t_i), 0, 0, 1, 1},
     {&__pyx_n_s_EID_get_t_j, __pyx_k_EID_get_t_j, sizeof(__pyx_k_EID_get_t_j), 0, 0, 1, 1},
+    {&__pyx_n_s_EID_reassign_parameter_i, __pyx_k_EID_reassign_parameter_i, sizeof(__pyx_k_EID_reassign_parameter_i), 0, 0, 1, 1},
+    {&__pyx_n_s_EID_reassign_parameter_j, __pyx_k_EID_reassign_parameter_j, sizeof(__pyx_k_EID_reassign_parameter_j), 0, 0, 1, 1},
     {&__pyx_n_s_Ellipsis, __pyx_k_Ellipsis, sizeof(__pyx_k_Ellipsis), 0, 0, 1, 1},
     {&__pyx_kp_s_Empty_shape_tuple_for_cython_arr, __pyx_k_Empty_shape_tuple_for_cython_arr, sizeof(__pyx_k_Empty_shape_tuple_for_cython_arr), 0, 0, 1, 0},
     {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
@@ -30170,6 +31488,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_Point___setstate_cython, __pyx_k_Point___setstate_cython, sizeof(__pyx_k_Point___setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_Point_convex_comb, __pyx_k_Point_convex_comb, sizeof(__pyx_k_Point_convex_comb), 0, 0, 1, 1},
     {&__pyx_n_s_Point_dot_product, __pyx_k_Point_dot_product, sizeof(__pyx_k_Point_dot_product), 0, 0, 1, 1},
+    {&__pyx_n_s_Point_get_avg, __pyx_k_Point_get_avg, sizeof(__pyx_k_Point_get_avg), 0, 0, 1, 1},
     {&__pyx_n_s_Point_get_coords, __pyx_k_Point_get_coords, sizeof(__pyx_k_Point_get_coords), 0, 0, 1, 1},
     {&__pyx_n_s_Point_get_norm, __pyx_k_Point_get_norm, sizeof(__pyx_k_Point_get_norm), 0, 0, 1, 1},
     {&__pyx_n_s_Point_is_close, __pyx_k_Point_is_close, sizeof(__pyx_k_Point_is_close), 0, 0, 1, 1},
@@ -30186,7 +31505,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
     {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
     {&__pyx_kp_u__6, __pyx_k__6, sizeof(__pyx_k__6), 0, 1, 0, 0},
-    {&__pyx_n_s__61, __pyx_k__61, sizeof(__pyx_k__61), 0, 0, 1, 1},
+    {&__pyx_n_s__66, __pyx_k__66, sizeof(__pyx_k__66), 0, 0, 1, 1},
     {&__pyx_kp_u__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 1, 0, 0},
     {&__pyx_n_s_abc, __pyx_k_abc, sizeof(__pyx_k_abc), 0, 0, 1, 1},
     {&__pyx_n_s_allocate_buffer, __pyx_k_allocate_buffer, sizeof(__pyx_k_allocate_buffer), 0, 0, 1, 1},
@@ -30226,6 +31545,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_frechetlib_geometry_utils, __pyx_k_frechetlib_geometry_utils, sizeof(__pyx_k_frechetlib_geometry_utils), 0, 0, 1, 1},
     {&__pyx_n_s_from_curve_indices, __pyx_k_from_curve_indices, sizeof(__pyx_k_from_curve_indices), 0, 0, 1, 1},
     {&__pyx_kp_u_gc, __pyx_k_gc, sizeof(__pyx_k_gc), 0, 1, 0, 0},
+    {&__pyx_n_s_get_avg, __pyx_k_get_avg, sizeof(__pyx_k_get_avg), 0, 0, 1, 1},
     {&__pyx_n_s_get_coords, __pyx_k_get_coords, sizeof(__pyx_k_get_coords), 0, 0, 1, 1},
     {&__pyx_n_s_get_dist, __pyx_k_get_dist, sizeof(__pyx_k_get_dist), 0, 0, 1, 1},
     {&__pyx_n_s_get_distance, __pyx_k_get_distance, sizeof(__pyx_k_get_distance), 0, 0, 1, 1},
@@ -30266,6 +31586,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
     {&__pyx_n_s_ndim, __pyx_k_ndim, sizeof(__pyx_k_ndim), 0, 0, 1, 1},
     {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
+    {&__pyx_n_s_new_t, __pyx_k_new_t, sizeof(__pyx_k_new_t), 0, 0, 1, 1},
     {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
     {&__pyx_kp_s_np_ndarray, __pyx_k_np_ndarray, sizeof(__pyx_k_np_ndarray), 0, 0, 1, 0},
     {&__pyx_kp_s_numpy__core_multiarray_failed_to, __pyx_k_numpy__core_multiarray_failed_to, sizeof(__pyx_k_numpy__core_multiarray_failed_to), 0, 0, 1, 0},
@@ -30289,6 +31610,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
     {&__pyx_n_s_q, __pyx_k_q, sizeof(__pyx_k_q), 0, 0, 1, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+    {&__pyx_n_s_reassign_parameter_i, __pyx_k_reassign_parameter_i, sizeof(__pyx_k_reassign_parameter_i), 0, 0, 1, 1},
+    {&__pyx_n_s_reassign_parameter_j, __pyx_k_reassign_parameter_j, sizeof(__pyx_k_reassign_parameter_j), 0, 0, 1, 1},
     {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
     {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
     {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
@@ -30326,8 +31649,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 24, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 156, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 343, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 352, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 68, __pyx_L1_error)
   __pyx_builtin___import__ = __Pyx_GetBuiltinName(__pyx_n_s_import); if (!__pyx_builtin___import__) __PYX_ERR(1, 100, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 159, __pyx_L1_error)
@@ -30381,7 +31704,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1043
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1043
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy._core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -30392,7 +31715,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "../../../AppData/Local/Temp/tmpaoic83o3/.venv/Lib/site-packages/numpy/__init__.cython-30.pxd":1049
+  /* "../../../../../tmp/tmplas3jzku/.venv/lib/python3.12/site-packages/numpy/__init__.cython-30.pxd":1049
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -30567,12 +31890,21 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_is_close, 57, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 57, __pyx_L1_error)
 
+  /* "frechetlib/geometry_utils.pyx":66
+ *         return res
+ * 
+ *     cpdef inline Point get_avg(self, Point q):             # <<<<<<<<<<<<<<
+ *         cdef cvector[double] new_coords
+ * 
+ */
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_avg, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 66, __pyx_L1_error)
+
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30580,44 +31912,44 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_tuple__33 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(1, 3, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_pyx_state); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":107
+  /* "frechetlib/geometry_utils.pyx":116
  *             self.distance = q.point_difference(self.p).get_norm()
  * 
  *     cpdef double get_distance(self):             # <<<<<<<<<<<<<<
  *         return self.distance
  * 
  */
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_distance, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_distance, 116, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 116, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":110
+  /* "frechetlib/geometry_utils.pyx":119
  *         return self.distance
  * 
  *     cpdef double get_t(self):             # <<<<<<<<<<<<<<
  *         return self.t
  * 
  */
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t, 110, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t, 119, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 119, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":113
+  /* "frechetlib/geometry_utils.pyx":122
  *         return self.t
  * 
  *     cpdef Point get_p(self):             # <<<<<<<<<<<<<<
  *         return self.p
  * 
  */
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p, 113, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 122, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30625,113 +31957,137 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":160
+  /* "frechetlib/geometry_utils.pyx":169
  * 
  *     # TODO get rid of these getter functions later
  *     def get_dist(self):             # <<<<<<<<<<<<<<
  *         return self.dist
  * 
  */
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_dist, 160, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_dist, 169, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 169, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":163
+  /* "frechetlib/geometry_utils.pyx":172
  *         return self.dist
  * 
  *     def get_i(self):             # <<<<<<<<<<<<<<
  *         return self.i
  * 
  */
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_i, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_i, 172, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 172, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":166
+  /* "frechetlib/geometry_utils.pyx":175
  *         return self.i
  * 
  *     def get_j(self):             # <<<<<<<<<<<<<<
  *         return self.j
  * 
  */
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_j, 166, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_j, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 175, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":169
+  /* "frechetlib/geometry_utils.pyx":178
  *         return self.j
  * 
  *     def get_i_is_vert(self):             # <<<<<<<<<<<<<<
  *         return self.i_is_vert
  * 
  */
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_i_is_vert, 169, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_i_is_vert, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 178, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":172
+  /* "frechetlib/geometry_utils.pyx":181
  *         return self.i_is_vert
  * 
  *     def get_j_is_vert(self):             # <<<<<<<<<<<<<<
  *         return self.j_is_vert
  * 
  */
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_j_is_vert, 172, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_j_is_vert, 181, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 181, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":175
+  /* "frechetlib/geometry_utils.pyx":184
  *         return self.j_is_vert
  * 
  *     def get_t_i(self):             # <<<<<<<<<<<<<<
  *         return self.t_i
  * 
  */
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t_i, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t_i, 184, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 184, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":178
+  /* "frechetlib/geometry_utils.pyx":187
  *         return self.t_i
  * 
  *     def get_t_j(self):             # <<<<<<<<<<<<<<
  *         return self.t_j
  * 
  */
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t_j, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_t_j, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":181
+  /* "frechetlib/geometry_utils.pyx":190
  *         return self.t_j
  * 
  *     def get_p_i(self):             # <<<<<<<<<<<<<<
  *         return self.p_i
  * 
  */
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p_i, 181, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p_i, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 190, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":184
+  /* "frechetlib/geometry_utils.pyx":193
  *         return self.p_i
  * 
  *     def get_p_j(self):             # <<<<<<<<<<<<<<
  *         return self.p_j
  * 
  */
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p_j, 184, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_p_j, 193, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 193, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":187
+  /* "frechetlib/geometry_utils.pyx":196
  *         return self.p_j
  * 
  *     cpdef EID copy(self):             # <<<<<<<<<<<<<<
  *         return EID(
  *             self.i,
  */
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_copy, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_copy, 196, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 196, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":256
- *     #     return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+  /* "frechetlib/geometry_utils.pyx":209
+ *         )
+ * 
+ *     cpdef float reassign_parameter_i(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_new_t, __pyx_n_s_P); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_reassign_parameter_i, 209, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 209, __pyx_L1_error)
+
+  /* "frechetlib/geometry_utils.pyx":237
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+ * 
+ *     cpdef float reassign_parameter_j(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+  __pyx_tuple__53 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_new_t, __pyx_n_s_Q); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__53);
+  __Pyx_GIVEREF(__pyx_tuple__53);
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_reassign_parameter_j, 237, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 237, __pyx_L1_error)
+
+  /* "frechetlib/geometry_utils.pyx":265
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
  * 
  *     cpdef flip(self):             # <<<<<<<<<<<<<<
  *         self.i, self.j = self.j, self.i
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
  */
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_flip, 256, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_flip, 265, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 265, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30739,32 +32095,32 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":305
+  /* "frechetlib/geometry_utils.pyx":314
  *         self.event = event
  * 
  *     cpdef double get_heap_key(self):             # <<<<<<<<<<<<<<
  *         return self.heap_key
  * 
  */
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_heap_key, 305, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_heap_key, 314, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 314, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":308
+  /* "frechetlib/geometry_utils.pyx":317
  *         return self.heap_key
  * 
  *     cpdef EID get_event(self):             # <<<<<<<<<<<<<<
  *         return self.event
  * 
  */
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_event, 308, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_get_event, 317, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 317, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_reduce_cython, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(1, 1, __pyx_L1_error)
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
@@ -30772,31 +32128,31 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(1, 3, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":311
+  /* "frechetlib/geometry_utils.pyx":320
  *         return self.event
  * 
  * cpdef EIDFromCurveIndices from_curve_indices(             # <<<<<<<<<<<<<<
  *     int i,
  *     bint i_is_vert: bool,
  */
-  __pyx_tuple__57 = PyTuple_Pack(8, __pyx_n_s_i, __pyx_n_s_i_is_vert, __pyx_n_s_j, __pyx_n_s_j_is_vert, __pyx_n_s_P, __pyx_n_s_Q, __pyx_n_s_P_offs, __pyx_n_s_Q_offs); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 311, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__57);
-  __Pyx_GIVEREF(__pyx_tuple__57);
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(8, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_from_curve_indices, 311, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(8, __pyx_n_s_i, __pyx_n_s_i_is_vert, __pyx_n_s_j, __pyx_n_s_j_is_vert, __pyx_n_s_P, __pyx_n_s_Q, __pyx_n_s_P_offs, __pyx_n_s_Q_offs); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 320, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(8, 0, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_from_curve_indices, 320, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 320, __pyx_L1_error)
 
-  /* "frechetlib/geometry_utils.pyx":426
+  /* "frechetlib/geometry_utils.pyx":435
  * #### Start of functions mainly used for testing ####
  * 
  * def convex_comb(p: np.ndarray, q: np.ndarray, t: float):             # <<<<<<<<<<<<<<
  *     return Point(p).convex_comb(Point(q), t).get_coords()
  *     #return p + t * (q - p)
  */
-  __pyx_tuple__59 = PyTuple_Pack(3, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_t); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 426, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__59);
-  __Pyx_GIVEREF(__pyx_tuple__59);
-  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_convex_comb, 426, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_tuple__64 = PyTuple_Pack(3, __pyx_n_s_p, __pyx_n_s_q, __pyx_n_s_t); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_frechetlib_geometry_utils_py, __pyx_n_s_convex_comb, 435, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 435, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -30911,6 +32267,7 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_10frechetlib_14geometry_utils_Point.get_norm = (double (*)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_5Point_get_norm;
   __pyx_vtable_10frechetlib_14geometry_utils_Point.dot_product = (double (*)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_5Point_dot_product;
   __pyx_vtable_10frechetlib_14geometry_utils_Point.is_close = (int (*)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_5Point_is_close;
+  __pyx_vtable_10frechetlib_14geometry_utils_Point.get_avg = (struct __pyx_obj_10frechetlib_14geometry_utils_Point *(*)(struct __pyx_obj_10frechetlib_14geometry_utils_Point *, struct __pyx_obj_10frechetlib_14geometry_utils_Point *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_5Point_get_avg;
   #if CYTHON_USE_TYPE_SPECS
   __pyx_ptype_10frechetlib_14geometry_utils_Point = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_Point_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_Point)) __PYX_ERR(0, 9, __pyx_L1_error)
   if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_Point_spec, __pyx_ptype_10frechetlib_14geometry_utils_Point) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
@@ -30944,15 +32301,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_10frechetlib_14geometry_utils_LinePointDistance.get_t = (double (*)(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_t;
   __pyx_vtable_10frechetlib_14geometry_utils_LinePointDistance.get_p = (struct __pyx_obj_10frechetlib_14geometry_utils_Point *(*)(struct __pyx_obj_10frechetlib_14geometry_utils_LinePointDistance *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_17LinePointDistance_get_p;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_LinePointDistance_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance)) __PYX_ERR(0, 67, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_LinePointDistance_spec, __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_LinePointDistance_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance)) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_LinePointDistance_spec, __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #else
   __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance = &__pyx_type_10frechetlib_14geometry_utils_LinePointDistance;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance->tp_print = 0;
@@ -30962,27 +32319,29 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_vtabptr_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_vtabptr_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_LinePointDistance, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_LinePointDistance, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   #endif
   __pyx_vtabptr_10frechetlib_14geometry_utils_EID = &__pyx_vtable_10frechetlib_14geometry_utils_EID;
+  __pyx_vtable_10frechetlib_14geometry_utils_EID.reassign_parameter_i = (float (*)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, float, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_i;
+  __pyx_vtable_10frechetlib_14geometry_utils_EID.reassign_parameter_j = (float (*)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, float, PyArrayObject *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_3EID_reassign_parameter_j;
   __pyx_vtable_10frechetlib_14geometry_utils_EID.flip = (PyObject *(*)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_3EID_flip;
   __pyx_vtable_10frechetlib_14geometry_utils_EID.copy = (struct __pyx_obj_10frechetlib_14geometry_utils_EID *(*)(struct __pyx_obj_10frechetlib_14geometry_utils_EID *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_3EID_copy;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_10frechetlib_14geometry_utils_EID = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_EID_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_EID)) __PYX_ERR(0, 116, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_EID_spec, __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_ptype_10frechetlib_14geometry_utils_EID = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_EID_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_EID)) __PYX_ERR(0, 125, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_EID_spec, __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #else
   __pyx_ptype_10frechetlib_14geometry_utils_EID = &__pyx_type_10frechetlib_14geometry_utils_EID;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_10frechetlib_14geometry_utils_EID->tp_print = 0;
@@ -30992,27 +32351,27 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_10frechetlib_14geometry_utils_EID->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_vtabptr_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_vtabptr_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_EID, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_EID, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EID) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   #endif
   __pyx_vtabptr_10frechetlib_14geometry_utils_EIDFromCurveIndices = &__pyx_vtable_10frechetlib_14geometry_utils_EIDFromCurveIndices;
   __pyx_vtable_10frechetlib_14geometry_utils_EIDFromCurveIndices.get_heap_key = (double (*)(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_heap_key;
   __pyx_vtable_10frechetlib_14geometry_utils_EIDFromCurveIndices.get_event = (struct __pyx_obj_10frechetlib_14geometry_utils_EID *(*)(struct __pyx_obj_10frechetlib_14geometry_utils_EIDFromCurveIndices *, int __pyx_skip_dispatch))__pyx_f_10frechetlib_14geometry_utils_19EIDFromCurveIndices_get_event;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_EIDFromCurveIndices_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices)) __PYX_ERR(0, 296, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_EIDFromCurveIndices_spec, __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10frechetlib_14geometry_utils_EIDFromCurveIndices_spec, NULL); if (unlikely(!__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices)) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10frechetlib_14geometry_utils_EIDFromCurveIndices_spec, __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #else
   __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices = &__pyx_type_10frechetlib_14geometry_utils_EIDFromCurveIndices;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices->tp_print = 0;
@@ -31022,13 +32381,13 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_vtabptr_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_vtabptr_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_EIDFromCurveIndices, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_EIDFromCurveIndices, (PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
   #endif
   __pyx_vtabptr_array = &__pyx_vtable_array;
   __pyx_vtable_array.get_memview = (PyObject *(*)(struct __pyx_array_obj *))__pyx_array_get_memview;
@@ -32115,12 +33474,25 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_Point);
 
+  /* "frechetlib/geometry_utils.pyx":66
+ *         return res
+ * 
+ *     cpdef inline Point get_avg(self, Point q):             # <<<<<<<<<<<<<<
+ *         cdef cvector[double] new_coords
+ * 
+ */
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_5Point_17get_avg, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Point_get_avg, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_Point, __pyx_n_s_get_avg, __pyx_t_7) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_Point);
+
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_5Point_17__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Point___reduce_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_5Point_19__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Point___reduce_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_7) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -32131,47 +33503,47 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_5Point_19__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Point___setstate_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_5Point_21__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Point___setstate_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_7) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":107
+  /* "frechetlib/geometry_utils.pyx":116
  *             self.distance = q.point_difference(self.p).get_norm()
  * 
  *     cpdef double get_distance(self):             # <<<<<<<<<<<<<<
  *         return self.distance
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_3get_distance, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_distance, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_3get_distance, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_distance, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_distance, __pyx_t_7) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_distance, __pyx_t_7) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance);
 
-  /* "frechetlib/geometry_utils.pyx":110
+  /* "frechetlib/geometry_utils.pyx":119
  *         return self.distance
  * 
  *     cpdef double get_t(self):             # <<<<<<<<<<<<<<
  *         return self.t
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_5get_t, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_t, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_5get_t, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_t, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_t, __pyx_t_7) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_t, __pyx_t_7) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance);
 
-  /* "frechetlib/geometry_utils.pyx":113
+  /* "frechetlib/geometry_utils.pyx":122
  *         return self.t
  * 
  *     cpdef Point get_p(self):             # <<<<<<<<<<<<<<
  *         return self.p
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_7get_p, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_p, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_7get_p, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance_get_p, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_p, __pyx_t_7) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance, __pyx_n_s_get_p, __pyx_t_7) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_LinePointDistance);
 
@@ -32180,7 +33552,7 @@ if (!__Pyx_RefNanny) {
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_9__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance___reduce_cytho, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_9__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance___reduce_cytho, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_7) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -32191,151 +33563,177 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_11__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance___setstate_cyt, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_17LinePointDistance_11__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_LinePointDistance___setstate_cyt, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_7) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":160
+  /* "frechetlib/geometry_utils.pyx":169
  * 
  *     # TODO get rid of these getter functions later
  *     def get_dist(self):             # <<<<<<<<<<<<<<
  *         return self.dist
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_3get_dist, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_dist, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_3get_dist, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_dist, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_dist, __pyx_t_7) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_dist, __pyx_t_7) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":163
+  /* "frechetlib/geometry_utils.pyx":172
  *         return self.dist
  * 
  *     def get_i(self):             # <<<<<<<<<<<<<<
  *         return self.i
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_5get_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_5get_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_i, __pyx_t_7) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_i, __pyx_t_7) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":166
+  /* "frechetlib/geometry_utils.pyx":175
  *         return self.i
  * 
  *     def get_j(self):             # <<<<<<<<<<<<<<
  *         return self.j
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_7get_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_7get_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_j, __pyx_t_7) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_j, __pyx_t_7) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":169
+  /* "frechetlib/geometry_utils.pyx":178
  *         return self.j
  * 
  *     def get_i_is_vert(self):             # <<<<<<<<<<<<<<
  *         return self.i_is_vert
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_9get_i_is_vert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_i_is_vert, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_9get_i_is_vert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_i_is_vert, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_i_is_vert, __pyx_t_7) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_i_is_vert, __pyx_t_7) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":172
+  /* "frechetlib/geometry_utils.pyx":181
  *         return self.i_is_vert
  * 
  *     def get_j_is_vert(self):             # <<<<<<<<<<<<<<
  *         return self.j_is_vert
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_11get_j_is_vert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_j_is_vert, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_11get_j_is_vert, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_j_is_vert, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_j_is_vert, __pyx_t_7) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_j_is_vert, __pyx_t_7) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":175
+  /* "frechetlib/geometry_utils.pyx":184
  *         return self.j_is_vert
  * 
  *     def get_t_i(self):             # <<<<<<<<<<<<<<
  *         return self.t_i
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_13get_t_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_t_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_13get_t_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_t_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_t_i, __pyx_t_7) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_t_i, __pyx_t_7) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":178
+  /* "frechetlib/geometry_utils.pyx":187
  *         return self.t_i
  * 
  *     def get_t_j(self):             # <<<<<<<<<<<<<<
  *         return self.t_j
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_15get_t_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_t_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_15get_t_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_t_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_t_j, __pyx_t_7) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_t_j, __pyx_t_7) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":181
+  /* "frechetlib/geometry_utils.pyx":190
  *         return self.t_j
  * 
  *     def get_p_i(self):             # <<<<<<<<<<<<<<
  *         return self.p_i
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_17get_p_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_p_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_17get_p_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_p_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_p_i, __pyx_t_7) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_p_i, __pyx_t_7) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":184
+  /* "frechetlib/geometry_utils.pyx":193
  *         return self.p_i
  * 
  *     def get_p_j(self):             # <<<<<<<<<<<<<<
  *         return self.p_j
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_19get_p_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_p_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_19get_p_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_get_p_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_p_j, __pyx_t_7) < 0) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_get_p_j, __pyx_t_7) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":187
+  /* "frechetlib/geometry_utils.pyx":196
  *         return self.p_j
  * 
  *     cpdef EID copy(self):             # <<<<<<<<<<<<<<
  *         return EID(
  *             self.i,
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_21copy, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_copy, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_21copy, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_copy, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_copy, __pyx_t_7) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_copy, __pyx_t_7) < 0) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
-  /* "frechetlib/geometry_utils.pyx":256
- *     #     return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+  /* "frechetlib/geometry_utils.pyx":209
+ *         )
+ * 
+ *     cpdef float reassign_parameter_i(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_23reassign_parameter_i, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_reassign_parameter_i, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_reassign_parameter_i, __pyx_t_7) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
+
+  /* "frechetlib/geometry_utils.pyx":237
+ *         return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
+ * 
+ *     cpdef float reassign_parameter_j(             # <<<<<<<<<<<<<<
+ *         self,
+ *         float new_t,
+ */
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_25reassign_parameter_j, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_reassign_parameter_j, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_reassign_parameter_j, __pyx_t_7) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
+
+  /* "frechetlib/geometry_utils.pyx":265
+ *         return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
  * 
  *     cpdef flip(self):             # <<<<<<<<<<<<<<
  *         self.i, self.j = self.j, self.i
  *         self.i_is_vert, self.j_is_vert = self.j_is_vert, self.i_is_vert
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_23flip, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_flip, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_27flip, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID_flip, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_flip, __pyx_t_7) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EID, __pyx_n_s_flip, __pyx_t_7) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EID);
 
@@ -32344,7 +33742,7 @@ if (!__Pyx_RefNanny) {
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_31__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID___reduce_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_35__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID___reduce_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_7) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -32355,34 +33753,34 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_33__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID___setstate_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3EID_37__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EID___setstate_cython, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_7) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":305
+  /* "frechetlib/geometry_utils.pyx":314
  *         self.event = event
  * 
  *     cpdef double get_heap_key(self):             # <<<<<<<<<<<<<<
  *         return self.heap_key
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_3get_heap_key, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices_get_heap_key, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_3get_heap_key, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices_get_heap_key, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_n_s_get_heap_key, __pyx_t_7) < 0) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_n_s_get_heap_key, __pyx_t_7) < 0) __PYX_ERR(0, 314, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices);
 
-  /* "frechetlib/geometry_utils.pyx":308
+  /* "frechetlib/geometry_utils.pyx":317
  *         return self.heap_key
  * 
  *     cpdef EID get_event(self):             # <<<<<<<<<<<<<<
  *         return self.event
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_5get_event, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices_get_event, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 308, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_5get_event, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices_get_event, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_n_s_get_event, __pyx_t_7) < 0) __PYX_ERR(0, 308, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict((PyObject *)__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices, __pyx_n_s_get_event, __pyx_t_7) < 0) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   PyType_Modified(__pyx_ptype_10frechetlib_14geometry_utils_EIDFromCurveIndices);
 
@@ -32391,7 +33789,7 @@ if (!__Pyx_RefNanny) {
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  * def __setstate_cython__(self, __pyx_state):
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices___reduce_cyt, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_7__reduce_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices___reduce_cyt, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_reduce_cython, __pyx_t_7) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -32402,46 +33800,46 @@ if (!__Pyx_RefNanny) {
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     raise TypeError, "no default __reduce__ due to non-trivial __cinit__"
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices___setstate_c, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_19EIDFromCurveIndices_9__setstate_cython__, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_EIDFromCurveIndices___setstate_c, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_7) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":311
+  /* "frechetlib/geometry_utils.pyx":320
  *         return self.event
  * 
  * cpdef EIDFromCurveIndices from_curve_indices(             # <<<<<<<<<<<<<<
  *     int i,
  *     bint i_is_vert: bool,
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 311, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_i_is_vert, __pyx_n_s_bool) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_j_is_vert, __pyx_n_s_bool) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_1from_curve_indices, 0, __pyx_n_s_from_curve_indices, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 311, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_i_is_vert, __pyx_n_s_bool) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_j_is_vert, __pyx_n_s_bool) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_1from_curve_indices, 0, __pyx_n_s_from_curve_indices, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_from_curve_indices, __pyx_t_4) < 0) __PYX_ERR(0, 311, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_from_curve_indices, __pyx_t_4) < 0) __PYX_ERR(0, 320, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "frechetlib/geometry_utils.pyx":426
+  /* "frechetlib/geometry_utils.pyx":435
  * #### Start of functions mainly used for testing ####
  * 
  * def convex_comb(p: np.ndarray, q: np.ndarray, t: float):             # <<<<<<<<<<<<<<
  *     return Point(p).convex_comb(Point(q), t).get_coords()
  *     #return p + t * (q - p)
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 426, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 435, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_p, __pyx_kp_s_np_ndarray) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_q, __pyx_kp_s_np_ndarray) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t, __pyx_n_s_float) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3convex_comb, 0, __pyx_n_s_convex_comb, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_p, __pyx_kp_s_np_ndarray) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_q, __pyx_kp_s_np_ndarray) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_t, __pyx_n_s_float) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_10frechetlib_14geometry_utils_3convex_comb, 0, __pyx_n_s_convex_comb, NULL, __pyx_n_s_frechetlib_geometry_utils, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 435, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_convex_comb, __pyx_t_7) < 0) __PYX_ERR(0, 426, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_convex_comb, __pyx_t_7) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "frechetlib/geometry_utils.pyx":1
@@ -34938,8 +36336,576 @@ static CYTHON_INLINE int __Pyx_HasAttr(PyObject *o, PyObject *n) {
     }
 }
 
+/* IsLittleEndian */
+static CYTHON_INLINE int __Pyx_Is_Little_Endian(void)
+{
+  union {
+    uint32_t u32;
+    uint8_t u8[4];
+  } S;
+  S.u32 = 0x01020304;
+  return S.u8[0] == 4;
+}
+
+/* BufferFormatCheck */
+static void __Pyx_BufFmt_Init(__Pyx_BufFmt_Context* ctx,
+                              __Pyx_BufFmt_StackElem* stack,
+                              __Pyx_TypeInfo* type) {
+  stack[0].field = &ctx->root;
+  stack[0].parent_offset = 0;
+  ctx->root.type = type;
+  ctx->root.name = "buffer dtype";
+  ctx->root.offset = 0;
+  ctx->head = stack;
+  ctx->head->field = &ctx->root;
+  ctx->fmt_offset = 0;
+  ctx->head->parent_offset = 0;
+  ctx->new_packmode = '@';
+  ctx->enc_packmode = '@';
+  ctx->new_count = 1;
+  ctx->enc_count = 0;
+  ctx->enc_type = 0;
+  ctx->is_complex = 0;
+  ctx->is_valid_array = 0;
+  ctx->struct_alignment = 0;
+  while (type->typegroup == 'S') {
+    ++ctx->head;
+    ctx->head->field = type->fields;
+    ctx->head->parent_offset = 0;
+    type = type->fields->type;
+  }
+}
+static int __Pyx_BufFmt_ParseNumber(const char** ts) {
+    int count;
+    const char* t = *ts;
+    if (*t < '0' || *t > '9') {
+      return -1;
+    } else {
+        count = *t++ - '0';
+        while (*t >= '0' && *t <= '9') {
+            count *= 10;
+            count += *t++ - '0';
+        }
+    }
+    *ts = t;
+    return count;
+}
+static int __Pyx_BufFmt_ExpectNumber(const char **ts) {
+    int number = __Pyx_BufFmt_ParseNumber(ts);
+    if (number == -1)
+        PyErr_Format(PyExc_ValueError,\
+                     "Does not understand character buffer dtype format string ('%c')", **ts);
+    return number;
+}
+static void __Pyx_BufFmt_RaiseUnexpectedChar(char ch) {
+  PyErr_Format(PyExc_ValueError,
+               "Unexpected format string character: '%c'", ch);
+}
+static const char* __Pyx_BufFmt_DescribeTypeChar(char ch, int is_complex) {
+  switch (ch) {
+    case '?': return "'bool'";
+    case 'c': return "'char'";
+    case 'b': return "'signed char'";
+    case 'B': return "'unsigned char'";
+    case 'h': return "'short'";
+    case 'H': return "'unsigned short'";
+    case 'i': return "'int'";
+    case 'I': return "'unsigned int'";
+    case 'l': return "'long'";
+    case 'L': return "'unsigned long'";
+    case 'q': return "'long long'";
+    case 'Q': return "'unsigned long long'";
+    case 'f': return (is_complex ? "'complex float'" : "'float'");
+    case 'd': return (is_complex ? "'complex double'" : "'double'");
+    case 'g': return (is_complex ? "'complex long double'" : "'long double'");
+    case 'T': return "a struct";
+    case 'O': return "Python object";
+    case 'P': return "a pointer";
+    case 's': case 'p': return "a string";
+    case 0: return "end";
+    default: return "unparsable format string";
+  }
+}
+static size_t __Pyx_BufFmt_TypeCharToStandardSize(char ch, int is_complex) {
+  switch (ch) {
+    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
+    case 'h': case 'H': return 2;
+    case 'i': case 'I': case 'l': case 'L': return 4;
+    case 'q': case 'Q': return 8;
+    case 'f': return (is_complex ? 8 : 4);
+    case 'd': return (is_complex ? 16 : 8);
+    case 'g': {
+      PyErr_SetString(PyExc_ValueError, "Python does not define a standard format string size for long double ('g')..");
+      return 0;
+    }
+    case 'O': case 'P': return sizeof(void*);
+    default:
+      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
+      return 0;
+    }
+}
+static size_t __Pyx_BufFmt_TypeCharToNativeSize(char ch, int is_complex) {
+  switch (ch) {
+    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
+    case 'h': case 'H': return sizeof(short);
+    case 'i': case 'I': return sizeof(int);
+    case 'l': case 'L': return sizeof(long);
+    #ifdef HAVE_LONG_LONG
+    case 'q': case 'Q': return sizeof(PY_LONG_LONG);
+    #endif
+    case 'f': return sizeof(float) * (is_complex ? 2 : 1);
+    case 'd': return sizeof(double) * (is_complex ? 2 : 1);
+    case 'g': return sizeof(long double) * (is_complex ? 2 : 1);
+    case 'O': case 'P': return sizeof(void*);
+    default: {
+      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
+      return 0;
+    }
+  }
+}
+typedef struct { char c; short x; } __Pyx_st_short;
+typedef struct { char c; int x; } __Pyx_st_int;
+typedef struct { char c; long x; } __Pyx_st_long;
+typedef struct { char c; float x; } __Pyx_st_float;
+typedef struct { char c; double x; } __Pyx_st_double;
+typedef struct { char c; long double x; } __Pyx_st_longdouble;
+typedef struct { char c; void *x; } __Pyx_st_void_p;
+#ifdef HAVE_LONG_LONG
+typedef struct { char c; PY_LONG_LONG x; } __Pyx_st_longlong;
+#endif
+static size_t __Pyx_BufFmt_TypeCharToAlignment(char ch, int is_complex) {
+  CYTHON_UNUSED_VAR(is_complex);
+  switch (ch) {
+    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
+    case 'h': case 'H': return sizeof(__Pyx_st_short) - sizeof(short);
+    case 'i': case 'I': return sizeof(__Pyx_st_int) - sizeof(int);
+    case 'l': case 'L': return sizeof(__Pyx_st_long) - sizeof(long);
+#ifdef HAVE_LONG_LONG
+    case 'q': case 'Q': return sizeof(__Pyx_st_longlong) - sizeof(PY_LONG_LONG);
+#endif
+    case 'f': return sizeof(__Pyx_st_float) - sizeof(float);
+    case 'd': return sizeof(__Pyx_st_double) - sizeof(double);
+    case 'g': return sizeof(__Pyx_st_longdouble) - sizeof(long double);
+    case 'P': case 'O': return sizeof(__Pyx_st_void_p) - sizeof(void*);
+    default:
+      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
+      return 0;
+    }
+}
+/* These are for computing the padding at the end of the struct to align
+   on the first member of the struct. This will probably the same as above,
+   but we don't have any guarantees.
+ */
+typedef struct { short x; char c; } __Pyx_pad_short;
+typedef struct { int x; char c; } __Pyx_pad_int;
+typedef struct { long x; char c; } __Pyx_pad_long;
+typedef struct { float x; char c; } __Pyx_pad_float;
+typedef struct { double x; char c; } __Pyx_pad_double;
+typedef struct { long double x; char c; } __Pyx_pad_longdouble;
+typedef struct { void *x; char c; } __Pyx_pad_void_p;
+#ifdef HAVE_LONG_LONG
+typedef struct { PY_LONG_LONG x; char c; } __Pyx_pad_longlong;
+#endif
+static size_t __Pyx_BufFmt_TypeCharToPadding(char ch, int is_complex) {
+  CYTHON_UNUSED_VAR(is_complex);
+  switch (ch) {
+    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
+    case 'h': case 'H': return sizeof(__Pyx_pad_short) - sizeof(short);
+    case 'i': case 'I': return sizeof(__Pyx_pad_int) - sizeof(int);
+    case 'l': case 'L': return sizeof(__Pyx_pad_long) - sizeof(long);
+#ifdef HAVE_LONG_LONG
+    case 'q': case 'Q': return sizeof(__Pyx_pad_longlong) - sizeof(PY_LONG_LONG);
+#endif
+    case 'f': return sizeof(__Pyx_pad_float) - sizeof(float);
+    case 'd': return sizeof(__Pyx_pad_double) - sizeof(double);
+    case 'g': return sizeof(__Pyx_pad_longdouble) - sizeof(long double);
+    case 'P': case 'O': return sizeof(__Pyx_pad_void_p) - sizeof(void*);
+    default:
+      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
+      return 0;
+    }
+}
+static char __Pyx_BufFmt_TypeCharToGroup(char ch, int is_complex) {
+  switch (ch) {
+    case 'c':
+        return 'H';
+    case 'b': case 'h': case 'i':
+    case 'l': case 'q': case 's': case 'p':
+        return 'I';
+    case '?': case 'B': case 'H': case 'I': case 'L': case 'Q':
+        return 'U';
+    case 'f': case 'd': case 'g':
+        return (is_complex ? 'C' : 'R');
+    case 'O':
+        return 'O';
+    case 'P':
+        return 'P';
+    default: {
+      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
+      return 0;
+    }
+  }
+}
+static void __Pyx_BufFmt_RaiseExpected(__Pyx_BufFmt_Context* ctx) {
+  if (ctx->head == NULL || ctx->head->field == &ctx->root) {
+    const char* expected;
+    const char* quote;
+    if (ctx->head == NULL) {
+      expected = "end";
+      quote = "";
+    } else {
+      expected = ctx->head->field->type->name;
+      quote = "'";
+    }
+    PyErr_Format(PyExc_ValueError,
+                 "Buffer dtype mismatch, expected %s%s%s but got %s",
+                 quote, expected, quote,
+                 __Pyx_BufFmt_DescribeTypeChar(ctx->enc_type, ctx->is_complex));
+  } else {
+    __Pyx_StructField* field = ctx->head->field;
+    __Pyx_StructField* parent = (ctx->head - 1)->field;
+    PyErr_Format(PyExc_ValueError,
+                 "Buffer dtype mismatch, expected '%s' but got %s in '%s.%s'",
+                 field->type->name, __Pyx_BufFmt_DescribeTypeChar(ctx->enc_type, ctx->is_complex),
+                 parent->type->name, field->name);
+  }
+}
+static int __Pyx_BufFmt_ProcessTypeChunk(__Pyx_BufFmt_Context* ctx) {
+  char group;
+  size_t size, offset, arraysize = 1;
+  if (ctx->enc_type == 0) return 0;
+  if (ctx->head->field->type->arraysize[0]) {
+    int i, ndim = 0;
+    if (ctx->enc_type == 's' || ctx->enc_type == 'p') {
+        ctx->is_valid_array = ctx->head->field->type->ndim == 1;
+        ndim = 1;
+        if (ctx->enc_count != ctx->head->field->type->arraysize[0]) {
+            PyErr_Format(PyExc_ValueError,
+                         "Expected a dimension of size %zu, got %zu",
+                         ctx->head->field->type->arraysize[0], ctx->enc_count);
+            return -1;
+        }
+    }
+    if (!ctx->is_valid_array) {
+      PyErr_Format(PyExc_ValueError, "Expected %d dimensions, got %d",
+                   ctx->head->field->type->ndim, ndim);
+      return -1;
+    }
+    for (i = 0; i < ctx->head->field->type->ndim; i++) {
+      arraysize *= ctx->head->field->type->arraysize[i];
+    }
+    ctx->is_valid_array = 0;
+    ctx->enc_count = 1;
+  }
+  group = __Pyx_BufFmt_TypeCharToGroup(ctx->enc_type, ctx->is_complex);
+  do {
+    __Pyx_StructField* field = ctx->head->field;
+    __Pyx_TypeInfo* type = field->type;
+    if (ctx->enc_packmode == '@' || ctx->enc_packmode == '^') {
+      size = __Pyx_BufFmt_TypeCharToNativeSize(ctx->enc_type, ctx->is_complex);
+    } else {
+      size = __Pyx_BufFmt_TypeCharToStandardSize(ctx->enc_type, ctx->is_complex);
+    }
+    if (ctx->enc_packmode == '@') {
+      size_t align_at = __Pyx_BufFmt_TypeCharToAlignment(ctx->enc_type, ctx->is_complex);
+      size_t align_mod_offset;
+      if (align_at == 0) return -1;
+      align_mod_offset = ctx->fmt_offset % align_at;
+      if (align_mod_offset > 0) ctx->fmt_offset += align_at - align_mod_offset;
+      if (ctx->struct_alignment == 0)
+          ctx->struct_alignment = __Pyx_BufFmt_TypeCharToPadding(ctx->enc_type,
+                                                                 ctx->is_complex);
+    }
+    if (type->size != size || type->typegroup != group) {
+      if (type->typegroup == 'C' && type->fields != NULL) {
+        size_t parent_offset = ctx->head->parent_offset + field->offset;
+        ++ctx->head;
+        ctx->head->field = type->fields;
+        ctx->head->parent_offset = parent_offset;
+        continue;
+      }
+      if ((type->typegroup == 'H' || group == 'H') && type->size == size) {
+      } else {
+          __Pyx_BufFmt_RaiseExpected(ctx);
+          return -1;
+      }
+    }
+    offset = ctx->head->parent_offset + field->offset;
+    if (ctx->fmt_offset != offset) {
+      PyErr_Format(PyExc_ValueError,
+                   "Buffer dtype mismatch; next field is at offset %" CYTHON_FORMAT_SSIZE_T "d but %" CYTHON_FORMAT_SSIZE_T "d expected",
+                   (Py_ssize_t)ctx->fmt_offset, (Py_ssize_t)offset);
+      return -1;
+    }
+    ctx->fmt_offset += size;
+    if (arraysize)
+      ctx->fmt_offset += (arraysize - 1) * size;
+    --ctx->enc_count;
+    while (1) {
+      if (field == &ctx->root) {
+        ctx->head = NULL;
+        if (ctx->enc_count != 0) {
+          __Pyx_BufFmt_RaiseExpected(ctx);
+          return -1;
+        }
+        break;
+      }
+      ctx->head->field = ++field;
+      if (field->type == NULL) {
+        --ctx->head;
+        field = ctx->head->field;
+        continue;
+      } else if (field->type->typegroup == 'S') {
+        size_t parent_offset = ctx->head->parent_offset + field->offset;
+        if (field->type->fields->type == NULL) continue;
+        field = field->type->fields;
+        ++ctx->head;
+        ctx->head->field = field;
+        ctx->head->parent_offset = parent_offset;
+        break;
+      } else {
+        break;
+      }
+    }
+  } while (ctx->enc_count);
+  ctx->enc_type = 0;
+  ctx->is_complex = 0;
+  return 0;
+}
+static int
+__pyx_buffmt_parse_array(__Pyx_BufFmt_Context* ctx, const char** tsp)
+{
+    const char *ts = *tsp;
+    int i = 0, number, ndim;
+    ++ts;
+    if (ctx->new_count != 1) {
+        PyErr_SetString(PyExc_ValueError,
+                        "Cannot handle repeated arrays in format string");
+        return -1;
+    }
+    if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return -1;
+    ndim = ctx->head->field->type->ndim;
+    while (*ts && *ts != ')') {
+        switch (*ts) {
+            case ' ': case '\f': case '\r': case '\n': case '\t': case '\v':  continue;
+            default:  break;
+        }
+        number = __Pyx_BufFmt_ExpectNumber(&ts);
+        if (number == -1) return -1;
+        if (i < ndim && (size_t) number != ctx->head->field->type->arraysize[i]) {
+            PyErr_Format(PyExc_ValueError,
+                        "Expected a dimension of size %zu, got %d",
+                        ctx->head->field->type->arraysize[i], number);
+            return -1;
+        }
+        if (*ts != ',' && *ts != ')') {
+            PyErr_Format(PyExc_ValueError,
+                                "Expected a comma in format string, got '%c'", *ts);
+            return -1;
+        }
+        if (*ts == ',') ts++;
+        i++;
+    }
+    if (i != ndim) {
+        PyErr_Format(PyExc_ValueError, "Expected %d dimension(s), got %d",
+                            ctx->head->field->type->ndim, i);
+        return -1;
+    }
+    if (!*ts) {
+        PyErr_SetString(PyExc_ValueError,
+                        "Unexpected end of format string, expected ')'");
+        return -1;
+    }
+    ctx->is_valid_array = 1;
+    ctx->new_count = 1;
+    *tsp = ++ts;
+    return 0;
+}
+static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const char* ts) {
+  int got_Z = 0;
+  while (1) {
+    switch(*ts) {
+      case 0:
+        if (ctx->enc_type != 0 && ctx->head == NULL) {
+          __Pyx_BufFmt_RaiseExpected(ctx);
+          return NULL;
+        }
+        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
+        if (ctx->head != NULL) {
+          __Pyx_BufFmt_RaiseExpected(ctx);
+          return NULL;
+        }
+        return ts;
+      case ' ':
+      case '\r':
+      case '\n':
+        ++ts;
+        break;
+      case '<':
+        if (!__Pyx_Is_Little_Endian()) {
+          PyErr_SetString(PyExc_ValueError, "Little-endian buffer not supported on big-endian compiler");
+          return NULL;
+        }
+        ctx->new_packmode = '=';
+        ++ts;
+        break;
+      case '>':
+      case '!':
+        if (__Pyx_Is_Little_Endian()) {
+          PyErr_SetString(PyExc_ValueError, "Big-endian buffer not supported on little-endian compiler");
+          return NULL;
+        }
+        ctx->new_packmode = '=';
+        ++ts;
+        break;
+      case '=':
+      case '@':
+      case '^':
+        ctx->new_packmode = *ts++;
+        break;
+      case 'T':
+        {
+          const char* ts_after_sub;
+          size_t i, struct_count = ctx->new_count;
+          size_t struct_alignment = ctx->struct_alignment;
+          ctx->new_count = 1;
+          ++ts;
+          if (*ts != '{') {
+            PyErr_SetString(PyExc_ValueError, "Buffer acquisition: Expected '{' after 'T'");
+            return NULL;
+          }
+          if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
+          ctx->enc_type = 0;
+          ctx->enc_count = 0;
+          ctx->struct_alignment = 0;
+          ++ts;
+          ts_after_sub = ts;
+          for (i = 0; i != struct_count; ++i) {
+            ts_after_sub = __Pyx_BufFmt_CheckString(ctx, ts);
+            if (!ts_after_sub) return NULL;
+          }
+          ts = ts_after_sub;
+          if (struct_alignment) ctx->struct_alignment = struct_alignment;
+        }
+        break;
+      case '}':
+        {
+          size_t alignment = ctx->struct_alignment;
+          ++ts;
+          if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
+          ctx->enc_type = 0;
+          if (alignment && ctx->fmt_offset % alignment) {
+            ctx->fmt_offset += alignment - (ctx->fmt_offset % alignment);
+          }
+        }
+        return ts;
+      case 'x':
+        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
+        ctx->fmt_offset += ctx->new_count;
+        ctx->new_count = 1;
+        ctx->enc_count = 0;
+        ctx->enc_type = 0;
+        ctx->enc_packmode = ctx->new_packmode;
+        ++ts;
+        break;
+      case 'Z':
+        got_Z = 1;
+        ++ts;
+        if (*ts != 'f' && *ts != 'd' && *ts != 'g') {
+          __Pyx_BufFmt_RaiseUnexpectedChar('Z');
+          return NULL;
+        }
+        CYTHON_FALLTHROUGH;
+      case '?': case 'c': case 'b': case 'B': case 'h': case 'H': case 'i': case 'I':
+      case 'l': case 'L': case 'q': case 'Q':
+      case 'f': case 'd': case 'g':
+      case 'O': case 'p':
+        if ((ctx->enc_type == *ts) && (got_Z == ctx->is_complex) &&
+            (ctx->enc_packmode == ctx->new_packmode) && (!ctx->is_valid_array)) {
+          ctx->enc_count += ctx->new_count;
+          ctx->new_count = 1;
+          got_Z = 0;
+          ++ts;
+          break;
+        }
+        CYTHON_FALLTHROUGH;
+      case 's':
+        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
+        ctx->enc_count = ctx->new_count;
+        ctx->enc_packmode = ctx->new_packmode;
+        ctx->enc_type = *ts;
+        ctx->is_complex = got_Z;
+        ++ts;
+        ctx->new_count = 1;
+        got_Z = 0;
+        break;
+      case ':':
+        ++ts;
+        while(*ts != ':') ++ts;
+        ++ts;
+        break;
+      case '(':
+        if (__pyx_buffmt_parse_array(ctx, &ts) < 0) return NULL;
+        break;
+      default:
+        {
+          int number = __Pyx_BufFmt_ExpectNumber(&ts);
+          if (number == -1) return NULL;
+          ctx->new_count = (size_t)number;
+        }
+    }
+  }
+}
+
+/* BufferGetAndValidate */
+  static CYTHON_INLINE void __Pyx_SafeReleaseBuffer(Py_buffer* info) {
+  if (unlikely(info->buf == NULL)) return;
+  if (info->suboffsets == __Pyx_minusones) info->suboffsets = NULL;
+  __Pyx_ReleaseBuffer(info);
+}
+static void __Pyx_ZeroBuffer(Py_buffer* buf) {
+  buf->buf = NULL;
+  buf->obj = NULL;
+  buf->strides = __Pyx_zeros;
+  buf->shape = __Pyx_zeros;
+  buf->suboffsets = __Pyx_minusones;
+}
+static int __Pyx__GetBufferAndValidate(
+        Py_buffer* buf, PyObject* obj,  __Pyx_TypeInfo* dtype, int flags,
+        int nd, int cast, __Pyx_BufFmt_StackElem* stack)
+{
+  buf->buf = NULL;
+  if (unlikely(__Pyx_GetBuffer(obj, buf, flags) == -1)) {
+    __Pyx_ZeroBuffer(buf);
+    return -1;
+  }
+  if (unlikely(buf->ndim != nd)) {
+    PyErr_Format(PyExc_ValueError,
+                 "Buffer has wrong number of dimensions (expected %d, got %d)",
+                 nd, buf->ndim);
+    goto fail;
+  }
+  if (!cast) {
+    __Pyx_BufFmt_Context ctx;
+    __Pyx_BufFmt_Init(&ctx, stack, dtype);
+    if (!__Pyx_BufFmt_CheckString(&ctx, buf->format)) goto fail;
+  }
+  if (unlikely((size_t)buf->itemsize != dtype->size)) {
+    PyErr_Format(PyExc_ValueError,
+      "Item size of buffer (%" CYTHON_FORMAT_SSIZE_T "d byte%s) does not match size of '%s' (%" CYTHON_FORMAT_SSIZE_T "d byte%s)",
+      buf->itemsize, (buf->itemsize > 1) ? "s" : "",
+      dtype->name, (Py_ssize_t)dtype->size, (dtype->size > 1) ? "s" : "");
+    goto fail;
+  }
+  if (buf->suboffsets == NULL) buf->suboffsets = __Pyx_minusones;
+  return 0;
+fail:;
+  __Pyx_SafeReleaseBuffer(buf);
+  return -1;
+}
+
 /* PyObject_GenericGetAttrNoDict */
-#if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+  #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
 static PyObject *__Pyx_RaiseGenericGetAttributeError(PyTypeObject *tp, PyObject *attr_name) {
     __Pyx_TypeName type_name = __Pyx_PyType_GetName(tp);
     PyErr_Format(PyExc_AttributeError,
@@ -34981,7 +36947,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GenericGetAttrNoDict(PyObject* obj
 #endif
 
 /* PyObject_GenericGetAttr */
-#if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
+  #if CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP && PY_VERSION_HEX < 0x03070000
 static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_name) {
     if (unlikely(Py_TYPE(obj)->tp_dictoffset)) {
         return PyObject_GenericGetAttr(obj, attr_name);
@@ -34991,7 +36957,7 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
 #endif
 
 /* FixUpExtensionType */
-#if CYTHON_USE_TYPE_SPECS
+  #if CYTHON_USE_TYPE_SPECS
 static int __Pyx_fix_up_extension_type_from_spec(PyType_Spec *spec, PyTypeObject *type) {
 #if PY_VERSION_HEX > 0x030900B1 || CYTHON_COMPILING_IN_LIMITED_API
     CYTHON_UNUSED_VAR(spec);
@@ -35064,13 +37030,13 @@ static int __Pyx_fix_up_extension_type_from_spec(PyType_Spec *spec, PyTypeObject
 #endif
 
 /* PyObjectCallNoArg */
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+  static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
     PyObject *arg[2] = {NULL, NULL};
     return __Pyx_PyObject_FastCall(func, arg + 1, 0 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET);
 }
 
 /* PyObjectGetMethod */
-static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method) {
+  static int __Pyx_PyObject_GetMethod(PyObject *obj, PyObject *name, PyObject **method) {
     PyObject *attr;
 #if CYTHON_UNPACK_METHODS && CYTHON_COMPILING_IN_CPYTHON && CYTHON_USE_PYTYPE_LOOKUP
     __Pyx_TypeName type_name;
@@ -35171,7 +37137,7 @@ try_unpack:
 }
 
 /* PyObjectCallMethod0 */
-static PyObject* __Pyx_PyObject_CallMethod0(PyObject* obj, PyObject* method_name) {
+  static PyObject* __Pyx_PyObject_CallMethod0(PyObject* obj, PyObject* method_name) {
     PyObject *method = NULL, *result = NULL;
     int is_method = __Pyx_PyObject_GetMethod(obj, method_name, &method);
     if (likely(is_method)) {
@@ -35187,7 +37153,7 @@ bad:
 }
 
 /* ValidateBasesTuple */
-#if CYTHON_COMPILING_IN_CPYTHON || CYTHON_COMPILING_IN_LIMITED_API || CYTHON_USE_TYPE_SPECS
+  #if CYTHON_COMPILING_IN_CPYTHON || CYTHON_COMPILING_IN_LIMITED_API || CYTHON_USE_TYPE_SPECS
 static int __Pyx_validate_bases_tuple(const char *type_name, Py_ssize_t dictoffset, PyObject *bases) {
     Py_ssize_t i, n;
 #if CYTHON_ASSUME_SAFE_MACROS
@@ -35272,7 +37238,7 @@ static int __Pyx_validate_bases_tuple(const char *type_name, Py_ssize_t dictoffs
 #endif
 
 /* PyType_Ready */
-static int __Pyx_PyType_Ready(PyTypeObject *t) {
+  static int __Pyx_PyType_Ready(PyTypeObject *t) {
 #if CYTHON_USE_TYPE_SPECS || !(CYTHON_COMPILING_IN_CPYTHON || CYTHON_COMPILING_IN_LIMITED_API) || defined(PYSTON_MAJOR_VERSION)
     (void)__Pyx_PyObject_CallMethod0;
 #if CYTHON_USE_TYPE_SPECS
@@ -35354,7 +37320,7 @@ static int __Pyx_PyType_Ready(PyTypeObject *t) {
 }
 
 /* SetVTable */
-static int __Pyx_SetVtable(PyTypeObject *type, void *vtable) {
+  static int __Pyx_SetVtable(PyTypeObject *type, void *vtable) {
     PyObject *ob = PyCapsule_New(vtable, 0, 0);
     if (unlikely(!ob))
         goto bad;
@@ -35372,7 +37338,7 @@ bad:
 }
 
 /* GetVTable */
-static void* __Pyx_GetVtable(PyTypeObject *type) {
+  static void* __Pyx_GetVtable(PyTypeObject *type) {
     void* ptr;
 #if CYTHON_COMPILING_IN_LIMITED_API
     PyObject *ob = PyObject_GetAttr((PyObject *)type, __pyx_n_s_pyx_vtable);
@@ -35392,7 +37358,7 @@ bad:
 }
 
 /* MergeVTables */
-#if !CYTHON_COMPILING_IN_LIMITED_API
+  #if !CYTHON_COMPILING_IN_LIMITED_API
 static int __Pyx_MergeVtables(PyTypeObject *type) {
     int i;
     void** base_vtables;
@@ -35445,7 +37411,7 @@ bad:
 #endif
 
 /* SetupReduce */
-#if !CYTHON_COMPILING_IN_LIMITED_API
+  #if !CYTHON_COMPILING_IN_LIMITED_API
 static int __Pyx_setup_reduce_is_named(PyObject* meth, PyObject* name) {
   int ret;
   PyObject *name_attr;
@@ -35556,7 +37522,7 @@ __PYX_GOOD:
 #endif
 
 /* TypeImport */
-#ifndef __PYX_HAVE_RT_ImportType_3_0_11
+  #ifndef __PYX_HAVE_RT_ImportType_3_0_11
 #define __PYX_HAVE_RT_ImportType_3_0_11
 static PyTypeObject *__Pyx_ImportType_3_0_11(PyObject *module, const char *module_name, const char *class_name,
     size_t size, size_t alignment, enum __Pyx_ImportType_CheckSize_3_0_11 check_size)
@@ -35636,12 +37602,12 @@ bad:
 #endif
 
 /* FetchSharedCythonModule */
-static PyObject *__Pyx_FetchSharedCythonABIModule(void) {
+  static PyObject *__Pyx_FetchSharedCythonABIModule(void) {
     return __Pyx_PyImport_AddModuleRef((char*) __PYX_ABI_MODULE_NAME);
 }
 
 /* FetchCommonType */
-static int __Pyx_VerifyCachedType(PyObject *cached_type,
+  static int __Pyx_VerifyCachedType(PyObject *cached_type,
                                const char *name,
                                Py_ssize_t basicsize,
                                Py_ssize_t expected_basicsize) {
@@ -35742,7 +37708,7 @@ bad:
 #endif
 
 /* PyVectorcallFastCallDict */
-#if CYTHON_METH_FASTCALL
+  #if CYTHON_METH_FASTCALL
 static PyObject *__Pyx_PyVectorcall_FastCallDict_kw(PyObject *func, __pyx_vectorcallfunc vc, PyObject *const *args, size_t nargs, PyObject *kw)
 {
     PyObject *res = NULL;
@@ -35798,7 +37764,7 @@ static CYTHON_INLINE PyObject *__Pyx_PyVectorcall_FastCallDict(PyObject *func, _
 #endif
 
 /* CythonFunctionShared */
-#if CYTHON_COMPILING_IN_LIMITED_API
+  #if CYTHON_COMPILING_IN_LIMITED_API
 static CYTHON_INLINE int __Pyx__IsSameCyOrCFunction(PyObject *func, void *cfunc) {
     if (__Pyx_CyFunction_Check(func)) {
         return PyCFunction_GetFunction(((__pyx_CyFunctionObject*)func)->func) == (PyCFunction) cfunc;
@@ -36803,7 +38769,7 @@ static CYTHON_INLINE void __Pyx_CyFunction_SetAnnotationsDict(PyObject *func, Py
 }
 
 /* CythonFunction */
-static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qualname,
+  static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qualname,
                                       PyObject *closure, PyObject *module, PyObject* globals, PyObject* code) {
     PyObject *op = __Pyx_CyFunction_Init(
         PyObject_GC_New(__pyx_CyFunctionObject, __pyx_CyFunctionType),
@@ -36816,7 +38782,7 @@ static PyObject *__Pyx_CyFunction_New(PyMethodDef *ml, int flags, PyObject* qual
 }
 
 /* CLineInTraceback */
-#ifndef CYTHON_CLINE_IN_TRACEBACK
+  #ifndef CYTHON_CLINE_IN_TRACEBACK
 static int __Pyx_CLineForTraceback(PyThreadState *tstate, int c_line) {
     PyObject *use_cline;
     PyObject *ptype, *pvalue, *ptraceback;
@@ -36859,7 +38825,7 @@ static int __Pyx_CLineForTraceback(PyThreadState *tstate, int c_line) {
 #endif
 
 /* CodeObjectCache */
-#if !CYTHON_COMPILING_IN_LIMITED_API
+  #if !CYTHON_COMPILING_IN_LIMITED_API
 static int __pyx_bisect_code_objects(__Pyx_CodeObjectCacheEntry* entries, int count, int code_line) {
     int start = 0, mid = 0, end = count - 1;
     if (end >= 0 && code_line > entries[end].code_line) {
@@ -36941,7 +38907,7 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object) {
 #endif
 
 /* AddTraceback */
-#include "compile.h"
+  #include "compile.h"
 #include "frameobject.h"
 #include "traceback.h"
 #if PY_VERSION_HEX >= 0x030b00a6 && !CYTHON_COMPILING_IN_LIMITED_API
@@ -37159,8 +39125,8 @@ static void __Pyx_ReleaseBuffer(Py_buffer *view) {
 #endif
 
 
-/* MemviewSliceIsContig */
-static int
+  /* MemviewSliceIsContig */
+  static int
 __pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim)
 {
     int i, index, step, start;
@@ -37182,7 +39148,7 @@ __pyx_memviewslice_is_contig(const __Pyx_memviewslice mvs, char order, int ndim)
 }
 
 /* OverlappingSlices */
-static void
+  static void
 __pyx_get_array_memory_extents(__Pyx_memviewslice *slice,
                                void **out_start, void **out_end,
                                int ndim, size_t itemsize)
@@ -37215,527 +39181,6 @@ __pyx_slices_overlap(__Pyx_memviewslice *slice1,
     __pyx_get_array_memory_extents(slice1, &start1, &end1, ndim, itemsize);
     __pyx_get_array_memory_extents(slice2, &start2, &end2, ndim, itemsize);
     return (start1 < end2) && (start2 < end1);
-}
-
-/* IsLittleEndian */
-static CYTHON_INLINE int __Pyx_Is_Little_Endian(void)
-{
-  union {
-    uint32_t u32;
-    uint8_t u8[4];
-  } S;
-  S.u32 = 0x01020304;
-  return S.u8[0] == 4;
-}
-
-/* BufferFormatCheck */
-static void __Pyx_BufFmt_Init(__Pyx_BufFmt_Context* ctx,
-                              __Pyx_BufFmt_StackElem* stack,
-                              __Pyx_TypeInfo* type) {
-  stack[0].field = &ctx->root;
-  stack[0].parent_offset = 0;
-  ctx->root.type = type;
-  ctx->root.name = "buffer dtype";
-  ctx->root.offset = 0;
-  ctx->head = stack;
-  ctx->head->field = &ctx->root;
-  ctx->fmt_offset = 0;
-  ctx->head->parent_offset = 0;
-  ctx->new_packmode = '@';
-  ctx->enc_packmode = '@';
-  ctx->new_count = 1;
-  ctx->enc_count = 0;
-  ctx->enc_type = 0;
-  ctx->is_complex = 0;
-  ctx->is_valid_array = 0;
-  ctx->struct_alignment = 0;
-  while (type->typegroup == 'S') {
-    ++ctx->head;
-    ctx->head->field = type->fields;
-    ctx->head->parent_offset = 0;
-    type = type->fields->type;
-  }
-}
-static int __Pyx_BufFmt_ParseNumber(const char** ts) {
-    int count;
-    const char* t = *ts;
-    if (*t < '0' || *t > '9') {
-      return -1;
-    } else {
-        count = *t++ - '0';
-        while (*t >= '0' && *t <= '9') {
-            count *= 10;
-            count += *t++ - '0';
-        }
-    }
-    *ts = t;
-    return count;
-}
-static int __Pyx_BufFmt_ExpectNumber(const char **ts) {
-    int number = __Pyx_BufFmt_ParseNumber(ts);
-    if (number == -1)
-        PyErr_Format(PyExc_ValueError,\
-                     "Does not understand character buffer dtype format string ('%c')", **ts);
-    return number;
-}
-static void __Pyx_BufFmt_RaiseUnexpectedChar(char ch) {
-  PyErr_Format(PyExc_ValueError,
-               "Unexpected format string character: '%c'", ch);
-}
-static const char* __Pyx_BufFmt_DescribeTypeChar(char ch, int is_complex) {
-  switch (ch) {
-    case '?': return "'bool'";
-    case 'c': return "'char'";
-    case 'b': return "'signed char'";
-    case 'B': return "'unsigned char'";
-    case 'h': return "'short'";
-    case 'H': return "'unsigned short'";
-    case 'i': return "'int'";
-    case 'I': return "'unsigned int'";
-    case 'l': return "'long'";
-    case 'L': return "'unsigned long'";
-    case 'q': return "'long long'";
-    case 'Q': return "'unsigned long long'";
-    case 'f': return (is_complex ? "'complex float'" : "'float'");
-    case 'd': return (is_complex ? "'complex double'" : "'double'");
-    case 'g': return (is_complex ? "'complex long double'" : "'long double'");
-    case 'T': return "a struct";
-    case 'O': return "Python object";
-    case 'P': return "a pointer";
-    case 's': case 'p': return "a string";
-    case 0: return "end";
-    default: return "unparsable format string";
-  }
-}
-static size_t __Pyx_BufFmt_TypeCharToStandardSize(char ch, int is_complex) {
-  switch (ch) {
-    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
-    case 'h': case 'H': return 2;
-    case 'i': case 'I': case 'l': case 'L': return 4;
-    case 'q': case 'Q': return 8;
-    case 'f': return (is_complex ? 8 : 4);
-    case 'd': return (is_complex ? 16 : 8);
-    case 'g': {
-      PyErr_SetString(PyExc_ValueError, "Python does not define a standard format string size for long double ('g')..");
-      return 0;
-    }
-    case 'O': case 'P': return sizeof(void*);
-    default:
-      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
-      return 0;
-    }
-}
-static size_t __Pyx_BufFmt_TypeCharToNativeSize(char ch, int is_complex) {
-  switch (ch) {
-    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
-    case 'h': case 'H': return sizeof(short);
-    case 'i': case 'I': return sizeof(int);
-    case 'l': case 'L': return sizeof(long);
-    #ifdef HAVE_LONG_LONG
-    case 'q': case 'Q': return sizeof(PY_LONG_LONG);
-    #endif
-    case 'f': return sizeof(float) * (is_complex ? 2 : 1);
-    case 'd': return sizeof(double) * (is_complex ? 2 : 1);
-    case 'g': return sizeof(long double) * (is_complex ? 2 : 1);
-    case 'O': case 'P': return sizeof(void*);
-    default: {
-      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
-      return 0;
-    }
-  }
-}
-typedef struct { char c; short x; } __Pyx_st_short;
-typedef struct { char c; int x; } __Pyx_st_int;
-typedef struct { char c; long x; } __Pyx_st_long;
-typedef struct { char c; float x; } __Pyx_st_float;
-typedef struct { char c; double x; } __Pyx_st_double;
-typedef struct { char c; long double x; } __Pyx_st_longdouble;
-typedef struct { char c; void *x; } __Pyx_st_void_p;
-#ifdef HAVE_LONG_LONG
-typedef struct { char c; PY_LONG_LONG x; } __Pyx_st_longlong;
-#endif
-static size_t __Pyx_BufFmt_TypeCharToAlignment(char ch, int is_complex) {
-  CYTHON_UNUSED_VAR(is_complex);
-  switch (ch) {
-    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
-    case 'h': case 'H': return sizeof(__Pyx_st_short) - sizeof(short);
-    case 'i': case 'I': return sizeof(__Pyx_st_int) - sizeof(int);
-    case 'l': case 'L': return sizeof(__Pyx_st_long) - sizeof(long);
-#ifdef HAVE_LONG_LONG
-    case 'q': case 'Q': return sizeof(__Pyx_st_longlong) - sizeof(PY_LONG_LONG);
-#endif
-    case 'f': return sizeof(__Pyx_st_float) - sizeof(float);
-    case 'd': return sizeof(__Pyx_st_double) - sizeof(double);
-    case 'g': return sizeof(__Pyx_st_longdouble) - sizeof(long double);
-    case 'P': case 'O': return sizeof(__Pyx_st_void_p) - sizeof(void*);
-    default:
-      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
-      return 0;
-    }
-}
-/* These are for computing the padding at the end of the struct to align
-   on the first member of the struct. This will probably the same as above,
-   but we don't have any guarantees.
- */
-typedef struct { short x; char c; } __Pyx_pad_short;
-typedef struct { int x; char c; } __Pyx_pad_int;
-typedef struct { long x; char c; } __Pyx_pad_long;
-typedef struct { float x; char c; } __Pyx_pad_float;
-typedef struct { double x; char c; } __Pyx_pad_double;
-typedef struct { long double x; char c; } __Pyx_pad_longdouble;
-typedef struct { void *x; char c; } __Pyx_pad_void_p;
-#ifdef HAVE_LONG_LONG
-typedef struct { PY_LONG_LONG x; char c; } __Pyx_pad_longlong;
-#endif
-static size_t __Pyx_BufFmt_TypeCharToPadding(char ch, int is_complex) {
-  CYTHON_UNUSED_VAR(is_complex);
-  switch (ch) {
-    case '?': case 'c': case 'b': case 'B': case 's': case 'p': return 1;
-    case 'h': case 'H': return sizeof(__Pyx_pad_short) - sizeof(short);
-    case 'i': case 'I': return sizeof(__Pyx_pad_int) - sizeof(int);
-    case 'l': case 'L': return sizeof(__Pyx_pad_long) - sizeof(long);
-#ifdef HAVE_LONG_LONG
-    case 'q': case 'Q': return sizeof(__Pyx_pad_longlong) - sizeof(PY_LONG_LONG);
-#endif
-    case 'f': return sizeof(__Pyx_pad_float) - sizeof(float);
-    case 'd': return sizeof(__Pyx_pad_double) - sizeof(double);
-    case 'g': return sizeof(__Pyx_pad_longdouble) - sizeof(long double);
-    case 'P': case 'O': return sizeof(__Pyx_pad_void_p) - sizeof(void*);
-    default:
-      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
-      return 0;
-    }
-}
-static char __Pyx_BufFmt_TypeCharToGroup(char ch, int is_complex) {
-  switch (ch) {
-    case 'c':
-        return 'H';
-    case 'b': case 'h': case 'i':
-    case 'l': case 'q': case 's': case 'p':
-        return 'I';
-    case '?': case 'B': case 'H': case 'I': case 'L': case 'Q':
-        return 'U';
-    case 'f': case 'd': case 'g':
-        return (is_complex ? 'C' : 'R');
-    case 'O':
-        return 'O';
-    case 'P':
-        return 'P';
-    default: {
-      __Pyx_BufFmt_RaiseUnexpectedChar(ch);
-      return 0;
-    }
-  }
-}
-static void __Pyx_BufFmt_RaiseExpected(__Pyx_BufFmt_Context* ctx) {
-  if (ctx->head == NULL || ctx->head->field == &ctx->root) {
-    const char* expected;
-    const char* quote;
-    if (ctx->head == NULL) {
-      expected = "end";
-      quote = "";
-    } else {
-      expected = ctx->head->field->type->name;
-      quote = "'";
-    }
-    PyErr_Format(PyExc_ValueError,
-                 "Buffer dtype mismatch, expected %s%s%s but got %s",
-                 quote, expected, quote,
-                 __Pyx_BufFmt_DescribeTypeChar(ctx->enc_type, ctx->is_complex));
-  } else {
-    __Pyx_StructField* field = ctx->head->field;
-    __Pyx_StructField* parent = (ctx->head - 1)->field;
-    PyErr_Format(PyExc_ValueError,
-                 "Buffer dtype mismatch, expected '%s' but got %s in '%s.%s'",
-                 field->type->name, __Pyx_BufFmt_DescribeTypeChar(ctx->enc_type, ctx->is_complex),
-                 parent->type->name, field->name);
-  }
-}
-static int __Pyx_BufFmt_ProcessTypeChunk(__Pyx_BufFmt_Context* ctx) {
-  char group;
-  size_t size, offset, arraysize = 1;
-  if (ctx->enc_type == 0) return 0;
-  if (ctx->head->field->type->arraysize[0]) {
-    int i, ndim = 0;
-    if (ctx->enc_type == 's' || ctx->enc_type == 'p') {
-        ctx->is_valid_array = ctx->head->field->type->ndim == 1;
-        ndim = 1;
-        if (ctx->enc_count != ctx->head->field->type->arraysize[0]) {
-            PyErr_Format(PyExc_ValueError,
-                         "Expected a dimension of size %zu, got %zu",
-                         ctx->head->field->type->arraysize[0], ctx->enc_count);
-            return -1;
-        }
-    }
-    if (!ctx->is_valid_array) {
-      PyErr_Format(PyExc_ValueError, "Expected %d dimensions, got %d",
-                   ctx->head->field->type->ndim, ndim);
-      return -1;
-    }
-    for (i = 0; i < ctx->head->field->type->ndim; i++) {
-      arraysize *= ctx->head->field->type->arraysize[i];
-    }
-    ctx->is_valid_array = 0;
-    ctx->enc_count = 1;
-  }
-  group = __Pyx_BufFmt_TypeCharToGroup(ctx->enc_type, ctx->is_complex);
-  do {
-    __Pyx_StructField* field = ctx->head->field;
-    __Pyx_TypeInfo* type = field->type;
-    if (ctx->enc_packmode == '@' || ctx->enc_packmode == '^') {
-      size = __Pyx_BufFmt_TypeCharToNativeSize(ctx->enc_type, ctx->is_complex);
-    } else {
-      size = __Pyx_BufFmt_TypeCharToStandardSize(ctx->enc_type, ctx->is_complex);
-    }
-    if (ctx->enc_packmode == '@') {
-      size_t align_at = __Pyx_BufFmt_TypeCharToAlignment(ctx->enc_type, ctx->is_complex);
-      size_t align_mod_offset;
-      if (align_at == 0) return -1;
-      align_mod_offset = ctx->fmt_offset % align_at;
-      if (align_mod_offset > 0) ctx->fmt_offset += align_at - align_mod_offset;
-      if (ctx->struct_alignment == 0)
-          ctx->struct_alignment = __Pyx_BufFmt_TypeCharToPadding(ctx->enc_type,
-                                                                 ctx->is_complex);
-    }
-    if (type->size != size || type->typegroup != group) {
-      if (type->typegroup == 'C' && type->fields != NULL) {
-        size_t parent_offset = ctx->head->parent_offset + field->offset;
-        ++ctx->head;
-        ctx->head->field = type->fields;
-        ctx->head->parent_offset = parent_offset;
-        continue;
-      }
-      if ((type->typegroup == 'H' || group == 'H') && type->size == size) {
-      } else {
-          __Pyx_BufFmt_RaiseExpected(ctx);
-          return -1;
-      }
-    }
-    offset = ctx->head->parent_offset + field->offset;
-    if (ctx->fmt_offset != offset) {
-      PyErr_Format(PyExc_ValueError,
-                   "Buffer dtype mismatch; next field is at offset %" CYTHON_FORMAT_SSIZE_T "d but %" CYTHON_FORMAT_SSIZE_T "d expected",
-                   (Py_ssize_t)ctx->fmt_offset, (Py_ssize_t)offset);
-      return -1;
-    }
-    ctx->fmt_offset += size;
-    if (arraysize)
-      ctx->fmt_offset += (arraysize - 1) * size;
-    --ctx->enc_count;
-    while (1) {
-      if (field == &ctx->root) {
-        ctx->head = NULL;
-        if (ctx->enc_count != 0) {
-          __Pyx_BufFmt_RaiseExpected(ctx);
-          return -1;
-        }
-        break;
-      }
-      ctx->head->field = ++field;
-      if (field->type == NULL) {
-        --ctx->head;
-        field = ctx->head->field;
-        continue;
-      } else if (field->type->typegroup == 'S') {
-        size_t parent_offset = ctx->head->parent_offset + field->offset;
-        if (field->type->fields->type == NULL) continue;
-        field = field->type->fields;
-        ++ctx->head;
-        ctx->head->field = field;
-        ctx->head->parent_offset = parent_offset;
-        break;
-      } else {
-        break;
-      }
-    }
-  } while (ctx->enc_count);
-  ctx->enc_type = 0;
-  ctx->is_complex = 0;
-  return 0;
-}
-static int
-__pyx_buffmt_parse_array(__Pyx_BufFmt_Context* ctx, const char** tsp)
-{
-    const char *ts = *tsp;
-    int i = 0, number, ndim;
-    ++ts;
-    if (ctx->new_count != 1) {
-        PyErr_SetString(PyExc_ValueError,
-                        "Cannot handle repeated arrays in format string");
-        return -1;
-    }
-    if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return -1;
-    ndim = ctx->head->field->type->ndim;
-    while (*ts && *ts != ')') {
-        switch (*ts) {
-            case ' ': case '\f': case '\r': case '\n': case '\t': case '\v':  continue;
-            default:  break;
-        }
-        number = __Pyx_BufFmt_ExpectNumber(&ts);
-        if (number == -1) return -1;
-        if (i < ndim && (size_t) number != ctx->head->field->type->arraysize[i]) {
-            PyErr_Format(PyExc_ValueError,
-                        "Expected a dimension of size %zu, got %d",
-                        ctx->head->field->type->arraysize[i], number);
-            return -1;
-        }
-        if (*ts != ',' && *ts != ')') {
-            PyErr_Format(PyExc_ValueError,
-                                "Expected a comma in format string, got '%c'", *ts);
-            return -1;
-        }
-        if (*ts == ',') ts++;
-        i++;
-    }
-    if (i != ndim) {
-        PyErr_Format(PyExc_ValueError, "Expected %d dimension(s), got %d",
-                            ctx->head->field->type->ndim, i);
-        return -1;
-    }
-    if (!*ts) {
-        PyErr_SetString(PyExc_ValueError,
-                        "Unexpected end of format string, expected ')'");
-        return -1;
-    }
-    ctx->is_valid_array = 1;
-    ctx->new_count = 1;
-    *tsp = ++ts;
-    return 0;
-}
-static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const char* ts) {
-  int got_Z = 0;
-  while (1) {
-    switch(*ts) {
-      case 0:
-        if (ctx->enc_type != 0 && ctx->head == NULL) {
-          __Pyx_BufFmt_RaiseExpected(ctx);
-          return NULL;
-        }
-        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
-        if (ctx->head != NULL) {
-          __Pyx_BufFmt_RaiseExpected(ctx);
-          return NULL;
-        }
-        return ts;
-      case ' ':
-      case '\r':
-      case '\n':
-        ++ts;
-        break;
-      case '<':
-        if (!__Pyx_Is_Little_Endian()) {
-          PyErr_SetString(PyExc_ValueError, "Little-endian buffer not supported on big-endian compiler");
-          return NULL;
-        }
-        ctx->new_packmode = '=';
-        ++ts;
-        break;
-      case '>':
-      case '!':
-        if (__Pyx_Is_Little_Endian()) {
-          PyErr_SetString(PyExc_ValueError, "Big-endian buffer not supported on little-endian compiler");
-          return NULL;
-        }
-        ctx->new_packmode = '=';
-        ++ts;
-        break;
-      case '=':
-      case '@':
-      case '^':
-        ctx->new_packmode = *ts++;
-        break;
-      case 'T':
-        {
-          const char* ts_after_sub;
-          size_t i, struct_count = ctx->new_count;
-          size_t struct_alignment = ctx->struct_alignment;
-          ctx->new_count = 1;
-          ++ts;
-          if (*ts != '{') {
-            PyErr_SetString(PyExc_ValueError, "Buffer acquisition: Expected '{' after 'T'");
-            return NULL;
-          }
-          if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
-          ctx->enc_type = 0;
-          ctx->enc_count = 0;
-          ctx->struct_alignment = 0;
-          ++ts;
-          ts_after_sub = ts;
-          for (i = 0; i != struct_count; ++i) {
-            ts_after_sub = __Pyx_BufFmt_CheckString(ctx, ts);
-            if (!ts_after_sub) return NULL;
-          }
-          ts = ts_after_sub;
-          if (struct_alignment) ctx->struct_alignment = struct_alignment;
-        }
-        break;
-      case '}':
-        {
-          size_t alignment = ctx->struct_alignment;
-          ++ts;
-          if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
-          ctx->enc_type = 0;
-          if (alignment && ctx->fmt_offset % alignment) {
-            ctx->fmt_offset += alignment - (ctx->fmt_offset % alignment);
-          }
-        }
-        return ts;
-      case 'x':
-        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
-        ctx->fmt_offset += ctx->new_count;
-        ctx->new_count = 1;
-        ctx->enc_count = 0;
-        ctx->enc_type = 0;
-        ctx->enc_packmode = ctx->new_packmode;
-        ++ts;
-        break;
-      case 'Z':
-        got_Z = 1;
-        ++ts;
-        if (*ts != 'f' && *ts != 'd' && *ts != 'g') {
-          __Pyx_BufFmt_RaiseUnexpectedChar('Z');
-          return NULL;
-        }
-        CYTHON_FALLTHROUGH;
-      case '?': case 'c': case 'b': case 'B': case 'h': case 'H': case 'i': case 'I':
-      case 'l': case 'L': case 'q': case 'Q':
-      case 'f': case 'd': case 'g':
-      case 'O': case 'p':
-        if ((ctx->enc_type == *ts) && (got_Z == ctx->is_complex) &&
-            (ctx->enc_packmode == ctx->new_packmode) && (!ctx->is_valid_array)) {
-          ctx->enc_count += ctx->new_count;
-          ctx->new_count = 1;
-          got_Z = 0;
-          ++ts;
-          break;
-        }
-        CYTHON_FALLTHROUGH;
-      case 's':
-        if (__Pyx_BufFmt_ProcessTypeChunk(ctx) == -1) return NULL;
-        ctx->enc_count = ctx->new_count;
-        ctx->enc_packmode = ctx->new_packmode;
-        ctx->enc_type = *ts;
-        ctx->is_complex = got_Z;
-        ++ts;
-        ctx->new_count = 1;
-        got_Z = 0;
-        break;
-      case ':':
-        ++ts;
-        while(*ts != ':') ++ts;
-        ++ts;
-        break;
-      case '(':
-        if (__pyx_buffmt_parse_array(ctx, &ts) < 0) return NULL;
-        break;
-      default:
-        {
-          int number = __Pyx_BufFmt_ExpectNumber(&ts);
-          if (number == -1) return NULL;
-          ctx->new_count = (size_t)number;
-        }
-    }
-  }
 }
 
 /* TypeInfoCompare */
@@ -39021,77 +40466,6 @@ raise_neg_overflow:
 }
 
 /* CIntToPy */
-  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_intp(npy_intp value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const npy_intp neg_one = (npy_intp) -1, const_zero = (npy_intp) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(npy_intp) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(npy_intp) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(npy_intp) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(npy_intp) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(npy_intp) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(npy_intp),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL;
-        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(npy_intp));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
-        if (!arg_tuple) goto limited_bad;
-        if (!is_unsigned) {
-            kwds = PyDict_New();
-            if (!kwds) goto limited_bad;
-            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
-        }
-        result = PyObject_Call(from_bytes, arg_tuple, kwds);
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(arg_tuple);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
-/* CIntToPy */
   static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
@@ -39140,6 +40514,77 @@ raise_neg_overflow:
         from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
         if (!from_bytes) return NULL;
         py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
+        if (!arg_tuple) goto limited_bad;
+        if (!is_unsigned) {
+            kwds = PyDict_New();
+            if (!kwds) goto limited_bad;
+            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
+        }
+        result = PyObject_Call(from_bytes, arg_tuple, kwds);
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(arg_tuple);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_npy_intp(npy_intp value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const npy_intp neg_one = (npy_intp) -1, const_zero = (npy_intp) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(npy_intp) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(npy_intp) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(npy_intp) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(npy_intp) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(npy_intp) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(npy_intp),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL;
+        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(npy_intp));
         if (!py_bytes) goto limited_bad;
         order_str = PyUnicode_FromString(little ? "little" : "big");
         if (!order_str) goto limited_bad;
@@ -39706,7 +41151,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__61);
+        name = __Pyx_NewRef(__pyx_n_s__66);
     }
     return name;
 }

@@ -2,7 +2,7 @@ cimport numpy as np
 from libcpp.vector cimport vector as cvector
 cimport cython
 
-cdef  bint double_equals(double a, double b, double epsilon = 1e-10):
+cdef bint double_equals(double a, double b, double epsilon = 1e-10):
   return abs(a - b) < epsilon
 
 @cython.final
@@ -62,6 +62,15 @@ cdef class Point:
             res &= double_equals(self.coords[i], q.coords[i])
 
         return res
+
+    cpdef inline Point get_avg(self, Point q):
+        cdef cvector[double] new_coords
+
+        cdef int i
+        for i in range(len(self.coords)):
+            new_coords.push_back((self.coords[i] + q.coords[i])/2.0)
+
+        return Point(new_coords)
 
 @cython.final
 cdef class LinePointDistance:
@@ -197,61 +206,61 @@ cdef class EID:
             self.dist,
         )
 
-    # cpdef float reassign_parameter_i(
-    #     self,
-    #     float new_t,
-    #     np.ndarray[np.float64_t, ndim=2] P
-    # ):
-    #     """
-    #     Reassign the point and parameter from the curve P.
-    #     Returns the error incurred by the reassignment.
-    #     """
-    #     assert 0.0 <= new_t <= 1.0
-    #     old_t = self.t_i
+    cpdef float reassign_parameter_i(
+        self,
+        float new_t,
+        np.ndarray[np.float64_t, ndim=2] P
+    ):
+        """
+        Reassign the point and parameter from the curve P.
+        Returns the error incurred by the reassignment.
+        """
+        assert 0.0 <= new_t <= 1.0
+        cdef double old_t = self.t_i
 
-    #     if np.isclose(0.0, new_t):
-    #         self.t_i = 0.0
-    #         self.p_i = P[self.i]
-    #     elif np.isclose(1.0, new_t):
-    #         self.t_i = 1.0
-    #         self.p_i = P[self.i + 1]
-    #         # TODO maybe change the number based on index?
-    #         # I don't think the convention matters.
-    #     else:
-    #         # Case where 0.0 < new_t < 1.0
-    #         self.t_i = new_t
-    #         self.p_i = convex_comb(P[self.i], P[self.i + 1], self.t_i)
+        if double_equals(0.0, new_t):
+            self.t_i = 0.0
+            self.p_i = Point(P[self.i])
+        elif double_equals(1.0, new_t):
+            self.t_i = 1.0
+            self.p_i = Point(P[self.i + 1])
+            # TODO maybe change the number based on index?
+            # I don't think the convention matters.
+        else:
+            # Case where 0.0 < new_t < 1.0
+            self.t_i = new_t
+            self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
 
-    #     self.dist = float(np.linalg.norm(self.p_i - self.p_j))
-    #     return abs(old_t - new_t) * float(np.linalg.norm(P[self.i] - P[self.i + 1]))
+        self.dist = self.p_i.point_difference(self.p_j).get_norm()
+        return abs(old_t - new_t) * Point(P[self.i]).point_difference(Point(P[self.i + 1])).get_norm()
 
-    # cpdef float reassign_parameter_j(
-    #     self,
-    #     float new_t,
-    #     np.ndarray[np.float64_t, ndim=2] Q
-    # ):
-    #     """
-    #     Reassign the point and parameter from the curve Q.
-    #     Returns the error incurred by the reassignment.
-    #     """
-    #     assert 0.0 <= new_t <= 1.0
-    #     old_t = self.t_j
+    cpdef float reassign_parameter_j(
+        self,
+        float new_t,
+        np.ndarray[np.float64_t, ndim=2] Q
+    ):
+        """
+        Reassign the point and parameter from the curve Q.
+        Returns the error incurred by the reassignment.
+        """
+        assert 0.0 <= new_t <= 1.0
+        cdef double old_t = self.t_j
 
-    #     if np.isclose(0.0, new_t):
-    #         self.t_j = 0.0
-    #         self.p_j = Q[self.j]
-    #     elif np.isclose(1.0, new_t):
-    #         self.t_j = 1.0
-    #         self.p_j = Q[self.j + 1]
-    #         # TODO maybe change the number based on index?
-    #         # I don't think the convention matters.
-    #     else:
-    #         # Case where 0.0 < new_t < 1.0
-    #         self.t_j = new_t
-    #         self.p_j = convex_comb(Q[self.j], Q[self.j + 1], self.t_j)
+        if double_equals(0.0, new_t):
+            self.t_j = 0.0
+            self.p_j = Point(Q[self.j])
+        elif double_equals(1.0, new_t):
+            self.t_j = 1.0
+            self.p_j = Point(Q[self.j + 1])
+            # TODO maybe change the number based on index?
+            # I don't think the convention matters.
+        else:
+            # Case where 0.0 < new_t < 1.0
+            self.t_j = new_t
+            self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
 
-    #     self.dist = float(np.linalg.norm(self.p_i - self.p_j))
-    #     return abs(old_t - new_t) * float(np.linalg.norm(Q[self.j] - Q[self.j + 1]))
+        self.dist = self.p_i.point_difference(self.p_j).get_norm()
+        return abs(old_t - new_t) * Point(Q[self.i]).point_difference(Point(Q[self.i + 1])).get_norm()
 
     cpdef flip(self):
         self.i, self.j = self.j, self.i
