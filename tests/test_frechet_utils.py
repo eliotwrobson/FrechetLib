@@ -322,7 +322,51 @@ def test_add_points_to_make_monotone() -> None:
     assert np.allclose(new_Q, Q)
 
 
-'''
+def test_morphing_make_monotone() -> None:
+    non_monotone_morphing = u.get_basic_morphing()
+    other_morphing = non_monotone_morphing.copy()
+    other_morphing.make_monotone()
+
+    assert not non_monotone_morphing.is_monotone()
+    assert other_morphing.is_monotone()
+    assert len(other_morphing) == len(non_monotone_morphing)
+    check_morphing_witness(other_morphing)
+    assert other_morphing.get_dist() >= non_monotone_morphing.get_dist()
+
+
+def check_morphing_witness(morphing: fu.Morphing) -> None:
+    """
+    Test helper function to ensure morphing is valid + correctly
+    witnessess the given distance.
+    """
+    target_dist = morphing.get_dist()
+    prev_event = None
+    saw_witness = False
+
+    morphing_iter = iter(morphing.get_morphing_list())
+    # Skip first iteration because first two events are treated identical
+    next(morphing_iter)
+
+    for event in morphing_iter:
+        saw_witness = saw_witness or np.isclose(target_dist, event.get_dist())
+
+        if prev_event is not None:
+            # Asserts that consecutive events are contiguous
+            assert (
+                event.get_i() - prev_event.get_i(),
+                event.get_j() - prev_event.get_j(),
+            ) in {
+                (0, 1),
+                (1, 0),
+                (1, 1),
+            }
+
+        prev_event = event
+
+    assert saw_witness
+
+
+"""
 
 
 def test_morphing_combine_manual() -> None:
@@ -490,46 +534,6 @@ def test_morphing_combine() -> None:
     assert np.allclose(res.get_Q(), R)
 
 
-def check_morphing_witness(morphing: fu.Morphing) -> None:
-    """
-    Test helper function to ensure morphing is valid + correctly
-    witnessess the given distance.
-    """
-    target_dist = morphing.get_dist()
-    prev_event = None
-    saw_witness = False
-
-    morphing_iter = iter(morphing.get_morphing_list())
-    # Skip first iteration because first two events are treated identical
-    next(morphing_iter)
-
-    for event in morphing_iter:
-        saw_witness = saw_witness or np.isclose(target_dist, event.get_dist())
-
-        if prev_event is not None:
-            # Asserts that consecutive events are contiguous
-            assert (
-                event.get_i() - prev_event.get_i(),
-                event.get_j() - prev_event.get_j(),
-            ) in {
-                (0, 1),
-                (1, 0),
-                (1, 1),
-            }
-
-        prev_event = event
-
-    assert saw_witness
 
 
-def test_morphing_make_monotone() -> None:
-    non_monotone_morphing = u.get_basic_morphing()
-    other_morphing = non_monotone_morphing.copy()
-    other_morphing.make_monotone()
-
-    assert not non_monotone_morphing.is_monotone()
-    assert other_morphing.is_monotone()
-    assert len(other_morphing) == len(non_monotone_morphing)
-    check_morphing_witness(other_morphing)
-    assert other_morphing.get_dist() >= non_monotone_morphing.get_dist()
-'''
+"""
