@@ -3,9 +3,12 @@ from libcpp.vector cimport vector as cvector
 
 ctypedef cnp.float64_t FLOAT_t
 
+cdef class Curve:
+    cdef list point_list
+
 cdef class Morphing:
     #TODO figure out how to get this to work
-    cdef object morphing_list
+    cdef list morphing_list
     cdef cnp.ndarray P
     cdef cnp.ndarray Q
     cdef float dist
