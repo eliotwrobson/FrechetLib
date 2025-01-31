@@ -226,7 +226,7 @@ def frechet_c_compute(
     approx_refinement = 1.001
 
     min_approx_ratio = min(
-        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_morphing.dist), 1.1
+        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_morphing.get_dist()), 1.1
     )
 
     # If initial ratio is good enough, use this morphing
@@ -239,7 +239,7 @@ def frechet_c_compute(
         ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
 
     Pl, Ql = morphing.extract_vertex_radii()
-    lower_bound = morphing.dist / ratio
+    lower_bound = morphing.get_dist() / ratio
 
     factor = 4.0
     while True:
@@ -257,8 +257,12 @@ def frechet_c_compute(
         mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
         # The P and Q from the refinement without offsets
-        morphing_P = rf.retractable_ve_frechet(P, mid_morphing.P, None, None, False)
-        morphing_Q = rf.retractable_ve_frechet(mid_morphing.Q, Q, None, None, False)
+        morphing_P = rf.retractable_ve_frechet(
+            P, mid_morphing.get_P(), None, None, False
+        )
+        morphing_Q = rf.retractable_ve_frechet(
+            mid_morphing.get_Q(), Q, None, None, False
+        )
 
         # NOTE This apparently does not require flipping? Testing with large input
         # it works, and my tests are still passing.
@@ -279,7 +283,7 @@ def frechet_c_compute(
         combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
 
         # Try shooting for the opt?
-        if np.isclose(combined_morphing.dist, mid_morphing.dist):
+        if np.isclose(combined_morphing.get_dist(), mid_morphing.get_dist()):
             factor *= 2.0
 
         # TODO Triple check these are the correct offsets
@@ -287,8 +291,8 @@ def frechet_c_compute(
         morphing_offsets_Q, _ = morphing_Q.extract_vertex_radii()
 
         morphing_with_offsets = rf.retractable_ve_frechet(
-            mid_morphing.P,
-            mid_morphing.Q,
+            mid_morphing.get_P(),
+            mid_morphing.get_Q(),
             morphing_offsets_P,
             morphing_offsets_Q,
             False,
@@ -297,16 +301,14 @@ def frechet_c_compute(
         # If distances are equal, return the simpler of the two
         # (computed without offsets)
         # print("offset dist:", morphing_with_offsets.dist)
-        if np.isclose(morphing_with_offsets.dist, combined_morphing.dist):
+        if np.isclose(morphing_with_offsets.get_dist(), combined_morphing.get_dist()):
             return combined_morphing
 
         factor *= 2.0
         approx_refinement = (1.0 + approx_refinement) / 2.0
 
-        # TODO I flipped the inequality here from the original Julia code.
-        # make sure this is correct (though I think it is).
         if f_accept_appx and (
-            1.000001 * combined_morphing.dist < morphing_with_offsets.dist
+            1.000001 * combined_morphing.get_dist() < morphing_with_offsets.get_dist()
         ):
             # print("HERE")
             # print(combined_morphing.dist, morphing_with_offsets.dist)

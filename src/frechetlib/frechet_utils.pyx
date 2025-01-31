@@ -496,11 +496,11 @@ cdef class Morphing:
 
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
-            if event.i_is_vert:
-                P_leash_lens[event.i] = max(P_leash_lens[event.i], event.dist)  # type: ignore
+            if event.get_i_is_vert():
+                P_leash_lens[event.get_i()] = max(P_leash_lens[event.get_i()], event.get_dist())  # type: ignore
 
-            if event.j_is_vert:
-                Q_leash_lens[event.j] = max(Q_leash_lens[event.j], event.dist)  # type: ignore
+            if event.get_j_is_vert():
+                Q_leash_lens[event.get_j()] = max(Q_leash_lens[event.get_j()], event.get_dist())  # type: ignore
 
         return P_leash_lens, Q_leash_lens
 

@@ -10,7 +10,7 @@ def test_frechet_c_compute() -> None:
     output = cf.frechet_c_compute(P, Q)
     # TODO this test is flaky best on the operating system because of some annoying tiebreak
     # logic (implementation dependant).
-    assert np.isclose(output.dist, 0.14142135623730956)
+    assert np.isclose(output.get_dist(), 0.14142135623730956)
 
 
 def test_frechet_c_compute_real() -> None:
@@ -19,20 +19,20 @@ def test_frechet_c_compute_real() -> None:
     Q_curve = get_test_curve("05/poly_b.txt")
 
     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-    assert np.isclose(output_appx.dist, 0.7134913516143259)
+    assert np.isclose(output_appx.get_dist(), 0.7134913516143259)
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
-    assert np.isclose(output_exact.dist, 0.712928554361795, atol=0.0005)
+    assert np.isclose(output_exact.get_dist(), 0.712928554361795, atol=0.0005)
 
     # Testing with curve number 6
     P_curve = get_test_curve("06/poly_a.txt")
     Q_curve = get_test_curve("06/poly_b.txt")
 
     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-    assert np.isclose(output_appx.dist, 0.9228858795210783)
+    assert np.isclose(output_appx.get_dist(), 0.9228858795210783)
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
-    assert np.isclose(output_exact.dist, 0.9212672396766863, atol=0.0002)
+    assert np.isclose(output_exact.get_dist(), 0.9212672396766863, atol=0.0002)
 
 
 def test_frechet_c_approx() -> None:
