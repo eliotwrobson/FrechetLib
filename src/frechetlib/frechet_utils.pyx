@@ -755,13 +755,13 @@ def get_frechet_dist_from_morphing_list(morphing_list) -> float:
 def _print_event_list(morphing: Morphing) -> None:
     for event in morphing.morphing_list:
         print(
-            event.i,
-            event.i_is_vert,
-            event.j,
-            event.j_is_vert,
-            event.t_i,
-            event.t_j,
-            event.dist,
+            event.get_i(),
+            event.get_i_is_vert(),
+            event.get_j(),
+            event.get_j_is_vert(),
+            event.get_t_i(),
+            event.get_t_j(),
+            event.get_dist(),
         )
 
 
