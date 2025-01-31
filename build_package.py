@@ -16,6 +16,8 @@ def build_cython_extensions() -> None:
 
     ext = ".pyx" if use_cython else ".cpp"
 
+    MACROS = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
+
     extensions = [
         Extension(
             "frechetlib.frechet_utils",
@@ -23,7 +25,7 @@ def build_cython_extensions() -> None:
             language="c++",
             extra_compile_args=["-O3"],
             include_dirs=[np.get_include()],
-            define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
+            define_macros=MACROS,
         ),
         Extension(
             "frechetlib.geometry_utils",
@@ -31,7 +33,15 @@ def build_cython_extensions() -> None:
             language="c++",
             extra_compile_args=["-O3"],
             include_dirs=[np.get_include()],
-            define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
+            define_macros=MACROS,
+        ),
+        Extension(
+            "frechetlib.retractable_frechet",
+            ["src/frechetlib/retractable_frechet" + ext],
+            language="c++",
+            extra_compile_args=["-O3"],
+            include_dirs=[np.get_include()],
+            define_macros=MACROS,
         ),
     ]
 
