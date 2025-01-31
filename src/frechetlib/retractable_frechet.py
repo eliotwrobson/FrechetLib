@@ -10,15 +10,6 @@ import frechetlib.frechet_utils as fu
 import frechetlib.geometry_utils as gu
 
 
-# @njit(
-#     fu.Morphing.class_type.instance_type(  # type: ignore[attr-defined]
-#         float64[:, :],
-#         float64[:, :],
-#         optional(float64[:]),
-#         optional(float64[:]),
-#         boolean,
-#     )
-# )
 def retractable_ve_frechet(
     P: np.ndarray,
     Q: np.ndarray,

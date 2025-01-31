@@ -1,6 +1,7 @@
 import numpy as np
 
 import frechetlib.frechet_utils as fu
+import frechetlib.geometry_utils as gu
 import frechetlib.retractable_frechet as rf
 
 
@@ -30,9 +31,10 @@ def frechet_mono_via_refinement(
     monotone_morphing.make_monotone()
 
     # Continue until monotone_morphing.dist <= approx * ve_morphing.dist
-    while monotone_morphing.dist > approx * ve_morphing.dist:
+    while monotone_morphing.get_dist() > approx * ve_morphing.get_dist():
         # Add points where monotonicity was broken to improve distance
-        new_P, new_Q = fu.add_points_to_make_monotone(ve_morphing)
+        new_points = fu.add_points_to_make_monotone(ve_morphing)
+        new_P, new_Q = new_points.get_P(), new_points.get_Q()
 
         # Compute new ve frechet distance for curves
         ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
@@ -44,7 +46,9 @@ def frechet_mono_via_refinement(
         # print("ve: ", ve_morphing.dist)
         # print("monotone: ", monotone_morphing.dist)
 
-    return monotone_morphing, np.isclose(ve_morphing.dist, monotone_morphing.dist)
+    return monotone_morphing, np.isclose(
+        ve_morphing.get_dist(), monotone_morphing.get_dist()
+    )
 
 
 # @njit(cache=True)
@@ -87,24 +91,24 @@ def frechet_c_mono_approx_subcurve(
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
 
-        _, next_event = fu.from_curve_indices(
+        next_event = gu.from_curve_indices(
             curr_idx, True, i, True, P, P_subcurve, None, None
-        )
-        width = max(width, next_event.dist)
+        ).get_event()
+        width = max(width, next_event.get_dist())
         res.append(next_event)
 
         for j in range(curr_idx + 1, next_idx):
             # print("index", i, j)
-            _, next_event = fu.from_curve_indices(
+            next_event = gu.from_curve_indices(
                 j, True, i, False, P, P_subcurve, None, None
-            )
-            width = max(width, next_event.dist)
+            ).get_event()
+            width = max(width, next_event.get_dist())
             res.append(next_event)
 
-    _, next_event = fu.from_curve_indices(
+    next_event = gu.from_curve_indices(
         len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve, None, None
-    )
-    width = max(width, next_event.dist)
+    ).get_event()
+    width = max(width, next_event.get_dist())
     res.append(next_event)
 
     return fu.Morphing(res, P, P_subcurve, width)
@@ -150,13 +154,13 @@ def frechet_c_approx(
             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
-            upper_bound_dist = morphing.dist
+            upper_bound_dist = morphing.get_dist()
             should_simplify = False
 
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-        error = max(morphing_p.dist, morphing_q.dist)
+        error = max(morphing_p.get_dist(), morphing_q.get_dist())
 
         morphing_p.make_monotone()
         morphing_q.make_monotone()
@@ -173,7 +177,7 @@ def frechet_c_approx(
         assert output_morphing.is_monotone()
         # output_morphing.make_monotone()
 
-        ratio = output_morphing.dist / (upper_bound_dist - 2.0 * error)
+        ratio = output_morphing.get_dist() / (upper_bound_dist - 2.0 * error)
         # NOTE This should advance the inner loop on the next iteration.
         should_simplify = True
         # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))

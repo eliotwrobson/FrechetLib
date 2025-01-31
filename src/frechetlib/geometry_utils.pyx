@@ -334,16 +334,6 @@ cpdef EIDFromCurveIndices from_curve_indices(
     np.ndarray Q_offs,
 ):
 
-# cpdef from_curve_indices(
-#     i: int,
-#     i_is_vert: bool,
-#     j: int,
-#     j_is_vert: bool,
-#     P: np.ndarray,
-#     Q: np.ndarray,
-#     P_offs: t.Optional[np.ndarray],
-#     Q_offs: t.Optional[np.ndarray],
-# ) -> t.Tuple[float, EID]:
     # These values will get overwritten later
     # TODO I think some of the logic below can be refactored to reduce
     # the number of cases
