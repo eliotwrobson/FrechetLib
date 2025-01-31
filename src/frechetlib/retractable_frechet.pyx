@@ -4,7 +4,7 @@ import typing as t
 import numpy as np
 
 from .frechet_utils cimport Morphing
-from .geometry_utils cimport from_curve_indices
+from .geometry_utils cimport EID, from_curve_indices
 
 
 cpdef Morphing retractable_ve_frechet(
@@ -14,7 +14,7 @@ cpdef Morphing retractable_ve_frechet(
     cnp.ndarray Q_offs,
     bint summed,
 ):
-    start_node = from_curve_indices(
+    cdef EID start_node = from_curve_indices(
         0, True, 0, True, P, Q, P_offs, Q_offs
     ).get_event()
 
@@ -31,7 +31,11 @@ cpdef Morphing retractable_ve_frechet(
     cdef int n_p = P.shape[0]
     cdef int n_q = Q.shape[0]
     diffs = ((1, True, 0, False), (0, False, 1, True))
-    last_event = start_node
+
+    cdef EID last_event = start_node
+    cdef EID curr_event
+    cdef double curr_cost
+    cdef tuple next_tuple
 
     while work_queue:
         curr_cost, curr_event = hq.heappop(work_queue)
@@ -67,9 +71,9 @@ cpdef Morphing retractable_ve_frechet(
             seen[next_node] = curr_event
             hq.heappush(work_queue, next_tuple)
 
-    morphing = [last_event]
-
+    cdef list morphing = [last_event]
     cdef double res = last_event.get_dist()
+
     while last_event in seen:
         last_event = seen[last_event]
 
