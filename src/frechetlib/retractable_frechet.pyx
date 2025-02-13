@@ -1,28 +1,25 @@
 import heapq as hq
-import typing as t
-
-import numpy as np
 
 from .frechet_utils cimport Morphing
-from .geometry_utils cimport EID, from_curve_indices
+from .geometry_utils cimport EID, from_curve_indices, EIDFromCurveIndices
 
 
 cpdef Morphing retractable_ve_frechet(
-    cnp.ndarray P,
-    cnp.ndarray Q,
-    cnp.ndarray P_offs,
-    cnp.ndarray Q_offs,
+    cnp.ndarray[cnp.float64_t, ndim=2] P,
+    cnp.ndarray[cnp.float64_t, ndim=2] Q,
+    cnp.ndarray[cnp.float64_t, ndim=1] P_offs,
+    cnp.ndarray[cnp.float64_t, ndim=1] Q_offs,
     bint summed,
 ):
     cdef EID start_node = from_curve_indices(
         0, True, 0, True, P, Q, P_offs, Q_offs
     ).get_event()
 
-    first_event = from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
-    start_tuple_1 = (first_event.get_heap_key(), first_event.get_event())
+    cdef EIDFromCurveIndices first_event = from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
+    cdef tuple start_tuple_1 = (first_event.get_heap_key(), first_event.get_event())
 
-    second_event = from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
-    start_tuple_2 = (second_event.get_heap_key(), second_event.get_event())
+    cdef EIDFromCurveIndices second_event = from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
+    cdef tuple start_tuple_2 = (second_event.get_heap_key(), second_event.get_event())
     cdef list work_queue = [start_tuple_1, start_tuple_2]
 
     cdef dict seen = {start_tuple_1[1]: start_node, start_tuple_2[1]: start_node}

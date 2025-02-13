@@ -1,5 +1,6 @@
 cimport numpy as cnp
 from libcpp.vector cimport vector as cvector
+from .geometry_utils cimport EID
 
 cdef class Curve:
     cdef list point_list
@@ -28,3 +29,12 @@ cdef class NewCurves:
     cpdef cnp.ndarray[cnp.float64_t, ndim=2] get_Q(self)
 
 cpdef NewCurves add_points_to_make_monotone(Morphing morphing)
+
+cpdef EID from_coefficients(
+    int i,
+    int j,
+    float t_p,
+    float t_q,
+    cnp.ndarray[cnp.float64_t, ndim=2] P,
+    cnp.ndarray[cnp.float64_t, ndim=2] Q,
+)
