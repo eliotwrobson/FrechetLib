@@ -1,5 +1,5 @@
 from libcpp.vector cimport vector as cvector
-cimport numpy as np
+cimport numpy as cnp
 cimport cython
 
 @cython.final
@@ -54,13 +54,13 @@ cdef class EID:
     cpdef float reassign_parameter_i(
         self,
         float new_t,
-        np.ndarray[np.float64_t, ndim=2] P
+        list P
     )
 
     cpdef float reassign_parameter_j(
         self,
         float new_t,
-        np.ndarray[np.float64_t, ndim=2] Q
+        list Q
     )
 
     cpdef flip(self)
@@ -81,8 +81,12 @@ cpdef EIDFromCurveIndices from_curve_indices(
     bint i_is_vert,
     int j,
     bint j_is_vert,
-    np.ndarray[np.float64_t, ndim=2] P,
-    np.ndarray[np.float64_t, ndim=2] Q,
-    np.ndarray P_offs,
-    np.ndarray Q_offs,
+    list P,
+    list Q,
+    cnp.ndarray P_offs,
+    cnp.ndarray Q_offs,
 )
+
+cpdef list numpy_to_point_list(cnp.ndarray[cnp.float64_t, ndim=2] P)
+
+cpdef cnp.ndarray point_list_to_numpy(list P)

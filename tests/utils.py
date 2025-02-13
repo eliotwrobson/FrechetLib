@@ -1,6 +1,7 @@
+import numpy as np
+
 import frechetlib.frechet_utils as fu
 import frechetlib.geometry_utils as gu
-import numpy as np
 
 
 def leq_with_tolerance(f1: np.floating, f2: np.floating, tol: float = 1e-5) -> bool:
@@ -25,8 +26,10 @@ def generate_curves_close(
 
 
 def get_basic_morphing() -> fu.Morphing:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    P = gu.numpy_to_point_list(np.array([[0.0, 0.0], [1.0, 1.0]]))
+    Q = gu.numpy_to_point_list(
+        np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    )
     morphing_list = [
         gu.from_curve_indices(0, True, 0, True, P, Q, None, None).get_event(),
         gu.from_curve_indices(0, False, 0, True, P, Q, None, None).get_event(),
@@ -42,8 +45,8 @@ def get_basic_morphing() -> fu.Morphing:
 
 
 def get_basic_morphing_monotone() -> fu.Morphing:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [1.0, 1.0]])
+    P = gu.numpy_to_point_list(np.array([[0.0, 0.0], [1.0, 1.0]]))
+    Q = gu.numpy_to_point_list(np.array([[0.0, 0.0], [0.5, 0.5], [1.0, 1.0]]))
     morphing_list = [
         gu.from_curve_indices(0, True, 0, True, P, Q, None, None).get_event(),
         gu.from_curve_indices(0, False, 0, True, P, Q, None, None).get_event(),

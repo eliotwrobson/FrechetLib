@@ -8,8 +8,8 @@ cdef class Curve:
 cdef class Morphing:
     #TODO figure out how to get this to work
     cdef list morphing_list
-    cdef cnp.ndarray P
-    cdef cnp.ndarray Q
+    cdef list P
+    cdef list Q
     cdef float dist
 
     cpdef flip(self)
@@ -21,12 +21,16 @@ cdef class Morphing:
     cpdef float make_monotone(self)
 
 cdef class NewCurves:
-    cdef cnp.ndarray P
-    cdef cnp.ndarray Q
+    cdef list P
+    cdef list Q
 
-    cpdef cnp.ndarray[cnp.float64_t, ndim=2] get_P(self)
+    cpdef cnp.ndarray get_P_numpy(self)
 
-    cpdef cnp.ndarray[cnp.float64_t, ndim=2] get_Q(self)
+    cpdef cnp.ndarray get_Q_numpy(self)
+
+    cpdef list get_P(self)
+
+    cpdef list get_Q(self)
 
 cpdef NewCurves add_points_to_make_monotone(Morphing morphing)
 
@@ -35,6 +39,6 @@ cpdef EID from_coefficients(
     int j,
     float t_p,
     float t_q,
-    cnp.ndarray[cnp.float64_t, ndim=2] P,
-    cnp.ndarray[cnp.float64_t, ndim=2] Q,
+    list P,
+    list Q,
 )

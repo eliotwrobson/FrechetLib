@@ -63,8 +63,8 @@ def test_morphing_flip() -> None:
     orig_morphing = morphing.copy()
     morphing.flip()
 
-    assert np.allclose(P, morphing.get_Q())
-    assert np.allclose(Q, morphing.get_P())
+    assert np.allclose(P, gu.point_list_to_numpy(morphing.get_Q()))
+    assert np.allclose(Q, gu.point_list_to_numpy(morphing.get_P()))
 
     for orig_event, new_event in zip(
         orig_morphing.get_morphing_list(), morphing.get_morphing_list()
@@ -203,7 +203,7 @@ def test_morphing_make_monotone_nontrivial() -> None:
     assert np.isclose(monotone_morphing.get_dist(), 0.28284271247461906)
 
     new_curves = fu.add_points_to_make_monotone(ve_morphing)
-    new_P, new_Q = new_curves.get_P(), new_curves.get_Q()
+    new_P, new_Q = new_curves.get_P_numpy(), new_curves.get_Q_numpy()
 
     # Compute new ve frechet distance for curves
     ve_morphing = rf.retractable_ve_frechet(new_P, new_Q, None, None, False)
@@ -256,7 +256,7 @@ def test_add_points() -> None:
 
     morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
     new_curves = fu.add_points_to_make_monotone(morphing)
-    new_P, new_Q = new_curves.get_P(), new_curves.get_Q()
+    new_P, new_Q = new_curves.get_P_numpy(), new_curves.get_Q_numpy()
 
     assert np.allclose(new_P, new_P_expected)
     assert np.allclose(new_Q, Q)
@@ -264,7 +264,7 @@ def test_add_points() -> None:
     # Check the same but flipping the arguments
     morphing = rf.retractable_ve_frechet(Q, P, None, None, False)
     new_curves = fu.add_points_to_make_monotone(morphing)
-    new_Q, new_P = new_curves.get_P(), new_curves.get_Q()
+    new_Q, new_P = new_curves.get_P_numpy(), new_curves.get_Q_numpy()
 
     # We don't check for new_P because of an edge case that produces
     # a slightly different morphing. This isn't a bug
@@ -278,7 +278,7 @@ def test_add_points_to_make_monotone() -> None:
 
     morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
     new_curves = fu.add_points_to_make_monotone(morphing)
-    new_P, new_Q = new_curves.get_P(), new_curves.get_Q()
+    new_P, new_Q = new_curves.get_P_numpy(), new_curves.get_Q_numpy()
 
     new_P_expected = np.array(
         [
@@ -317,7 +317,7 @@ def test_add_points_to_make_monotone() -> None:
     # Assert the flipped side because of code structure
     morphing = rf.retractable_ve_frechet(Q, P, None, None, False)
     new_curves = fu.add_points_to_make_monotone(morphing)
-    new_Q, new_P = new_curves.get_P(), new_curves.get_Q()
+    new_Q, new_P = new_curves.get_P_numpy(), new_curves.get_Q_numpy()
 
     assert np.allclose(new_P, new_P_expected)
     assert np.allclose(new_Q, Q)
@@ -414,7 +414,9 @@ def test_morphing_combine_manual() -> None:
         make_eid(1, True, 1, True, P[1], P[1], 0.0, 0.0, 0.0),
     ]
 
-    P_self_morphing = fu.Morphing(P_self_morphing_list, P, P, 0.0)
+    P_self_morphing = fu.Morphing(
+        P_self_morphing_list, gu.numpy_to_point_list(P), gu.numpy_to_point_list(P), 0.0
+    )
 
     # Morphing Q with itself
     Q_self_morphing_list = [
@@ -425,7 +427,9 @@ def test_morphing_combine_manual() -> None:
         make_eid(4, True, 4, True, Q[4], Q[4], 0.0, 0.0, 0.0),
     ]
 
-    Q_self_morphing = fu.Morphing(Q_self_morphing_list, Q, Q, 0.0)
+    Q_self_morphing = fu.Morphing(
+        Q_self_morphing_list, gu.numpy_to_point_list(Q), gu.numpy_to_point_list(Q), 0.0
+    )
 
     P_refined = np.array(
         [
@@ -473,7 +477,12 @@ def test_morphing_combine_manual() -> None:
         make_eid(8, True, 4, True, P_refined[8], P_refined[8], 0.0, 0.0, 0.0),
     ]
 
-    middle_morphing = fu.Morphing(middle_morphing_list, P_refined, Q, dist)
+    middle_morphing = fu.Morphing(
+        middle_morphing_list,
+        gu.numpy_to_point_list(P_refined),
+        gu.numpy_to_point_list(Q),
+        dist,
+    )
 
     P_self_morphing_prm = np.array(
         [

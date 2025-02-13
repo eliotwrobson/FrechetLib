@@ -1,12 +1,27 @@
 import heapq as hq
 
 from .frechet_utils cimport Morphing
-from .geometry_utils cimport EID, from_curve_indices, EIDFromCurveIndices
+from .geometry_utils cimport EID, from_curve_indices, EIDFromCurveIndices, Point, numpy_to_point_list
 
 
 cpdef Morphing retractable_ve_frechet(
     cnp.ndarray[cnp.float64_t, ndim=2] P,
     cnp.ndarray[cnp.float64_t, ndim=2] Q,
+    cnp.ndarray[cnp.float64_t, ndim=1] P_offs,
+    cnp.ndarray[cnp.float64_t, ndim=1] Q_offs,
+    bint summed,
+):
+    return retractable_ve_frechet_internal(
+        numpy_to_point_list(P),
+        numpy_to_point_list(Q),
+        P_offs,
+        Q_offs,
+        summed
+    )
+
+cpdef Morphing retractable_ve_frechet_internal(
+    list P,
+    list Q,
     cnp.ndarray[cnp.float64_t, ndim=1] P_offs,
     cnp.ndarray[cnp.float64_t, ndim=1] Q_offs,
     bint summed,
@@ -25,8 +40,8 @@ cpdef Morphing retractable_ve_frechet(
     cdef dict seen = {start_tuple_1[1]: start_node, start_tuple_2[1]: start_node}
     hq.heapify(work_queue)
 
-    cdef int n_p = P.shape[0]
-    cdef int n_q = Q.shape[0]
+    cdef int n_p = len(P)
+    cdef int n_q = len(Q)
     diffs = ((1, True, 0, False), (0, False, 1, True))
 
     cdef EID last_event = start_node

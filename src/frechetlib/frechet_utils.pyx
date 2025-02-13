@@ -5,7 +5,7 @@ import typing as t
 import numpy as np
 cimport libc.stdio
 cimport numpy as cnp
-from .geometry_utils cimport EID, Point, from_curve_indices
+from .geometry_utils cimport EID, Point, from_curve_indices, numpy_to_point_list
 
 cdef class Curve:
     def __cinit__(self, cnp.ndarray[double, ndim=2] P):
@@ -18,15 +18,15 @@ cdef class Curve:
 
 cdef class Morphing:
     #morphing_list: t.List[EID]
-    P: np.ndarray
-    Q: np.ndarray
-    dist: float
+    #P: np.ndarray
+    #Q: np.ndarray
+    #dist: float
 
-    def __init__(
+    def __cinit__(
         self,
         morphing_list_: t.List[EID],
-        P_: np.ndarray,
-        Q_: np.ndarray,
+        P_: list,
+        Q_: list,
         dist_: float,
     ):
         self.morphing_list = morphing_list_
@@ -391,8 +391,8 @@ cpdef EID from_coefficients(
     int j,
     float t_p,
     float t_q,
-    cnp.ndarray[cnp.float64_t, ndim=2] P,
-    cnp.ndarray[cnp.float64_t, ndim=2] Q,
+    list P,
+    list Q,
 ):
 
     """
@@ -401,16 +401,16 @@ cpdef EID from_coefficients(
     edge-edge matchings.
     """
 
-    if not 0 <= i < P.shape[0]:
-        raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape:'
-            f"{P.shape[0]}, {P.shape[1]}."
-        )
+    cdef int n_p = len(P)
+    cdef int n_q = len(Q)
 
-    if not 0 <= j < Q.shape[0]:
+    if not 0 <= i < n_p:
         raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape:'
-            f"{Q.shape[0]}, {Q.shape[1]}."
+            f'Cannot create event with index "{i}" on a curve with shape: {n_p}')
+
+    if not 0 <= j < n_q:
+        raise ValueError(
+            f'Cannot create event with index "{j}" on a curve with shape: {n_q}'
         )
 
     cdef bint i_is_vert = False
@@ -418,34 +418,36 @@ cpdef EID from_coefficients(
 
     # Use this to avoid issues with floating point error
     if np.isclose(t_p, 0.0):
-        p_i_res = Point(P[i])
+        p_i_res = P[i]
         i_is_vert = True
     elif np.isclose(t_p, 1.0):
-        assert i + 1 < P.shape[0]
+        assert i + 1 < n_p
         i += 1
         t_p = 0.0
-        p_i_res = Point(P[i])
+        p_i_res = P[i]
         i_is_vert = True
     else:
-        assert i + 1 < P.shape[0]
-        p_i_res = Point(convex_comb(P[i], P[i + 1], t_p))
+        assert i + 1 < n_p
+        p_i_res = P[i].convex_comb(P[i+1], t_p)
+        #Point(convex_comb(P[i], P[i + 1], t_p))
 
     cdef bint j_is_vert = False
     cdef Point p_j_res
 
     # Same as above, now for Q
     if np.isclose(t_q, 0.0):
-        p_j_res = Point(Q[j])
+        p_j_res = Q[j]
         j_is_vert = True
     elif np.isclose(t_q, 1.0):
-        assert j + 1 < Q.shape[0]
+        assert j + 1 < n_q
         j += 1
         t_q = 0.0
-        p_j_res = Point(Q[j])
+        p_j_res = Q[j]
         j_is_vert = True
     else:
-        assert j + 1 < Q.shape[0]
-        p_j_res = Point(convex_comb(Q[j], Q[j + 1], t_q))
+        assert j + 1 < n_q
+        p_j_res = Q[j].convex_comb(Q[j+1], t_q)
+        #Point(convex_comb(Q[j], Q[j + 1], t_q))
 
 
     cdef float dist = p_i_res.compute_distance(p_j_res)
@@ -478,14 +480,14 @@ def _print_event_list(morphing: Morphing) -> None:
 
 # @njit(cache=True)
 def get_prefix_lens(P: np.ndarray) -> np.ndarray:
-    n = P.shape[0]
+    n = len(P)
     prefix_lens = np.empty(n)
 
     curr_len = 0.0
 
     for i in range(n - 1):
         prefix_lens[i] = curr_len
-        curr_len += float(np.linalg.norm(P[i] - P[i + 1]))
+        curr_len += float(P[i].compute_distance(P[i + 1]))
 
     prefix_lens[n - 1] = curr_len
 
@@ -683,6 +685,9 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
     p_num_pts = p_lens.shape[0]
     q_num_pts = q_lens.shape[0]
 
+    P_list = numpy_to_point_list(P)
+    Q_list = numpy_to_point_list(Q)
+
     max_dist = 0.0
     new_event_sequence = []
 
@@ -703,19 +708,19 @@ def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
         # print(t_p, t_q)
-        new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
+        new_event = from_coefficients(i_p, i_q, t_p, t_q, P_list, Q_list)
 
         max_dist = max(max_dist, new_event.get_dist())
         new_event_sequence.append(new_event)
     # print("end event sequence")
     final_event = from_curve_indices(
-        p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
+        p_num_pts - 1, True, q_num_pts - 1, True, P_list, Q_list, None, None
     ).get_event()
     # print("actually done")
     max_dist = max(max_dist, final_event.get_dist())
     new_event_sequence.append(final_event)
 
-    return Morphing(new_event_sequence, P, Q, max_dist)
+    return Morphing(new_event_sequence, P_list, Q_list, max_dist)
 
 
 def extract_offsets(
@@ -829,14 +834,30 @@ def frechet_width_approx(
     return leash
 
 cdef class NewCurves:
-    def __cinit__(self, P: np.ndarray, Q: np.ndarray):
+    def __cinit__(self, P, Q):
         self.P = P
         self.Q = Q
 
-    cpdef cnp.ndarray get_P(self):
+    cpdef cnp.ndarray get_P_numpy(self):
+        new_P_final = np.empty((len(self.P), len(self.P[0].get_coords())))
+
+        for k in range(len(self.P)):
+            new_P_final[k] = self.P[k].get_coords()
+
+        return new_P_final
+
+    cpdef cnp.ndarray get_Q_numpy(self):
+        new_Q_final = np.empty((len(self.Q), len(self.Q[0].get_coords())))
+
+        for k in range(len(self.Q)):
+            new_Q_final[k] = self.Q[k].get_coords()
+
+        return new_Q_final
+
+    cpdef list get_P(self):
         return self.P
 
-    cpdef cnp.ndarray get_Q(self):
+    cpdef list get_Q(self):
         return self.Q
 
 cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
@@ -844,17 +865,21 @@ cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
     # Doing the same here:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L626
 
-    P = morphing.P
-    Q = morphing.Q
-    morphing_list = morphing.morphing_list
+    cdef list P = morphing.P
+    cdef list Q = morphing.Q
+    cdef list morphing_list = morphing.morphing_list
     # print(len(morphing_list))
     # First, add points to P
-    new_P = []
+    cdef list new_P = []
+    cdef list events
     cdef int k = 0
+    cdef int loc
+    cdef bint monotone
+
     while k < len(morphing_list):
         # Vertex-vertex event, can skip
         if morphing_list[k].get_i_is_vert():
-            new_P.append(Point(P[morphing_list[k].get_i()]))
+            new_P.append(P[morphing_list[k].get_i()])
             old_k = k
             while (
                 k < len(morphing_list)
@@ -890,7 +915,7 @@ cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
 
         if not monotone:
             # NOTE Use i because we know we're not at the vertex from case checked above
-            new_P.append((Point(P[events[0].get_i()]).get_avg(events[0].get_p_i())))
+            new_P.append((P[events[0].get_i()].get_avg(events[0].get_p_i())))
 
         for j in range(len(events)):
             new_P.append(events[j].get_p_i())
@@ -899,15 +924,15 @@ cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
                 new_P.append(events[j].get_p_i().get_avg(events[j + 1].get_p_i()))
 
-        if not monotone and events[-1].get_i() + 1 < P.shape[0]:
-            new_P.append(Point(P[events[-1].get_i() + 1]).get_avg(events[-1].get_p_i()))
+        if not monotone and events[-1].get_i() + 1 < len(P):
+            new_P.append(P[events[-1].get_i() + 1].get_avg(events[-1].get_p_i()))
 
     # # Next, add points to Q, same as above but hard to share logic
-    new_Q = []
+    cdef list new_Q = []
     k = 0
     while k < len(morphing_list):
         if morphing_list[k].get_j_is_vert():
-            new_Q.append(Point(Q[morphing_list[k].get_j()]))
+            new_Q.append(Q[morphing_list[k].get_j()])
             old_k = k
             while (
                 k < len(morphing_list)
@@ -942,7 +967,7 @@ cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
 
         if not monotone:
             # NOTE Use j because we know we're not at the vertex from case checked above
-            new_Q.append(Point(Q[events[0].get_j()]).get_avg(events[0].get_p_j()))
+            new_Q.append(Q[events[0].get_j()].get_avg(events[0].get_p_j()))
 
         for j in range(len(events)):
             new_Q.append(events[j].get_p_j())
@@ -951,20 +976,20 @@ cpdef NewCurves add_points_to_make_monotone(Morphing morphing):
                 # print("Adding average: ", events[j].p_i, events[j + 1].p_i)
                 new_Q.append(events[j].get_p_j().get_avg(events[j + 1].get_p_j()))
 
-        if not monotone and events[-1].get_j() + 1 < Q.shape[0]:
-            new_Q.append(Point(Q[events[-1].get_j() + 1]).get_avg(events[-1].get_p_j()))
+        if not monotone and events[-1].get_j() + 1 < len(Q):
+            new_Q.append(Q[events[-1].get_j() + 1].get_avg(events[-1].get_p_j()))
 
     # Finally, assemble into output arrays
-    new_P_final = np.empty((len(new_P), len(new_P[0].get_coords())))
-    new_Q_final = np.empty((len(new_Q), len(new_Q[0].get_coords())))
+    # new_P_final = np.empty((len(new_P), len(new_P[0].get_coords())))
+    # new_Q_final = np.empty((len(new_Q), len(new_Q[0].get_coords())))
 
-    for k in range(len(new_P)):
-        new_P_final[k] = new_P[k].get_coords()
+    # for k in range(len(new_P)):
+    #     new_P_final[k] = new_P[k].get_coords()
 
-    for k in range(len(new_Q)):
-        new_Q_final[k] = new_Q[k].get_coords()
+    # for k in range(len(new_Q)):
+    #     new_Q_final[k] = new_Q[k].get_coords()
 
-    return NewCurves(new_P_final, new_Q_final)
+    return NewCurves(new_P, new_Q)
     #return new_P_final, new_Q_final
 
 

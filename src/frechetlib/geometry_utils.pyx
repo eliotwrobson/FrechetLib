@@ -1,4 +1,5 @@
-cimport numpy as np
+cimport numpy as cnp
+import numpy as np
 from libcpp.vector cimport vector as cvector
 cimport cython
 
@@ -81,8 +82,8 @@ cdef class Point:
 
 @cython.final
 cdef class LinePointDistance:
-    def __cinit__(self, p1: np.ndarray, p2: np.ndarray, q: np.ndarray):
-        self.compute(Point(p1), Point(p2), Point(q))
+    def __cinit__(self, p1: Point, p2: Point, q: Point):
+        self.compute(p1, p2, q)
 
     cdef inline void compute(self, Point p1, Point p2, Point q):
         #cdef Point point_p1 = Point(p1)
@@ -215,7 +216,7 @@ cdef class EID:
     cpdef float reassign_parameter_i(
         self,
         float new_t,
-        np.ndarray[np.float64_t, ndim=2] P
+        list P
     ):
         """
         Reassign the point and parameter from the curve P.
@@ -226,24 +227,24 @@ cdef class EID:
 
         if double_equals(0.0, new_t):
             self.t_i = 0.0
-            self.p_i = Point(P[self.i])
+            self.p_i = P[self.i]
         elif double_equals(1.0, new_t):
             self.t_i = 1.0
-            self.p_i = Point(P[self.i + 1])
+            self.p_i = P[self.i + 1]
             # TODO maybe change the number based on index?
             # I don't think the convention matters.
         else:
             # Case where 0.0 < new_t < 1.0
             self.t_i = new_t
-            self.p_i = Point(P[self.i]).convex_comb(Point(P[self.i + 1]), self.t_i)
+            self.p_i = P[self.i].convex_comb(P[self.i + 1], self.t_i)
 
         self.dist = self.p_i.compute_distance(self.p_j)
-        return abs(old_t - new_t) * Point(P[self.i]).compute_distance(Point(P[self.i + 1]))
+        return abs(old_t - new_t) * P[self.i].compute_distance(P[self.i + 1])
 
     cpdef float reassign_parameter_j(
         self,
         float new_t,
-        np.ndarray[np.float64_t, ndim=2] Q
+        list Q
     ):
         """
         Reassign the point and parameter from the curve Q.
@@ -254,19 +255,19 @@ cdef class EID:
 
         if double_equals(0.0, new_t):
             self.t_j = 0.0
-            self.p_j = Point(Q[self.j])
+            self.p_j = Q[self.j]
         elif double_equals(1.0, new_t):
             self.t_j = 1.0
-            self.p_j = Point(Q[self.j + 1])
+            self.p_j = Q[self.j + 1]
             # TODO maybe change the number based on index?
             # I don't think the convention matters.
         else:
             # Case where 0.0 < new_t < 1.0
             self.t_j = new_t
-            self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
+            self.p_j = Q[self.j].convex_comb(Q[self.j + 1], self.t_j)
 
         self.dist = self.p_i.compute_distance(self.p_j)
-        return abs(old_t - new_t) * Point(Q[self.j]).compute_distance(Point(Q[self.j + 1]))
+        return abs(old_t - new_t) * Q[self.j].compute_distance(Q[self.j + 1])
 
     cpdef flip(self):
         self.i, self.j = self.j, self.i
@@ -328,43 +329,44 @@ cpdef EIDFromCurveIndices from_curve_indices(
     bint i_is_vert: bool,
     int j,
     bint j_is_vert: bool,
-    np.ndarray P,
-    np.ndarray Q,
-    np.ndarray P_offs,
-    np.ndarray Q_offs,
+    list P,
+    list Q,
+    cnp.ndarray P_offs,
+    cnp.ndarray Q_offs,
 ):
 
     # These values will get overwritten later
     # TODO I think some of the logic below can be refactored to reduce
     # the number of cases
-    dist = 0.0
-    heap_key = 0.0
-    t_i = 0.0
-    t_j = 0.0
-    p_i = Point(P[i])
-    p_j = Point(Q[j])
+    cdef float dist = 0.0
+    cdef float heap_key = 0.0
+    cdef float t_i = 0.0
+    cdef float t_j = 0.0
+    cdef Point p_i = P[i]
+    cdef Point p_j = Q[j]
 
-    if not 0 <= i < P.shape[0]:
+    cdef int n_p = len(P)
+    cdef int n_q = len(Q)
+
+    if not 0 <= i < n_p:
         raise ValueError(
-            f'Cannot create event with index "{i}" on a curve with shape:'
-            f"{P.shape[0]}, {P.shape[1]}."
+            f'Cannot create event with index "{i}" on a curve with shape: {n_p}.'
         )
 
-    if not 0 <= j < Q.shape[0]:
+    if not 0 <= j < n_q:
         raise ValueError(
-            f'Cannot create event with index "{j}" on a curve with shape:'
-            f"{Q.shape[0]}, {Q.shape[1]}."
+            f'Cannot create event with index "{j}" on a curve with shape: {n_q}'
         )
 
     use_offsets = P_offs is not None and Q_offs is not None
 
     if use_offsets:
-        assert P.shape[0] == P_offs.shape[0]  # type: ignore[union-attr]
+        assert n_p == P_offs.shape[0]  # type: ignore[union-attr]
         # print("shapes", P.shape, P_offs.shape, Q.shape, Q_offs.shape)
-        assert Q.shape[0] == Q_offs.shape[0]  # type: ignore[union-attr]
+        assert n_q == Q_offs.shape[0]  # type: ignore[union-attr]
 
     if i_is_vert and j_is_vert:
-        dist = Point(P[i]).compute_distance(Point(Q[j]))
+        dist = P[i].compute_distance(Q[j])
 
         if use_offsets:
             heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
@@ -372,8 +374,8 @@ cpdef EIDFromCurveIndices from_curve_indices(
             heap_key = dist
 
     elif i_is_vert:
-        if j == Q.shape[0] - 1:
-            dist = Point(P[i]).compute_distance(Point(Q[j]))
+        if j == n_q - 1:
+            dist = P[i].compute_distance(Q[j])
 
             if use_offsets:
                 heap_key = dist - P_offs[i] - Q_offs[j]  # type: ignore[index]
@@ -395,8 +397,8 @@ cpdef EIDFromCurveIndices from_curve_indices(
                 heap_key = dist
 
     elif j_is_vert:
-        if i == P.shape[0] - 1:
-            dist = Point(P[i]).compute_distance(Point(Q[j]))
+        if i == n_p - 1:
+            dist = P[i].compute_distance(Q[j])
             #float(np.linalg.norm(P[i] - Q[j]))
 
             if use_offsets:
@@ -431,3 +433,24 @@ cpdef EIDFromCurveIndices from_curve_indices(
 def convex_comb(p: np.ndarray, q: np.ndarray, t: float):
     return Point(p).convex_comb(Point(q), t).get_coords()
     #return p + t * (q - p)
+
+cpdef list numpy_to_point_list(cnp.ndarray[cnp.float64_t, ndim=2] P):
+    cdef list new_P = []
+    cdef int n_p = P.shape[0]
+    cdef i
+
+    for i in range(n_p):
+        new_P.append(Point(P[i]))
+
+    return new_P
+
+cpdef cnp.ndarray point_list_to_numpy(list P):
+    cdef int n_p = len(P)
+    cdef int dim = len(P[0].get_coords())
+    cdef cnp.ndarray[cnp.float64_t, ndim=2] new_P = np.zeros((n_p, dim), dtype=np.float64)
+    cdef int i
+
+    for i in range(n_p):
+        new_P[i] = P[i].get_coords()
+
+    return new_P
