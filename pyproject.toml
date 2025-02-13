@@ -16,7 +16,7 @@ repository = "https://github.com/eliotwrobson/FrechetLib"
 [tool.poetry.dependencies]
 python = ">=3.10"
 numpy = "^1.26.3"
-numba = "^0.59.1"
+#numba = "^0.59.1"
 scipy = "^1.11.4"
 typing-extensions = "^4.10.0"
 pooch = "^1.8.1"
@@ -39,7 +39,7 @@ pandas-stubs = "^2.2.1.240316"
 fred-frechet = "^1.14.5"
 
 [build-system]
-requires = ["poetry-core", "setuptools", "cython", "numpy"]
+requires = ["poetry-core", "setuptools", "cython==3.0.12", "numpy"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.build]

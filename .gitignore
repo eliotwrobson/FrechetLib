@@ -10,3 +10,6 @@ dist/*
 
 *.pyd
 *.html
+
+# Compiled files
+*.so
