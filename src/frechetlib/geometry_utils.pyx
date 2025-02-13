@@ -274,7 +274,7 @@ cdef class EID:
         self.p_i, self.p_j = self.p_j, self.p_i
         self.t_i, self.t_j = self.t_j, self.t_i
 
-    def __lt__(self, other: Self) -> bool:
+    def __lt__(self, other) -> bool:
         # This function is mainly used to schedule events for heap insertion.
         # TODO when this project gets refactored, get rid of this function and
         # just manually compute the key used in the heap.

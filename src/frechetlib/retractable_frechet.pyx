@@ -27,7 +27,7 @@ cpdef Morphing retractable_ve_frechet(
 
     cdef int n_p = P.shape[0]
     cdef int n_q = Q.shape[0]
-    diffs = ((1, True, 0, False), (0, False, 1, True))
+    cdef tuple diffs = ((1, True, 0, False), (0, False, 1, True))
 
     cdef EID last_event = start_node
     cdef EID curr_event

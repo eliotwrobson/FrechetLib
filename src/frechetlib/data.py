@@ -1,5 +1,3 @@
-#! /usr/bin/env python3
-# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import itertools as it
@@ -7,8 +5,6 @@ import typing as t
 
 import numpy as np
 import pooch
-
-import frechetlib.frechet_utils as fu
 
 _T = t.TypeVar("_T")
 
@@ -105,7 +101,7 @@ class FrechetDownloader(metaclass=Singleton):
 
             num_points = len(x_coords)
 
-            output_curve: fu.Curve = np.ndarray(shape=(num_points, 2), dtype=np.float64)
+            output_curve = np.ndarray(shape=(num_points, 2), dtype=np.float64)
 
             for i, x_coord, y_coord in zip(it.count(0), x_coords, y_coords):
                 output_curve[i][0] = x_coord
