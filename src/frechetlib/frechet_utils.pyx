@@ -3,7 +3,6 @@ from __future__ import annotations
 import typing as t
 
 import numpy as np
-from typing_extensions import Self
 cimport libc.stdio
 cimport numpy as cnp
 from .geometry_utils cimport EID, Point, from_curve_indices
@@ -162,7 +161,7 @@ cdef class Morphing:
 
         return True
 
-    cpdef FLOAT_t make_monotone(self):
+    cpdef float make_monotone(self):
         """
         Modifies this morphing to be monotone in-place.
         Based on:

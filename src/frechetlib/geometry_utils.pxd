@@ -81,8 +81,8 @@ cpdef EIDFromCurveIndices from_curve_indices(
     bint i_is_vert,
     int j,
     bint j_is_vert,
-    np.ndarray P,
-    np.ndarray Q,
+    np.ndarray[np.float64_t, ndim=2] P,
+    np.ndarray[np.float64_t, ndim=2] Q,
     np.ndarray P_offs,
     np.ndarray Q_offs,
 )

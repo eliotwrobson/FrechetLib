@@ -1,8 +1,6 @@
 cimport numpy as cnp
 from libcpp.vector cimport vector as cvector
 
-ctypedef cnp.float64_t FLOAT_t
-
 cdef class Curve:
     cdef list point_list
 
@@ -19,14 +17,14 @@ cdef class Morphing:
 
     cpdef bint is_monotone(self)
 
-    cpdef FLOAT_t make_monotone(self)
+    cpdef float make_monotone(self)
 
 cdef class NewCurves:
     cdef cnp.ndarray P
     cdef cnp.ndarray Q
 
-    cpdef cnp.ndarray get_P(self)
+    cpdef cnp.ndarray[cnp.float64_t, ndim=2] get_P(self)
 
-    cpdef cnp.ndarray get_Q(self)
+    cpdef cnp.ndarray[cnp.float64_t, ndim=2] get_Q(self)
 
 cpdef NewCurves add_points_to_make_monotone(Morphing morphing)

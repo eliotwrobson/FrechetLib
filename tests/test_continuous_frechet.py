@@ -1,8 +1,8 @@
-# import frechetlib.continuous_frechet as cf
-# import frechetlib.retractable_frechet as rf
-# import numpy as np
-# from conftest import get_test_curve
+import frechetlib.continuous_frechet as cf
 
+# import frechetlib.retractable_frechet as rf
+import numpy as np
+from conftest import get_test_curve
 
 # def test_frechet_c_compute() -> None:
 #     P = np.array([[0.0, 0.0], [1.0, 1.0]])
@@ -13,35 +13,35 @@
 #     assert np.isclose(output.get_dist(), 0.14142135623730956)
 
 
-# def test_frechet_c_compute_real() -> None:
-#     # Testing with curve number 5
-#     P_curve = get_test_curve("05/poly_a.txt")
-#     Q_curve = get_test_curve("05/poly_b.txt")
+def test_frechet_c_compute_real() -> None:
+    # Testing with curve number 5
+    P_curve = get_test_curve("05/poly_a.txt")
+    Q_curve = get_test_curve("05/poly_b.txt")
 
-#     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-#     assert np.isclose(output_appx.get_dist(), 0.7134913516143259)
+    _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
+    assert np.isclose(output_appx.get_dist(), 0.7134913516143259)
 
-#     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
-#     assert np.isclose(output_exact.get_dist(), 0.712928554361795, atol=0.0005)
+    output_exact = cf.frechet_c_compute(P_curve, Q_curve)
+    assert np.isclose(output_exact.get_dist(), 0.712928554361795, atol=0.0005)
 
-#     # Testing with curve number 6
-#     P_curve = get_test_curve("06/poly_a.txt")
-#     Q_curve = get_test_curve("06/poly_b.txt")
+    # Testing with curve number 6
+    P_curve = get_test_curve("06/poly_a.txt")
+    Q_curve = get_test_curve("06/poly_b.txt")
 
-#     _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-#     assert np.isclose(output_appx.get_dist(), 0.9228858795210783)
+    _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
+    assert np.isclose(output_appx.get_dist(), 0.9228858795210783)
 
-#     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
-#     assert np.isclose(output_exact.get_dist(), 0.9212672396766863, atol=0.0002)
+    output_exact = cf.frechet_c_compute(P_curve, Q_curve)
+    assert np.isclose(output_exact.get_dist(), 0.9212672396766863, atol=0.0002)
 
 
-# def test_frechet_c_approx() -> None:
-#     P = np.array([[0.0, 0.0], [1.0, 1.0]])
-#     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-#     ratio, output_morphing = cf.frechet_c_approx(P, Q, 1.01)
+def test_frechet_c_approx() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    ratio, output_morphing = cf.frechet_c_approx(P, Q, 1.01)
 
-#     assert np.isclose(output_morphing.dist, 0.14142135623730956, atol=0.0003)
-#     assert np.isclose(ratio, 1.0)
+    assert np.isclose(output_morphing.get_dist(), 0.14142135623730956, atol=0.0003)
+    assert np.isclose(ratio, 1.0)
 
 
 # def test_frechet_mono_via_refinement() -> None:
