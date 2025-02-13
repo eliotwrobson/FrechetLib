@@ -170,14 +170,14 @@ cdef class Morphing:
 
         # TODO distance adjustment needs to be fixed for summed case.
 
-        longest_dist = 0.0
-        morphing = self.morphing_list
-        n = len(morphing)
-        k = 0
+        cdef float longest_dist = 0.0
+        cdef list morphing = self.morphing_list
+        cdef int n = len(morphing)
+        cdef int k = 0
 
         # Error incurred during monotonization.
         # NOTE should be 0.0 if there is no error
-        err = 0.0
+        cdef float err = 0.0
 
         while k < n:
             event = morphing[k]
