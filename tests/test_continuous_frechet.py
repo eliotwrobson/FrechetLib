@@ -15,41 +15,66 @@ import frechetlib.retractable_frechet as rf
 
 
 @pytest.mark.parametrize(
-    ("curve_num", "expected_dist_approx", "expected_dist_exact", "atol"),
+    ("curve_num", "expected_dist_approx"),
     [
-        ("18", 2.828116009218858, 2.828116009218858, 0.0002),
-        ("17", 2.9832867780352594, 2.9832867780352594, 0.0002),
-        ("16", 1.1585808408611906, 1.1585808408611906, 0.0002),
-        ("15", 0.6545806432759624, 0.6545806432759624, 0.0002),
-        ("14", None, 0.921199917014942, 0.0002),
-        ("13", 4.8, 4.8, 0.0002),
-        ("12", None, 0.0002966043155438105, 0.0000002),
-        ("11", None, 1.2481323161556228, 0.0002),
-        ("10", None, 0.823687767580373, 0.0002),
-        ("09", None, 0.43467993585364817, 0.0002),
-        ("08", None, 0.39, 0.0002),
+        ("19", 6.839958603290227),
+        ("18", 2.828116009218858),
+        ("17", 2.9832867780352594),
+        ("16", 1.1585808408611906),
+        ("15", 0.6545806432759624),
+        ("13", 4.8),
         # Number switch
-        ("01", 1.35, 1.35, 0.0005),
-        ("02", 1.0, 1.0, 0.0005),
-        ("03", 0.7004463076591492, 0.7, 0.0005),
-        ("04", None, 1.1, 0.0005),
-        ("05", 0.7134913516143259, 0.712928554361795, 0.0005),
-        ("06", 0.9228858795210783, 0.9212672396766863, 0.0002),
-        ("07", 5.30754180388624, 5.30754180388624, 0.0002),
+        ("01", 1.35),
+        ("02", 1.0),
+        ("03", 0.7004463076591492),
+        ("05", 0.7134913516143259),
+        ("06", 0.9228858795210783),
+        ("07", 5.30754180388624),
+    ],
+)
+def test_frechet_c_approx_real(
+    curve_num: str,
+    expected_dist_approx: float,
+) -> None:
+    P_curve = get_test_curve(f"{curve_num}/poly_a.txt")
+    Q_curve = get_test_curve(f"{curve_num}/poly_b.txt")
+
+    _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
+    assert np.isclose(output_appx.get_dist(), expected_dist_approx)
+
+
+@pytest.mark.parametrize(
+    ("curve_num", "expected_dist_exact", "atol"),
+    [
+        ("19", 6.839958603290227, 0.0002),
+        ("18", 2.828116009218858, 0.0002),
+        ("17", 2.9832867780352594, 0.0002),
+        ("16", 1.1585808408611906, 0.0002),
+        ("15", 0.6545806432759624, 0.0002),
+        ("14", 0.921199917014942, 0.0002),
+        ("13", 4.8, 0.0002),
+        ("12", 0.0002966043155438105, 0.0000002),
+        ("11", 1.2481323161556228, 0.0002),
+        ("10", 0.823687767580373, 0.0002),
+        ("09", 0.43467993585364817, 0.0002),
+        ("08", 0.39, 0.0002),
+        # Number switch
+        ("01", 1.35, 0.0005),
+        ("02", 1.0, 0.0005),
+        ("03", 0.7, 0.0005),
+        ("04", 1.1, 0.0005),
+        ("05", 0.712928554361795, 0.0005),
+        ("06", 0.9212672396766863, 0.0002),
+        ("07", 5.30754180388624, 0.0002),
     ],
 )
 def test_frechet_c_compute_real(
     curve_num: str,
-    expected_dist_approx: float | None,
     expected_dist_exact: float,
     atol: float,
 ) -> None:
     P_curve = get_test_curve(f"{curve_num}/poly_a.txt")
     Q_curve = get_test_curve(f"{curve_num}/poly_b.txt")
-
-    if expected_dist_approx is not None:
-        _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-        assert np.isclose(output_appx.get_dist(), expected_dist_approx)
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
     assert np.isclose(output_exact.get_dist(), expected_dist_exact, atol=atol)
