@@ -266,7 +266,7 @@ cdef class EID:
             self.p_j = Point(Q[self.j]).convex_comb(Point(Q[self.j + 1]), self.t_j)
 
         self.dist = self.p_i.compute_distance(self.p_j)
-        return abs(old_t - new_t) * Point(Q[self.i]).compute_distance(Point(Q[self.i + 1]))
+        return abs(old_t - new_t) * Point(Q[self.j]).compute_distance(Point(Q[self.j + 1]))
 
     cpdef flip(self):
         self.i, self.j = self.j, self.i

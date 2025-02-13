@@ -16,10 +16,10 @@ cpdef Morphing retractable_ve_frechet(
     ).get_event()
 
     cdef EIDFromCurveIndices first_event = from_curve_indices(0, False, 0, True, P, Q, P_offs, Q_offs)
-    cdef tuple start_tuple_1 = (first_event.get_heap_key(), first_event.get_event())
+    start_tuple_1 = (first_event.get_heap_key(), first_event.get_event())
 
     cdef EIDFromCurveIndices second_event = from_curve_indices(0, True, 0, False, P, Q, P_offs, Q_offs)
-    cdef tuple start_tuple_2 = (second_event.get_heap_key(), second_event.get_event())
+    start_tuple_2 = (second_event.get_heap_key(), second_event.get_event())
     cdef list work_queue = [start_tuple_1, start_tuple_2]
 
     cdef dict seen = {start_tuple_1[1]: start_node, start_tuple_2[1]: start_node}
@@ -27,7 +27,7 @@ cpdef Morphing retractable_ve_frechet(
 
     cdef int n_p = P.shape[0]
     cdef int n_q = Q.shape[0]
-    cdef tuple diffs = ((1, True, 0, False), (0, False, 1, True))
+    diffs = ((1, True, 0, False), (0, False, 1, True))
 
     cdef EID last_event = start_node
     cdef EID curr_event

@@ -5,7 +5,6 @@ import frechetlib.geometry_utils as gu
 import frechetlib.retractable_frechet as rf
 
 
-# @njit
 def frechet_mono_via_refinement(
     P: np.ndarray, Q: np.ndarray, approx: float
 ) -> tuple[fu.Morphing, bool]:
@@ -188,7 +187,6 @@ def frechet_c_approx(
     return ratio, output_morphing
 
 
-# @njit
 def frechet_c_compute(
     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
 ) -> fu.Morphing:
