@@ -182,6 +182,11 @@ cdef class Morphing:
         while k < n:
             event = morphing[k]
 
+            print("i: ", event.get_i())
+            print("j: ", event.get_j())
+            print("old dist: ", event.get_dist())
+            print("longest dist: ", longest_dist)
+
             # print(event.dist)
             if event.get_i_is_vert() and event.get_j_is_vert():
                 k += 1
@@ -191,7 +196,7 @@ cdef class Morphing:
             elif not event.get_i_is_vert():
                 new_k = k
                 best_t = event.get_t_i()
-
+                print("case 1")
                 while (
                     new_k < n - 1
                     and morphing[new_k + 1].get_i_is_vert() == event.get_i_is_vert()
@@ -223,7 +228,7 @@ cdef class Morphing:
             elif not event.get_j_is_vert():
                 new_k = k
                 best_t = event.get_t_j()
-
+                print("case 2")
                 while (
                     new_k < n - 1
                     and morphing[new_k + 1].get_j_is_vert() == event.get_j_is_vert()
