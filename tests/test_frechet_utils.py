@@ -186,7 +186,9 @@ def test_event_sequence_from_prm() -> None:
         ]
     )
 
-    morphing_from_prm = fu.event_sequence_from_prm(prm_tuples, P, Q)
+    morphing_from_prm = fu.event_sequence_from_prm(
+        prm_tuples, gu.numpy_to_point_list(P), gu.numpy_to_point_list(Q)
+    )
     assert 13 == len(morphing_from_prm.get_morphing_list())
 
     assert np.allclose(expected_prm, morphing_from_prm.get_prm())
@@ -385,8 +387,8 @@ def test_morphing_combine() -> None:
     assert np.isclose(morphing_2.get_dist(), 2.82842712474619)
 
     assert np.isclose(res.get_dist(), 3.047950130825634)
-    assert np.allclose(res.get_P(), P)
-    assert np.allclose(res.get_Q(), R)
+    assert np.allclose(gu.point_list_to_numpy(res.get_P()), P)
+    assert np.allclose(gu.point_list_to_numpy(res.get_Q()), R)
 
 
 def test_morphing_combine_manual() -> None:

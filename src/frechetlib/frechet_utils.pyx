@@ -657,7 +657,7 @@ def morphing_combine(
 
     P = morphing_2.P
     # Original curve equal to morphing_1.P
-    assert np.allclose(morphing_1.P[-1], morphing_2.Q[-1])
+    assert morphing_1.P[-1].is_close(morphing_2.Q[-1])
     R = morphing_1.Q
 
     prm_1 = morphing_1.get_prm()
@@ -673,15 +673,15 @@ def morphing_combine(
 #         types.ListType(tuple_type), float64[:, :], float64[:, :]
 #     )
 # )
-cpdef Morphing event_sequence_from_prm(list prm, cnp.ndarray P, cnp.ndarray Q):
+cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
     cdef int i_p = 0
     cdef int i_q = 0
 
-    cdef list P_list = numpy_to_point_list(P)
-    cdef list Q_list = numpy_to_point_list(Q)
+    #cdef list P_list = numpy_to_point_list(P)
+    #cdef list Q_list = numpy_to_point_list(Q)
 
-    cdef cnp.ndarray p_lens = get_prefix_lens(P_list)
-    cdef cnp.ndarray q_lens = get_prefix_lens(Q_list)
+    cdef cnp.ndarray p_lens = get_prefix_lens(P)
+    cdef cnp.ndarray q_lens = get_prefix_lens(Q)
 
     cdef int p_num_pts = p_lens.shape[0]
     cdef int q_num_pts = q_lens.shape[0]
@@ -707,19 +707,19 @@ cpdef Morphing event_sequence_from_prm(list prm, cnp.ndarray P, cnp.ndarray Q):
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
         # print(t_p, t_q)
-        new_event = from_coefficients(i_p, i_q, t_p, t_q, P_list, Q_list)
+        new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
 
         max_dist = max(max_dist, new_event.get_dist())
         new_event_sequence.append(new_event)
     # print("end event sequence")
     final_event = from_curve_indices(
-        p_num_pts - 1, True, q_num_pts - 1, True, P_list, Q_list, None, None
+        p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
     ).get_event()
     # print("actually done")
     max_dist = max(max_dist, final_event.get_dist())
     new_event_sequence.append(final_event)
 
-    return Morphing(new_event_sequence, P_list, Q_list, max_dist)
+    return Morphing(new_event_sequence, P, Q, max_dist)
 
 
 def extract_offsets(
