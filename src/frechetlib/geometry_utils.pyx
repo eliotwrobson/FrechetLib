@@ -230,10 +230,6 @@ cdef class EID:
         """
         assert 0.0 <= new_t <= 1.0
         cdef double old_t = self.t_i
-        print("reassigning i", new_t, self.t_i)
-        print("old dist: ", self.dist)
-        print("other point:", self.p_j.get_coords())
-        print("old point:", self.p_i.get_coords())
 
         if double_equals(0.0, new_t):
             self.t_i = 0.0
@@ -249,9 +245,6 @@ cdef class EID:
             self.p_i = P[self.i].convex_comb(P[self.i + 1], self.t_i)
 
         self.dist = convert(self.p_i.compute_distance(self.p_j), 0.0)
-
-        print("new point:", self.p_i.get_coords())
-        print("new dist:", self.dist)
         return abs(old_t - new_t) * P[self.i].compute_distance(P[self.i + 1])
 
     cpdef float reassign_parameter_j(
@@ -265,7 +258,7 @@ cdef class EID:
         """
         assert 0.0 <= new_t <= 1.0
         cdef double old_t = self.t_j
-        print("reassigning j")
+
         if double_equals(0.0, new_t):
             self.t_j = 0.0
             self.p_j = Q[self.j]

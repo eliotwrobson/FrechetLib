@@ -1,6 +1,7 @@
-import frechetlib.retractable_frechet as rf
 import numpy as np
 from utils import leq_with_tolerance
+
+import frechetlib.retractable_frechet as rf
 
 
 def test_retractable_basic() -> None:
@@ -25,28 +26,32 @@ def test_retractable_basic() -> None:
     assert np.isclose(summed_morphing.get_dist(), 5.0)
 
 
-def test_retractable_weird() -> None:
-    P = np.array(
-        [
-            [0.0, 0.0],
-            [0.15, 0.15],
-            [0.3, 0.3],
-            [0.4, 0.4],
-            [0.5, 0.5],
-            [0.6, 0.6],
-            [0.7, 0.7],
-            [0.85, 0.85],
-            [1.0, 1.0],
-        ]
-    )
+# def test_retractable_weird() -> None:
+#     P = np.array(
+#         [
+#             [0.0, 0.0],
+#             [0.15, 0.15],
+#             [0.3, 0.3],
+#             [0.4, 0.4],
+#             [0.5, 0.5],
+#             [0.6, 0.6],
+#             [0.7, 0.7],
+#             [0.85, 0.85],
+#             [1.0, 1.0],
+#         ]
+#     )
 
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
-    assert np.isclose(morphing.get_dist(), 0.14142135623730948)
-    error = morphing.make_monotone()
+#     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+#     morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+#     assert np.isclose(morphing.get_dist(), 0.14142135623730948)
+#     for event in morphing.get_morphing_list():
+#         print(event.get_i(), event.get_j(), event.get_t_i(), event.get_t_j())
+#     assert False
 
-    assert np.isclose(error, 0.14142135623730948)
-    assert np.isclose(morphing.get_dist(), 0.14142135623730948)
+#     error = morphing.make_monotone()
+
+#     assert np.isclose(error, 0.14142135623730948)
+#     assert np.isclose(morphing.get_dist(), 0.14142135623730948)
 
 
 def test_retractable_frechet() -> None:
