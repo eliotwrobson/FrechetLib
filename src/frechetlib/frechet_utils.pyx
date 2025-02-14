@@ -191,7 +191,7 @@ cdef class Morphing:
             elif not event.get_i_is_vert():
                 new_k = k
                 best_t = event.get_t_i()
-                print("case 1")
+
                 while (
                     new_k < n - 1
                     and morphing[new_k + 1].get_i_is_vert() == event.get_i_is_vert()
@@ -477,12 +477,11 @@ def _print_event_list(morphing: Morphing) -> None:
         )
 
 
-# @njit(cache=True)
-def get_prefix_lens(P: np.ndarray) -> np.ndarray:
-    n = len(P)
-    prefix_lens = np.empty(n)
+cpdef cnp.ndarray get_prefix_lens(list P):
+    cdef int n = len(P)
+    cdef cnp.ndarray prefix_lens = np.empty(n)
 
-    curr_len = 0.0
+    cdef double curr_len = 0.0
 
     for i in range(n - 1):
         prefix_lens[i] = curr_len
@@ -674,22 +673,23 @@ def morphing_combine(
 #         types.ListType(tuple_type), float64[:, :], float64[:, :]
 #     )
 # )
-def event_sequence_from_prm(prm: PRM, P: np.ndarray, Q: np.ndarray) -> Morphing:
-    p_lens = get_prefix_lens(P)
-    q_lens = get_prefix_lens(Q)
+cpdef Morphing event_sequence_from_prm(list prm, cnp.ndarray P, cnp.ndarray Q):
+    cdef int i_p = 0
+    cdef int i_q = 0
 
-    i_p = 0
-    i_q = 0
+    cdef list P_list = numpy_to_point_list(P)
+    cdef list Q_list = numpy_to_point_list(Q)
 
-    p_num_pts = p_lens.shape[0]
-    q_num_pts = q_lens.shape[0]
+    cdef cnp.ndarray p_lens = get_prefix_lens(P_list)
+    cdef cnp.ndarray q_lens = get_prefix_lens(Q_list)
 
-    P_list = numpy_to_point_list(P)
-    Q_list = numpy_to_point_list(Q)
+    cdef int p_num_pts = p_lens.shape[0]
+    cdef int q_num_pts = q_lens.shape[0]
 
-    max_dist = 0.0
-    new_event_sequence = []
+    cdef double max_dist = 0.0
+    cdef list new_event_sequence = []
 
+    cdef int i
     for i in range(len(prm) - 1):
         # print(i)
         p_loc, q_loc = prm[i]

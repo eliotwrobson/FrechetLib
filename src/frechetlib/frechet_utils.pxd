@@ -42,3 +42,7 @@ cpdef EID from_coefficients(
     list P,
     list Q,
 )
+
+cpdef cnp.ndarray get_prefix_lens(list P)
+
+cpdef Morphing event_sequence_from_prm(list prm, cnp.ndarray P, cnp.ndarray Q)
