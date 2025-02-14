@@ -43,8 +43,9 @@ def test_retractable_weird() -> None:
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
     morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
     assert np.isclose(morphing.get_dist(), 0.14142135623730948)
-    morphing.make_monotone()
+    error = morphing.make_monotone()
 
+    assert np.isclose(error, 0.14142135623730948)
     assert np.isclose(morphing.get_dist(), 0.14142135623730948)
 
 
