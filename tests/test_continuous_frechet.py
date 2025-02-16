@@ -5,6 +5,30 @@ from conftest import get_test_curve
 import frechetlib.continuous_frechet as cf
 import frechetlib.retractable_frechet as rf
 
+
+def test_frechet_mono_via_refinement() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+
+    monotone_morphing = cf.frechet_mono_via_refinement(P, Q, 1.01)
+
+    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
+
+    # if f_exact:
+    # assert np.isclose(ve_morphing.get_dist(), monotone_morphing.get_dist())
+    # else:
+    assert ve_morphing.get_dist() <= monotone_morphing.get_dist()
+    assert np.isclose(ve_morphing.get_dist(), 0.0)
+
+    # TODO I think I can assert the length is just the sum of the lengths of the
+    # number of points in each curve
+    assert len(monotone_morphing.get_morphing_list()) >= len(
+        ve_morphing.get_morphing_list()
+    )
+    assert len(monotone_morphing.get_P()) >= P.shape[0]
+    assert len(monotone_morphing.get_Q()) >= Q.shape[0]
+
+
 # def test_frechet_c_compute() -> None:
 #     P = np.array([[0.0, 0.0], [1.0, 1.0]])
 #     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
@@ -87,25 +111,3 @@ def test_frechet_c_approx() -> None:
 
     assert np.isclose(output_morphing.get_dist(), 0.14142135623730956, atol=0.0003)
     assert np.isclose(ratio, 1.0)
-
-
-def test_frechet_mono_via_refinement() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-
-    monotone_morphing, f_exact = cf.frechet_mono_via_refinement(P, Q, 1.01)
-
-    ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
-
-    if f_exact:
-        assert np.isclose(ve_morphing.get_dist(), monotone_morphing.get_dist())
-    else:
-        assert ve_morphing.get_dist() <= monotone_morphing.get_dist()
-
-    # TODO I think I can assert the length is just the sum of the lengths of the
-    # number of points in each curve
-    assert len(monotone_morphing.get_morphing_list()) >= len(
-        ve_morphing.get_morphing_list()
-    )
-    assert monotone_morphing.get_P().shape[0] >= P.shape[0]
-    assert monotone_morphing.get_Q().shape[0] >= Q.shape[0]

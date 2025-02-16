@@ -1,63 +1,58 @@
 import shutil
-from importlib.util import find_spec
 from pathlib import Path
 
 import numpy as np
+from Cython.Build import cythonize
 from setuptools import Extension
 from setuptools.command.build_ext import build_ext
 from setuptools.dist import Distribution
 
 
 def build_cython_extensions() -> None:
-    # Flag to enable Cython code generation during install / build. This is
-    # enabled during development to generated the C++ files that will be
-    # compiled
-    use_cython = find_spec("Cython") is not None
-
-    ext = ".pyx" if use_cython else ".cpp"
-
+    EXT = ".pyx"
     MACROS = [("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")]
+    EXTRA_COMPILE_ARGS = ["-O3"]
 
     extensions = [
         Extension(
             "frechetlib.frechet_utils",
-            ["src/frechetlib/frechet_utils" + ext],
+            ["src/frechetlib/frechet_utils" + EXT],
             language="c++",
-            extra_compile_args=["-O3"],
+            extra_compile_args=EXTRA_COMPILE_ARGS,
             include_dirs=[np.get_include()],
             define_macros=MACROS,
         ),
         Extension(
             "frechetlib.geometry_utils",
-            ["src/frechetlib/geometry_utils" + ext],
+            ["src/frechetlib/geometry_utils" + EXT],
             language="c++",
-            extra_compile_args=["-O3"],
+            extra_compile_args=EXTRA_COMPILE_ARGS,
             include_dirs=[np.get_include()],
             define_macros=MACROS,
         ),
         Extension(
             "frechetlib.retractable_frechet",
-            ["src/frechetlib/retractable_frechet" + ext],
+            ["src/frechetlib/retractable_frechet" + EXT],
             language="c++",
-            extra_compile_args=["-O3"],
+            extra_compile_args=EXTRA_COMPILE_ARGS,
+            include_dirs=[np.get_include()],
+            define_macros=MACROS,
+        ),
+        Extension(
+            "frechetlib.continuous_frechet",
+            ["src/frechetlib/continuous_frechet" + EXT],
+            language="c++",
+            extra_compile_args=EXTRA_COMPILE_ARGS,
             include_dirs=[np.get_include()],
             define_macros=MACROS,
         ),
     ]
 
-    if use_cython:
-        from Cython.Build import cythonize  # isort: skip
-
-        # when using setuptools, you should import setuptools before Cython,
-        # otherwise, both might disagree about the class to use.
-
-        # http://docs.cython.org/en/latest/src/userguide/parallelism.html#compiling
-
-        extensions = cythonize(
-            extensions,
-            annotate=True,
-            compiler_directives={"language_level": "3str"},
-        )
+    extensions = cythonize(
+        extensions,
+        annotate=True,
+        compiler_directives={"language_level": "3str"},
+    )
 
     dist = Distribution({"ext_modules": extensions})
     cmd = build_ext(dist)
