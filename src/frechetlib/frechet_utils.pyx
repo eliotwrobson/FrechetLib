@@ -643,10 +643,10 @@ def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
 
 
 # @njit
-def morphing_combine(
+cpdef Morphing morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
-) -> Morphing:
+):
     # TODO this function only works on monotone morphings (I think). Use the
     # same helper function that Sariel used to fail when violations to the
     # monotonicity are found.

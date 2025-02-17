@@ -5,7 +5,8 @@
 # import frechetlib.retractable_frechet as rf
 
 from .retractable_frechet import retractable_ve_frechet, retractable_ve_frechet_internal
-from .frechet_utils cimport Morphing, add_points_to_make_monotone
+from .frechet_utils cimport Morphing, add_points_to_make_monotone, frechet_dist_upper_bound, morphing_combine
+from .geometry_utils cimport Point
 cimport numpy as cnp
 
 cpdef Morphing frechet_mono_via_refinement(
@@ -55,26 +56,25 @@ cpdef Morphing frechet_mono_via_refinement(
     # )
 
 
-# # @njit(cache=True)
-# def simplify_polygon_radius(P: np.ndarray, r: float) -> tuple[np.ndarray, list[int]]:
-#     curr = P[0]
-#     indices = [0]
-#     n = P.shape[0]
+cdef tuple[list, list] simplify_polygon_radius(list P, float r):
+    cdef Point curr = P[0]
+    cdef list indices = [0]
+    cdef int n = len(P)
 
-#     for i in range(1, n):
-#         if np.linalg.norm(P[i] - curr) > r:
-#             curr = P[i]
-#             indices.append(i)
+    for i in range(1, n):
+        if np.linalg.norm(P[i] - curr) > r:
+            curr = P[i]
+            indices.append(i)
 
-#     if indices[-1] != n - 1:
-#         indices.append(n - 1)
+    if indices[-1] != n - 1:
+        indices.append(n - 1)
 
-#     new_P = np.empty((len(indices), P.shape[1]))
+    new_P = np.empty((len(indices), P.shape[1]))
 
-#     for k in range(len(indices)):
-#         new_P[k] = P[indices[k]]
+    for k in range(len(indices)):
+        new_P[k] = P[indices[k]]
 
-#     return new_P, indices
+    return new_P, indices
 
 
 # # @njit
@@ -117,79 +117,88 @@ cpdef Morphing frechet_mono_via_refinement(
 
 #     return fu.Morphing(res, P, P_subcurve, width)
 
+cdef class FrechetApproxResult:
+    def __cinit__(self, double ratio, Morphing morphing):
+        self.ratio = ratio
+        self.morphing = morphing
 
-# # @njit
-# def frechet_c_approx(
-#     P: np.ndarray, Q: np.ndarray, approx_ratio: float
-# ) -> tuple[float, fu.Morphing]:
-#     """
-#     Approximates the continuous Frechet distance between the two input
-#     curves. Returns a monotone morphing realizing it.
+    cpdef double get_ratio(self):
+        return self.ratio
 
-#     # Arguments
+    cpdef Morphing get_morphing(self):
+        return self.morphing
 
-#     - `approx` : The output morhing has Frechet distance <= approx*optimal.
+cpdef FrechetApproxResult frechet_c_approx(
+    cnp.ndarray P, cnp.ndarray Q, float approx_ratio
+):
+    """
+    Approximates the continuous Frechet distance between the two input
+    curves. Returns a monotone morphing realizing it.
 
-#     Importantly, approx can be larger than 2, if you want a really
-#     rough approximation.
-#     """
-#     P_orig = P
-#     Q_orig = Q
-#     # print("starting")
-#     # Modeled after:
-#     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
-#     upper_bound_dist = fu.frechet_dist_upper_bound(P, Q)
+    # Arguments
 
-#     # radius of simplification allowed
-#     radius = upper_bound_dist / (approx_ratio + 4.0)
-#     ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
-#     output_morphing = None
-#     should_simplify = True
+    - `approx` : The output morhing has Frechet distance <= approx*optimal.
 
-#     while ratio > approx_ratio:
-#         # print("outer", ratio, approx_ratio)
+    Importantly, approx can be larger than 2, if you want a really
+    rough approximation.
+    """
+    P_orig = P
+    Q_orig = Q
+    # print("starting")
+    # Modeled after:
+    # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
+    upper_bound_dist = frechet_dist_upper_bound(P, Q)
 
-#         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-#             # print("inner", upper_bound_dist, radius)
-#             radius /= 2.0
-#             P, p_indices = simplify_polygon_radius(P_orig, radius)
-#             Q, q_indices = simplify_polygon_radius(Q_orig, radius)
+    # radius of simplification allowed
+    radius = upper_bound_dist / (approx_ratio + 4.0)
+    ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
+    output_morphing = None
+    should_simplify = True
 
-#             morphing, _ = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
-#             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
+    while ratio > approx_ratio:
+        # print("outer", ratio, approx_ratio)
 
-#             upper_bound_dist = morphing.get_dist()
-#             should_simplify = False
+        while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
+            # print("inner", upper_bound_dist, radius)
+            radius /= 2.0
+            P, p_indices = simplify_polygon_radius(P_orig, radius)
+            Q, q_indices = simplify_polygon_radius(Q_orig, radius)
 
-#         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
-#         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+            morphing = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+            # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
-#         error = max(morphing_p.get_dist(), morphing_q.get_dist())
+            upper_bound_dist = morphing.get_dist()
+            should_simplify = False
 
-#         morphing_p.make_monotone()
-#         morphing_q.make_monotone()
-#         morphing_q.flip()
+        morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
+        morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
 
-#         assert morphing_p.is_monotone()
-#         assert morphing_q.is_monotone()
+        error = max(morphing_p.get_dist(), morphing_q.get_dist())
 
-#         first_morphing = fu.morphing_combine(morphing, morphing_p)
-#         first_morphing.make_monotone()
-#         output_morphing = fu.morphing_combine(morphing_q, first_morphing)
+        morphing_p.make_monotone()
+        morphing_q.make_monotone()
+        morphing_q.flip()
 
-#         # TODO I think this morphing will always be monotone?
-#         assert output_morphing.is_monotone()
-#         # output_morphing.make_monotone()
+        assert morphing_p.is_monotone()
+        assert morphing_q.is_monotone()
 
-#         ratio = output_morphing.get_dist() / (upper_bound_dist - 2.0 * error)
-#         # NOTE This should advance the inner loop on the next iteration.
-#         should_simplify = True
-#         # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
+        first_morphing = morphing_combine(morphing, morphing_p)
+        first_morphing.make_monotone()
+        output_morphing = morphing_combine(morphing_q, first_morphing)
 
-#     if output_morphing is None:
-#         raise Exception("Output morphing not set!")
+        # TODO I think this morphing will always be monotone?
+        assert output_morphing.is_monotone()
+        # output_morphing.make_monotone()
 
-#     return ratio, output_morphing
+        ratio = output_morphing.get_dist() / (upper_bound_dist - 2.0 * error)
+        # NOTE This should advance the inner loop on the next iteration.
+        should_simplify = True
+        # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
+
+    if output_morphing is None:
+        raise Exception("Output morphing not set!")
+
+    return FrechetApproxResult(ratio, output_morphing)
 
 
 # def frechet_c_compute(
