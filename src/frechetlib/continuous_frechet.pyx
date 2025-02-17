@@ -6,7 +6,7 @@
 
 from .retractable_frechet import retractable_ve_frechet, retractable_ve_frechet_internal
 from .frechet_utils cimport Morphing, add_points_to_make_monotone, frechet_dist_upper_bound, morphing_combine
-from .geometry_utils cimport Point
+from .geometry_utils cimport Point, from_curve_indices
 cimport numpy as cnp
 
 cpdef Morphing frechet_mono_via_refinement(
@@ -60,16 +60,17 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
     cdef Point curr = P[0]
     cdef list indices = [0]
     cdef int n = len(P)
+    cdef int i
 
     for i in range(1, n):
-        if np.linalg.norm(P[i] - curr) > r:
+        if P[i].compute_distance(curr) > r:
             curr = P[i]
             indices.append(i)
 
     if indices[-1] != n - 1:
         indices.append(n - 1)
 
-    new_P = np.empty((len(indices), P.shape[1]))
+    new_P = []
 
     for k in range(len(indices)):
         new_P[k] = P[indices[k]]
@@ -77,45 +78,43 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
     return new_P, indices
 
 
-# # @njit
-# def frechet_c_mono_approx_subcurve(
-#     P: np.ndarray, P_subcurve: np.ndarray, p_indices: list[int]
-# ) -> fu.Morphing:
-#     # TODO add a test case that checks the validity of the Morphing output
-#     # by this.
-#     """
-#     Approximates the Frechet distance between a curve (P) and subcurve
-#     (P_subcurve). Here, P_subcurve vertices are the vertices of P
-#     specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
-#     """
+cdef Morphing frechet_c_mono_approx_subcurve(
+    cnp.ndarray P, cnp.ndarray P_subcurve, list p_indices
+):
+    # TODO add a test case that checks the validity of the Morphing output
+    # by this.
+    """
+    Approximates the Frechet distance between a curve (P) and subcurve
+    (P_subcurve). Here, P_subcurve vertices are the vertices of P
+    specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
+    """
 
-#     res = []
-#     width = 0.0
-#     for i in range(len(p_indices) - 1):
-#         curr_idx = p_indices[i]
-#         next_idx = p_indices[i + 1]
+    res = []
+    width = 0.0
+    for i in range(len(p_indices) - 1):
+        curr_idx = p_indices[i]
+        next_idx = p_indices[i + 1]
 
-#         next_event = gu.from_curve_indices(
-#             curr_idx, True, i, True, P, P_subcurve, None, None
-#         ).get_event()
-#         width = max(width, next_event.get_dist())
-#         res.append(next_event)
+        next_event = from_curve_indices(
+            curr_idx, True, i, True, P, P_subcurve, None, None
+        ).get_event()
+        width = max(width, next_event.get_dist())
+        res.append(next_event)
 
-#         for j in range(curr_idx + 1, next_idx):
-#             # print("index", i, j)
-#             next_event = gu.from_curve_indices(
-#                 j, True, i, False, P, P_subcurve, None, None
-#             ).get_event()
-#             width = max(width, next_event.get_dist())
-#             res.append(next_event)
+        for j in range(curr_idx + 1, next_idx):
+            next_event = from_curve_indices(
+                j, True, i, False, P, P_subcurve, None, None
+            ).get_event()
+            width = max(width, next_event.get_dist())
+            res.append(next_event)
 
-#     next_event = gu.from_curve_indices(
-#         len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve, None, None
-#     ).get_event()
-#     width = max(width, next_event.get_dist())
-#     res.append(next_event)
+    next_event = from_curve_indices(
+        len(P) - 1, True, len(P_subcurve) - 1, True, P, P_subcurve, None, None
+    ).get_event()
+    width = max(width, next_event.get_dist())
+    res.append(next_event)
 
-#     return fu.Morphing(res, P, P_subcurve, width)
+    return Morphing(res, P, P_subcurve, width)
 
 cdef class FrechetApproxResult:
     def __cinit__(self, double ratio, Morphing morphing):

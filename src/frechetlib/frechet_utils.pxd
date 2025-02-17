@@ -51,3 +51,8 @@ cpdef Morphing morphing_combine(
     Morphing morphing_1,
     Morphing morphing_2,
 )
+
+cpdef double frechet_dist_upper_bound(
+    cnp.ndarray P,
+    cnp.ndarray Q,
+)

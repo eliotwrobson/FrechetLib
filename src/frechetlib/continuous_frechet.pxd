@@ -1,5 +1,6 @@
 cimport numpy as cnp
 from .frechet_utils cimport Morphing
+cimport cython
 
 
 cpdef Morphing frechet_mono_via_refinement(

@@ -551,7 +551,7 @@ def assert_monotone_top(prm: PRM) -> None:
 
 
 # @njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]), cache=True)
-def construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray) -> PRM:
+cpdef list construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray):
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
@@ -769,10 +769,10 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
 
 
 # @njit(cache=True)
-def frechet_dist_upper_bound(
-    P: np.ndarray,
-    Q: np.ndarray,
-) -> float:
+cpdef double frechet_dist_upper_bound(
+    cnp.ndarray P,
+    cnp.ndarray Q,
+):
     """
     Returns a rough upper bound on the Frechet distance between the two
     curves. This upper bound is on the continuous distance. No guarentee
