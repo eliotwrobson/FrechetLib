@@ -20,6 +20,8 @@ cdef class Morphing:
 
     cpdef float make_monotone(self)
 
+    cpdef cnp.ndarray get_prm(self)
+
 cdef class NewCurves:
     cdef list P
     cdef list Q
@@ -55,4 +57,9 @@ cpdef Morphing morphing_combine(
 cpdef double frechet_dist_upper_bound(
     cnp.ndarray P,
     cnp.ndarray Q,
+)
+
+cpdef list construct_new_prm(
+    cnp.ndarray[cnp.float64_t, ndim=2] prm_1,
+    cnp.ndarray[cnp.float64_t, ndim=2] prm_2
 )

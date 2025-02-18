@@ -256,20 +256,23 @@ cdef class Morphing:
     def __len__(self) -> int:
         return len(self.morphing_list)
 
-    def get_prm(self) -> np.ndarray:
+    cpdef cnp.ndarray get_prm(self):
         # TODO once I write tests for this, it's probably possible to remove the
         # helper function and compute the prefix lengths on-the-fly. This will save
         # time / memory.
-        p_lens = get_prefix_lens(self.P)
-        q_lens = get_prefix_lens(self.Q)
+        cdef cnp.ndarray[cnp.float64_t, ndim=1] p_lens = get_prefix_lens(self.P)
+        cdef cnp.ndarray[cnp.float64_t, ndim=1] q_lens = get_prefix_lens(self.Q)
 
-        prm = np.empty((2, len(self.morphing_list)))
+        cdef cnp.ndarray[cnp.float64_t, ndim=2] prm = np.empty((2, len(self.morphing_list)))
 
-        p_events = prm[0]
-        q_events = prm[1]
+        cdef cnp.ndarray[cnp.float64_t, ndim=1] p_events = prm[0]
+        cdef cnp.ndarray[cnp.float64_t, ndim=1] q_events = prm[1]
 
-        n_p = p_lens.shape[0]
-        n_q = q_lens.shape[0]
+        cdef int n_p = p_lens.shape[0]
+        cdef int n_q = q_lens.shape[0]
+
+        cdef int k
+        cdef EID event
 
         # TODO Apparently sometimes it's possible to have non-zero coefficient
         # while being at the last index of the morphing. Figure out where that's
@@ -479,7 +482,7 @@ def _print_event_list(morphing: Morphing) -> None:
 
 cpdef cnp.ndarray get_prefix_lens(list P):
     cdef int n = len(P)
-    cdef cnp.ndarray prefix_lens = np.empty(n)
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] prefix_lens = np.empty(n)
 
     cdef double curr_len = 0.0
 
@@ -532,26 +535,35 @@ def coefficient_from_prefix_lens(
 
 
 # @njit(cache=True)
-def assert_monotone_top(prm: PRM) -> None:
+cdef void assert_monotone_top(list prm):
     """
     Asserts monotonicity of the top of the PRM.
     """
-    n = len(prm)
+
+    cdef int n = len(prm)
     if n < 2:
         return
 
-    p = prm[-2]
-    q = prm[-1]
+    cdef tuple p = prm[-2]
+    cdef tuple q = prm[-1]
 
     # Avoid raising exceptions on floating point jitters
-    factor = 1.002
+    cdef double factor = 1.002
 
     if p[0] > factor * q[0] or p[1] > factor * q[1]:
         raise Exception(f"Monotonicity violated: {p}, {q}.")
 
 
-# @njit(types.ListType(tuple_type)(float64[:, :], float64[:, :]), cache=True)
-cpdef list construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray):
+cpdef list construct_new_prm(
+    cnp.ndarray[cnp.float64_t, ndim=2] prm_1,
+    cnp.ndarray[cnp.float64_t, ndim=2] prm_2
+):
+
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] p_events
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] q_events_1
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] q_events_2
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] r_events
+
     q_events_1, r_events = prm_1
     p_events, q_events_2 = prm_2
 
@@ -560,13 +572,13 @@ cpdef list construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray):
     # print(q_events_2.shape)
     assert np.allclose(q_events_1[-1], q_events_2[-1])
 
-    idx_1 = 0
-    idx_2 = 0
+    cdef int idx_1 = 0
+    cdef int idx_2 = 0
 
-    len_1 = q_events_1.shape[0]
-    len_2 = q_events_2.shape[0]
+    cdef int len_1 = q_events_1.shape[0]
+    cdef int len_2 = q_events_2.shape[0]
 
-    new_prm = []
+    cdef list new_prm = []
 
     # P = morphing_2.P
     # Q = morphing_2.Q = morphing_1.P
@@ -642,7 +654,6 @@ cpdef list construct_new_prm(prm_1: np.ndarray, prm_2: np.ndarray):
     return new_prm
 
 
-# @njit
 cpdef Morphing morphing_combine(
     morphing_1: Morphing,
     morphing_2: Morphing,
@@ -668,11 +679,6 @@ cpdef Morphing morphing_combine(
     return event_sequence_from_prm(new_prm, P, R)
 
 
-# @njit(
-#     Morphing.class_type.instance_type(  # type: ignore[attr-defined]
-#         types.ListType(tuple_type), float64[:, :], float64[:, :]
-#     )
-# )
 cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
     cdef int i_p = 0
     cdef int i_q = 0
@@ -680,8 +686,8 @@ cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
     #cdef list P_list = numpy_to_point_list(P)
     #cdef list Q_list = numpy_to_point_list(Q)
 
-    cdef cnp.ndarray p_lens = get_prefix_lens(P)
-    cdef cnp.ndarray q_lens = get_prefix_lens(Q)
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] p_lens = get_prefix_lens(P)
+    cdef cnp.ndarray[cnp.float64_t, ndim=1] q_lens = get_prefix_lens(Q)
 
     cdef int p_num_pts = p_lens.shape[0]
     cdef int q_num_pts = q_lens.shape[0]
