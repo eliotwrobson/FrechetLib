@@ -6,7 +6,7 @@
 
 from .retractable_frechet import retractable_ve_frechet, retractable_ve_frechet_internal
 from .frechet_utils cimport Morphing, add_points_to_make_monotone, frechet_dist_upper_bound, morphing_combine
-from .geometry_utils cimport Point, from_curve_indices
+from .geometry_utils cimport Point, from_curve_indices, numpy_to_point_list
 cimport numpy as cnp
 
 cpdef Morphing frechet_mono_via_refinement(
@@ -60,7 +60,7 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
     cdef Point curr = P[0]
     cdef list indices = [0]
     cdef int n = len(P)
-    cdef int i
+    cdef int i, k
 
     for i in range(1, n):
         if P[i].compute_distance(curr) > r:
@@ -70,7 +70,7 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
     if indices[-1] != n - 1:
         indices.append(n - 1)
 
-    new_P = []
+    cdef list new_P = []
 
     for k in range(len(indices)):
         new_P[k] = P[indices[k]]
@@ -141,8 +141,11 @@ cpdef FrechetApproxResult frechet_c_approx(
     Importantly, approx can be larger than 2, if you want a really
     rough approximation.
     """
-    P_orig = P
-    Q_orig = Q
+    cdef list P_list
+    cdef list Q_list
+
+    P_orig = numpy_to_point_list(P)
+    Q_orig = numpy_to_point_list(Q)
     # print("starting")
     # Modeled after:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
@@ -160,8 +163,8 @@ cpdef FrechetApproxResult frechet_c_approx(
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
             # print("inner", upper_bound_dist, radius)
             radius /= 2.0
-            P, p_indices = simplify_polygon_radius(P_orig, radius)
-            Q, q_indices = simplify_polygon_radius(Q_orig, radius)
+            P_list, p_indices = simplify_polygon_radius(P_orig, radius)
+            Q_list, q_indices = simplify_polygon_radius(Q_orig, radius)
 
             morphing = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
@@ -169,8 +172,8 @@ cpdef FrechetApproxResult frechet_c_approx(
             upper_bound_dist = morphing.get_dist()
             should_simplify = False
 
-        morphing_p = frechet_c_mono_approx_subcurve(P_orig, P, p_indices)
-        morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q, q_indices)
+        morphing_p = frechet_c_mono_approx_subcurve(P_orig, P_list, p_indices)
+        morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q_list, q_indices)
 
         error = max(morphing_p.get_dist(), morphing_q.get_dist())
 
