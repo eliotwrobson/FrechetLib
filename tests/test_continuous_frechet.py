@@ -29,6 +29,15 @@ def test_frechet_mono_via_refinement() -> None:
     assert len(monotone_morphing.get_Q()) >= Q.shape[0]
 
 
+def test_frechet_c_approx() -> None:
+    P = np.array([[0.0, 0.0], [1.0, 1.0]])
+    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
+    res = cf.frechet_c_approx(P, Q, 1.01)
+
+    assert np.isclose(res.get_morphing().get_dist(), 0.14142135623730956, atol=0.0003)
+    assert np.isclose(res.get_ratio(), 1.0)
+
+
 # def test_frechet_c_compute() -> None:
 #     P = np.array([[0.0, 0.0], [1.0, 1.0]])
 #     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
@@ -102,12 +111,3 @@ def test_frechet_c_compute_real(
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
     assert np.isclose(output_exact.get_dist(), expected_dist_exact, atol=atol)
-
-
-def test_frechet_c_approx() -> None:
-    P = np.array([[0.0, 0.0], [1.0, 1.0]])
-    Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
-    ratio, output_morphing = cf.frechet_c_approx(P, Q, 1.01)
-
-    assert np.isclose(output_morphing.get_dist(), 0.14142135623730956, atol=0.0003)
-    assert np.isclose(ratio, 1.0)

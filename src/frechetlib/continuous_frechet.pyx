@@ -60,7 +60,7 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
     cdef Point curr = P[0]
     cdef list indices = [0]
     cdef int n = len(P)
-    cdef int i, k
+    cdef int i, index
 
     for i in range(1, n):
         if P[i].compute_distance(curr) > r:
@@ -72,14 +72,14 @@ cdef tuple[list, list] simplify_polygon_radius(list P, float r):
 
     cdef list new_P = []
 
-    for k in range(len(indices)):
-        new_P[k] = P[indices[k]]
+    for index in indices:
+        new_P.append(P[index])
 
     return new_P, indices
 
 
 cdef Morphing frechet_c_mono_approx_subcurve(
-    cnp.ndarray P, cnp.ndarray P_subcurve, list p_indices
+    list P, list P_subcurve, list p_indices
 ):
     # TODO add a test case that checks the validity of the Morphing output
     # by this.
@@ -89,8 +89,10 @@ cdef Morphing frechet_c_mono_approx_subcurve(
     specified by p_indices. That is P_subcurve[i] = P[p_indices[i]].
     """
 
-    res = []
-    width = 0.0
+    cdef list res = []
+    cdef float width = 0.0
+    cdef int i
+
     for i in range(len(p_indices) - 1):
         curr_idx = p_indices[i]
         next_idx = p_indices[i + 1]
@@ -144,8 +146,8 @@ cpdef FrechetApproxResult frechet_c_approx(
     cdef list P_list
     cdef list Q_list
 
-    P_orig = numpy_to_point_list(P)
-    Q_orig = numpy_to_point_list(Q)
+    cdef list P_orig = numpy_to_point_list(P)
+    cdef list Q_orig = numpy_to_point_list(Q)
     # print("starting")
     # Modeled after:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810

@@ -655,8 +655,8 @@ cpdef list construct_new_prm(
 
 
 cpdef Morphing morphing_combine(
-    morphing_1: Morphing,
-    morphing_2: Morphing,
+    Morphing morphing_1,
+    Morphing morphing_2,
 ):
     # TODO this function only works on monotone morphings (I think). Use the
     # same helper function that Sariel used to fail when violations to the
