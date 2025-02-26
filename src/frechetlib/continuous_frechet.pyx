@@ -151,13 +151,13 @@ cpdef FrechetApproxResult frechet_c_approx(
     # print("starting")
     # Modeled after:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L810
-    upper_bound_dist = frechet_dist_upper_bound(P, Q)
+    cdef float upper_bound_dist = frechet_dist_upper_bound(P, Q)
 
     # radius of simplification allowed
-    radius = upper_bound_dist / (approx_ratio + 4.0)
-    ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
+    cdef float radius = upper_bound_dist / (approx_ratio + 4.0)
+    cdef float ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
     output_morphing = None
-    should_simplify = True
+    cdef bint should_simplify = True
 
     while ratio > approx_ratio:
         # print("outer", ratio, approx_ratio)
@@ -168,6 +168,7 @@ cpdef FrechetApproxResult frechet_c_approx(
             P_list, p_indices = simplify_polygon_radius(P_orig, radius)
             Q_list, q_indices = simplify_polygon_radius(Q_orig, radius)
 
+            # TODO gotta fix this
             morphing = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
