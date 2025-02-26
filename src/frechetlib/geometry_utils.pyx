@@ -69,13 +69,13 @@ cdef class Point:
         return dot
 
     cpdef inline bint is_close(self, Point q):
-        cdef bint res = True
         cdef int i
 
         for i in range(len(self.coords)):
-            res &= double_equals(self.coords[i], q.coords[i])
+            if not double_equals(self.coords[i], q.coords[i]):
+                return False
 
-        return res
+        return True
 
     cpdef inline Point get_avg(self, Point q):
         cdef cvector[double] new_coords

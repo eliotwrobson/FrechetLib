@@ -3,6 +3,7 @@ import pytest
 from conftest import get_test_curve
 
 import frechetlib.continuous_frechet as cf
+import frechetlib.geometry_utils as gu
 import frechetlib.retractable_frechet as rf
 
 
@@ -10,7 +11,9 @@ def test_frechet_mono_via_refinement() -> None:
     P = np.array([[0.0, 0.0], [1.0, 1.0]])
     Q = np.array([[0.0, 0.0], [0.5, 0.5], [0.3, 0.3], [0.7, 0.7], [1.0, 1.0]])
 
-    monotone_morphing = cf.frechet_mono_via_refinement(P, Q, 1.01)
+    monotone_morphing = cf.frechet_mono_via_refinement(
+        gu.numpy_to_point_list(P), gu.numpy_to_point_list(Q), 1.01
+    )
 
     ve_morphing = rf.retractable_ve_frechet(P, Q, None, None, False)
 

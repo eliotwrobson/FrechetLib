@@ -10,7 +10,7 @@ from .geometry_utils cimport Point, from_curve_indices, numpy_to_point_list
 cimport numpy as cnp
 
 cpdef Morphing frechet_mono_via_refinement(
-    cnp.ndarray P, cnp.ndarray Q, float approx
+    list P, list Q, float approx
 ):
     """
     Computes the "true" monotone Frechet distance between P and Q,
@@ -28,19 +28,24 @@ cpdef Morphing frechet_mono_via_refinement(
 
     assert 1.0 <= approx
 
-    ve_morphing = retractable_ve_frechet(P, Q, None, None, False)
+    cdef Morphing ve_morphing = retractable_ve_frechet_internal(P, Q, None, None, False)
 
-    monotone_morphing = ve_morphing.copy()
+    cdef Morphing monotone_morphing = ve_morphing.copy()
     monotone_morphing.make_monotone()
 
     # Continue until monotone_morphing.dist <= approx * ve_morphing.dist
     while monotone_morphing.get_dist() > approx * ve_morphing.get_dist():
         # Add points where monotonicity was broken to improve distance
         new_points = add_points_to_make_monotone(ve_morphing)
-        new_P, new_Q = new_points.get_P(), new_points.get_Q()
 
         # Compute new ve frechet distance for curves
-        ve_morphing = retractable_ve_frechet_internal(new_P, new_Q, None, None, False)
+        ve_morphing = retractable_ve_frechet_internal(
+            new_points.get_P(),
+            new_points.get_Q(),
+            None,
+            None,
+            False
+        )
 
         # Make monotone
         monotone_morphing = ve_morphing.copy()
@@ -160,16 +165,16 @@ cpdef FrechetApproxResult frechet_c_approx(
     cdef bint should_simplify = True
 
     while ratio > approx_ratio:
-        # print("outer", ratio, approx_ratio)
+        print("outer", ratio, approx_ratio)
 
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            # print("inner", upper_bound_dist, radius)
+            print("inner", upper_bound_dist, radius)
             radius /= 2.0
             P_list, p_indices = simplify_polygon_radius(P_orig, radius)
             Q_list, q_indices = simplify_polygon_radius(Q_orig, radius)
 
             # TODO gotta fix this
-            morphing = frechet_mono_via_refinement(P, Q, (3.0 + approx_ratio) / 4.0)
+            morphing = frechet_mono_via_refinement(P_list, Q_list, (3.0 + approx_ratio) / 4.0)
             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
             upper_bound_dist = morphing.get_dist()

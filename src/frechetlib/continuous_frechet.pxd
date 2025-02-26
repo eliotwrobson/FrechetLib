@@ -4,7 +4,7 @@ cimport cython
 
 
 cpdef Morphing frechet_mono_via_refinement(
-    cnp.ndarray P, cnp.ndarray Q, float approx
+    list P, list Q, float approx
 )
 
 @cython.final
