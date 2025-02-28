@@ -179,10 +179,10 @@ cpdef FrechetApproxResult frechet_c_approx(
 
             upper_bound_dist = morphing.get_dist()
             should_simplify = False
-
+        print("doen with inner")
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P_list, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q_list, q_indices)
-
+        print("done with approximation")
         error = max(morphing_p.get_dist(), morphing_q.get_dist())
 
         morphing_p.make_monotone()
@@ -191,11 +191,11 @@ cpdef FrechetApproxResult frechet_c_approx(
 
         assert morphing_p.is_monotone()
         assert morphing_q.is_monotone()
-
+        print("about to combine")
         first_morphing = morphing_combine(morphing, morphing_p)
         first_morphing.make_monotone()
         output_morphing = morphing_combine(morphing_q, first_morphing)
-
+        print("done with morphing combine")
         # TODO I think this morphing will always be monotone?
         assert output_morphing.is_monotone()
         # output_morphing.make_monotone()
@@ -204,6 +204,7 @@ cpdef FrechetApproxResult frechet_c_approx(
         # NOTE This should advance the inner loop on the next iteration.
         should_simplify = True
         # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
+        print("done with outer")
 
     if output_morphing is None:
         raise Exception("Output morphing not set!")

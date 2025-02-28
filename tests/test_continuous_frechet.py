@@ -76,8 +76,8 @@ def test_frechet_c_approx_real(
     P_curve = get_test_curve(f"{curve_num}/poly_a.txt")
     Q_curve = get_test_curve(f"{curve_num}/poly_b.txt")
 
-    _, output_appx = cf.frechet_c_approx(P_curve, Q_curve, 1.01)
-    assert np.isclose(output_appx.get_dist(), expected_dist_approx)
+    morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.01).get_morphing()
+    assert np.isclose(morphing.get_dist(), expected_dist_approx)
 
 
 @pytest.mark.parametrize(

@@ -516,10 +516,11 @@ def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-# @njit(cache=True)
-def coefficient_from_prefix_lens(
-    distance_along_curve: float, p_lens: np.ndarray, idx: int
-) -> float:
+cdef float coefficient_from_prefix_lens(
+    float distance_along_curve,
+    cnp.ndarray[cnp.float64_t, ndim=1] p_lens,
+    int idx
+):
     if idx == p_lens.shape[0] - 1:
         assert np.isclose(distance_along_curve, p_lens[idx])
         return 0.0
@@ -528,8 +529,8 @@ def coefficient_from_prefix_lens(
 
     assert p_lens[idx] <= distance_along_curve <= p_lens[idx + 1]
 
-    edge_len = p_lens[idx + 1] - p_lens[idx]
-    t = (distance_along_curve - p_lens[idx]) / edge_len
+    cdef float edge_len = p_lens[idx + 1] - p_lens[idx]
+    cdef float t = (distance_along_curve - p_lens[idx]) / edge_len
 
     return t
 
@@ -664,18 +665,20 @@ cpdef Morphing morphing_combine(
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
-    # print("Starting combine")
+    print("Starting combine")
 
-    P = morphing_2.P
+    cdef list P = morphing_2.P
     # Original curve equal to morphing_1.P
     assert morphing_1.P[-1].is_close(morphing_2.Q[-1])
-    R = morphing_1.Q
+    cdef list R = morphing_1.Q
 
+    print("Getting PRMs")
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
+    print("Constructing new PRMs")
     new_prm = construct_new_prm(prm_1, prm_2)
-
+    print("About to create event sequence")
     return event_sequence_from_prm(new_prm, P, R)
 
 
@@ -696,6 +699,9 @@ cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
     cdef list new_event_sequence = []
 
     cdef int i
+    cdef float p_loc, q_loc, t_p, t_q
+    cdef EID new_event
+
     for i in range(len(prm) - 1):
         # print(i)
         p_loc, q_loc = prm[i]
