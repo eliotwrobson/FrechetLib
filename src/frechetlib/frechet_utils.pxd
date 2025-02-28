@@ -63,3 +63,8 @@ cpdef list construct_new_prm(
     cnp.ndarray[cnp.float64_t, ndim=2] prm_1,
     cnp.ndarray[cnp.float64_t, ndim=2] prm_2
 )
+
+cpdef list simplify_polygon_radii(
+    list P,
+    cnp.ndarray r
+)

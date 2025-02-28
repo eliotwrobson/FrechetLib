@@ -1,13 +1,16 @@
-# import numpy as np
-
-# import frechetlib.frechet_utils as fu
-# import frechetlib.geometry_utils as gu
-# import frechetlib.retractable_frechet as rf
-
 from .retractable_frechet import retractable_ve_frechet, retractable_ve_frechet_internal
-from .frechet_utils cimport Morphing, add_points_to_make_monotone, frechet_dist_upper_bound, morphing_combine
+
+from .frechet_utils cimport (
+    Morphing,
+    add_points_to_make_monotone,
+    frechet_dist_upper_bound,
+    morphing_combine,
+    simplify_polygon_radii
+)
+
 from .geometry_utils cimport Point, from_curve_indices, numpy_to_point_list
 cimport numpy as cnp
+import numpy as np
 
 cpdef Morphing frechet_mono_via_refinement(
     list P, list Q, float approx
@@ -244,21 +247,29 @@ def frechet_c_compute(
     simplification is computed using refinement, so tha the ve_r distance
     """
 
-    baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
-    approx_refinement = 1.001
+    cdef list P_list = numpy_to_point_list(P)
+    cdef list Q_list = numpy_to_point_list(Q)
 
-    min_approx_ratio = min(
-        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_morphing.get_dist()), 1.1
+    cdef FrechetApproxResult baseline_result = frechet_c_approx(P, Q, 2.0)
+    cdef float approx_refinement = 1.001
+
+    cdef float min_approx_ratio = min(
+        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_result.get_morphing().get_dist()), 1.1
     )
 
+    cdef Morphing morphing
+    cdef float ratio
+
     # If initial ratio is good enough, use this morphing
-    if baseline_ratio <= min_approx_ratio:
-        morphing = baseline_morphing
-        ratio = baseline_ratio
+    if baseline_result.get_ratio() <= min_approx_ratio:
+        morphing = baseline_result.get_morphing()
+        ratio = baseline_result.get_ratio()
 
     # Otherwise recompute
     else:
-        ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
+        baseline_result = frechet_c_approx(P, Q, min_approx_ratio)
+        morphing = baseline_result.get_morphing()
+        ratio = baseline_result.get_ratio()
 
     Pl, Ql = morphing.extract_vertex_radii()
     lower_bound = morphing.get_dist() / ratio
@@ -270,20 +281,20 @@ def frechet_c_compute(
         Pz = (lower_bound - Pl) / factor
         Qz = (lower_bound - Ql) / factor
 
-        Ps = fu.simplify_polygon_radii(P, Pz)
-        Qs = fu.simplify_polygon_radii(Q, Qz)
+        Ps = simplify_polygon_radii(P_list, Pz)
+        Qs = simplify_polygon_radii(Q_list, Qz)
 
         # TODO need to refactor to reduce the distance to simplified versions of the
         # curves (i.e. using offsets when defining event values, or something like that)
         # see https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L103
-        mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
+        mid_morphing = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
         # The P and Q from the refinement without offsets
-        morphing_P = rf.retractable_ve_frechet(
-            P, mid_morphing.get_P(), None, None, False
+        morphing_P = retractable_ve_frechet_internal(
+            P_list, mid_morphing.get_P(), None, None, False
         )
-        morphing_Q = rf.retractable_ve_frechet(
-            mid_morphing.get_Q(), Q, None, None, False
+        morphing_Q = retractable_ve_frechet_internal(
+            mid_morphing.get_Q(), Q_list, None, None, False
         )
 
         # NOTE This apparently does not require flipping? Testing with large input
@@ -298,11 +309,11 @@ def frechet_c_compute(
 
         # Do the combination
         # print("About to combine in inner loop")
-        first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
+        first_morphing = morphing_combine(mid_morphing, morphing_P)
         first_morphing.make_monotone()
         # print("First combined morphing end PRM", first_morphing.get_prm())
         # print("Q morphing end PRM", morphing_Q.get_prm())
-        combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
+        combined_morphing = morphing_combine(morphing_Q, first_morphing)
 
         # Try shooting for the opt?
         if np.isclose(combined_morphing.get_dist(), mid_morphing.get_dist()):
@@ -312,7 +323,7 @@ def frechet_c_compute(
         _, morphing_offsets_P = morphing_P.extract_vertex_radii()
         morphing_offsets_Q, _ = morphing_Q.extract_vertex_radii()
 
-        morphing_with_offsets = rf.retractable_ve_frechet(
+        morphing_with_offsets = retractable_ve_frechet_internal(
             mid_morphing.get_P(),
             mid_morphing.get_Q(),
             morphing_offsets_P,

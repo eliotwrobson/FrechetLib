@@ -315,8 +315,8 @@ cdef class Morphing:
         on the given vertices.
         """
 
-        P_leash_lens = np.zeros(self.P.shape[0], dtype=np.float64)
-        Q_leash_lens = np.zeros(self.Q.shape[0], dtype=np.float64)
+        P_leash_lens = np.zeros(len(self.P), dtype=np.float64)
+        Q_leash_lens = np.zeros(len(self.Q), dtype=np.float64)
 
         for k in range(len(self.morphing_list)):
             event = self.morphing_list[k]
@@ -746,18 +746,19 @@ def extract_offsets(
     return P_offsets, Q_offsets
 
 
-# @njit(cache=True)
-def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
-    assert P.shape[0] == r.shape[0]
+cpdef list simplify_polygon_radii(list P, cnp.ndarray r):
+    assert len(P) == r.shape[0]
 
-    indices = [0]
-    n = P.shape[0]
+    cdef list indices = [0]
+    cdef int n = len(P)
+    cdef int i, index
 
-    curr = P[0]
-    curr_r = r[0]
+    cdef Point curr = P[0]
+    cdef float curr_r = r[0]
+
     for i in range(1, n):
         curr_r = min(curr_r, r[i])
-        if np.linalg.norm(P[i] - curr) > curr_r:
+        if P[i].compute_distance(curr) > curr_r:
             curr = P[i]
             if i < n - 1:
                 curr_r = r[i + 1]
@@ -765,19 +766,14 @@ def simplify_polygon_radii(P: np.ndarray, r: np.ndarray) -> np.ndarray:
 
     indices.append(n - 1)
 
-    m = len(indices)
-    d = P.shape[1]
-
     # Resulting curve will only have m indices
-    P_simplified = np.zeros((m, d), dtype=np.float64)
-
-    for i in range(m):
-        P_simplified[i] = P[indices[i]]
+    cdef list P_simplified = [
+        P[index] for index in indices
+    ]
 
     return P_simplified
 
 
-# @njit(cache=True)
 cpdef double frechet_dist_upper_bound(
     cnp.ndarray P,
     cnp.ndarray Q,
