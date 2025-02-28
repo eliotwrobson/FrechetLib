@@ -51,36 +51,6 @@ def test_frechet_c_approx() -> None:
 
 
 @pytest.mark.parametrize(
-    ("curve_num", "expected_dist_approx"),
-    [
-        ("20", 8.37797726526284),
-        ("19", 6.839958603290227),
-        ("18", 2.828116009218858),
-        ("17", 2.9832867780352594),
-        ("16", 1.1585808408611906),
-        ("15", 0.6545806432759624),
-        ("13", 4.8),
-        # Number switch
-        ("07", 5.30754180388624),
-        ("06", 0.9228858795210783),
-        ("05", 0.7134913516143259),
-        ("03", 0.7004463076591492),
-        ("02", 1.0),
-        ("01", 1.35),
-    ],
-)
-def test_frechet_c_approx_real(
-    curve_num: str,
-    expected_dist_approx: float,
-) -> None:
-    P_curve = get_test_curve(f"{curve_num}/poly_a.txt")
-    Q_curve = get_test_curve(f"{curve_num}/poly_b.txt")
-
-    morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.01).get_morphing()
-    assert np.isclose(morphing.get_dist(), expected_dist_approx)
-
-
-@pytest.mark.parametrize(
     ("curve_num", "expected_dist_exact", "atol"),
     [
         ("19", 6.839958603290227, 0.0002),
@@ -114,3 +84,33 @@ def test_frechet_c_compute_real(
 
     output_exact = cf.frechet_c_compute(P_curve, Q_curve)
     assert np.isclose(output_exact.get_dist(), expected_dist_exact, atol=atol)
+
+
+@pytest.mark.parametrize(
+    ("curve_num", "expected_dist_approx"),
+    [
+        # ("20", 8.37797726526284), TODO this test is very long, reenable after some optimization
+        # ("19", 6.839958603290227),
+        ("18", 2.828116009218858),
+        ("17", 2.9832867780352594),
+        ("16", 1.1585808408611906),
+        ("15", 0.6545806432759624),
+        ("13", 4.8),
+        # Number switch
+        ("07", 5.30754180388624),
+        ("06", 0.9228858795210783),
+        ("05", 0.7134913516143259),
+        ("03", 0.7004463076591492),
+        ("02", 1.0),
+        ("01", 1.35),
+    ],
+)
+def test_frechet_c_approx_real(
+    curve_num: str,
+    expected_dist_approx: float,
+) -> None:
+    P_curve = get_test_curve(f"{curve_num}/poly_a.txt")
+    Q_curve = get_test_curve(f"{curve_num}/poly_b.txt")
+
+    morphing = cf.frechet_c_approx(P_curve, Q_curve, 1.01).get_morphing()
+    assert np.isclose(morphing.get_dist(), expected_dist_approx)

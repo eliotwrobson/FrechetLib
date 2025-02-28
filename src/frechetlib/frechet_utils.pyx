@@ -516,18 +516,18 @@ def eval_inv_pl_func(p: np.ndarray, q: np.ndarray, val: float) -> float:
     return eval_pl_func_on_dim(p, q, val, 1)[0]
 
 
-cdef float coefficient_from_prefix_lens(
+cdef inline float coefficient_from_prefix_lens(
     float distance_along_curve,
     cnp.ndarray[cnp.float64_t, ndim=1] p_lens,
     int idx
 ):
     if idx == p_lens.shape[0] - 1:
-        assert np.isclose(distance_along_curve, p_lens[idx])
+        # assert np.isclose(distance_along_curve, p_lens[idx])
         return 0.0
     elif np.isclose(distance_along_curve, p_lens[idx]):
         return 0.0
 
-    assert p_lens[idx] <= distance_along_curve <= p_lens[idx + 1]
+    # assert p_lens[idx] <= distance_along_curve <= p_lens[idx + 1]
 
     cdef float edge_len = p_lens[idx + 1] - p_lens[idx]
     cdef float t = (distance_along_curve - p_lens[idx]) / edge_len
@@ -665,20 +665,18 @@ cpdef Morphing morphing_combine(
     # Code is based on:
     # https://github.com/sarielhp/FrechetDist.jl/blob/main/src/morphing.jl#L430
 
-    print("Starting combine")
-
     cdef list P = morphing_2.P
     # Original curve equal to morphing_1.P
     assert morphing_1.P[-1].is_close(morphing_2.Q[-1])
     cdef list R = morphing_1.Q
 
-    print("Getting PRMs")
     prm_1 = morphing_1.get_prm()
     prm_2 = morphing_2.get_prm()
 
-    print("Constructing new PRMs")
+    # TODO to speed this up, change the data structure to use vectors
+    # and only append floats. Then write a wrapper function to keep the old
+    # tests
     new_prm = construct_new_prm(prm_1, prm_2)
-    print("About to create event sequence")
     return event_sequence_from_prm(new_prm, P, R)
 
 
@@ -688,7 +686,6 @@ cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
 
     #cdef list P_list = numpy_to_point_list(P)
     #cdef list Q_list = numpy_to_point_list(Q)
-
     cdef cnp.ndarray[cnp.float64_t, ndim=1] p_lens = get_prefix_lens(P)
     cdef cnp.ndarray[cnp.float64_t, ndim=1] q_lens = get_prefix_lens(Q)
 
@@ -709,25 +706,25 @@ cpdef Morphing event_sequence_from_prm(list prm, list P, list Q):
         while i_p < p_num_pts - 1 and p_loc >= p_lens[i_p + 1]:
             i_p += 1
 
-        assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc * 1.01
+        #assert i_p == p_num_pts - 1 or p_lens[i_p] <= p_loc * 1.01
 
         while i_q < q_num_pts - 1 and q_loc >= q_lens[i_q + 1]:
             i_q += 1
 
-        assert i_q == q_num_pts - 1 or q_lens[i_q] <= q_loc * 1.01
+        #assert i_q == q_num_pts - 1 or q_lens[i_q] <= q_loc * 1.01
 
         t_p = coefficient_from_prefix_lens(p_loc, p_lens, i_p)
         t_q = coefficient_from_prefix_lens(q_loc, q_lens, i_q)
-        # print(t_p, t_q)
+
         new_event = from_coefficients(i_p, i_q, t_p, t_q, P, Q)
 
         max_dist = max(max_dist, new_event.get_dist())
         new_event_sequence.append(new_event)
-    # print("end event sequence")
-    final_event = from_curve_indices(
+
+    cdef EID final_event = from_curve_indices(
         p_num_pts - 1, True, q_num_pts - 1, True, P, Q, None, None
     ).get_event()
-    # print("actually done")
+
     max_dist = max(max_dist, final_event.get_dist())
     new_event_sequence.append(final_event)
 

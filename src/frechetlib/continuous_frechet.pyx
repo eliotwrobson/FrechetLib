@@ -161,28 +161,27 @@ cpdef FrechetApproxResult frechet_c_approx(
     # radius of simplification allowed
     cdef float radius = upper_bound_dist / (approx_ratio + 4.0)
     cdef float ratio = approx_ratio + 1.0  # Set to force outer loop to run at least once
-    output_morphing = None
+    cdef Morphing output_morphing = None
     cdef bint should_simplify = True
 
     while ratio > approx_ratio:
-        print("outer", ratio, approx_ratio)
+        #print("outer", ratio, approx_ratio)
 
         while should_simplify or radius >= (upper_bound_dist / (approx_ratio + 4.0)):
-            print("inner", upper_bound_dist, radius)
+            #print("inner", upper_bound_dist, radius)
             radius /= 2.0
             P_list, p_indices = simplify_polygon_radius(P_orig, radius)
             Q_list, q_indices = simplify_polygon_radius(Q_orig, radius)
 
-            # TODO gotta fix this
             morphing = frechet_mono_via_refinement(P_list, Q_list, (3.0 + approx_ratio) / 4.0)
             # print(morphing.dist, (3.0 + approx_ratio) / 4.0)
 
             upper_bound_dist = morphing.get_dist()
             should_simplify = False
-        print("doen with inner")
+        #print("doen with inner")
         morphing_p = frechet_c_mono_approx_subcurve(P_orig, P_list, p_indices)
         morphing_q = frechet_c_mono_approx_subcurve(Q_orig, Q_list, q_indices)
-        print("done with approximation")
+        #print("done with approximation")
         error = max(morphing_p.get_dist(), morphing_q.get_dist())
 
         morphing_p.make_monotone()
@@ -191,11 +190,11 @@ cpdef FrechetApproxResult frechet_c_approx(
 
         assert morphing_p.is_monotone()
         assert morphing_q.is_monotone()
-        print("about to combine")
+        #print("about to combine")
         first_morphing = morphing_combine(morphing, morphing_p)
         first_morphing.make_monotone()
         output_morphing = morphing_combine(morphing_q, first_morphing)
-        print("done with morphing combine")
+        #print("done with morphing combine")
         # TODO I think this morphing will always be monotone?
         assert output_morphing.is_monotone()
         # output_morphing.make_monotone()
@@ -204,7 +203,7 @@ cpdef FrechetApproxResult frechet_c_approx(
         # NOTE This should advance the inner loop on the next iteration.
         should_simplify = True
         # print(ratio, radius, (upper_bound_dist / (approx_ratio + 4.0)))
-        print("done with outer")
+        #print("done with outer")
 
     if output_morphing is None:
         raise Exception("Output morphing not set!")
@@ -212,128 +211,128 @@ cpdef FrechetApproxResult frechet_c_approx(
     return FrechetApproxResult(ratio, output_morphing)
 
 
-# def frechet_c_compute(
-#     P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
-# ) -> fu.Morphing:
-#     """
-#     Compute the exact continuous (monotone) Frechet distance between the
-#     two polygons. It should be reasonably fast.
+def frechet_c_compute(
+    P: np.ndarray, Q: np.ndarray, f_accept_appx: bool = True
+) -> fu.Morphing:
+    """
+    Compute the exact continuous (monotone) Frechet distance between the
+    two polygons. It should be reasonably fast.
 
-#     This function is somewhat slower than the approximate versions. Use it
-#     only if you really want the exact answer. Consider using
-#     frechet_continous_approx instead.
+    This function is somewhat slower than the approximate versions. Use it
+    only if you really want the exact answer. Consider using
+    frechet_continous_approx instead.
 
-#     # Details
+    # Details
 
-#     This works by first computing a very rough approximation, followed by
-#     distance senstiave simplification of the curves. It then compute the
-#     monotone fr_ve_r distance between the simplified curves, and it
-#     combine it to get a distance between the two original cuves. It makre
-#     sure the answers are the same, otherwise, it repeates with a finer
-#     simplification/approximation till they are equal.
+    This works by first computing a very rough approximation, followed by
+    distance senstiave simplification of the curves. It then compute the
+    monotone fr_ve_r distance between the simplified curves, and it
+    combine it to get a distance between the two original cuves. It makre
+    sure the answers are the same, otherwise, it repeates with a finer
+    simplification/approximation till they are equal.
 
-#     Finally, the algorithm uses the fr_ve_r_with_offests distance between
-#     the two simplified curves to comptue a lower bound, and make sure this
-#     is equal to the Frechet distance computed. If they are equal, then the
-#     upper/lower bounds on the Frechet distance of the two curves are the
-#     same, which implies that the computed distance is indeed the desired
-#     Frechet distance.
+    Finally, the algorithm uses the fr_ve_r_with_offests distance between
+    the two simplified curves to comptue a lower bound, and make sure this
+    is equal to the Frechet distance computed. If they are equal, then the
+    upper/lower bounds on the Frechet distance of the two curves are the
+    same, which implies that the computed distance is indeed the desired
+    Frechet distance.
 
-#     # More details
+    # More details
 
-#     To really ensure converges, the monotone distance computed between the
-#     simplification is computed using refinement, so tha the ve_r distance
-#     """
+    To really ensure converges, the monotone distance computed between the
+    simplification is computed using refinement, so tha the ve_r distance
+    """
 
-#     baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
-#     approx_refinement = 1.001
+    baseline_ratio, baseline_morphing = frechet_c_approx(P, Q, 2.0)
+    approx_refinement = 1.001
 
-#     min_approx_ratio = min(
-#         1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_morphing.get_dist()), 1.1
-#     )
+    min_approx_ratio = min(
+        1.0 + (P.shape[0] + Q.shape[0]) / (100.0 * baseline_morphing.get_dist()), 1.1
+    )
 
-#     # If initial ratio is good enough, use this morphing
-#     if baseline_ratio <= min_approx_ratio:
-#         morphing = baseline_morphing
-#         ratio = baseline_ratio
+    # If initial ratio is good enough, use this morphing
+    if baseline_ratio <= min_approx_ratio:
+        morphing = baseline_morphing
+        ratio = baseline_ratio
 
-#     # Otherwise recompute
-#     else:
-#         ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
+    # Otherwise recompute
+    else:
+        ratio, morphing = frechet_c_approx(P, Q, min_approx_ratio)
 
-#     Pl, Ql = morphing.extract_vertex_radii()
-#     lower_bound = morphing.get_dist() / ratio
+    Pl, Ql = morphing.extract_vertex_radii()
+    lower_bound = morphing.get_dist() / ratio
 
-#     factor = 4.0
-#     while True:
-#         # print("**** Exact computation inner loop starting ****")
-#         # Vectorized sums
-#         Pz = (lower_bound - Pl) / factor
-#         Qz = (lower_bound - Ql) / factor
+    factor = 4.0
+    while True:
+        # print("**** Exact computation inner loop starting ****")
+        # Vectorized sums
+        Pz = (lower_bound - Pl) / factor
+        Qz = (lower_bound - Ql) / factor
 
-#         Ps = fu.simplify_polygon_radii(P, Pz)
-#         Qs = fu.simplify_polygon_radii(Q, Qz)
+        Ps = fu.simplify_polygon_radii(P, Pz)
+        Qs = fu.simplify_polygon_radii(Q, Qz)
 
-#         # TODO need to refactor to reduce the distance to simplified versions of the
-#         # curves (i.e. using offsets when defining event values, or something like that)
-#         # see https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L103
-#         mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
+        # TODO need to refactor to reduce the distance to simplified versions of the
+        # curves (i.e. using offsets when defining event values, or something like that)
+        # see https://github.com/sarielhp/FrechetDist.jl/blob/main/src/frechet.jl#L103
+        mid_morphing, is_exact = frechet_mono_via_refinement(Ps, Qs, approx_refinement)
 
-#         # The P and Q from the refinement without offsets
-#         morphing_P = rf.retractable_ve_frechet(
-#             P, mid_morphing.get_P(), None, None, False
-#         )
-#         morphing_Q = rf.retractable_ve_frechet(
-#             mid_morphing.get_Q(), Q, None, None, False
-#         )
+        # The P and Q from the refinement without offsets
+        morphing_P = rf.retractable_ve_frechet(
+            P, mid_morphing.get_P(), None, None, False
+        )
+        morphing_Q = rf.retractable_ve_frechet(
+            mid_morphing.get_Q(), Q, None, None, False
+        )
 
-#         # NOTE This apparently does not require flipping? Testing with large input
-#         # it works, and my tests are still passing.
-#         morphing_P.make_monotone()
-#         morphing_Q.make_monotone()
-#         # morphing_Q.flip()
+        # NOTE This apparently does not require flipping? Testing with large input
+        # it works, and my tests are still passing.
+        morphing_P.make_monotone()
+        morphing_Q.make_monotone()
+        # morphing_Q.flip()
 
-#         # print("Mid morphing end PRM", mid_morphing.get_prm())
-#         # print("P morphing end PRM", morphing_P.get_prm())
-#         # print("Q morphing end PRM", morphing_Q.get_prm())
+        # print("Mid morphing end PRM", mid_morphing.get_prm())
+        # print("P morphing end PRM", morphing_P.get_prm())
+        # print("Q morphing end PRM", morphing_Q.get_prm())
 
-#         # Do the combination
-#         # print("About to combine in inner loop")
-#         first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
-#         first_morphing.make_monotone()
-#         # print("First combined morphing end PRM", first_morphing.get_prm())
-#         # print("Q morphing end PRM", morphing_Q.get_prm())
-#         combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
+        # Do the combination
+        # print("About to combine in inner loop")
+        first_morphing = fu.morphing_combine(mid_morphing, morphing_P)
+        first_morphing.make_monotone()
+        # print("First combined morphing end PRM", first_morphing.get_prm())
+        # print("Q morphing end PRM", morphing_Q.get_prm())
+        combined_morphing = fu.morphing_combine(morphing_Q, first_morphing)
 
-#         # Try shooting for the opt?
-#         if np.isclose(combined_morphing.get_dist(), mid_morphing.get_dist()):
-#             factor *= 2.0
+        # Try shooting for the opt?
+        if np.isclose(combined_morphing.get_dist(), mid_morphing.get_dist()):
+            factor *= 2.0
 
-#         # TODO Triple check these are the correct offsets
-#         _, morphing_offsets_P = morphing_P.extract_vertex_radii()
-#         morphing_offsets_Q, _ = morphing_Q.extract_vertex_radii()
+        # TODO Triple check these are the correct offsets
+        _, morphing_offsets_P = morphing_P.extract_vertex_radii()
+        morphing_offsets_Q, _ = morphing_Q.extract_vertex_radii()
 
-#         morphing_with_offsets = rf.retractable_ve_frechet(
-#             mid_morphing.get_P(),
-#             mid_morphing.get_Q(),
-#             morphing_offsets_P,
-#             morphing_offsets_Q,
-#             False,
-#         )
+        morphing_with_offsets = rf.retractable_ve_frechet(
+            mid_morphing.get_P(),
+            mid_morphing.get_Q(),
+            morphing_offsets_P,
+            morphing_offsets_Q,
+            False,
+        )
 
-#         # If distances are equal, return the simpler of the two
-#         # (computed without offsets)
-#         # print("offset dist:", morphing_with_offsets.dist)
-#         if np.isclose(morphing_with_offsets.get_dist(), combined_morphing.get_dist()):
-#             return combined_morphing
+        # If distances are equal, return the simpler of the two
+        # (computed without offsets)
+        # print("offset dist:", morphing_with_offsets.dist)
+        if np.isclose(morphing_with_offsets.get_dist(), combined_morphing.get_dist()):
+            return combined_morphing
 
-#         factor *= 2.0
-#         approx_refinement = (1.0 + approx_refinement) / 2.0
+        factor *= 2.0
+        approx_refinement = (1.0 + approx_refinement) / 2.0
 
-#         if f_accept_appx and (
-#             1.000001 * combined_morphing.get_dist() < morphing_with_offsets.get_dist()
-#         ):
-#             # print("HERE")
-#             # print(combined_morphing.dist, morphing_with_offsets.dist)
-#             # assert False
-#             return combined_morphing
+        if f_accept_appx and (
+            1.000001 * combined_morphing.get_dist() < morphing_with_offsets.get_dist()
+        ):
+            # print("HERE")
+            # print(combined_morphing.dist, morphing_with_offsets.dist)
+            # assert False
+            return combined_morphing
