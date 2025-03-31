@@ -4,6 +4,9 @@ cimport cython
 
 @cython.final
 cdef class Point:
+    # TODO convert this to a pure C++ class and define everything in
+    # a .h file. This should speed up object creation, which is an
+    # expensive step
     cdef cvector[double] coords
 
     cpdef inline Point convex_comb(self, Point q, double t)
